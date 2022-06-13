@@ -1,0 +1,10 @@
+.topBar{
+    position: fixed;
+    width: 100%;
+    background: hsl(0, 9%, 91%);
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem calc((100vw - 1000px) / 2);
+    z-index: 10;
+}
