@@ -68,7 +68,7 @@ nav .ul-item li {
 
 
 nav .ul-item li:hover > .icon{
-    color:rgb(0, 255, 145);
+    color:#00FF91FF;
 }
 nav .ul-item li .icon:hover {
     color:rgb(0, 255, 145);

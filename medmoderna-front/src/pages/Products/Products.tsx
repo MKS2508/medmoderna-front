@@ -2,12 +2,51 @@ import './Products.css'
 import React, {useEffect, useState} from "react";
 import {IProductPageProps} from "../../models/IProductPageProps";
 import {IProductProps} from "../../models/IProductProps";
+import {getProductsFromCategoryID} from "../../services/api-products-service";
+import spinner from "../../assets/spinner.svg"
+import spinner2 from "../../assets/spinner3.svg"
 
 const Products = (props: IProductPageProps) => {
+    const ProductCard2 = (props: IProductProps) => {
+        return <>
+            <div className="card">
+
+                <div className="imgBox">
+                    <img
+                        src={props.imgSrc}
+                        alt="mouse corsair" />
+                </div>
+
+                <div className="contentBox">
+                    <h3>{props.name}</h3>
+                    <h2 className="price">61.98€</h2>
+                    <a href="#" className="buy">Ver Detalles</a>
+                </div>
+
+            </div>
+        </>
+    };
+    const ProductCards = (data: {products:IProductProps[]}) => {
+        return <div className="wrapper-grid">
+            {
+                data.products.map((item) =>
+                    <>
+                    {/*<ProductCard key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>*/}
+                        <ProductCard2 key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>
+                    </>
+
+                )
+            }
+        </div>
+
+    };
+
     const [products, setProducts] = useState<IProductProps[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
     const [page, setActivePage] = useState<number>(0);
-    //recibe el id de categoria y el numero de la pagina y obtiene los elementos asociados
-    const getProducts = (categoryID: number, page:number) => {
+
+
+    const getProducts = async (props: IProductPageProps, page: number) => {
         const exampleProducts: IProductProps[] = [
             {
                 name: "WEDDING CAKE FLOR CBD GORILLA GRILLZ",
@@ -49,48 +88,44 @@ const Products = (props: IProductPageProps) => {
                 productId: 0,
                 imgSrc: "https://www.sativagrow.es/tienda/26989-large_default/synergy-400gr-grotek.jpg"
             }];
-        //obtener de capa de servicios y devolver
-        return exampleProducts;
+        let props2 = {...props};
+
+        if (props.pagination !== page) {
+            props2.pagination = page
+        }
+        return await getProductsFromCategoryID(props2)
+
+
     };
-    const initializePage = (pageParam:number) => {
+    const initializePage = async (pageParam: number) => {
         //a este metodo se llama cada vez que renderizamos el componente por primera vez o al cambiar la pagina
         // llama al get products, con el id de categoria cogido de las props y el  num de pagina del estado
-        setProducts(getProducts(props.id, pageParam));
+        // getProducts(props, pageParam)
+        //si page es 0 (inicial) y props.pagination es null,
+        setProducts(await getProducts(props, (pageParam === 0) ? 1 : pageParam));
     }
 
     useEffect(() => {
-        initializePage(page);
-    }, [page]);
+        setLoading(true);
+        initializePage(page).then(() => setLoading(false))
+    }, [page, props]);
 
     return (<>
-        <div className="center">
-            <div className="title">
-                <h1>CATALOGO DE {props.name}</h1>
-                <h2>{props.description}</h2>
-            </div>
-
-
-            <div className="wrapper-grid">
-                {
-                    products.map((item) =>
-                        <div key={item.name} className="container">
-                            <div className='banner-img'></div>
-                            <img
-                                src={item.imgSrc}
-                                alt='profile image' className="profile-img"/>
-                            <p className="name">{item.name}</p>
-                            <p className="description">{item.description}</p>
-                            <button className='btn' onClick={() => {
-                                console.log({item})
-                            }}> ❤
-                            </button>
-                        </div>)
-                }
-            </div>
+        <div className="title">
+            <h1>CATALOGO DE {props.name}</h1>
+            <h2>{props.description}</h2>
         </div>
+        {
+            (loading || products.length < 1) ? <div className="center">
+                    <img src={spinner2} className="filter-green" width="200vh" alt="spinner"/>
+                </div> : <ProductCards products={products}/>
+        }
+
 
     </>);
 
 }
+
+
 
 export default Products

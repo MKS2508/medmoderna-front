@@ -58,7 +58,6 @@ const SideBar = () => {
     const mob = checkMobileMode();
 
     //TODO: IMPORTANTE FALTA ESTILO ACTIVE LIST ITEM SELECTED
-    //TODO: LO DEL MENSAJE DE TELEGRAM
     return (<>
             <div>
                 <div className={active ? 'header' : 'header-mobile'} onMouseLeave={closeNav}>

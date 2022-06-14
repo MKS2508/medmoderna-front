@@ -6,7 +6,7 @@ import SideBar from "./components/SideBar/SideBar";
 import React from "react";
 import 'antd/dist/antd.min.css';
 import {Col, Row} from "antd";
-import Products from "./pages/Products/Product"; // or 'antd/dist/antd.less'
+import Products from "./pages/Products/Products"; // or 'antd/dist/antd.less'
 import routes from"./routes/Routes"
 
 
