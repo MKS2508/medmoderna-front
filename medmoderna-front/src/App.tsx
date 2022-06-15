@@ -8,6 +8,7 @@ import 'antd/dist/antd.min.css';
 import {Col, Row} from "antd";
 import Products from "./pages/Products/Products"; // or 'antd/dist/antd.less'
 import routes from"./routes/Routes"
+import AnimatedRoutes from "./routes/Routes";
 
 
 function App() {
@@ -16,12 +17,7 @@ function App() {
             <Router>
                 <TopBar/>
                 <SideBar/>
-
-                <Routes>
-                    {routes}
-                </Routes>
-
-
+                <AnimatedRoutes/>
             </Router>
 
 

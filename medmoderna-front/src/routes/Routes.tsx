@@ -1,7 +1,8 @@
-import {Route, RouteProps} from "react-router-dom";
+import {Route, RouteProps, Routes, useLocation} from "react-router-dom";
 import Products from "../pages/Products/Products";
 import React from "react";
 import Home from "../pages/Home/Home";
+import {AnimatePresence} from "framer-motion";
 
 const productRoutesProps: RouteProps[] = [
     //abstaer name, description, id a constantes ?
@@ -17,18 +18,22 @@ const pageRoutesProps: RouteProps[] = [
 ];
 
 
-const renderProductRoutes = (productRoutes: RouteProps[]): React.ReactElement[] => productRoutes.map((route) => <Route
+const renderProductRoute = (productRoutes: RouteProps[]): React.ReactElement[] => productRoutes.map((route) => <Route
     path={route.path} element={route.element}/>)
-const renderPageRoutes = (pageRoutes: RouteProps[]): React.ReactElement[] => pageRoutes.map((route) => <Route
+const renderPageRoute = (pageRoutes: RouteProps[]): React.ReactElement[] => pageRoutes.map((route) => <Route
     path={route.path} element={route.element}/>)
 
 
-
-const pageRoutes = renderPageRoutes(pageRoutesProps);
-const productRoutes = renderProductRoutes(productRoutesProps);
-
-
+const pageRoutes = renderPageRoute(pageRoutesProps);
+const productRoutes = renderProductRoute(productRoutesProps);
+const allRoutesItems =  [pageRoutes, productRoutes];
 
 
-const routes =  [pageRoutes, productRoutes];
-export default routes;
+const RoutesWrap = () => {const location = useLocation(); return <Routes location={location} key={location.pathname}>{allRoutesItems}</Routes>;};
+
+const AnimatedRoutes = () => <AnimatePresence><RoutesWrap/></AnimatePresence>;
+
+export default AnimatedRoutes;
+
+
+

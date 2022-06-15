@@ -5,6 +5,7 @@ import {IProductProps} from "../../models/IProductProps";
 import {getProductsFromCategoryID} from "../../services/api-products-service";
 import spinner from "../../assets/spinner.svg"
 import spinner2 from "../../assets/spinner3.svg"
+import { motion } from 'framer-motion';
 
 const Products = (props: IProductPageProps) => {
     const ProductCard2 = (props: IProductProps) => {
@@ -14,7 +15,7 @@ const Products = (props: IProductPageProps) => {
                 <div className="imgBox">
                     <img
                         src={props.imgSrc}
-                        alt="mouse corsair" />
+                        alt="mouse corsair"  />
                 </div>
 
                 <div className="contentBox">
@@ -110,7 +111,11 @@ const Products = (props: IProductPageProps) => {
         initializePage(page).then(() => setLoading(false))
     }, [page, props]);
 
-    return (<>
+    return (<motion.div
+    initial={{opacity:0}}
+    animate={{opacity: 1}}
+    exit={{opacity:0}}
+    >
         <div className="title">
             <h1>CATALOGO DE {props.name}</h1>
             <h2>{props.description}</h2>
@@ -122,7 +127,7 @@ const Products = (props: IProductPageProps) => {
         }
 
 
-    </>);
+    </motion.div>);
 
 }
 
