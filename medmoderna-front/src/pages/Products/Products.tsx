@@ -5,39 +5,58 @@ import {IProductProps} from "../../models/IProductProps";
 import {getProductsFromCategoryID} from "../../services/api-products-service";
 import spinner from "../../assets/spinner.svg"
 import spinner2 from "../../assets/spinner3.svg"
-import { motion } from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
+import ProductCard from "../../components/Product/ProductCard";
+
 
 const Products = (props: IProductPageProps) => {
-    const ProductCard2 = (props: IProductProps) => {
-        return <>
-            <div className="card">
+    const variants = {
+        hidden: {
+            opacity: 0
+        },
+        visible: ({delay = 1}) => ({
+            opacity: 1,
+            transition: {
+                delay,
+                duration: 2,
+                staggerChildren: 4,
+            }
+        })
+    }
 
-                <div className="imgBox">
-                    <img
-                        src={props.imgSrc}
-                        alt="mouse corsair"  />
-                </div>
 
-                <div className="contentBox">
-                    <h3>{props.name}</h3>
-                    <h2 className="price">61.98€</h2>
-                    <a href="#" className="buy">Ver Detalles</a>
-                </div>
-
-            </div>
-        </>
-    };
-    const ProductCards = (data: {products:IProductProps[]}) => {
+    const ProductCards = (data: { products: IProductProps[] }) => {
         return <div className="wrapper-grid">
-            {
-                data.products.map((item) =>
-                    <>
-                    {/*<ProductCard key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>*/}
-                        <ProductCard2 key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>
-                    </>
 
+            {
+
+                data.products.map((item, index) =>
+                    <>
+                    <AnimatePresence>
+                        {/*<ProductCard key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>*/}
+                        { (!loading) ?
+
+
+                                <motion.div custom={{delay: (index + 1) * 0.1}}
+                                            initial='hidden'
+                                            animate={variants.visible({delay: (index + 1) * 0.1})}
+                                            variants={variants}
+                                            key={item.name}
+
+
+                                >
+                                    <ProductCard key={item.name} imgSrc={item.imgSrc}
+                                                  description={item.description}
+                                                  productId={item.productId} name={item.name}/>
+                                </motion.div>
+
+                            : <></>}
+                    </AnimatePresence>
+
+                    </>
                 )
             }
+
         </div>
 
     };
@@ -110,27 +129,38 @@ const Products = (props: IProductPageProps) => {
         setLoading(true);
         initializePage(page).then(() => setLoading(false))
     }, [page, props]);
+    const showSpinner = (loading || products.length < 1);
 
-    return (<motion.div
-    initial={{opacity:0}}
-    animate={{opacity: 1}}
-    exit={{opacity:0}}
-    >
-        <div className="title">
-            <h1>CATALOGO DE {props.name}</h1>
-            <h2>{props.description}</h2>
-        </div>
-        {
-            (loading || products.length < 1) ? <div className="center">
-                    <img src={spinner2} className="filter-green" width="200vh" alt="spinner"/>
-                </div> : <ProductCards products={products}/>
-        }
+    return (
+        <>
+            <AnimatePresence>
+                <motion.div
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                >
+                    <div className="title">
+                        <h1>CATALOGO DE {props.name}</h1>
+                        <h2>{props.description}</h2>
+                    </div>
+                </motion.div>
+            </AnimatePresence>
 
+            {
+                <>
+                    <AnimatePresence>
+                        <div className="center" hidden={!showSpinner}>
+                            <img src={spinner2} className="filter-green" width="200vh" alt="spinner"/>
+                        </div>
+                    </AnimatePresence>
+                    <ProductCards products={products}/>
 
-    </motion.div>);
+                </>
+            }
+
+        </>
+    );
 
 }
 
-
-
-export default Products
+export default Products;
