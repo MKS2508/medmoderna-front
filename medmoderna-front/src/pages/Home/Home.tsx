@@ -1,8 +1,8 @@
 import './Home.css'
-import React from "react";
+import React, {useState} from "react";
 import TopBar from "../../components/TopBar/TopBar";
 import SideBar from "../../components/SideBar/SideBar";
-import {Col, Row} from 'antd';
+import {Button, Col, Row} from 'antd';
 import {InstagramEmbed, FacebookEmbed} from 'react-social-media-embed';
 import ProductCard from "../../components/Product/ProductCard";
 
@@ -17,9 +17,19 @@ const AddressMap = () => {
     );
 }
 const Home = () => {
+    const  postsUrls = ["https://www.instagram.com/p/COi_Ep9nW2A/?hl=es", "https://www.instagram.com/p/CeTSXK1sDpU/", "https://www.instagram.com/p/CdbJE9pDOtR/"];
+    const [igPost, setIgPost] = useState<string>("https://www.instagram.com/p/COi_Ep9nW2A/?hl=es");
+
+    const setRandomPost = async (postsUrls: string[]) => {
+        let randomPost = postsUrls[Math.floor(Math.random() * postsUrls.length)];
+        setIgPost(randomPost);
+    };
+
     return (<>
             <div className="title">
-                <h1>{"BIENVENIDO A MEDICINA MODERNA"}</h1>
+
+                <h1>{"BIENVENIDO A MEDICINA MODERNA"} {igPost}</h1>
+                <Button onClick={() => setRandomPost(postsUrls)}> REFRESH </Button>
             </div>
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
 
@@ -27,8 +37,11 @@ const Home = () => {
                     Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor, euismod sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a, augue natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod, velit sociosqu posuere potenti integer auctor lobortis ad nascetur molestie.
                     Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor, euismod sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a, augue natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod, velit sociosqu posuere potenti integer auctor lobortis ad nascetur molestie.     Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor, euismod sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a, augue natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod, velit sociosqu posuere potenti integer auctor lobortis ad nascetur molestie.
                     Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor, euismod sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a, augue natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod, velit sociosqu posuere potenti integer auctor lobortis ad nascetur molestie.</p>
-                <InstagramEmbed url="https://www.instagram.com/p/COi_Ep9nW2A/?hl=es" width={460}/>
-            </div>
+                { (igPost !== "") ?
+                    <InstagramEmbed url={igPost} width={460}/> :
+                    (igPost === postsUrls[1]) ? <></> :   <InstagramEmbed url={igPost} width={460}/>
+                }
+                </div>
 
             <div style={{display: 'flex', justifyContent: 'center', marginTop: "3rem",paddingTop:"2rem", backgroundColor:"whitesmoke"}}>
                 <h1>Algunos de nuestros productos</h1>
