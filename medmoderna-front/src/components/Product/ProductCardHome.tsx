@@ -1,7 +1,7 @@
 import {IProductProps} from "../../models/IProductProps";
 import React from "react";
 
-const ProductCard = (props: IProductProps) => {
+const ProductCardHome = (props: IProductProps) => {
 
     return <>
 
@@ -9,7 +9,7 @@ const ProductCard = (props: IProductProps) => {
 
             <div className="imgBox">
                 <img
-                    src={`data:image/png;base64,${props.imgSrc}`}
+                    src={`${props.imgSrc}`}
                     alt="mouse corsair"/>
             </div>
 
@@ -24,4 +24,4 @@ const ProductCard = (props: IProductProps) => {
     </>
 };
 
-export default ProductCard;
+export default ProductCardHome;

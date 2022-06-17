@@ -4,5 +4,10 @@ export interface IProductProps {
   description: string,
   price?:number,
   imgSrc: string,
+  category?: {
+    name: string,
+    totalProducts: number
+  },
+  brand:string
 
 }
