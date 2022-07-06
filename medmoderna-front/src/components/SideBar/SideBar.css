@@ -55,10 +55,7 @@ nav .ul-item li {
     border-radius: 100%;
     background-color: rgb(125, 118, 118);
 }
-
-
 .header > nav .ul-item li:hover {
-
     background-color: rgb(125, 118, 118);
 }
 .header > nav .ul-item li:hover > .customLink {
