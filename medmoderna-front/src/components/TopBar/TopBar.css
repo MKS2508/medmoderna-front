@@ -8,3 +8,42 @@
     padding: 0.5rem calc((100vw - 1000px) / 2);
     z-index: 10;
 }
+
+.topbar-mobile > .topbarIcons{
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.topbarIcon{
+    display: flex;
+
+}
+
+.topbarIcon > a{
+    color: inherit;
+    
+}.topbarIcon > a:hover{
+     color:rgb(0, 255, 145);
+}
+
+.topbarIcon:hover{
+    color:rgb(0, 255, 145);
+}
+
+.number{
+    color: rgb(31, 30, 30);
+
+}
+
+.topbarIcons{
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.topbarIcon:hover{
+    color:rgb(0, 255, 145);
+}

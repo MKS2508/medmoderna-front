@@ -21,9 +21,9 @@ import {ReactSVG} from 'react-svg'
 import {FaCannabis, FaBong, FaJoint, FaFacebookSquare} from "react-icons/fa";
 import {RiPlantFill, RiInstagramFill} from "react-icons/ri";
 import {GiLightBulb} from "react-icons/gi";
-import {Container, Navbar} from "react-bootstrap";
+
 import logo from '../../assets/LOGOSVG3.svg'
-import {CSSTransition} from "react-transition-group";
+
 import banner from "../../assets/banner.png";
 
 const TopBar = () => {
@@ -39,9 +39,25 @@ const TopBar = () => {
 
                 <div className={active ? 'topBar' : 'topBar-mobile'}>
 
+                    <p>Estamos en el Poligono de La portalada</p>
+                    <p>Estamos en el Poligono de La portalada</p>
 
-            <p>Estamos en el Poligono de La portalada</p>
-            <p>Estamos en el Poligono de La portalada</p>
+                    <div className="topbarIcons">
+                        <div className="topbarIcon">
+                            <div className="number">
+                                <p style={{marginRight:"20px"}}>+34 630666320</p>
+                            </div>
+                            <IoLogoWhatsapp size={30} className='iconRRSS'/>
+                        </div>
+                        <div className="topbarIcon">
+                            <a href="https://www.instagram.com/medicinamoderna_growshop/?hl=es">
+                                <RiInstagramFill size={30} className='iconRRSS'/>
+                            </a>
+                        </div>
+                        <div className="topbarIcon">
+                            <FaFacebookSquare size={30} className='iconRRSS'/>
+                        </div>
+                    </div>
 
                 </div>
             </div>

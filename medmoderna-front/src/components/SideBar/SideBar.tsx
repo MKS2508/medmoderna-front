@@ -97,42 +97,39 @@ const SideBar = () => {
                                         <FaExpandAlt className='icon'/>
                                     </li> : <></>}
 
-                                <li onClick={() => navigate("/CULTIVO")}>
-                                    <RiPlantFill className='icon'/>
+                                <li onClick={() => navigate("/CULTIVO")} className={(page.startsWith("/CULTIVO")) ? "itemActive":""}>
+                                    <RiPlantFill className={(page.startsWith("/CULTIVO") ? "iconActive":"icon")}/>
                                     <Link to="/CULTIVO"> CULTIVO </Link>
                                 </li>
 
 
-                                <li onClick={() => navigate("/ILUMINACION")}>
-                                    {/*(true) ? <GiLightBulb className='icon'/> : <GiLightBulb className='iconActive'/>
-                                    */}
-                                    <GiLightBulb className='icon'/>
+                                <li onClick={() => navigate("/ILUMINACION")} className={(page.startsWith("/ILUMINACION")) ? "itemActive":""}>
+                                    <GiLightBulb className={(page.startsWith("/ILUMINACION")) ? "iconActive":"icon"}/>
                                     <Link to="/ILUMINACION">ILUMINACION</Link>
-
                                 </li>
 
-                                <li onClick={() => navigate("/CBD")}>
-                                    <FaCannabis className='icon'/>
+                                <li onClick={() => navigate("/CBD")} className={(page.startsWith("/CBD") && !active) ? "itemActive":""}>
+                                    <FaCannabis className={(page.startsWith("/CBD") && !active) ? "iconActive":"icon"}/>
 
                                     <Link className='customspan' to='/CBD'>CBD</Link>
 
                                 </li>
 
 
-                                <li onClick={() => navigate("/MARCAS")}>
-                                    <FaBong className='icon'/>
+                                <li onClick={() => navigate("/MARCAS")} className={(page.startsWith("/MARCAS")) ? "itemActive":""}>
+                                    <FaBong className={(page.startsWith("/MARCAS")) ? "iconActive":"icon"}/>
                                     <Link to="/MARCAS">MARCAS</Link>
 
                                 </li>
 
 
-                                <li onClick={() => navigate("/PARAFERNALIA")}>
-                                    <FaJoint className='icon'/>
+                                <li onClick={() => navigate("/PARAFERNALIA")} className={(page.startsWith("/PARAFERNALIA")) ? "itemActive":""}>
+                                    <FaJoint className={(page.startsWith("/PARAFERNALIA")) ? "iconActive":"icon"}/>
                                     <Link to="/PARAFERNALIA">PARAFERNALIA</Link>
 
                                 </li>
-                                <li onClick={() => navigate("/ROPA")}>
-                                    <IoIosShirt className='icon'/>
+                                <li onClick={() => navigate("/ROPA")} className={(page.startsWith("/ROPA")) ? "itemActive":""}>
+                                    <IoIosShirt className={(page.startsWith("/ROPA")) ? "iconActive":"icon"}/>
                                     <Link to="/ROPA">ROPA</Link>
 
                                 </li>
