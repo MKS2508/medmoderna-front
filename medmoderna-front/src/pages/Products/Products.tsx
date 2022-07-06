@@ -65,6 +65,7 @@ const Products = (props: IProductPageProps) => {
     };
 
     const [products, setProducts] = useState<IProductProps[]>([]);
+
     const [loading, setLoading] = useState<boolean>(false);
     const [page, setActivePage] = useState<number>(0);
 
@@ -86,6 +87,7 @@ const Products = (props: IProductPageProps) => {
         // llama al get products, con el id de categoria cogido de las props y el  num de pagina del estado
         // getProducts(props, pageParam)
         //si page es 0 (inicial) y props.pagination es null,
+        console.log({props})
         setProducts(await getProducts(props, pageParam));
     }
 

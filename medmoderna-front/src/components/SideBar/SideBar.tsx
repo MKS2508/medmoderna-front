@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {IoIosShirt, IoLogoWhatsapp} from 'react-icons/io'
-import {Link, useNavigate} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
 import './SideBar.css'
 import 'font-awesome/css/font-awesome.css';
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
@@ -12,10 +12,19 @@ import logo from '../../assets/logo.png'
 import banner from '../../assets/banner.png'
 import {AnimatePresence, motion} from "framer-motion";
 
+
 const SideBar = () => {
+
     config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
     const [active, setActive] = useState(false)
     const [mobileMode, setMobileMode] = useState(false)
+
+
+    const getCurrentPage = () => {
+        const location = useLocation();
+        console.warn({location: location.pathname});
+    };
+
     let navigate = useNavigate();
     const activateNav = () => {
         setActive(!active)
@@ -23,6 +32,7 @@ const SideBar = () => {
     const closeNav = () => {
         setActive(false)
     }
+
 
     function getWindowDimensions() {
         const width = window.innerWidth
@@ -55,6 +65,7 @@ const SideBar = () => {
         //setMobileMode(bol);
     }
     const {height, width} = useWindowDimensions();
+    getCurrentPage();
 
     const mob = checkMobileMode();
 
@@ -63,11 +74,11 @@ const SideBar = () => {
             <div>
                 <AnimatePresence>
 
-                    <motion.div        initial={{ opacity: 0 }}
-                                       animate={{ opacity: 1 }}
-                                       exit={{ opacity: 0 }}
-                                       transition={{ duration: 0.5 }}
-                                       className={active ? 'header' : 'header-mobile'} onMouseLeave={closeNav}>
+                    <motion.div initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                                transition={{duration: 0.5}}
+                                className={active ? 'header' : 'header-mobile'} onMouseLeave={closeNav}>
 
                         {(!active) ? <div className="logo" onClick={() => navigate("/")}>
                                 <img width="100%" alt="logo" src={logo}/>
@@ -92,6 +103,8 @@ const SideBar = () => {
 
 
                                 <li onClick={() => navigate("/ILUMINACION")}>
+                                    {/*(true) ? <GiLightBulb className='icon'/> : <GiLightBulb className='iconActive'/>
+                                    */}
                                     <GiLightBulb className='icon'/>
                                     <Link to="/ILUMINACION">ILUMINACION</Link>
 
