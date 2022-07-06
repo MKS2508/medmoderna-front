@@ -1,0 +1,27 @@
+.imgBoxDetail {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+}
+
+.titleDetail {
+    display: grid;
+    justify-content: center;
+    padding-bottom: 5vh;
+}
+
+.titleDetail h1 {
+    text-align: center;
+    font-size: 40px;
+}
+.titleDetail h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.bar {
+    width: 100vw;
+    margin-left: 20vw;
+    padding-top: 10vh;
+}

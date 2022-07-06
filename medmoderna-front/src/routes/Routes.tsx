@@ -1,5 +1,7 @@
 import {Route, RouteProps, Routes, useLocation, useParams} from "react-router-dom";
 import Products from "../pages/Products/Products";
+import ProductDetail from "../pages/ProductDetail/ProductDetail";
+
 import React from "react";
 import Home from "../pages/Home/Home";
 import {AnimatePresence} from "framer-motion";
@@ -12,6 +14,7 @@ const productRoutesProps: RouteProps[] = [
     {path: "/CULTIVO", element: <Products name={"CULTIVO"} id={4} description={"Aqui puedes encontrar lo relacionado con productos para tu cultivo"}  elementsSize={10} pagination={0}/> },
     {path: "/MARCAS", element: <Products name={"MARCAS"} id={5} description={"Todas nuestras marcas"}  elementsSize={10} pagination={0}/>},
     {path: "/MARCAS/:brand", element: <Products name={":brand"} id={5} description={"Todas los productos de :brand"}  elementsSize={10} pagination={0}/>},
+    {path: "/product/:id", element: <ProductDetail name={":id"} id={5} description={":id"}  elementsSize={10} pagination={0} productId={""}/>},
     {path: "/ROPA", element: <Products name={"ROPA"} id={6} elementsSize={10} pagination={0} description={"Toda nuestra ropa"}/> },
 ]
 const pageRoutesProps: RouteProps[] = [

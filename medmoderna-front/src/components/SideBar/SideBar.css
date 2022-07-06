@@ -26,6 +26,7 @@
 nav .ul-item {
     display: flex;
     flex-direction: column;
+    align-content: end;
     margin-block: .5rem;
     list-style: none;
 }

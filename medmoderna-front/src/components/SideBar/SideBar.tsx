@@ -78,7 +78,7 @@ const SideBar = () => {
                     <motion.div initial={{opacity: 0}}
                                 animate={{opacity: 1}}
                                 exit={{opacity: 0}}
-                                transition={{duration: 0.5}}
+                                transition={{duration: 1}}
                                 className={active ? 'header' : 'header-mobile'} onMouseLeave={closeNav}>
 
                         {(!active) ? <div className="logo" onClick={() => navigate("/")}>
@@ -133,28 +133,8 @@ const SideBar = () => {
                                     <Link to="/ROPA">ROPA</Link>
 
                                 </li>
-                                <div className="rrssIcons">
 
-                                </div>
 
-                                <li>
-                                    <IoLogoWhatsapp className='icon'/>
-                                    <Link to="/CULTIVO"
-                                    >whatsapp</Link>
-
-                                </li>
-                                <li>
-                                    <RiInstagramFill className='icon'/>
-                                    <Link to="/CULTIVO"
-                                    >INSTAGRAM</Link>
-
-                                </li>
-                                <li>
-                                    <FaFacebookSquare className='icon'/>
-                                    <Link to="/CULTIVO"
-                                    >FACEBOOK</Link>
-
-                                </li>
 
 
                             </ul>

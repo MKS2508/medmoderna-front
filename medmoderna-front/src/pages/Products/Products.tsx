@@ -11,8 +11,8 @@ import {useParams} from "react-router-dom";
 
 
 const Products = (props: IProductPageProps) => {
-    let { brand } = useParams();
-
+    let params = useParams();
+    let brand = params.brand;
     const variants = {
         hidden: {
             opacity: 0
@@ -68,7 +68,14 @@ const Products = (props: IProductPageProps) => {
 
     const [loading, setLoading] = useState<boolean>(false);
     const [page, setActivePage] = useState<number>(0);
-
+    const [props2, setProps2] = useState<IProductPageProps>({
+        description: "",
+        elementsSize: 0,
+        id: 0,
+        name: "",
+        pagination: 0,
+        productId: ""
+    });
 
     const getProducts = async (props: IProductPageProps, page: number) => {
         let props2 = {...props};
@@ -76,9 +83,15 @@ const Products = (props: IProductPageProps) => {
         if (props.pagination !== page) {
             props2.pagination = page
         }
+
+
         let products = await getProductsFromCategory(props2);
-        if (brand !== undefined) { products = await getProductsFromBrand(props2, brand) }
+        if (brand !== undefined) {
+            props2.name = brand;
+            products = await getProductsFromBrand(props2, brand);
+        }
         else if (brand === undefined) { products = await getProductsFromCategory(props2)}
+        setProps2(props2)
         return products;
 
     };
@@ -107,7 +120,7 @@ const Products = (props: IProductPageProps) => {
                 >
                     <div className="title">
                         
-                        <h1>CATALOGO DE {props.name}</h1>
+                        <h1>CATALOGO DE {props2.name}</h1>
                         <h2>{props.description}</h2>
                     </div>
                 </motion.div>

@@ -1,5 +1,6 @@
 import {IProductProps} from "../../models/IProductProps";
 import React from "react";
+import {Link} from "react-router-dom";
 
 const ProductCard = (props: IProductProps) => {
 
@@ -16,7 +17,7 @@ const ProductCard = (props: IProductProps) => {
             <div className="contentBox">
                 <h3>{props.name}</h3>
                 <h2 className="price">{props.price}.00€</h2>
-                <a href="#" className="buy">Ver Detalles</a>
+                <Link className="buy" to={`/product/${props.productId}`}> Ver Detalles </Link>
             </div>
 
         </div>

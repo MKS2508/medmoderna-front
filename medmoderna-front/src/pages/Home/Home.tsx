@@ -75,12 +75,12 @@ const Home = () => {
 
                     <div>
                         <motion.iframe
-
-                            initial={{opacity: 0, scale: 0.7, borderRadius: "10%", height: 400, padding: 30}}
-                            animate={{opacity: 1, scale: 1, borderRadius: "0%", height: 800}}
+                            className="iframeIg"
+                            initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: 400, marginTop: 30}}
+                            animate={{opacity: 1, scale: 1, borderRadius: "10px", height: 720}}
                             exit={{opacity: 0.3}}
                             transition={{duration: 1.5}}
-                            key={igPost} width="460" height={800} src={igPost}
+                            key={igPost} width="460" height={720} src={igPost}
                             frameBorder="0"/>
                     </div>
 
@@ -132,6 +132,36 @@ const Home = () => {
                 <AddressMap/>
             </div>
 
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: "3rem",
+                paddingTop: "2rem",
+                backgroundColor: "whitesmoke"
+            }}>
+                <h1>Algunas de nuestras marcas</h1>
+            </div>
+            <div style={{display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke"}}>
+            </div>
+            <div style={{display: 'flex', justifyContent: 'center', paddingTop: "2rem", backgroundColor: "whitesmoke"}}>
+                <div style={{marginRight: "30px", marginTop: "30px"}}>
+
+                    <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
+                                     imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
+                                     brand={"RAW"}/>
+                </div>
+
+                <div style={{marginRight: "30px", marginTop: "30px"}}>
+                    <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
+                                     imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
+                                     brand={"RAW"}/>
+                </div>
+                <div style={{marginRight: "30px", marginTop: "30px"}}>
+                    <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
+                                     imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
+                                     brand={"RAW"}/>
+                </div>
+            </div>
 
             <div style={{
                 display: 'flex',
