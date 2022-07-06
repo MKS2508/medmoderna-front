@@ -20,9 +20,10 @@ const SideBar = () => {
     const [mobileMode, setMobileMode] = useState(false)
 
 
-    const getCurrentPage = () => {
+    const getCurrentPage = (): string => {
         const location = useLocation();
         console.warn({location: location.pathname});
+        return location.pathname;
     };
 
     let navigate = useNavigate();
@@ -65,7 +66,7 @@ const SideBar = () => {
         //setMobileMode(bol);
     }
     const {height, width} = useWindowDimensions();
-    getCurrentPage();
+    let page = getCurrentPage();
 
     const mob = checkMobileMode();
 
