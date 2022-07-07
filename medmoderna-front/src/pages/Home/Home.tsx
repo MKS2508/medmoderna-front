@@ -7,8 +7,7 @@ import {FacebookEmbed} from 'react-social-media-embed';
 import ProductCard from "../../components/Product/ProductCard";
 import ProductCardHome from "../../components/Product/ProductCardHome";
 import {AnimatePresence, motion} from 'framer-motion';
-import parallax1 from '../../assets/parallax1.jpg';
-import parallax2 from '../../assets/parallax2.jpg';
+
 const AddressMap = () => {
     return (
         <div className="google-map-code">
