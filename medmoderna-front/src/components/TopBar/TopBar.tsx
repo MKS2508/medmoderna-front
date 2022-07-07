@@ -25,6 +25,7 @@ import {GiLightBulb} from "react-icons/gi";
 import logo from '../../assets/LOGOSVG3.svg'
 
 import banner from "../../assets/banner.png";
+import ReactWhatsapp from "react-whatsapp";
 
 const TopBar = () => {
     config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
@@ -44,12 +45,15 @@ const TopBar = () => {
 
                     <div className="topbarIcons">
                         <div className="topbarIcon">
-                            <div className="number">
-                                <a href="tel:+34 630666320">
-                                    <p style={{marginRight:"20px"}}>+34 630666320</p>
-                                </a>
-                            </div>
-                            <IoLogoWhatsapp size={30} className='iconRRSS'/>
+
+                                <span className="wa">
+                                         {/*@ts-ignore*/}
+                                    <ReactWhatsapp style={{border: "none", backgroundColor: "#EAE6E6FF"}}
+                                                   number="+34601185250" message={"Hola malaraza"}>
+                                        <IoLogoWhatsapp size={30} className='iconRRSS'/>
+                                    </ReactWhatsapp>
+                                </span>
+
                         </div>
                         <div className="instaIcon">
                             <a href="https://www.instagram.com/medicinamoderna_growshop/?hl=es">

@@ -44,7 +44,8 @@
     color: inherit;
 }
 
-.topbarIcon > a:hover{
+.topbarIcon > span :hover{
+    transition: 0.3s;
     color:rgb(0, 255, 145);
 }
 

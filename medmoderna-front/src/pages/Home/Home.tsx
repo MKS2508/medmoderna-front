@@ -6,7 +6,6 @@ import {Button, Col, Row} from 'antd';
 import {FacebookEmbed} from 'react-social-media-embed';
 import ProductCard from "../../components/Product/ProductCard";
 import ProductCardHome from "../../components/Product/ProductCardHome";
-import InstagramEmbed from 'react-instagram-embed';
 import {AnimatePresence, motion} from 'framer-motion';
 
 const AddressMap = () => {
