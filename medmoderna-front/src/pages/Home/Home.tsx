@@ -50,7 +50,7 @@ const Home = () => {
                     <div className="caption">
                         <span className="border">
                             <div>
-                                <h1>{"BIENVENIDO A MEDICINA MODERNA"}</h1>
+                                <h1 style={{color:"white"}}>{"BIENVENIDO A MEDICINA MODERNA "}</h1>
                                 <h2>¡Tu Grow Shop de confianza en Logroño!</h2>
                             </div>
                         </span>
