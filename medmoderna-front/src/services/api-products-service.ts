@@ -59,3 +59,21 @@ export const getProductById = async (id?: any): Promise<IProductProps> => {
 
     }));
 }
+
+export const postProduct = async (newProduct: IProductProps): Promise<IProductProps> => {
+    //si se le pasa tanmanio usa una url o otra
+    const testingURL = "http://localhost:8080/api"
+    const apiUrl = `${API_URL}/products/`;
+    return new Promise<IProductProps>((async (resolve, reject) => {
+        try {
+            const response = await axios.post(apiUrl, newProduct);
+            const product: IProductProps =  response.data;
+            console.warn({product, response});
+            (product) ? resolve(product) : reject(new Error(`404 on ${apiUrl}`))
+        } catch (e:any) {
+            console.log(new Error(e));
+            reject(e)
+        }
+
+    }));
+}
