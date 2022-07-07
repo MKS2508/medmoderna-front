@@ -29,12 +29,12 @@
 }
 
 .bgimg-1 {
-    background-image: url("./src/assets/parallax1.jpg");
+    background-image: url("./src/assets/parallax1.png");
     min-width: 100vw;
     min-height: 100vh;
 }
 .bgimg-2 {
-    background-image: url("./src/assets/parallax2.jpg");
+    background-image: url("./src/assets/parallax2.png");
     min-width: 100vw;
     min-height: 100vh;
 }
