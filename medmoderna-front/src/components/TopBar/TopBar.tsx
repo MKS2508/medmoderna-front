@@ -45,17 +45,21 @@ const TopBar = () => {
                     <div className="topbarIcons">
                         <div className="topbarIcon">
                             <div className="number">
-                                <p style={{marginRight:"20px"}}>+34 630666320</p>
+                                <a href="tel:+34 630666320">
+                                    <p style={{marginRight:"20px"}}>+34 630666320</p>
+                                </a>
                             </div>
                             <IoLogoWhatsapp size={30} className='iconRRSS'/>
                         </div>
-                        <div className="topbarIcon">
+                        <div className="instaIcon">
                             <a href="https://www.instagram.com/medicinamoderna_growshop/?hl=es">
                                 <RiInstagramFill size={30} className='iconRRSS'/>
                             </a>
                         </div>
-                        <div className="topbarIcon">
-                            <FaFacebookSquare size={30} className='iconRRSS'/>
+                        <div className="faceIcon">
+                            <a href="https://www.facebook.com/Medicina-Moderna-Growshop-110763457854490/">
+                                <FaFacebookSquare size={30} className='iconRRSS'/>
+                            </a>
                         </div>
                     </div>
 
