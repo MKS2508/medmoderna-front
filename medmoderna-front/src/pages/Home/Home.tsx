@@ -44,141 +44,188 @@ const Home = () => {
 
 
     return (<>
-            <div className="title">
 
-                <h1>{"BIENVENIDO A MEDICINA MODERNA"}</h1>
-                <h2>¡Tu Grow Shop de confianza en Logroño!</h2>
-            </div>
-            <div style={{display: 'flex', justifyContent: 'space-around'}}>
+            <div>
+                <div className="bgimg-1">
+                    <div className="caption">
+                        <span className="border">
+                            <div>
+                                <h1>{"BIENVENIDO A MEDICINA MODERNA"}</h1>
+                                <h2>¡Tu Grow Shop de confianza en Logroño!</h2>
+                            </div>
+                        </span>
+                    </div>
+                </div>
 
-                <p style={{maxWidth: "500px", fontSize: "1.2rem"}}>
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor, euismod
-                    sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a, augue
-                    natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod, velit
-                    sociosqu posuere potenti integer auctor lobortis ad nascetur molestie.
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor, euismod
-                    sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a, augue
-                    natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod, velit
-                    sociosqu posuere potenti integer auctor lobortis ad nascetur molestie. Lorem ipsum dolor sit amet
-                    consectetur adipiscing elit, curae a cum integer at auctor, euismod sapien mus donec tempor mauris.
-                    Ad himenaeos scelerisque morbi convallis, torquent eros a, augue natoque per. Sed tempus urna vel
-                    iaculis montes leo dignissim nostra quam fermentum euismod, velit sociosqu posuere potenti integer
-                    auctor lobortis ad nascetur molestie.
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor, euismod
-                    sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a, augue
-                    natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod, velit
-                    sociosqu posuere potenti integer auctor lobortis ad nascetur molestie.</p>
+                <div className="section">
+                    <div style={{display: 'flex', justifyContent: 'space-around'}}>
+
+                        <p style={{maxWidth: "500px", fontSize: "1.2rem"}}>
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor,
+                            euismod
+                            sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a,
+                            augue
+                            natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod,
+                            velit
+                            sociosqu posuere potenti integer auctor lobortis ad nascetur molestie.
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor,
+                            euismod
+                            sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a,
+                            augue
+                            natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod,
+                            velit
+                            sociosqu posuere potenti integer auctor lobortis ad nascetur molestie. Lorem ipsum dolor sit
+                            amet
+                            consectetur adipiscing elit, curae a cum integer at auctor, euismod sapien mus donec tempor
+                            mauris.
+                            Ad himenaeos scelerisque morbi convallis, torquent eros a, augue natoque per. Sed tempus
+                            urna vel
+                            iaculis montes leo dignissim nostra quam fermentum euismod, velit sociosqu posuere potenti
+                            integer
+                            auctor lobortis ad nascetur molestie.
+                            Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor,
+                            euismod
+                            sapien mus donec tempor mauris. Ad himenaeos scelerisque morbi convallis, torquent eros a,
+                            augue
+                            natoque per. Sed tempus urna vel iaculis montes leo dignissim nostra quam fermentum euismod,
+                            velit
+                            sociosqu posuere potenti integer auctor lobortis ad nascetur molestie.</p>
 
 
-                <AnimatePresence>
+                        <AnimatePresence>
 
-                    <div>
-                        <motion.iframe
-                            className="iframeIg"
-                            initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: 400, marginTop: 30}}
-                            animate={{opacity: 1, scale: 1, borderRadius: "10px", height: 720}}
-                            exit={{opacity: 0.3}}
-                            transition={{duration: 1.5}}
-                            key={igPost} width="460" height={720} src={igPost}
-                            frameBorder="0"/>
+                            <div>
+                                <motion.iframe
+                                    className="iframeIg"
+                                    initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: 400, marginTop: 30}}
+                                    animate={{opacity: 1, scale: 1, borderRadius: "10px", height: 720}}
+                                    exit={{opacity: 0.3}}
+                                    transition={{duration: 1.5}}
+                                    key={igPost} width="460" height={720} src={igPost}
+                                    frameBorder="0"/>
+                            </div>
+
+                        </AnimatePresence>
+
                     </div>
 
-                </AnimatePresence>
+                    <section>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: "3rem",
+                            paddingTop: "2rem",
+                            backgroundColor: "whitesmoke"
+                        }}>
+                            <h1>Algunos de nuestros productos</h1>
+                        </div>
+                        <div style={{display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke"}}>
+                            <h2>{" < CBD > "}</h2>
+                        </div>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            paddingTop: "2rem",
+                            backgroundColor: "whitesmoke"
+                        }}>
+                            <div style={{marginRight: "30px", marginTop: "30px"}}>
 
-            </div>
+                                <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
+                                                 imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
+                                                 brand={"RAW"}/>
+                            </div>
 
-            <section>
+                            <div style={{marginRight: "30px", marginTop: "30px"}}>
+                                <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
+                                                 imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
+                                                 brand={"RAW"}/>
+                            </div>
+                            <div style={{marginRight: "30px", marginTop: "30px"}}>
+                                <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
+                                                 imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
+                                                 brand={"RAW"}/>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <div style={{display: 'flex', justifyContent: 'center', marginTop: "3rem", paddingTop: "2rem"}}>
+                        <h2>Puedes encontrarnos en <a href={"https://goo.gl/maps/V8UuLN7WnG8rMHiM6"}>Avenida de
+                            Mendavia, Nº16
+                            Pabellón 2, 26009 Logroño, La Rioja</a></h2>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'center', marginTop: "2rem", borderRadius: "20%"}}>
+                        <AddressMap/>
+                    </div>
+
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginTop: "3rem",
+                        paddingTop: "2rem",
+                        backgroundColor: "whitesmoke"
+                    }}>
+                        <h1>Algunas de nuestras marcas</h1>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke"}}>
+                    </div>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        paddingTop: "2rem",
+                        backgroundColor: "whitesmoke"
+                    }}>
+                        <div style={{marginRight: "30px", marginTop: "30px"}}>
+
+                            <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
+                                             imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
+                                             brand={"RAW"}/>
+                        </div>
+
+                        <div style={{marginRight: "30px", marginTop: "30px"}}>
+                            <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
+                                             imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
+                                             brand={"RAW"}/>
+                        </div>
+                        <div style={{marginRight: "30px", marginTop: "30px"}}>
+                            <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
+                                             imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
+                                             brand={"RAW"}/>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div className="bgimg-2">
+                    <div className="caption">
+                        <span className="border">
+                            <div>
+                                <h2>Te esperamos! 🚀</h2>
+                            </div>
+                        </span>
+                    </div>
+                </div>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    marginTop: "3rem",
-                    paddingTop: "2rem",
+                    paddingTop: "0.5rem",
+                    backgroundColor: "whitesmoke",
+                }}>
+                    <h2>Abrimos de lunes a viernes de 9:30 - 14:30 y de 16:30 - 20:00</h2>
+                </div>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    paddingTop: "0.5rem",
                     backgroundColor: "whitesmoke"
                 }}>
-                    <h1>Algunos de nuestros productos</h1>
-                </div>
-                <div style={{display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke"}}>
-                    <h2>{" < CBD > "}</h2>
-                </div>
-                <div style={{display: 'flex', justifyContent: 'center', paddingTop: "2rem", backgroundColor: "whitesmoke"}}>
-                    <div style={{marginRight: "30px", marginTop: "30px"}}>
-
-                        <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
-                                         imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
-                                         brand={"RAW"}/>
-                    </div>
-
-                    <div style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
-                                         imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
-                                         brand={"RAW"}/>
-                    </div>
-                    <div style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
-                                         imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
-                                         brand={"RAW"}/>
-                    </div>
-                </div>
-
-            </section>
-
-
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: "3rem", paddingTop: "2rem"}}>
-                <h2>Puedes encontrarnos en <a href={"https://goo.gl/maps/V8UuLN7WnG8rMHiM6"}>Avenida de Mendavia, Nº16
-                    Pabellón 2, 26009 Logroño, La Rioja</a></h2>
-            </div>
-            <div style={{display: 'flex', justifyContent: 'center', marginTop: "2rem", borderRadius: "20%"}}>
-                <AddressMap/>
-            </div>
-
-            <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                marginTop: "3rem",
-                paddingTop: "2rem",
-                backgroundColor: "whitesmoke"
-            }}>
-                <h1>Algunas de nuestras marcas</h1>
-            </div>
-            <div style={{display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke"}}>
-            </div>
-            <div style={{display: 'flex', justifyContent: 'center', paddingTop: "2rem", backgroundColor: "whitesmoke"}}>
-                <div style={{marginRight: "30px", marginTop: "30px"}}>
-
-                    <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
-                                     imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
-                                     brand={"RAW"}/>
-                </div>
-
-                <div style={{marginRight: "30px", marginTop: "30px"}}>
-                    <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
-                                     imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
-                                     brand={"RAW"}/>
-                </div>
-                <div style={{marginRight: "30px", marginTop: "30px"}}>
-                    <ProductCardHome productId={1} name={"Librillo Raw Black 1 1/4"} description={""}
-                                     imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
-                                     brand={"RAW"}/>
+                    <h3>Abrimos los sábados de 9:30 - 14:30</h3>
                 </div>
             </div>
 
-            <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                paddingTop: "0.5rem",
-                backgroundColor: "whitesmoke",
-                marginTop: "3rem"
-            }}>
-                <h2>Abrimos de lunes a viernes de 9:30 - 14:30 y de 16:30 - 20:00</h2>
-            </div>
-            <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                paddingTop: "0.5rem",
-                backgroundColor: "whitesmoke"
-            }}>
-                <h3>Abrimos los sábados de 9:30 - 14:30</h3>
-            </div>
+
             {/* <div style={{display: 'flex', justifyContent: 'center'}}>
 
                 <FacebookEmbed

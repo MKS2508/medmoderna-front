@@ -18,3 +18,43 @@
     filter: drop-shadow(0 0.4rem 0.55rem rgba(0, 0, 0, 0.2));
     border-radius: 10px;
 }
+
+.bgimg-1,
+.bgimg-2,
+.bgimg-3{
+    position: relative;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bgimg-1 {
+    background-image: url("./src/assets/parallax1.jpg");
+    min-width: 100vw;
+    min-height: 100vh;
+}
+.bgimg-2 {
+    background-image: url("./src/assets/parallax2.jpg");
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+
+}
+
+.caption .border > div {
+    background-color: rgb(236, 228, 228);
+    border-radius: 20px;
+    max-width: 40vw;
+    position: relative;
+    left: 30%;
+    justify-content: center;
+    font-size: 25px;
+}
+
