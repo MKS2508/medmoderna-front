@@ -5,7 +5,7 @@
     height: 5vh;
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem calc((100vw - 1000px) / 2);
+    padding: 0.5rem calc((100vw - 1000px) / 5);
     z-index: 10;
 }
 
@@ -15,9 +15,12 @@
     justify-content: space-between;
 }
 
-.topbarIcon{
-    display: flex;
+.topbarText{
+    margin-top: 0.3rem;
+}
 
+.topbarIcon{
+    padding: 0rem 1rem;
 }
 
 .topbarIcon > a {
@@ -26,6 +29,7 @@
 
 .instaIcon > a {
     color: inherit;
+    padding: 0rem 1rem;
 }
 
 .instaIcon > a:hover {
@@ -73,10 +77,13 @@
 .topbarIcons{
     width: 20rem;
     display: flex;
-    justify-content: space-between;
 
 }
 
 .topbarIcon:hover{
     color:rgb(0, 255, 145);
+}
+
+.faceIcon{
+    padding: 0rem 1rem;
 }

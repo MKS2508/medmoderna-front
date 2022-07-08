@@ -40,9 +40,8 @@ const TopBar = () => {
 
                 <div className={active ? 'topBar' : 'topBar-mobile'}>
 
-                    <p>Estamos en el Poligono de La portalada</p>
-                    <p>Estamos en el Poligono de La portalada</p>
-
+                    <p className="topbarText">Puedes encontrarnos en Avenida de Mendavia, Nº16 Pabellón 2, 26009 Logroño, La Rioja</p>
+                    <p className="topbarText">TextBar</p>
                     <div className="topbarIcons">
                         <div className="topbarIcon">
 
