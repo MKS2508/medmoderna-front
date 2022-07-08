@@ -111,6 +111,7 @@ const ProductDashboard = (props: IProductPageProps) => {
         <>
             {
                 <>
+                    <ProductCard name={productName} description={productName} imgSrc={productImage} brand={productBrand}/>
                     <div style={{display: "flex", justifyContent: "center", position: "relative", top: "50vh"}}>
                         <form onSubmit={handleSubmit}>
                             <label>
