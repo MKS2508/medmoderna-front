@@ -113,47 +113,59 @@ const ProductDashboard = (props: IProductPageProps) => {
     return (
         <>
             {
-                <>
-                    <ProductCard name={productName} description={productName} imgSrc={productImage}
-                                 brand={productBrand}/>
-                    <div style={{display: "flex", justifyContent: "center", position: "relative", top: "50vh"}}>
-                        <form onSubmit={handleSubmit}>
-                            <label>
-                                Name:
-                                <input type="text" value={productName} onChange={(event) => handleChangeName(event)}/>
-                            </label>
-                            <label>
-                                Description:
-                                <textarea value={productDesc} onChange={(event) => handleChangeDesc(event)}/>
-                            </label>
-                            <label>
-                                Image:
-                                <input type="url" value={productImage} onChange={(event) => handleChangeImage(event)}/>
-                            </label>
-                            <label>
-                                Brand:
-                                <input type="text" value={productBrand} onChange={(event) => handleChangeBrand(event)}/>
-                            </label>
-                            <label>
-                                Category:
-                                <input type="text" value={productCategory}
-                                       onChange={(event) => handleChangeCategory(event)}/>
-                            </label>
-                            <label>
-                                PRODUCT ID:
-                                <input type="text" value={productCategory}
-                                       onChange={(event) => handleChangeProductId(event)}/>
-                            </label>
-                            <label>
-                                Price:
-                                <input type="number" value={productPrice}
-                                       onChange={(event) => handleChangePrice(event)}/>
-                            </label>
-                            <input type="submit" value="Submit"/>
-                        </form>
+                <div style={{display:"flex", justifyContent:"center", width: "100vw"}} >
+                    <div style={{display:"flex", justifyContent:"center", flexDirection: "column",
+                        alignItems: "flex-start", width: "100vw", paddingTop: "20vh", paddingLeft: "45vw", paddingRight: "45vw" }}>
+
+                        <div style={{display:"flex", alignItems:"flex-start"}}>
+                            <ProductCard name={productName} description={productName} imgSrc={productImage}
+                                         brand={productBrand}/>
+                        </div>
+
+                        <div  style={{display:"flex", justifyContent: "center"}}>
+
+                            <div style={{display: "flex", justifyContent: "center", position: "relative", top: "50vh"}}>
+                                <form onSubmit={handleSubmit}>
+                                    <label>
+                                        Name:
+                                        <input type="text" value={productName} onChange={(event) => handleChangeName(event)}/>
+                                    </label>
+                                    <label>
+                                        Description:
+                                        <textarea value={productDesc} onChange={(event) => handleChangeDesc(event)}/>
+                                    </label>
+                                    <label>
+                                        Image:
+                                        <input type="url" value={productImage} onChange={(event) => handleChangeImage(event)}/>
+                                    </label>
+                                    <label>
+                                        Brand:
+                                        <input type="text" value={productBrand} onChange={(event) => handleChangeBrand(event)}/>
+                                    </label>
+                                    <label>
+                                        Category:
+                                        <input type="text" value={productCategory}
+                                               onChange={(event) => handleChangeCategory(event)}/>
+                                    </label>
+                                    <label>
+                                        PRODUCT ID:
+                                        <input type="text" value={productId}
+                                               onChange={(event) => handleChangeProductId(event)}/>
+                                    </label>
+                                    <label>
+                                        Price:
+                                        <input type="number" value={productPrice}
+                                               onChange={(event) => handleChangePrice(event)}/>
+                                    </label>
+                                    <input type="submit" value="Submit"/>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </>
-            }
+                </div>
+
+
+                    }
 
         </>
     );
