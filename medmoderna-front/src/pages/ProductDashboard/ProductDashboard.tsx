@@ -46,9 +46,9 @@ const ProductDashboard = (props: IProductPageProps) => {
     const [productImage, setProductImage] = useState<string>("");
     const [productDesc, setProductDesc] = useState<string>("");
     const [productBrand, setProductBrand] = useState<string>("");
+    const [productId, setProductId] = useState<string>("");
     const [productCategory, setProductCategory] = useState<string>("");
     const [productPrice, setProductPrice] = useState<number>(0);
-
 
 
     const getProduct = async () => {
@@ -85,6 +85,9 @@ const ProductDashboard = (props: IProductPageProps) => {
     const handleChangePrice = (event: any) => {
         setProductPrice(event.target.value);
     }
+    const handleChangeProductId = (event: any) => {
+        setProductId(event.target.value);
+    }
     const handleChangeBrand = (event: any) => {
         setProductBrand(event.target.value);
     }
@@ -96,13 +99,13 @@ const ProductDashboard = (props: IProductPageProps) => {
         event.preventDefault();
         alert('A product was submitted: ' + productName);
         const defProduct: IProductProps = {
-            productId: undefined,
+            productId: productId,
             brand: productBrand,
             category: productCategory,
             description: productDesc,
             imgSrc: productImage,
             name: productName,
-            price: productPrice
+            price: productPrice,
         }
         await postProduct(defProduct)
         console.log({defProduct});
@@ -111,7 +114,8 @@ const ProductDashboard = (props: IProductPageProps) => {
         <>
             {
                 <>
-                    <ProductCard name={productName} description={productName} imgSrc={productImage} brand={productBrand}/>
+                    <ProductCard name={productName} description={productName} imgSrc={productImage}
+                                 brand={productBrand}/>
                     <div style={{display: "flex", justifyContent: "center", position: "relative", top: "50vh"}}>
                         <form onSubmit={handleSubmit}>
                             <label>
@@ -120,7 +124,7 @@ const ProductDashboard = (props: IProductPageProps) => {
                             </label>
                             <label>
                                 Description:
-                                <textarea  value={productDesc} onChange={(event) => handleChangeDesc(event)}/>
+                                <textarea value={productDesc} onChange={(event) => handleChangeDesc(event)}/>
                             </label>
                             <label>
                                 Image:
@@ -132,11 +136,18 @@ const ProductDashboard = (props: IProductPageProps) => {
                             </label>
                             <label>
                                 Category:
-                                <input type="text" value={productCategory} onChange={(event) => handleChangeCategory(event)}/>
+                                <input type="text" value={productCategory}
+                                       onChange={(event) => handleChangeCategory(event)}/>
+                            </label>
+                            <label>
+                                PRODUCT ID:
+                                <input type="text" value={productCategory}
+                                       onChange={(event) => handleChangeProductId(event)}/>
                             </label>
                             <label>
                                 Price:
-                                <input type="number" value={productPrice} onChange={(event) => handleChangePrice(event)}/>
+                                <input type="number" value={productPrice}
+                                       onChange={(event) => handleChangePrice(event)}/>
                             </label>
                             <input type="submit" value="Submit"/>
                         </form>
