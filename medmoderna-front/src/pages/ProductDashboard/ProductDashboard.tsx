@@ -6,7 +6,7 @@ import {postProduct, getProductById} from "../../services/api-products-service";
 import spinner from "../../assets/spinner.svg"
 import spinner2 from "../../assets/spinner3.svg"
 import {AnimatePresence, motion} from 'framer-motion';
-import ProductCard from "../../components/Product/ProductCard";
+import ProductCard, {ProductCardPreview} from "../../components/Product/ProductCard";
 import {useParams} from "react-router-dom";
 import ProductCardDetail from "../../components/Product/ProductCardDetail";
 
@@ -42,13 +42,13 @@ const ProductDashboard = (props: IProductPageProps) => {
 
     const [loading, setLoading] = useState<boolean>(false);
     const [page, setActivePage] = useState<number>(0);
-    const [productName, setProductName] = useState<string>("");
+    const [productName, setProductName] = useState<string>("Nombre");
     const [productImage, setProductImage] = useState<string>("");
     const [productDesc, setProductDesc] = useState<string>("");
     const [productBrand, setProductBrand] = useState<string>("");
     const [productId, setProductId] = useState<string>("");
     const [productCategory, setProductCategory] = useState<string>("");
-    const [productPrice, setProductPrice] = useState<number>(0);
+    const [productPrice, setProductPrice] = useState<number>(10);
 
 
     const getProduct = async () => {
@@ -97,7 +97,6 @@ const ProductDashboard = (props: IProductPageProps) => {
 
     const handleSubmit = async (event: any) => {
         event.preventDefault();
-        alert('A product was submitted: ' + productName);
         const defProduct: IProductProps = {
             productId: productId,
             brand: productBrand,
@@ -107,67 +106,92 @@ const ProductDashboard = (props: IProductPageProps) => {
             name: productName,
             price: productPrice,
         }
-        await postProduct(defProduct)
+        await postProduct(defProduct);
+        alert('A product was submitted: ' + productName);
+
         console.log({defProduct});
     }
     return (
-        <>
+        <div className="background">
             {
-                <div style={{display:"flex", justifyContent:"center", width: "100vw"}} >
-                    <div style={{display:"flex", justifyContent:"center", flexDirection: "column",
-                        alignItems: "flex-start", width: "100vw", paddingTop: "20vh", paddingLeft: "45vw", paddingRight: "45vw" }}>
+                <>
+                    <div style={{paddingTop:"8vw"}}></div>
 
-                        <div style={{display:"flex", alignItems:"flex-start"}}>
-                            <ProductCard name={productName} description={productName} imgSrc={productImage}
-                                         brand={productBrand}/>
-                        </div>
+                    <div className="cardForm">
 
-                        <div  style={{display:"flex", justifyContent: "center"}}>
+                        <form onSubmit={handleSubmit}>
+                            <div style={{display:"flex", justifyContent:"center"}}>
 
-                            <div style={{display: "flex", justifyContent: "center", position: "relative", top: "50vh"}}>
-                                <form onSubmit={handleSubmit}>
-                                    <label>
-                                        Name:
-                                        <input type="text" value={productName} onChange={(event) => handleChangeName(event)}/>
-                                    </label>
-                                    <label>
-                                        Description:
-                                        <textarea value={productDesc} onChange={(event) => handleChangeDesc(event)}/>
-                                    </label>
-                                    <label>
-                                        Image:
-                                        <input type="url" value={productImage} onChange={(event) => handleChangeImage(event)}/>
-                                    </label>
-                                    <label>
-                                        Brand:
-                                        <input type="text" value={productBrand} onChange={(event) => handleChangeBrand(event)}/>
-                                    </label>
-                                    <label>
-                                        Category:
-                                        <input type="text" value={productCategory}
-                                               onChange={(event) => handleChangeCategory(event)}/>
-                                    </label>
-                                    <label>
-                                        PRODUCT ID:
-                                        <input type="text" value={productId}
-                                               onChange={(event) => handleChangeProductId(event)}/>
-                                    </label>
-                                    <label>
-                                        Price:
-                                        <input type="number" value={productPrice}
-                                               onChange={(event) => handleChangePrice(event)}/>
-                                    </label>
-                                    <input type="submit" value="Submit"/>
-                                </form>
+                            <h2>Nuevo Producto</h2>
                             </div>
-                        </div>
+                            <div style={{display:"flex", justifyContent:"center"}}>
+                                <ProductCardPreview name={productName} price={productPrice} description={productName} imgSrc={productImage}
+                                             brand={productBrand}/>
+                            </div>
+                            <div className="row">
+                                <div className="col">
+                                    <div className="form-group">
+                                        <input placeholder="Nombre" type="text" value={productName}
+                                               onChange={(event) => handleChangeName(event)}/>
+                                    </div>
+                                </div>
+
+                                <div className="col">
+                                    <div className="form-group">
+                                        <input placeholder="Imagen" type="url" value={productImage}
+                                               onChange={(event) => handleChangeImage(event)}/>
+                                    </div>
+                                </div>
+
+                                <div className="col">
+                                    <div className="form-group">
+                                        <input type="text" value={productBrand} placeholder="Marca"
+                                               onChange={(event) => handleChangeBrand(event)}/>
+                                    </div>
+                                </div>
+
+                                <div className="col">
+                                    <div className="form-group">
+                                        <input type="text" value={productCategory} placeholder="Categoria"
+                                               onChange={(event) => handleChangeCategory(event)}/>
+                                    </div>
+                                </div>
+                                <div className="col">
+                                    <div className="form-group">
+                                        <input type="text" value={productId} placeholder="ID Producto"
+                                               onChange={(event) => handleChangeProductId(event)}/>
+                                    </div>
+                                </div>
+
+                                <div className="col">
+                                    <div className="form-group">
+                                        <input type="number" value={productPrice} placeholder="Precio"
+                                               onChange={(event) => handleChangePrice(event)}/>
+                                    </div>
+                                </div>
+
+                                <div className="col">
+                                    <div className="form-group">
+                                        <textarea value={productDesc} placeholder="Description" rows={3}
+                                                  onChange={(event) => handleChangeDesc(event)}/>
+                                    </div>
+                                </div>
+
+                                <div className="col">
+                                    <input type="submit" value="crear"/>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
-                </div>
+                    <div style={{paddingTop:"8vw"}}></div>
+
+                </>
 
 
-                    }
+            }
 
-        </>
+        </div>
     );
 
 }
