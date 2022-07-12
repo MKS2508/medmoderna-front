@@ -1,0 +1,21 @@
+.brandCard {
+    width: 20vw;
+    height: 150px;
+    background: transparent;
+    box-shadow: 0 8px 32px 0 rgba(186, 191, 222, 0.37);
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+    border-radius: 20px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.brandCard:hover {
+    transition: .8s;
+
+    background: white;
+    box-shadow: 0 4px 16px 0 rgb(20, 173, 107);
+
+    backdrop-filter: blur( 300px );
+    -webkit-backdrop-filter: blur( 30px );
+    border-radius: 20px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}

@@ -37,7 +37,12 @@
 .bgimg-2 {
     background-image: url("https://i.ibb.co/6DwwVvW/parallax2.jpg");
     min-width: 100vw;
-    min-height: 100vh;
+    min-height: 40vh;
+}
+.bgimg-3 {
+    background-image: url("https://media.istockphoto.com/photos/bowl-of-buds-at-marijuana-dispensary-picture-id1129030847?b=1&k=20&m=1129030847&s=170667a&w=0&h=GJsEuRREUyzakzAJfvZjt-40pRbYDkSFeyVC2bBwTtw=");
+    min-width: 100vw;
+    min-height: 60vh;
 }
 
 .caption {
@@ -53,6 +58,20 @@
     color: white;
     background: rgba( 255, 255, 255, 0.15 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    max-width: 40vw;
+    position: relative;
+    left: 30%;
+    justify-content: center;
+    font-size: 25px;
+}
+.caption .border2 > div {
+    color: white;
+    background: white;
+    box-shadow: 0 8px 32px 0 rgb(6, 80, 48);
     backdrop-filter: blur( 8px );
     -webkit-backdrop-filter: blur( 8px );
     border-radius: 10px;
