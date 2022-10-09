@@ -3,9 +3,13 @@ import React from "react";
 import './ProductCardDetail.css'
 import {AnimatePresence, motion} from "framer-motion";
 import {Link} from "react-router-dom";
+import {useParams} from "react-router-dom";
+import {API_URL} from "../../config";
 
 const ProductCardDetail = (props: IProductProps) => {
-
+    let params = useParams();
+    let id = params.id;
+    let editLink = `/edit/${id}`
     return <>
         <AnimatePresence>
             <motion.div
@@ -15,13 +19,12 @@ const ProductCardDetail = (props: IProductProps) => {
             >
                 <div className="bar">
                     <h3 style={{fontSize: "2rem", textAlign: "start"}}>
-                        <Link to={`/${props.category}`} > <span
+                        <Link to={`/${props.category}`}> <span
                             style={{color: "#0dd47c", fontWeight: "bolder",}}>{props.category}</span></Link> {">"}
-                        <Link to={`/MARCAS/${props.brand}`} > <span
+                        <Link to={`/MARCAS/${props.brand}`}> <span
                             style={{color: "#0dd47c", fontWeight: "bolder",}}>{props.brand}</span> </Link></h3>
                 </div>
                 <div className="titleDetail">
-
 
 
                     <h1>{props.name}</h1>
@@ -38,7 +41,9 @@ const ProductCardDetail = (props: IProductProps) => {
 
                     }}>{props.price}</span> EUR</h3>
 
-
+                    <button>
+                        <Link to={editLink}> Edit </Link>
+                    </button>
                 </div>
 
 

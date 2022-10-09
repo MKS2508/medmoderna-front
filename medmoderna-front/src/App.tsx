@@ -12,6 +12,7 @@ import AnimatedRoutes from "./routes/Routes";
 
 
 function App() {
+
     return (
         <>
             <Router>

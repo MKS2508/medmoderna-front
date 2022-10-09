@@ -25,7 +25,13 @@ const ProductCard = (props: IProductProps) => {
     </>
 };
 export const ProductCardPreview = (props: IProductProps) => {
+    let imageSource;
     console.log({propsPrev: props})
+    if (props.imgSrc.startsWith("http")) {
+        imageSource = props.imgSrc;
+    } else {
+        imageSource = `data:image/png;base64,${props.imgSrc}`
+    }
     return <>
 
         <div className="card" key="card">
@@ -36,7 +42,7 @@ export const ProductCardPreview = (props: IProductProps) => {
                     alt="No imagen"/>
             </div> : <div className="imgBox">
                 <img
-                    src={`${props.imgSrc}`}
+                    src={`${imageSource}`}
                     alt="No imagen"/>
             </div>}
 

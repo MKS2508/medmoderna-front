@@ -2,7 +2,7 @@ import './ProductDashboard.css';
 import React, {useEffect, useState} from "react";
 import {IProductPageProps} from "../../models/IProductPageProps";
 import {IProductProps} from "../../models/IProductProps";
-import {postProduct, getProductById} from "../../services/api-products-service";
+import {postProduct, getProductById, editProduct} from "../../services/api-products-service";
 import spinner from "../../assets/spinner.svg"
 import spinner2 from "../../assets/spinner3.svg"
 import {AnimatePresence, motion} from 'framer-motion';
@@ -13,8 +13,9 @@ import ProductCardDetail from "../../components/Product/ProductCardDetail";
 
 const ProductDashboard = (props: IProductPageProps) => {
     let params = useParams();
+    let editMode = (params.id !== undefined);
 
-    console.log({params: useParams(), id: params.id})
+    console.log({params: useParams(), id: params.id, editMode})
     const variants = {
         hidden: {
             opacity: 0
@@ -64,7 +65,7 @@ const ProductDashboard = (props: IProductPageProps) => {
         // llama al get products, con el id de categoria cogido de las props y el  num de pagina del estado
         // getProducts(props, pageParam)
         //si page es 0 (inicial) y props.pagination es null,
-        console.log({props})
+        console.log({prod: await  getProduct()})
         setProduct(await getProduct());
     }
 
@@ -95,7 +96,7 @@ const ProductDashboard = (props: IProductPageProps) => {
         setProductCategory(event.target.value);
     }
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmitPost = async (event: any) => {
         event.preventDefault();
         const defProduct: IProductProps = {
             productId: productId,
@@ -111,6 +112,21 @@ const ProductDashboard = (props: IProductPageProps) => {
 
         console.log({defProduct});
     }
+    const handleSubmitEdit = async (event: any) => {
+        event.preventDefault();
+        const defProduct: IProductProps = {
+            productId: productId,
+            brand: productBrand,
+            category: productCategory,
+            description: productDesc,
+            imgSrc: productImage,
+            name: productName,
+            price: productPrice,
+        }
+        await editProduct(params.id,defProduct);
+        alert('A product was edited: ' + productName);
+        console.log({defProduct});
+    }
     return (
         <div className="background">
             {
@@ -119,66 +135,66 @@ const ProductDashboard = (props: IProductPageProps) => {
 
                     <div className="cardForm">
 
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={(editMode) ? handleSubmitEdit : handleSubmitPost}>
                             <div style={{display:"flex", justifyContent:"center"}}>
 
                             <h2>Nuevo Producto</h2>
                             </div>
                             <div style={{display:"flex", justifyContent:"center"}}>
-                                <ProductCardPreview name={productName} price={productPrice} description={productName} imgSrc={productImage}
-                                             brand={productBrand}/>
+                                <ProductCardPreview name={(editMode) ? product.name : productName} price={(editMode) ? product.price : productPrice} description={productName} imgSrc={(editMode) ? product.imgSrc : productImage}
+                                             brand={(editMode) ? product.brand : productBrand}/>
                             </div>
                             <div className="row">
                                 <div className="col">
                                     <div className="form-group">
-                                        <input placeholder="Nombre" type="text" value={productName}
+                                        <input placeholder="Nombre" type="text" value={(editMode) ? product.name : productName}
                                                onChange={(event) => handleChangeName(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <input placeholder="Imagen" type="url" value={productImage}
+                                        <input placeholder="Imagen" type="url" value={(editMode) ? product.imgSrc : productImage}
                                                onChange={(event) => handleChangeImage(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <input type="text" value={productBrand} placeholder="Marca"
+                                        <input type="text" value={(editMode) ? product.brand : productBrand} placeholder="Marca"
                                                onChange={(event) => handleChangeBrand(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <input type="text" value={productCategory} placeholder="Categoria"
+                                        <input type="text" value={(editMode) ? product.category : productCategory} placeholder="Categoria"
                                                onChange={(event) => handleChangeCategory(event)}/>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="form-group">
-                                        <input type="text" value={productId} placeholder="ID Producto"
+                                        <input type="text" value={(editMode) ? product.productId : productId} placeholder="ID Producto"
                                                onChange={(event) => handleChangeProductId(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <input type="number" value={productPrice} placeholder="Precio"
+                                        <input type="number" value={(editMode) ? product.price :productPrice} placeholder="Precio"
                                                onChange={(event) => handleChangePrice(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <textarea value={productDesc} placeholder="Description" rows={3}
+                                        <textarea value={(editMode) ? product.description : productDesc} placeholder="Description" rows={3}
                                                   onChange={(event) => handleChangeDesc(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
-                                    <input type="submit" value="crear"/>
+                                    <input type="submit" value={(editMode) ? "EDITAR" : "CREAR"}/>
                                 </div>
                             </div>
                         </form>
