@@ -15,7 +15,7 @@ const ProductCardHome = (props: IProductProps) => {
 
             <div className="contentBox">
                 <h3>{props.name}</h3>
-                <h2 className="price">{props.price}.00€</h2>
+                <h2 className="price">{props.price}€</h2>
                 <a href="#" className="buy">Ver Detalles</a>
             </div>
 

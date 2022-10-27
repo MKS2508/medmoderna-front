@@ -141,40 +141,40 @@ const ProductDashboard = (props: IProductPageProps) => {
                             <h2>Nuevo Producto</h2>
                             </div>
                             <div style={{display:"flex", justifyContent:"center"}}>
-                                <ProductCardPreview name={(editMode) ? product.name : productName} price={(editMode) ? product.price : productPrice} description={productName} imgSrc={(editMode) ? product.imgSrc : productImage}
+                                <ProductCardPreview name={productName} price={productPrice} description={productName} imgSrc={(editMode) ? product.imgSrc : productImage}
                                              brand={(editMode) ? product.brand : productBrand}/>
                             </div>
                             <div className="row">
                                 <div className="col">
                                     <div className="form-group">
-                                        <input placeholder="Nombre" type="text" value={(editMode) ? product.name : productName}
+                                        <input placeholder="Nombre" type="text" value={ productName}
                                                onChange={(event) => handleChangeName(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <input placeholder="Imagen" type="url" value={(editMode) ? product.imgSrc : productImage}
+                                        <input placeholder="Imagen" type="url" value={ productImage}
                                                onChange={(event) => handleChangeImage(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <input type="text" value={(editMode) ? product.brand : productBrand} placeholder="Marca"
+                                        <input type="text" value={productBrand} placeholder="Marca"
                                                onChange={(event) => handleChangeBrand(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <input type="text" value={(editMode) ? product.category : productCategory} placeholder="Categoria"
+                                        <input type="text" value={productCategory} placeholder="Categoria"
                                                onChange={(event) => handleChangeCategory(event)}/>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="form-group">
-                                        <input type="text" value={(editMode) ? product.productId : productId} placeholder="ID Producto"
+                                        <input type="text" value={productId} placeholder="ID Producto"
                                                onChange={(event) => handleChangeProductId(event)}/>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@ const ProductDashboard = (props: IProductPageProps) => {
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <textarea value={(editMode) ? product.description : productDesc} placeholder="Description" rows={3}
+                                        <textarea value={productDesc} placeholder="Description" rows={3}
                                                   onChange={(event) => handleChangeDesc(event)}/>
                                     </div>
                                 </div>
