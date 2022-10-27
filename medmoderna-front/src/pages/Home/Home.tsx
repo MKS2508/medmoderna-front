@@ -23,8 +23,6 @@ const AddressMap = () => {
     );
 }
 
-const homeProducts : IProductProps[] = await getHomeProducts(["1005", "1007", "9099827"]);
-
 const HomeProducts = (data: { products: IProductProps[] }) => {
     return <div style={{
         display: 'flex',
@@ -47,9 +45,22 @@ const HomeProducts = (data: { products: IProductProps[] }) => {
 }
 
 const Home = () => {
+    const [homeProducts, setHomeProducts] = useState<IProductProps[]>([]);
+
     const postsUrls = ["https://www.instagram.com/p/COi_Ep9nW2A/embed", "https://www.instagram.com/p/CeTSXK1sDpU/embed", "https://www.instagram.com/p/CdbJE9pDOtR/embed", "https://www.instagram.com/p/CfGzFDFMkoW/embed", "https://www.instagram.com/p/Ce6EsEQMa_A/embed"];
     const [igPost, setIgPost] = useState<string>("https://www.instagram.com/p/COi_Ep9nW2A/embed");
+    
+    const getHomePageProducts = async () => {
+        const homeProds = await getHomeProducts(["1005", "1007", "9099827"]);
+        return homeProds
+    };
+    const initializePage = async () => {
+        setHomeProducts(await getHomePageProducts());
+    }
+    
+    
     useEffect(() => {
+        initializePage();
         const interval = setInterval(() => {
             console.log('This will run every 10 second!');
 
