@@ -30,7 +30,7 @@ const HomeProducts = (data: { products: IProductProps[] }) => {
         backgroundColor: "whitesmoke"
     }}>
         {
-            data.map((item) =>
+            data.products.map((item) =>
                 <>
                     <div style={{ marginRight: "30px", marginTop: "30px" }}>
                         <ProductCardHome productId={item.productId} name={item.name} description={item.description}
@@ -161,7 +161,7 @@ const Home = () => {
 
                     <HomeProducts data={homeProds} ></HomeProducts>
 
-                    <div style={{
+                    {/* <div style={{
                         display: 'flex',
                         justifyContent: 'center',
                         paddingTop: "2rem",
@@ -185,7 +185,7 @@ const Home = () => {
                                 imgSrc={"https://www.purpleexpressonline.com/wp-content/uploads/2021/07/RAWBLACK1-4.png"}
                                 brand={"RAW"} />
                         </div>
-                    </div>
+                    </div> */}
 
                 </section>
 

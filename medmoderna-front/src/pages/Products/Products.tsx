@@ -66,8 +66,7 @@ const Products = (props: IProductPageProps) => {
 
     const [products, setProducts] = useState<IProductProps[]>([]);
 
-    const [loading, setLoading] = useState<boolean>(false);
-    const [page, setActivePage] = useState<number>(0);
+     const [page, setActivePage] = useState<number>(0);
     const [props2, setProps2] = useState<IProductPageProps>({
         description: "",
         elementsSize: 0,
@@ -120,7 +119,7 @@ const Products = (props: IProductPageProps) => {
                 >
                     <div className="title">
                         
-                        <h1>CATALOGO DE {props2.name}</h1>
+                        <h1>CATALOGO DE {props.name}</h1>
                         <h2>{props.description}</h2>
                     </div>
                 </motion.div>

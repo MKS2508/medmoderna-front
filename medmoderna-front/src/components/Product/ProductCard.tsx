@@ -16,8 +16,10 @@ const ProductCard = (props: IProductProps) => {
 
             <div className="contentBox">
                 <h3>{props.name}</h3>
-                <h2 className="price">{props.price}.00€</h2>
+                <h2 className="price">{props.price}€</h2>
                 <Link className="buy" to={`/product/${props.productId}`}> Ver Detalles </Link>
+                <Link className="buy" to={`/edit/${props.productId}`}> Editar </Link>
+
             </div>
 
         </div>
@@ -49,8 +51,9 @@ export const ProductCardPreview = (props: IProductProps) => {
 
             <div className="contentBox">
                 <h3>{props.name}</h3>
-                <h2 className="price">{props.price}.00€</h2>
+                <h2 className="price">{props.price}€</h2>
                 <div className="buy"> Ver Detalles</div>
+                <div className="buy">Editar</div>
             </div>
 
         </div>
