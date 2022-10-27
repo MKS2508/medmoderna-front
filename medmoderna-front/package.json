@@ -20,7 +20,8 @@
     "react-router-dom": "^6.3.0",
     "react-social-media-embed": "^2.2.2",
     "react-svg": "^15.0.2",
-    "react-whatsapp": "^0.3.0"
+    "react-whatsapp": "^0.3.0",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
