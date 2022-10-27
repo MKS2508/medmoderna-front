@@ -9,6 +9,7 @@ import ProductCardHome from "../../components/Product/ProductCardHome";
 import { AnimatePresence, motion } from 'framer-motion';
 import BrandCard from "../../components/Product/BrandCard";
 import { IProductProps } from '../../models/IProductProps';
+import { getHomeProducts } from '../../services/api-products-service';
 
 const AddressMap = () => {
     return (
@@ -21,6 +22,8 @@ const AddressMap = () => {
         </div>
     );
 }
+
+const homeProducts : IProductProps[] = await getHomeProducts(["1005", "1007", "9099827"]);
 
 const HomeProducts = (data: { products: IProductProps[] }) => {
     return <div style={{
@@ -44,7 +47,6 @@ const HomeProducts = (data: { products: IProductProps[] }) => {
 }
 
 const Home = () => {
-    const homeProds: IProductProps[] = [];
     const postsUrls = ["https://www.instagram.com/p/COi_Ep9nW2A/embed", "https://www.instagram.com/p/CeTSXK1sDpU/embed", "https://www.instagram.com/p/CdbJE9pDOtR/embed", "https://www.instagram.com/p/CfGzFDFMkoW/embed", "https://www.instagram.com/p/Ce6EsEQMa_A/embed"];
     const [igPost, setIgPost] = useState<string>("https://www.instagram.com/p/COi_Ep9nW2A/embed");
     useEffect(() => {
@@ -159,7 +161,7 @@ const Home = () => {
                         <h2>{" < CBD > "}</h2>
                     </div>
 
-                    <HomeProducts data={homeProds} ></HomeProducts>
+                    <HomeProducts products={homeProducts} ></HomeProducts>
 
                     {/* <div style={{
                         display: 'flex',

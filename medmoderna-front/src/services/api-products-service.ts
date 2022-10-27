@@ -60,6 +60,32 @@ export const getProductById = async (id?: any): Promise<IProductProps> => {
     }));
 }
 
+export const getHomeProducts = async ( ids: string[] ): Promise<IProductProps[]> => {
+// export const getHomeProducts = async ( ids: string[] , num: number): Promise<IProductProps[]> => {
+    let promesas : Promise<IProductProps>[] = [];
+
+    let products : IProductProps[] = [];
+    
+    return new Promise<IProductProps[]>((resolve, reject) =>{
+        try{
+            ids.map((id)=>{
+                promesas.push(getProductById(id));
+            })
+    
+            Promise.all(promesas).then( res => {
+                products=res;
+            }).catch(e => console.log(e))
+            
+            resolve(products);
+        }
+        catch (e:any) {
+            console.log(new Error(e));
+            reject(e);
+        }
+    })
+
+}
+
 export const postProduct = async (newProduct: IProductProps): Promise<IProductProps> => {
     //si se le pasa tanmanio usa una url o otra
     const testingURL = "http://localhost:8080/api"
