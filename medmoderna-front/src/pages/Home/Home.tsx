@@ -160,7 +160,7 @@ const Home = () => {
                     <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke" }}>
                         <h2>{" < CBD > "}</h2>
                     </div>
-
+                    <h2> renderiza o no renderiza???? </h2>
                     <HomeProducts products={homeProducts} ></HomeProducts>
 
                     {/* <div style={{
