@@ -197,7 +197,8 @@
         margin-right: 10vw;
     }
     .wrapper-grid {
-        width: 100%;
+        overflow-x: hidden;
+        width: 90%;
         display: grid;
         grid-template-columns: repeat(auto-fit, 22rem);
         justify-content: center;

@@ -27,10 +27,18 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.ParallaxVideo{
+    min-width: 100vw;
+    min-height: 120vh;
+}
+.ParallaxVideo video{
+    min-width: 100vw;
+    min-height: 100vh;
+    top:0;
+}
 
 .bgimg-1 {
 
-    background-image: url("https://i.ibb.co/n1C8KcH/parallax1.jpg");
     min-width: 100vw;
     min-height: 100vh;
 }

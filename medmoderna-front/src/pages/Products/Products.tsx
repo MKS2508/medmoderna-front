@@ -67,6 +67,7 @@ const Products = (props: IProductPageProps) => {
     const [products, setProducts] = useState<IProductProps[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [page, setActivePage] = useState<number>(0);
+
     const [props2, setProps2] = useState<IProductPageProps>({
         description: "",
         elementsSize: 0,
