@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Routes, Route, RouteProps} from 'react-router-d
 import Home from './pages/Home/Home';
 import TopBar from "./components/TopBar/TopBar";
 import SideBar from "./components/SideBar/SideBar";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import 'antd/dist/antd.min.css';
 import {Col, Row} from "antd";
 import Products from "./pages/Products/Products"; // or 'antd/dist/antd.less'
@@ -12,12 +12,38 @@ import AnimatedRoutes from "./routes/Routes";
 
 
 function App() {
+    const [isVisible, setIsVisible] = useState(true);
+    const listenToScroll = () => {
+        let heightToHideFrom = 200;
+        const winScroll = document.body.scrollTop ||
+            document.documentElement.scrollTop;
+
+        if (winScroll > heightToHideFrom) {
+            isVisible &&      // to limit setting state only the first time
+            setIsVisible(false);
+        } else {
+            setIsVisible(true);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", listenToScroll);
+        return () =>
+            window.removeEventListener("scroll", listenToScroll);
+    }, [])
 
     return (
         <>
             <Router>
-                <TopBar/>
-                <SideBar/>
+                {
+                    (!isVisible) ?
+                        <>
+                            <TopBar/>
+                            <SideBar/>
+                        </>
+                    : <></>
+                }
+
                 <AnimatedRoutes/>
             </Router>
 
