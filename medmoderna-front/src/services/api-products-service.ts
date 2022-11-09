@@ -42,12 +42,10 @@ export const getProductsFromBrand = async (props: IProductPageProps, brand: stri
 
     }));
 }
-export const getProductsFromQuery = async (props: IProductPageProps, query: string): Promise<IProductProps[]> => {
-    console.log({propsName: props.name})
+export const getProductsFromQuery = async (query: string): Promise<IProductProps[]> => {
     //si se le pasa tanmanio usa una url o otra
     const testingURL = "http://localhost:8080/api"
-    const apiUrl = (!props.elementsSize) ? `${API_URL}/products/search/${query}?page=${props.pagination}&size=10` :`${API_URL}/products/brand/${query}?page=0${props.pagination}&size=${props.elementsSize}`;
-    const testingURL2 = `${testingURL}/${props.name}`;
+    const apiUrl = `${API_URL}/products/search/${query}?page=${0}&size=30`;
     return new Promise<IProductProps[]>((async (resolve, reject) => {
         try {
             const response = await axios.get(apiUrl);

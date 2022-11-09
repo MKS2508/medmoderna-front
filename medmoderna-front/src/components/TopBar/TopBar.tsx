@@ -27,13 +27,25 @@ import logo from '../../assets/LOGOSVG3.svg'
 import banner from "../../assets/banner.png";
 import ReactWhatsapp from "react-whatsapp";
 import {AnimatePresence, motion} from "framer-motion";
+import {IProductProps} from "../../models/IProductProps";
+import {getProductsFromQuery, postProduct} from "../../services/api-products-service";
 
 const TopBar = () => {
     config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
-    const [active, setActive] = useState(true)
-
+    const [searchQuery, setSearchQuery] = useState<string>("");
+    const [active, setActive] = useState(true);
     const activateNav = () => {
         setActive(!active)
+    }
+
+    const handleChangeSearch = (event: any) => {
+        setSearchQuery(event.target.value);
+    }
+    const handleSubmitPost = async (event: any) => {
+        event.preventDefault();
+        const query = searchQuery;
+        const searchedProducts = await getProductsFromQuery(query);
+        console.log({searchedProducts})
     }
 
     return (<>
@@ -49,8 +61,9 @@ const TopBar = () => {
                     <div style={{borderRadius: "10px"}}>
                         <form>
 
-                            <input className={"searchBar"} placeholder={"Buscar.."} type={"search"}/>
-                            <button className={"searchBarButton"} type="submit"><i className="fa fa-search"></i></button>
+                            <input className={"searchBar"} placeholder={"Buscar.."} type="text" value={searchQuery}
+                                   onChange={(event) => handleChangeSearch(event)}/>
+                            <button className={"searchBarButton"} onClick={handleSubmitPost} type="submit"><i className="fa fa-search"></i></button>
 
                         </form>
                     </div>

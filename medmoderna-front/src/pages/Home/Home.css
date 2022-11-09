@@ -67,15 +67,10 @@
 }
 
 .caption .border > div {
-    text-shadow: black;
     padding-top: 20px;
     color: white;
-    background: rgba(10, 9, 9, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(211, 238, 204, 0.37);
-    backdrop-filter: blur( 20px );
-    -webkit-backdrop-filter: blur( 8px );
+
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
     max-width: 40vw;
     position: relative;
     left: 30%;
@@ -87,11 +82,7 @@
 .caption .border2 > div {
     color: white;
     background: white;
-    box-shadow: 0 8px 32px 0 rgb(6, 80, 48);
-    backdrop-filter: blur( 8px );
-    -webkit-backdrop-filter: blur( 8px );
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
     max-width: 40vw;
     position: relative;
     left: 30%;

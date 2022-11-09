@@ -9,7 +9,7 @@ import ProductCardHome from "../../components/Product/ProductCardHome";
 import { AnimatePresence, motion } from 'framer-motion';
 import BrandCard from "../../components/Product/BrandCard";
 import { IProductProps } from '../../models/IProductProps';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo2.png'
 import banner from '../../assets/banner.png'
 const AddressMap = () => {
     return (
@@ -46,7 +46,7 @@ const HomeProducts = (data: { products: IProductProps[] }) => {
 
 const Home = () => {
     const homeProds: IProductProps[] = [];
-    const postsUrls = ["https://www.instagram.com/p/COi_Ep9nW2A/embed", "https://www.instagram.com/p/CeTSXK1sDpU/embed", "https://www.instagram.com/p/CdbJE9pDOtR/embed", "https://www.instagram.com/p/CfGzFDFMkoW/embed", "https://www.instagram.com/p/Ce6EsEQMa_A/embed"];
+    const postsUrls = ["https://www.instagram.com/p/Ckqxnp9DKZx/embed","https://www.instagram.com/p/COi_Ep9nW2A/embed", "https://www.instagram.com/p/CjpsbJkAaQl/embed","https://www.instagram.com/p/CeTSXK1sDpU/embed", "https://www.instagram.com/p/CdbJE9pDOtR/embed", "https://www.instagram.com/p/CfGzFDFMkoW/embed", "https://www.instagram.com/p/Ce6EsEQMa_A/embed"];
     const [igPost, setIgPost] = useState<string>("https://www.instagram.com/p/COi_Ep9nW2A/embed");
     useEffect(() => {
         const interval = setInterval(() => {
@@ -83,8 +83,7 @@ const Home = () => {
 
                         <span className="border">
                         <div>
-                            <img className={"logoHome"} src={logo} alt={"logo"} width={"250px"}/>
-                            <h3 style={{ color: "white" }}>{"Tu Growshop de confianza ☘️ "}</h3>
+                            <img className={"logoHome"} src={logo} alt={"logo"} width={"350px"}/>
 
                         </div>
                     </span>
