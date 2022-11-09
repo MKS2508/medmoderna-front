@@ -46,7 +46,14 @@ const TopBar = () => {
                     className={active ? 'topBar' : 'topBar-mobile'} >
 
                     <p className="topbarText">Puedes encontrarnos en Avenida de Mendavia, Nº16 Pabellón 2, 26009 Logroño, La Rioja</p>
-                    <p className="topbarText">TextBar</p>
+                    <div style={{borderRadius: "10px"}}>
+                        <form>
+
+                            <input className={"searchBar"} placeholder={"Buscar.."} type={"search"}/>
+                            <button className={"searchBarButton"} type="submit"><i className="fa fa-search"></i></button>
+
+                        </form>
+                    </div>
                     <div className="topbarIcons">
                         <div className="topbarIcon">
 

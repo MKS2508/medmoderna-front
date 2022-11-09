@@ -14,7 +14,7 @@ import AnimatedRoutes from "./routes/Routes";
 function App() {
     const [isVisible, setIsVisible] = useState(true);
     const listenToScroll = () => {
-        let heightToHideFrom = 200;
+        let heightToHideFrom = 30;
         const winScroll = document.body.scrollTop ||
             document.documentElement.scrollTop;
 
@@ -24,10 +24,15 @@ function App() {
         } else {
             setIsVisible(true);
         }
+
+        if (window.location.pathname != "/") {
+            setIsVisible(false)
+        }
     };
 
     useEffect(() => {
         if (window.location.pathname != "/") {
+            setIsVisible(false)
         }
         window.addEventListener("scroll", listenToScroll);
         return () =>

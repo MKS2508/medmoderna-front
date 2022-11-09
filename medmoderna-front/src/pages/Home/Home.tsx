@@ -83,8 +83,8 @@ const Home = () => {
 
                         <span className="border">
                         <div>
-                            <img src={logo} alt={"logo"} width={"250px"}/>
-                            <h2 style={{ color: "white" }}>{"Tu Grow de confianza en Logroño"}</h2>
+                            <img className={"logoHome"} src={logo} alt={"logo"} width={"250px"}/>
+                            <h3 style={{ color: "white" }}>{"Tu Growshop de confianza ☘️ "}</h3>
 
                         </div>
                     </span>

@@ -10,19 +10,19 @@ const ProductCardDetail = (props: IProductProps) => {
     let params = useParams();
     let id = params.id;
     let editLink = `/edit/${id}`
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         setLoading(true);
     }, [props]);
 
     return <>
-        {(!loading) ?         <AnimatePresence>
+        {(loading) ?         <AnimatePresence>
                 <motion.div
-                    initial={{opacity: 0}}
-                    animate={{opacity: 0}}
-                    exit={{opacity: 0}}
-                >
+                    initial={{opacity: 1}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 1}}>
+
                     <div className="bar" style={{position: "fixed", top: 0, left: 0}}>
                         <h3 style={{fontSize: "2rem", textAlign: "start"}}>
                             <Link to={`/${props.category}`}> <span
@@ -55,6 +55,7 @@ const ProductCardDetail = (props: IProductProps) => {
 
                 </motion.div>
             </AnimatePresence>
+
             : <div style={{height: "0vh"}}></div>}
 
 
