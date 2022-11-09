@@ -56,17 +56,18 @@
 .caption {
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 40%;
     width: 100%;
     text-align: center;
 
 }
 
 .caption .border > div {
+    padding-top: 20px;
     color: white;
-    background: rgba( 255, 255, 255, 0.15 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 8px );
+    background: rgba(10, 9, 9, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(211, 238, 204, 0.37);
+    backdrop-filter: blur( 20px );
     -webkit-backdrop-filter: blur( 8px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );

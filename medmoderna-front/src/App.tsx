@@ -27,9 +27,12 @@ function App() {
     };
 
     useEffect(() => {
+        if (window.location.pathname != "/") {
+        }
         window.addEventListener("scroll", listenToScroll);
         return () =>
             window.removeEventListener("scroll", listenToScroll);
+
     }, [])
 
     return (

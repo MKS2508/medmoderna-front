@@ -9,7 +9,8 @@ import ProductCardHome from "../../components/Product/ProductCardHome";
 import { AnimatePresence, motion } from 'framer-motion';
 import BrandCard from "../../components/Product/BrandCard";
 import { IProductProps } from '../../models/IProductProps';
-
+import logo from '../../assets/logo.png'
+import banner from '../../assets/banner.png'
 const AddressMap = () => {
     return (
         <div className="google-map-code">
@@ -76,11 +77,15 @@ const Home = () => {
                     <video autoPlay muted loop>
                         <source src="https://rr11---sn-quxapm-3c2s.googlevideo.com/videoplayback?expire=1668027382&ei=lr9rY_-eEtuCvdIPiq2CuAU&ip=2001%3A41d0%3Ad%3A260c%3A%3A&id=o-AG8wL5ZT3rrwuo7CQ37-ZP0-ZQUvKCulliW5Y6R6sb7e&itag=22&source=youtube&requiressl=yes&mh=3O&mm=31%2C29&mn=sn-quxapm-3c2s%2Csn-25ge7nz6&ms=au%2Crdu&mv=m&mvi=11&pcm2cms=yes&pl=46&initcwndbps=813750&vprv=1&mime=video%2Fmp4&ns=PxZfO2D1wXsoczAgMaBEQTEJ&cnr=14&ratebypass=yes&dur=942.033&lmt=1598947165303117&mt=1668005335&fvip=1&fexp=24001373%2C24007246&c=TVHTML5_SIMPLY_EMBEDDED_PLAYER&txp=2216222&n=d9RJaOVVxr9FAg&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRAIgSsfmlrffDeounvRB_Rm0ezSNOogx0QucHp0QEXtZJsACIAZOYCXZ8Opw_eR2CWJ13J_55SyB6JBIyWdSdo0Aod28&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpcm2cms%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRgIhAI-t_Zvtq6xWOtaW8oWLrcIVFomVMp5r0Gt1ZlO7ZIe8AiEA1MI-kFO86nTObOn7SELb2aeMLJ7a4fcTimj--_QnExE%3D&title=4K+cannabis+004+-+San+Rafael%2771+Tangerine+Dream+%23SQDC" type="video/mp4" />
                     </video>
+
+
                     <div className="caption">
-                    <span className="border">
+
+                        <span className="border">
                         <div>
-                            <h1 style={{ color: "white" }}>{"BIENVENIDO A MEDICINA MODERNA "}</h1>
-                            <h2>¡Tu Grow Shop de confianza en Logroño!</h2>
+                            <img src={logo} alt={"logo"} width={"250px"}/>
+                            <h2 style={{ color: "white" }}>{"Tu Grow de confianza en Logroño"}</h2>
+
                         </div>
                     </span>
                     </div>

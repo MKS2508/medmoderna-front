@@ -26,6 +26,7 @@ import logo from '../../assets/LOGOSVG3.svg'
 
 import banner from "../../assets/banner.png";
 import ReactWhatsapp from "react-whatsapp";
+import {AnimatePresence, motion} from "framer-motion";
 
 const TopBar = () => {
     config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
@@ -36,9 +37,13 @@ const TopBar = () => {
     }
 
     return (<>
-            <div>
+        <AnimatePresence>
 
-                <div className={active ? 'topBar' : 'topBar-mobile'}>
+        <motion.div initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 1.4}}
+                    className={active ? 'topBar' : 'topBar-mobile'} >
 
                     <p className="topbarText">Puedes encontrarnos en Avenida de Mendavia, Nº16 Pabellón 2, 26009 Logroño, La Rioja</p>
                     <p className="topbarText">TextBar</p>
@@ -66,9 +71,8 @@ const TopBar = () => {
                         </div>
                     </div>
 
-                </div>
-            </div>
-
+            </motion.div>
+        </AnimatePresence>
 
         </>
     )
