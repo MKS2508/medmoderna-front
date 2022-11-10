@@ -9,7 +9,7 @@ import ProductCardHome from "../../components/Product/ProductCardHome";
 import { AnimatePresence, motion } from 'framer-motion';
 import BrandCard from "../../components/Product/BrandCard";
 import { IProductProps } from '../../models/IProductProps';
-import logo from '../../assets/logo2.png'
+import logo from '../../assets/logo3.png'
 import banner from '../../assets/banner.png'
 const AddressMap = () => {
     return (
