@@ -8,7 +8,7 @@ import {config} from "@fortawesome/fontawesome-svg-core";
 import {FaBong, FaCannabis, FaExpandAlt, FaFacebookSquare, FaJoint} from "react-icons/fa";
 import {RiInstagramFill, RiPlantFill} from "react-icons/ri";
 import {GiLightBulb} from "react-icons/gi";
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo3.png'
 import banner from '../../assets/banner.png'
 import {AnimatePresence, motion} from "framer-motion";
 

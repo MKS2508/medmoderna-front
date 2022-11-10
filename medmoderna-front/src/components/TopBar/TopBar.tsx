@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {
     IoMdBookmark,
     IoMdCall,
@@ -29,70 +29,118 @@ import ReactWhatsapp from "react-whatsapp";
 import {AnimatePresence, motion} from "framer-motion";
 import {IProductProps} from "../../models/IProductProps";
 import {getProductsFromQuery, postProduct} from "../../services/api-products-service";
+import {ReactSearchAutocomplete} from 'react-search-autocomplete'
+import ProductCard from "../Product/ProductCard";
+import ProductCardList from "../Product/ProductCardList";
 
 const TopBar = () => {
     config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [active, setActive] = useState(true);
-    const activateNav = () => {
-        setActive(!active)
+    const [items, setItems] = useState<IProductProps[]>([]);
+
+
+    useEffect(() => {
+        if (items.length < 1) {
+            let searchedProducts: IProductProps[] = [];
+            getProductsFromQuery(" ").then((result) => {
+                searchedProducts = result;
+                setItems(searchedProducts);
+            })
+        }
+
+
+    }, [])
+
+    const handleOnSearch = async (string: any, results: any) => {
+        // onSearch will have as the first callback parameter
+        // the string searched and for the second the results.
+        console.log(string, results)
+        if (string.length > 3) {
+            const searchedProducts = await getProductsFromQuery(string);
+            setItems(searchedProducts)
+            console.log({searchedProducts})
+        }
+
     }
+
+    const handleOnHover = (result: any) => {
+        // the item hovered
+        console.log(result)
+    }
+
+    const handleOnSelect = (item: any) => {
+        // the item selected
+        console.log(item)
+    }
+
+    const handleOnFocus = () => {
+        console.log('Focused')
+    }
+
+    const formatResult = (item: any) => {
+        return (
+            <>
+                <span style={{ display: 'block', textAlign: 'left' }}>
+                <ProductCardList key={item.name} imgSrc={item.imgSrc}
+                                 description={item.description} price={item.price}
+                                 productId={item.productId} name={item.name} brand={item.brand} category={item.category}/></span>
+
+            </>
+        )
+    }
+
 
     const handleChangeSearch = (event: any) => {
         setSearchQuery(event.target.value);
     }
-    const handleSubmitPost = async (event: any) => {
-        event.preventDefault();
-        const query = searchQuery;
-        const searchedProducts = await getProductsFromQuery(query);
-        console.log({searchedProducts})
-    }
 
     return (<>
-        <AnimatePresence>
+            <AnimatePresence>
+                <motion.div initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            exit={{opacity: 0}}
+                            transition={{duration: 1}}
+                            className="miniHeader">
+                    <h3>
+                        <a href={""} style={{color: "inherit"}}>
+                            <span style={{fontSize: 17}}>📍</span> Puedes encontrarnos en Avenida de Mendavia, Nº16
+                            Pabellón 2, 26009 Logroño, La Rioja <span style={{fontSize: 17}}></span>
+                        </a>
+                    </h3>
 
-        <motion.div initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 0}}
-                    transition={{duration: 1.4}}
-                    className={active ? 'topBar' : 'topBar-mobile'} >
+                </motion.div>
+                <motion.div initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            exit={{opacity: 0}}
+                            transition={{duration: 1.4}}
+                            className={active ? 'topBar' : 'topBar-mobile'}>
 
-                    <p className="topbarText">Puedes encontrarnos en Avenida de Mendavia, Nº16 Pabellón 2, 26009 Logroño, La Rioja</p>
+
                     <div style={{borderRadius: "10px"}}>
                         <form>
-
-                            <input className={"searchBar"} placeholder={"Buscar.."} type="text" value={searchQuery}
-                                   onChange={(event) => handleChangeSearch(event)}/>
-                            <button className={"searchBarButton"} onClick={handleSubmitPost} type="submit"><i className="fa fa-search"></i></button>
-
+                            <div className={"container"}>
+                                <ReactSearchAutocomplete
+                                    items={items}
+                                    onSearch={handleOnSearch}
+                                    onHover={handleOnHover}
+                                    onSelect={handleOnSelect}
+                                    onFocus={handleOnFocus}
+                                    autoFocus
+                                    formatResult={formatResult}
+                                    placeholder={"Encuentra lo que buscas..."}
+                                />
+                                {/*<input className={"searchBar"} placeholder={"Buscar.."} type="text" value={searchQuery}
+                                       onChange={(event) => handleChangeSearch(event)}/>*/}
+                            </div>
                         </form>
                     </div>
                     <div className="topbarIcons">
-                        <div className="topbarIcon">
 
-                                <span className="wa">
-                                         {/*@ts-ignore*/}
-                                    <ReactWhatsapp style={{border: "none", backgroundColor: "#EAE6E6FF"}}
-                                                   number="+34601185250" message={"Hola malaraza"}>
-                                        <IoLogoWhatsapp size={30} className='iconRRSS'/>
-                                    </ReactWhatsapp>
-                                </span>
-
-                        </div>
-                        <div className="instaIcon">
-                            <a href="https://www.instagram.com/medicinamoderna_growshop/?hl=es">
-                                <RiInstagramFill size={30} className='iconRRSS'/>
-                            </a>
-                        </div>
-                        <div className="faceIcon">
-                            <a href="https://www.facebook.com/Medicina-Moderna-Growshop-110763457854490/">
-                                <FaFacebookSquare size={30} className='iconRRSS'/>
-                            </a>
-                        </div>
                     </div>
 
-            </motion.div>
-        </AnimatePresence>
+                </motion.div>
+            </AnimatePresence>
 
         </>
     )

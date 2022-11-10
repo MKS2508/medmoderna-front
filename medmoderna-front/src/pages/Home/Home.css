@@ -66,6 +66,30 @@
 
 }
 
+.instaIcon {
+    z-index: 11;
+    position: fixed;
+    top: 33px;
+    right: 30px;
+
+}
+
+.faceIcon {
+    z-index: 11;
+
+    position: fixed;
+    top: 35px;
+    right:120px;
+
+}
+.topbarIcon {
+    z-index: 11;
+    position: fixed;
+    top: 35px;
+
+    right:205px;
+
+}
 .caption .border > div {
     padding-top: 20px;
     color: white;

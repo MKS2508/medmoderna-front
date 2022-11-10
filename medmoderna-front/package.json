@@ -19,6 +19,7 @@
     "react-icons": "^4.4.0",
     "react-modal": "^3.15.1",
     "react-router-dom": "^6.3.0",
+    "react-search-autocomplete": "^8.0.0",
     "react-social-media-embed": "^2.2.2",
     "react-svg": "^15.0.2",
     "react-whatsapp": "^0.3.0",
