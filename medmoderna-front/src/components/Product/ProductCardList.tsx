@@ -11,7 +11,7 @@ const ProductCardList = (props: IProductProps) => {
              src={`data:image/png;base64,${props.imgSrc}`}
              alt={"item"}
         />
-        <a href={`/product/${props.productId}`}><h4>{props.name}</h4></a>
+        <h4 style={{color:"white"}}>{props.name}</h4>
 
     </span>
 };

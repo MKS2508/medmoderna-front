@@ -40,67 +40,15 @@ const TopBar = () => {
     const [items, setItems] = useState<IProductProps[]>([]);
 
 
-    useEffect(() => {
-        if (items.length < 1) {
-            let searchedProducts: IProductProps[] = [];
-            getProductsFromQuery(" ").then((result) => {
-                searchedProducts = result;
-                setItems(searchedProducts);
-            })
-        }
 
 
-    }, [])
-
-    const handleOnSearch = async (string: any, results: any) => {
-        // onSearch will have as the first callback parameter
-        // the string searched and for the second the results.
-        console.log(string, results)
-        if (string.length > 3) {
-            const searchedProducts = await getProductsFromQuery(string);
-            setItems(searchedProducts)
-            console.log({searchedProducts})
-        }
-
-    }
-
-    const handleOnHover = (result: any) => {
-        // the item hovered
-        console.log(result)
-    }
-
-    const handleOnSelect = (item: any) => {
-        // the item selected
-        console.log(item)
-    }
-
-    const handleOnFocus = () => {
-        console.log('Focused')
-    }
-
-    const formatResult = (item: any) => {
-        return (
-            <>
-                <span style={{ display: 'block', textAlign: 'left' }}>
-                <ProductCardList key={item.name} imgSrc={item.imgSrc}
-                                 description={item.description} price={item.price}
-                                 productId={item.productId} name={item.name} brand={item.brand} category={item.category}/></span>
-
-            </>
-        )
-    }
-
-
-    const handleChangeSearch = (event: any) => {
-        setSearchQuery(event.target.value);
-    }
 
     return (<>
             <AnimatePresence>
                 <motion.div initial={{opacity: 0}}
                             animate={{opacity: 1}}
                             exit={{opacity: 0}}
-                            transition={{duration: 1}}
+                            transition={{duration: 0.6}}
                             className="miniHeader">
                     <h3>
                         <a href={""} style={{color: "inherit"}}>
@@ -113,28 +61,11 @@ const TopBar = () => {
                 <motion.div initial={{opacity: 0}}
                             animate={{opacity: 1}}
                             exit={{opacity: 0}}
-                            transition={{duration: 1.4}}
+                            transition={{duration: 1}}
                             className={active ? 'topBar' : 'topBar-mobile'}>
 
 
-                    <div style={{borderRadius: "10px"}}>
-                        <form>
-                            <div className={"container"}>
-                                <ReactSearchAutocomplete
-                                    items={items}
-                                    onSearch={handleOnSearch}
-                                    onHover={handleOnHover}
-                                    onSelect={handleOnSelect}
-                                    onFocus={handleOnFocus}
-                                    autoFocus
-                                    formatResult={formatResult}
-                                    placeholder={"Encuentra lo que buscas..."}
-                                />
-                                {/*<input className={"searchBar"} placeholder={"Buscar.."} type="text" value={searchQuery}
-                                       onChange={(event) => handleChangeSearch(event)}/>*/}
-                            </div>
-                        </form>
-                    </div>
+
                     <div className="topbarIcons">
 
                     </div>

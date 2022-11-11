@@ -22,29 +22,6 @@
 
 
 }
-.container {
-    width: 70vw;
-    height: 80%;
-    margin: 0 1rem;
-    position: relative;
-}
-.searchBar {
-    font-size: 2.4rem;
-    width: 100%;
-    height: 10px;
-    border: none;
-    outline: none;
-    border-radius: 3rem;
-    padding: 25px;
-    position: relative;
-    transition: all .2s;
-    transition-delay: .1s;
-}
-
-.searchBar:hover {
-    width: 73vw;
-    height: 20px;
-}
 
 .searchBarButton {
     height: 1.5rem;
