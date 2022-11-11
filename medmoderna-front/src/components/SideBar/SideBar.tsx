@@ -8,7 +8,7 @@ import {config} from "@fortawesome/fontawesome-svg-core";
 import {FaBong, FaCannabis, FaExpandAlt, FaFacebookSquare, FaJoint} from "react-icons/fa";
 import {RiInstagramFill, RiPlantFill} from "react-icons/ri";
 import {GiLightBulb} from "react-icons/gi";
-import logo from '../../assets/logo3.png'
+import logo from '../../assets/logo4.png'
 import banner from '../../assets/banner.png'
 import {AnimatePresence, motion} from "framer-motion";
 
@@ -82,7 +82,7 @@ const SideBar = () => {
                                 className={active ? 'header' : 'header-mobile'} onMouseLeave={closeNav}>
 
                         {(!active) ? <div className="logo" onClick={() => navigate("/")}>
-                                <img width="100%" alt="logo" src={logo}/>
+                                <img width="110%" alt="logo" src={logo}/>
                             </div> :
                             <div className="banner" onClick={() => navigate("/")}>
                                 <img width="100%" height="85%" alt="logo" src={banner}/>

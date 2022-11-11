@@ -107,7 +107,7 @@ function App() {
                 <div className={"searchBar"}>
                     <ReactSearchAutocomplete
                         items={items}
-                        styling={{backgroundColor:"rgba(31,30,30,0.79)", border: "none", placeholderColor: "#bdbfc4", color:"white", hoverBackgroundColor:"#1F1E1E"}}
+                        styling={{backgroundColor:"rgba(31,30,30,0.79)", border: "none", placeholderColor: "#e0e2e3", color:"white", hoverBackgroundColor:"#1F1E1E"}}
                         onSearch={handleOnSearch}
                         onHover={handleOnHover}
                         onSelect={handleOnSelect}
