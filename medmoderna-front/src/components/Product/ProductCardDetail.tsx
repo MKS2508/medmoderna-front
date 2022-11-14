@@ -23,13 +23,6 @@ const ProductCardDetail = (props: IProductProps) => {
                     animate={{opacity: 1}}
                     exit={{opacity: 1}}>
 
-                    <div className="bar" style={{position: "fixed", top: 0, left: 0}}>
-                        <h3 style={{fontSize: "2rem", textAlign: "start"}}>
-                            <Link to={`/${props.category}`}> <span
-                                style={{color: "#0dd47c", fontWeight: "bolder",}}>{props.category}</span></Link> {">"}
-                            <Link to={`/MARCAS/${props.brand}`}> <span
-                                style={{color: "#0dd47c", fontWeight: "bolder",}}>{props.brand}</span> </Link></h3>
-                    </div>
                     <div className="titleDetail">
 
 
