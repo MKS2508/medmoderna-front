@@ -19,8 +19,9 @@ const ProductCardDetail = (props: IProductProps) => {
     return <>
         {(loading) ?         <AnimatePresence>
                 <motion.div
-                    initial={{opacity: 1}}
+                    initial={{opacity: 0}}
                     animate={{opacity: 1}}
+                    transition={{duration: 2}}
                     exit={{opacity: 1}}>
 
                     <div className="titleDetail">

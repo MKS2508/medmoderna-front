@@ -40,7 +40,8 @@ const Products = (props: IProductPageProps) => {
                         { (!loading) ?
 
 
-                                <motion.div custom={{delay: (index + 1) * 0.25}}
+                                <motion.div
+                                    custom={{delay: (index + 1) * 0.25}}
                                             initial='hidden'
                                             animate={variants.visible({delay: (index + 1) * 0.1})}
                                             variants={variants}
@@ -61,7 +62,6 @@ const Products = (props: IProductPageProps) => {
             }
 
         </div>
-
     };
 
     const [products, setProducts] = useState<IProductProps[]>([]);

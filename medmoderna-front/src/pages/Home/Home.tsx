@@ -88,29 +88,9 @@ const Home = () => {
                             />
                         </video>
 
-                        <div className="topbarIcon">
 
-                                <span className="wa">
-                                         {/*@ts-ignore*/}
-                                    <ReactWhatsapp
-                                        style={{backgroundColor: "transparent", border: "none"}}
-                                        number="+34601185250" message={"Hola malaraza"}>
-                                        <RiWhatsappFill size={46} className='iconRRSS'/>
-                                    </ReactWhatsapp>
-                                </span>
-
-                        </div>
                         <div className="caption">
-                            <div className="instaIcon">
-                                <a href="https://www.instagram.com/medicinamoderna_growshop/?hl=es">
-                                    <RiInstagramFill size={50} className='iconRRSS'/>
-                                </a>
-                            </div>
-                            <div className="faceIcon">
-                                <a href="https://www.facebook.com/Medicina-Moderna-Growshop-110763457854490/">
-                                    <FaFacebookSquare size={46} className='iconRRSS'/>
-                                </a>
-                            </div>
+
                             <span className="border">
                         <div>
                             <img className={"logoHome"} src={logo} alt={"logo"} width={"350px"}/>

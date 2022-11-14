@@ -56,10 +56,31 @@
     margin-top: 0.3rem;
 }
 
-.topbarIcon{
-    padding: 0rem 1rem;
+
+.instaIcon {
+    z-index: 11;
+    position: fixed;
+    top: 33px;
+    right: 30px;
+
 }
 
+.faceIcon {
+    z-index: 11;
+
+    position: fixed;
+    top: 35px;
+    right:120px;
+
+}
+.topbarIcon {
+    z-index: 11;
+    position: fixed;
+    top: 35px;
+
+    right:205px;
+
+}
 .topbarIcon > a {
     color: inherit;
 }
