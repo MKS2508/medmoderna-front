@@ -15,7 +15,7 @@ import {RiInstagramFill, RiWhatsappFill} from "react-icons/ri";
 import {FaFacebookSquare} from "react-icons/fa";
 import ReactWhatsapp from "react-whatsapp";
 import {IoLogoWhatsapp} from "react-icons/io";
-
+import videoBack from "../../assets/4K cannabis 004 - San Rafael'71 Tangerine Dream .mp4";
 const AddressMap = () => {
     return (
         <div className="google-map-code">
@@ -53,7 +53,14 @@ const Home = () => {
     const homeProds: IProductProps[] = [];
     const postsUrls = ["https://www.instagram.com/p/Ckqxnp9DKZx/embed", "https://www.instagram.com/p/COi_Ep9nW2A/embed", "https://www.instagram.com/p/CjpsbJkAaQl/embed", "https://www.instagram.com/p/CeTSXK1sDpU/embed", "https://www.instagram.com/p/CdbJE9pDOtR/embed", "https://www.instagram.com/p/CfGzFDFMkoW/embed", "https://www.instagram.com/p/Ce6EsEQMa_A/embed"];
     const [igPost, setIgPost] = useState<string>("https://www.instagram.com/p/COi_Ep9nW2A/embed");
-    useEffect(() => {
+    const [videoUrl, setVideoUrl] = useState<string>("");
+    useEffect(()=> {
+        if(videoUrl.length < 1) {
+            let directUrl: any = undefined;
+            //ytdl.getInfo("https://www.youtube.com/watch?v=R92eQiYabQQ").then((data) => {directUrl= data});
+            console.log({directUrl})
+
+        }
         const interval = setInterval(() => {
             console.log('This will run every 10 second!');
 
@@ -83,9 +90,7 @@ const Home = () => {
 
                         <video autoPlay muted loop>
 
-                            <source type="video/mp4"
-                                    src={"https://rr2---sn-apaapm4g-apae.googlevideo.com/videoplayback?expire=1668467656&ei=aHdyY_37OPyFvdIPudGo4As&ip=2001%3A41d0%3Ad%3A260c%3A%3A&id=o-AJm8sD9ys1ljv8QYfTJh78SYxS96Ei7B7M8YhS2m4c6T&itag=22&source=youtube&requiressl=yes&mh=3O&mm=31%2C29&mn=sn-apaapm4g-apae%2Csn-25glenld&ms=au%2Crdu&mv=m&mvi=2&pl=48&initcwndbps=398750&vprv=1&mime=video%2Fmp4&ns=Stmi7p0aMVMQ7z_l4ayqFq8J&cnr=14&ratebypass=yes&dur=942.033&lmt=1598947165303117&mt=1668445744&fvip=5&fexp=24001373%2C24007246&c=TVHTML5_SIMPLY_EMBEDDED_PLAYER&txp=2216222&n=ftiXel7nGzkrMw&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRgIhAOKln8VtCm_Qt032hzyf9UlHbrCKyY6d34efohPsGUNgAiEA_-rhBJg7dVcBUPnTryYTzOWrQ29pR1MUrV5pLnuA-pM%3D&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRAIgBWNHxwnezgtXfxmWd38vZ6-jIWltTqJkGFO-BX1L0YgCIBSGppYzH-a90IyWaQ1giD4eO_JQZuiTDwC6DcCdkXf9&title=4K+cannabis+004+-+San+Rafael%2771+Tangerine+Dream+%23SQDC"}
-                            />
+                            <source type="video/mp4" src={videoBack} />
                         </video>
 
 

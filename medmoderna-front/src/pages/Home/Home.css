@@ -37,8 +37,27 @@
 }
 .ParallaxVideo video{
     min-width: 100vw;
-    min-height: 100vh;
+    min-height: 110vh;
     top:0;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw!important;
+    height: 100vh!important;
+    overflow: hidden;
+}
+.video-container video {
+    /* Make video to at least 100% wide and tall */
+
+
+    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+    width: 100vw!important;
+    height: 110vh!important;
+
+
 }
 
 .bgimg-1 {

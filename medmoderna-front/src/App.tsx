@@ -16,7 +16,6 @@ import {IProductProps} from "./models/IProductProps";
 
 
 function App() {
-    const [active, setActive] = useState(true);
 
     const [isVisible, setIsVisible] = useState(true);
     const listenToScroll = () => {
