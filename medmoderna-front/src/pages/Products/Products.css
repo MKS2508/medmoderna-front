@@ -21,7 +21,7 @@
 .title {
     display: grid;
     justify-content: center;
-    padding-top: 10vh;
+    padding-top: 20vh!important;
     padding-bottom: 10vh;
 }
 
@@ -36,8 +36,9 @@
 }
 
 .wrapper-grid {
-    width: 100%;
-    margin-left: 50px;
+    padding-left: 16vw;
+    padding-right: 10vw;
+    width: 100vw;
     display: grid;
     grid-template-columns: repeat(auto-fit, 22rem);
     justify-content: center;
@@ -52,8 +53,8 @@
     margin-bottom: 30px;
     content: "";
     position: relative;
-    width: 320px;
-    height: 420px;
+    width: 280px;
+    height: 380px;
     background: white;
     border-radius: 20px;
     overflow: hidden;
@@ -179,30 +180,27 @@
 
 @media (max-width: 420px) {
     .title {
+        padding: 0!important;
+        margin-top: 15vh;
         text-align: center;
         margin-left: 3rem;
     }
+    .card {
+        width: 240px;
+        height: 320px;
+    }
 
+    .wrapper-grid {
+        grid-template-columns: repeat(auto-fit, 13rem);
+
+    }
     .title h1 {
-
         font-size: 40px;
     }
     .title h2 {
         font-size: 25px;
     }
-    .center {
 
-        width: 100vw;
-        margin-left: 10vw;
-        margin-right: 10vw;
-    }
-    .wrapper-grid {
-        overflow-x: hidden;
-        width: 90%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 22rem);
-        justify-content: center;
-    }
 }
 
 
