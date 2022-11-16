@@ -145,3 +145,9 @@
 .faceIcon{
     padding: 0rem 1rem;
 }
+
+@media (max-width: 420px) {
+    .topbarIcons {
+        display: none;
+    }
+}

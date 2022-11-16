@@ -181,9 +181,7 @@
 @media (max-width: 420px) {
     .title {
         padding: 0!important;
-        margin-top: 15vh;
         text-align: center;
-        margin-left: 3rem;
     }
     .card {
         width: 240px;
@@ -195,9 +193,18 @@
 
     }
     .title h1 {
+        padding-right: 10vw;
+        padding-left: 20vw;
+        display: flex;
+        justify-content: center;
+        padding-top: 15vh;
         font-size: 40px;
     }
     .title h2 {
+        padding-right: 10vw;
+        padding-left: 20vw;
+        display: flex;
+        justify-content: center;
         font-size: 25px;
     }
 
