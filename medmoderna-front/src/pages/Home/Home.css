@@ -118,13 +118,16 @@
 
 @media (max-width: 420px) {
     .ParallaxVideo{
-        width: 100%!important;
-        height: 100%!important;
+        width: 100vw!important;
+        height: 100vw!important;
+    }
+    .section {
+        display: none;
     }
     .ParallaxVideo video{
         object-fit: cover;
-        width: 100%!important;
-        height: 100%!important;
+        width: 100vw!important;
+        height: 100vw!important;
         top:0;
     }
 

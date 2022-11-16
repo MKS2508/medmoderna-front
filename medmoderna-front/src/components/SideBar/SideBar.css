@@ -10,13 +10,13 @@
 
 
 .header-mobile {
-    height: 100%;
+    height: 100vh;
+    width: 5vw;
     z-index: 20;
     display: flex;
     position: fixed;
     flex-direction: column;
     align-items: center;
-    inset:8% 95% 0 0;
     background-color: hsl(0, 9%, 91%);
 
 }
@@ -151,8 +151,7 @@ nav .ul-item li:hover {
 
 @media (max-width:950px) {
     .header-mobile {
-        inset: 4% 85% 0 0;
-        justify-content: center;
+        width: 16vw;
     }
 
     nav .ul-item {

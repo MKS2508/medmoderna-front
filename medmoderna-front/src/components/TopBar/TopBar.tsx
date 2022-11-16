@@ -11,7 +11,7 @@ import {
     IoIosShirt,
     IoLogoWhatsapp
 } from 'react-icons/io'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import './TopBar.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.css';
@@ -22,7 +22,7 @@ import {FaCannabis, FaBong, FaJoint, FaFacebookSquare} from "react-icons/fa";
 import {RiPlantFill, RiInstagramFill, RiWhatsappFill} from "react-icons/ri";
 import {GiLightBulb} from "react-icons/gi";
 
-import logo from '../../assets/LOGOSVG3.svg'
+import logo from '../../assets/logo4.png'
 
 import banner from "../../assets/banner.png";
 import ReactWhatsapp from "react-whatsapp";
@@ -34,6 +34,8 @@ import ProductCard from "../Product/ProductCard";
 import ProductCardList from "../Product/ProductCardList";
 
 const TopBar = () => {
+    let navigate = useNavigate();
+
     config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [active, setActive] = useState(true);
@@ -119,6 +121,7 @@ const TopBar = () => {
     return (<>
 
         <AnimatePresence>
+
             <div className={"searchBar"}>
                 <ReactSearchAutocomplete
                     items={items}
@@ -157,6 +160,9 @@ const TopBar = () => {
                 </> : <></>
 
             }
+            <div className="logoBanner" onClick={() => navigate("/")}>
+                <img alt="logo" src={logo}/>
+            </div>
             <div className="topbarIcons">
                 <div className="topbarIcon">
 

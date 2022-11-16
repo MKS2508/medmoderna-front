@@ -112,13 +112,13 @@ const SideBar = () => {
                                         transition={{duration: 1}}
                                         className={active ? 'header' : 'header-mobile'} onMouseLeave={closeNav}>
 
-                                {(!active) ? <div className="logo" onClick={() => navigate("/")}>
+                                {/*(!active) ? <div className="logo" onClick={() => navigate("/")}>
                                         <img width="110%" alt="logo" src={logo}/>
                                     </div> :
                                     <div className="banner" onClick={() => navigate("/")}>
                                         <img width="100%" height="85%" alt="logo" src={banner}/>
                                     </div>
-                                }
+                                */}
 
 
                                 <nav>

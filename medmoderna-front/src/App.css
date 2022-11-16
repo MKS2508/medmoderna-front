@@ -6,26 +6,7 @@
 }
 
 
-.searchBar {
-  z-index: 21;
-  position: fixed;
-  top: 2.3rem;
-  left: 5rem;
-  font-size: 2.4rem;
-  width: 70vw;
-  height: 3rem;
-  border: none;
-  outline: none;
-  border-radius: 3rem;
-  transition: all .2s;
-  transition-delay: .1s;
-}
 
-.searchBar:hover {
-  width: 73vw;
-  height: 4rem;
-
-}
 body{
   overflow-x: hidden;
 
