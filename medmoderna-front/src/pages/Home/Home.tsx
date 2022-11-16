@@ -1,4 +1,6 @@
 import './Home.css'
+import LazyLoad from 'react-lazy-load';
+
 import React, {useEffect, useState} from "react";
 import TopBar from "../../components/TopBar/TopBar";
 import SideBar from "../../components/SideBar/SideBar";
@@ -98,7 +100,7 @@ const Home = () => {
 
                             <span className="border">
                         <div>
-                            <img className={"logoHome"} src={logo} alt={"logo"} width={"350px"}/>
+                                <img className={"logoHome"} src={"https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png"} alt={"logo"} width={"350px"}/>
                         </div>
                     </span>
                         </div>
