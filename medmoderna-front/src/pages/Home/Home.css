@@ -90,7 +90,12 @@
     text-align: center;
 
 }
-
+.HomeProductsSection {
+    display:grid;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-left: 6vw;
+}
 .mobile {
     display: none;
 }

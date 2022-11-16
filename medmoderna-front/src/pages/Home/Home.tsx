@@ -46,17 +46,12 @@ const AddressMapMobile = () => {
 }
 
 const HomeProducts = (data: { products: IProductProps[] }) => {
-    return <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        paddingTop: "2rem",
-        backgroundColor: "whitesmoke"
-    }}>
+    return <div className={ "HomeProductsSection"}>
         {
             data.products.map((item) =>
                 <>
                     <div style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardHome productId={item.productId} name={item.name} description={item.description}
+                        <ProductCardHome productId={item.productId} name={item.name} price={item.price} description={item.description}
                                          imgSrc={item.imgSrc}
                                          brand={item.brand}/>
                     </div>
@@ -67,9 +62,28 @@ const HomeProducts = (data: { products: IProductProps[] }) => {
 }
 
 const Home = () => {
-    const homeProds: IProductProps[] = [];
+    const homeProds: IProductProps[] = [{
+        description: "",
+        name: "GROTEK MONSTER BLOOM",
+        imgSrc:"https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        brand: "GROTEK",
+        price: 50.0
+    },{
+        description: "",
+        name: "GROTEK MONSTER BLOOM",
+        imgSrc:"https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        brand: "GROTEK",
+        price: 50
+    },{
+        description: "",
+        name: "GROTEK MONSTER BLOOM",
+        imgSrc:"https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        brand: "GROTEK",
+        price: 50.0
+    },];
     const postsUrls = ["https://www.instagram.com/p/Ckqxnp9DKZx/embed", "https://www.instagram.com/p/COi_Ep9nW2A/embed", "https://www.instagram.com/p/CjpsbJkAaQl/embed", "https://www.instagram.com/p/CeTSXK1sDpU/embed", "https://www.instagram.com/p/CdbJE9pDOtR/embed", "https://www.instagram.com/p/CfGzFDFMkoW/embed", "https://www.instagram.com/p/Ce6EsEQMa_A/embed"];
     const [igPost, setIgPost] = useState<string>("https://www.instagram.com/p/COi_Ep9nW2A/embed");
+    const [fbPost, setFbPost] = useState<string>("https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid024VCQ8PL6NxmVcJPRxrYbSZmbXTZxfosYuRdQWCWewSV78vbi39djjbNoBx43KLXLl%26id%3D110763457854490&show_text=true&width=300");
     const [videoUrl, setVideoUrl] = useState<string>("");
     useEffect(() => {
         if (videoUrl.length < 1) {
@@ -83,9 +97,9 @@ const Home = () => {
 
             let randomPost = setRandomPost(postsUrls);
             if (igPost !== randomPost) {
-                setIgPost(randomPost)
+                //setIgPost(randomPost)
             } else {
-                setIgPost(setRandomPost(postsUrls))
+                //setIgPost(setRandomPost(postsUrls))
             }
 
         }, 5000);
@@ -284,7 +298,15 @@ const Home = () => {
                 </div>
                 {/*pc*/}
                 <section className="mobile">
-                    <div className="mobileSectionFull">
+                    <div className="mobileSectionFull" style={{backgroundColor: "#EAE6E6FF", height: "160vh"}}>
+                        <h1>Algunos de nuestros productos </h1>
+                        <div
+                            style={{display: 'grid', justifyContent: 'center', borderRadius: "20%"}}>
+                            <HomeProducts products={homeProds}></HomeProducts>
+                        </div>
+
+                    </div>
+                    <div className="mobileSectionFull" style={{backgroundColor: "white"}}>
                         <h1>¿Dónde estamos? 📍</h1>
                         <div
                             style={{display: 'flex', justifyContent: 'center', borderRadius: "20%"}}>
@@ -297,14 +319,31 @@ const Home = () => {
                     <div className="mobileSectionFull">
                         <div>
                             <AnimatePresence>
-                                <h1>Nuestras RRSS 💚</h1>
+                                <h1 style={{paddingTop: "5vh", paddingBottom: "5vh"}}>Nuestras RRSS 💚</h1>
                                 <motion.iframe
                                     className="iframeIg"
-                                    initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: "500"}}
-                                    animate={{opacity: 1, scale: 1, borderRadius: "10px", height: "520"}}
+                                    initial={{opacity: 0, scale: 1,height: "500", }}
+                                    animate={{opacity: 1, scale: 1, height: "500",  }}
+                                    exit={{opacity: 0.3}}
+                                    transition={{duration: 1}}
+                                    key={igPost} width="100%" height="100%" src={igPost}
+                                    frameBorder="0"/>
+                            </AnimatePresence>
+
+                        </div>
+
+                    </div>
+                    <div className="mobileSectionFull" style={{paddingTop: 0, height:"70vh"}}>
+                        <div>
+                            <AnimatePresence>
+
+                                <motion.iframe
+                                    className="iframeIg"
+                                    initial={{opacity: 0, scale: 1,height: "680"}}
+                                    animate={{opacity: 1, scale: 1, height: "680"}}
                                     exit={{opacity: 0.3}}
                                     transition={{duration: 1.5}}
-                                    key={igPost} width="100%" height="100%" src={igPost}
+                                    key={fbPost} width="100%" height="100%" src={fbPost}
                                     frameBorder="0"/>
                             </AnimatePresence>
 
@@ -314,7 +353,7 @@ const Home = () => {
                     <div className="mobileSectionSeparator">
 
                     </div>
-                    <div className="mobileSectionHalf">
+                    <div className="mobileSectionHalf" style={{height: "60vh"}}>
                         <h1>Nuestras Marcas 💚</h1>
 
                         <div className="mobileBrands">
