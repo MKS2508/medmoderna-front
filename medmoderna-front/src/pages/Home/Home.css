@@ -41,7 +41,12 @@
     min-height: 110vh;
     top:0;
 }
-
+.ParallaxVideo > .backgroundGif {
+    display: none;
+    min-width: 100vw;
+    min-height: 110vh;
+    top:0;
+}
 .video-container {
     position: absolute;
     top: 0;
@@ -117,6 +122,15 @@
         height: 100%!important;
     }
     .ParallaxVideo video{
+        display: none;
+        object-fit: cover;
+        width: 100%!important;
+        height: 100%!important;
+        top:0;
+    }
+
+    .ParallaxVideo > .backgroundGif {
+        display: flex;
         object-fit: cover;
         width: 100%!important;
         height: 100%!important;

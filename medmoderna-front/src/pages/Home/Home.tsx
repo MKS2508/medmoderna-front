@@ -16,7 +16,7 @@ import {FaFacebookSquare} from "react-icons/fa";
 import ReactWhatsapp from "react-whatsapp";
 import {IoLogoWhatsapp} from "react-icons/io";
 import videoBack from "../../assets/4K cannabis 004 - San Rafael'71 Tangerine Dream .mp4";
-import gifBack from "../../assets/test2.mp4";
+import gifBack from "../../assets/back.gif";
 const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
 const AddressMap = () => {
     return (
@@ -94,8 +94,7 @@ const Home = () => {
 
                             <source type="video/mp4" src={videoBackUrlFromGithub} />
                         </video>
-
-
+                        <img className="backgroundGif" alt={"background"} src ={gifBack}/>
                         <div className="caption">
 
                             <span className="border">
