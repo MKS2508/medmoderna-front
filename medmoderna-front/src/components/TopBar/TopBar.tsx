@@ -160,9 +160,12 @@ const TopBar = () => {
                 </> : <></>
 
             }
-            <div className="logoBanner" onClick={() => navigate("/")}>
-                <img alt="logo" src={logo}/>
-            </div>
+            {
+                (!isVisible) ? <div className="logoBanner" onClick={() => navigate("/")}>
+                    <img alt="logo" src={logo}/>
+                </div> : <></>
+            }
+
             <div className="topbarIcons">
                 <div className="topbarIcon">
 
