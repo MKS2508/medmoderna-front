@@ -33,6 +33,18 @@ const AddressMap = () => {
     );
 }
 
+const AddressMapMobile = () => {
+    return (
+        <div className="google-map-code">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5886.208184788902!2d-2.420187248556861!3d42.46807477334467!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa6f5617fabcc60ac!2sMedicina%20Moderna%20Growshop!5e0!3m2!1ses-419!2ses!4v1655328560324!5m2!1ses-419!2ses"
+                width="300" height="450" frameBorder="0" style={{border: 0, borderRadius: "5%"}}
+                allowFullScreen={false} aria-hidden="false"
+                tabIndex={0}/>
+        </div>
+    );
+}
+
 const HomeProducts = (data: { products: IProductProps[] }) => {
     return <div style={{
         display: 'flex',
@@ -273,36 +285,83 @@ const Home = () => {
                 {/*pc*/}
                 <section className="mobile">
                     <div className="mobileSectionFull">
+                        <div style={{display: 'flex', justifyContent: 'center', marginTop: "2rem", borderRadius: "20%"}}>
+                            <AddressMapMobile/>
+                        </div>
+                        <div>
+                            <AnimatePresence>
+                                <motion.iframe
+                                    className="iframeIg"
+                                    initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: "500"}}
+                                    animate={{opacity: 1, scale: 1, borderRadius: "10px", height: "520"}}
+                                    exit={{opacity: 0.3}}
+                                    transition={{duration: 1.5}}
+                                    key={igPost} width="100%" height="100%" src={igPost}
+                                    frameBorder="0"/>
+                            </AnimatePresence>
+
+                        </div>
 
                     </div>
                     <div className="mobileSectionSeparator">
 
                     </div>
                     <div className="mobileSectionHalf">
+                        <div className="mobileBrands">
 
+                            <div>
+                                <BrandCard name={"RAW"}
+                                           imgSrc={"https://hbiinternational.com/wp-content/uploads/2019/07/RAW-Rolling-Papers-Logo-1332px.png"}
+                                />
+                            </div>
+                            <div>
+                                <BrandCard name={"GORILLA GRILLZ"}
+                                           imgSrc={"https://www.gorillagrillz.com/wp-content/uploads/2021/02/Gorilla-Grillz_Blanco-e1612635853486-300x200.png"}
+                                />
+                            </div>
+
+                        </div>
                     </div>
+                    <div className="mobileSectionSeparator">
+                    </div>
+                    <div style={{backgroundColor: "#EAE6E6FF"}} className="mobileSectionHalf">
+
+
+                        <div className="mobileBrands">
+                            <div>
+                                <BrandCard name={"GROTEK"}
+                                           imgSrc={"https://www.led-grower.eu/user/categories/orig/grotek-logo.png"}
+                                />
+                            </div>
+                            <div>
+
+                                <BrandCard name={"CANNA"}
+                                           imgSrc={"http://akjacks.com/images/sale/Canna/Canna-logo.png"}
+                                />
+                            </div>
+                        </div>
+
+                    </div >
                     <div className="mobileSectionSeparator">
 
                     </div>
                     <div className="mobileSectionHalf">
 
-                        <div style={{marginRight: "30px", marginTop: "30px"}}>
 
-                            <BrandCard name={"CANNA"}
-                                       imgSrc={"http://akjacks.com/images/sale/Canna/Canna-logo.png"}
-                            />
-                        </div>
-                        <div style={{marginRight: "30px", marginTop: "30px"}}>
-                            <BrandCard name={"MEDICINA MODERNA"}
-                                       imgSrc={"https://i.ibb.co/x8NJ89x/banner.png"}
-                            />
-                        </div>
-                        <div style={{marginRight: "30px", marginTop: "30px"}}>
-                            <BrandCard name={"GROW THE JUNGLE"}
-                                       imgSrc={"https://http2.mlstatic.com/storage/mshops-appearance-api/images/49/75651549/logo-2021090312474054700.png"}
-                            />
+                        <div className="mobileBrands">
+                            <div>
+                                <BrandCard name={"MEDICINA MODERNA"}
+                                           imgSrc={"https://i.ibb.co/x8NJ89x/banner.png"}
+                                />
+                            </div>
+                            <div>
+                                <BrandCard name={"GROW THE JUNGLE"}
+                                           imgSrc={"https://http2.mlstatic.com/storage/mshops-appearance-api/images/49/75651549/logo-2021090312474054700.png"}
+                                />
+                            </div>
                         </div>
                     </div>
+
                 </section>
 
             </div>

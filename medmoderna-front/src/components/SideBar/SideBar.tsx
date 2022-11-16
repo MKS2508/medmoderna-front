@@ -13,6 +13,7 @@ import banner from '../../assets/banner.png'
 import {AnimatePresence, motion} from "framer-motion";
 import {IProductProps} from "../../models/IProductProps";
 import {getProductsFromQuery} from "../../services/api-products-service";
+import ReactTooltip from 'react-tooltip';
 
 
 const SideBar = () => {
@@ -148,8 +149,14 @@ const SideBar = () => {
 
 
                                         <li onClick={() => navigate("/MARCAS")} className={(page.startsWith("/MARCAS")) ? "itemActive":""}>
+                                            <a data-tip="React-tooltip">
+
+                                            </a>
                                             <FaBong className={(page.startsWith("/MARCAS")) ? "iconActive":"icon"}/>
+
                                             <Link to="/MARCAS">MARCAS</Link>
+                                            <ReactTooltip place="top" type="dark" effect="float"/>
+
 
                                         </li>
 

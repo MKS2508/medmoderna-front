@@ -137,10 +137,14 @@
     }
 
     .mobileSectionFull{
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 18rem);
+
+        padding-left: 12vw;
+        justify-content: center;
         width: 100vw;
-        height: 100vh;
-        background-color: red;
+        height: 120vh;
+        background-color: #EAE6E6FF;
     }
     .mobileSectionHalf{
         padding-left: 20vw;
@@ -149,11 +153,19 @@
         width: 100vw;
         height: 50vh;
     }
+    .mobileSectionSeparator h2 {
+        color: white;
+
+
+    }
     .mobileSectionSeparator {
+
+        text-align: center;
+        backdrop-filter: blur(50px);
         display: flex;
         width: 100vw;
-        height: 2vh;
-        background-color: purple;
+        height: 1rem;
+        background-color: #008F28;;
 
     }
     .ParallaxVideo > .backgroundGif {
@@ -168,6 +180,21 @@
         width:80vw;
         height: 100%;
 
+
+    }
+
+
+    .brandCard {
+        width: 100%!important;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .mobileBrands {
+        padding-top: 2rem;
+        padding-left: 4vw;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 70vw);
+        justify-content: center;
     }
     .caption {
         display: flex;
