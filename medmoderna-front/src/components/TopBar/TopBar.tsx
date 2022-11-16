@@ -40,8 +40,10 @@ const TopBar = () => {
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [active, setActive] = useState(true);
     const [items, setItems] = useState<IProductProps[]>([]);
-
+    const [placeholderStr, setPlaceholderStr] = useState<string>("Encuentra lo que buscas");
     const [isVisible, setIsVisible] = useState(true);
+
+
     const listenToScroll = () => {
         let heightToHideFrom = 30;
         const winScroll = document.body.scrollTop ||
@@ -58,7 +60,24 @@ const TopBar = () => {
             setIsVisible(false)
         }
     };
+
     useEffect(() => {
+        const interval = setInterval(() => {
+            //debugger;
+            let actualPlaceholder = placeholderStr
+            actualPlaceholder = actualPlaceholder + ".";
+            if (actualPlaceholder == "Encuentra lo que buscas....") {
+                setPlaceholderStr("Encuentra lo que buscas");
+            } else {
+                setPlaceholderStr(actualPlaceholder);
+            }
+        }, 400);
+        return () => clearInterval(interval);
+    }, [placeholderStr]);
+
+    useEffect(() => {
+
+
         if (items.length < 1) {
             let searchedProducts: IProductProps[] = [];
             getProductsFromQuery(" ").then((result) => {
@@ -132,7 +151,7 @@ const TopBar = () => {
                     onFocus={handleOnFocus}
                     autoFocus
                     formatResult={formatResult}
-                    placeholder={"Encuentra lo que buscas..."}
+                    placeholder={placeholderStr}
                 />
             </div>
             { (!isVisible) ?
@@ -161,7 +180,7 @@ const TopBar = () => {
 
             }
             {
-                (!isVisible) ? <div className="logoBanner" onClick={() => navigate("/")}>
+                (true) ? <div className="logoBanner" onClick={() => navigate("/")}>
                     <img alt="logo" src={logo}/>
                 </div> : <></>
             }

@@ -91,7 +91,9 @@
 
 }
 
-
+.mobile {
+    display: none;
+}
 .caption .border > div {
     padding-top: 20px;
     color: white;
@@ -117,6 +119,9 @@
 }
 
 @media (max-width: 420px) {
+    .mobile {
+        display: block;
+    }
     .ParallaxVideo{
         width: 100vw!important;
         height: 100vw!important;
@@ -131,6 +136,26 @@
         top:0;
     }
 
+    .mobileSectionFull{
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        background-color: red;
+    }
+    .mobileSectionHalf{
+        padding-left: 20vw;
+
+        display: flex;
+        width: 100vw;
+        height: 50vh;
+    }
+    .mobileSectionSeparator {
+        display: flex;
+        width: 100vw;
+        height: 2vh;
+        background-color: purple;
+
+    }
     .ParallaxVideo > .backgroundGif {
         display: none;
         object-fit: cover;

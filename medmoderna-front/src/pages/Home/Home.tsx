@@ -19,6 +19,7 @@ import ReactWhatsapp from "react-whatsapp";
 import {IoLogoWhatsapp} from "react-icons/io";
 import videoBack from "../../assets/4K cannabis 004 - San Rafael'71 Tangerine Dream .mp4";
 import gifBack from "../../assets/back.gif";
+
 const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
 const AddressMap = () => {
     return (
@@ -58,8 +59,8 @@ const Home = () => {
     const postsUrls = ["https://www.instagram.com/p/Ckqxnp9DKZx/embed", "https://www.instagram.com/p/COi_Ep9nW2A/embed", "https://www.instagram.com/p/CjpsbJkAaQl/embed", "https://www.instagram.com/p/CeTSXK1sDpU/embed", "https://www.instagram.com/p/CdbJE9pDOtR/embed", "https://www.instagram.com/p/CfGzFDFMkoW/embed", "https://www.instagram.com/p/Ce6EsEQMa_A/embed"];
     const [igPost, setIgPost] = useState<string>("https://www.instagram.com/p/COi_Ep9nW2A/embed");
     const [videoUrl, setVideoUrl] = useState<string>("");
-    useEffect(()=> {
-        if(videoUrl.length < 1) {
+    useEffect(() => {
+        if (videoUrl.length < 1) {
             let directUrl: any = undefined;
             //ytdl.getInfo("https://www.youtube.com/watch?v=R92eQiYabQQ").then((data) => {directUrl= data});
             console.log({directUrl})
@@ -94,13 +95,15 @@ const Home = () => {
 
                         <video autoPlay muted loop playsInline>
 
-                            <source type="video/mp4" src={videoBackUrlFromGithub} />
+                            <source type="video/mp4" src={videoBackUrlFromGithub}/>
                         </video>
                         <div className="caption">
 
                             <span className="border">
                         <div>
-                                <img className={"logoHome"} src={"https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png"} alt={"logo"} width={"350px"}/>
+                                <img className={"logoHome"}
+                                     src={"https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png"}
+                                     alt={"logo"} width={"350px"}/>
                         </div>
                     </span>
                         </div>
@@ -267,23 +270,41 @@ const Home = () => {
 
 
                 </div>
+                {/*pc*/}
+                <section className="mobile">
+                    <div className="mobileSectionFull">
 
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    paddingTop: "0.5rem",
-                    backgroundColor: "whitesmoke",
-                }}>
-                    <h2>Abrimos de lunes a viernes de 9:30 - 14:30 y de 16:30 - 20:00</h2>
-                </div>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    paddingTop: "0.5rem",
-                    backgroundColor: "whitesmoke"
-                }}>
-                    <h3>Abrimos los sábados de 9:30 - 14:30</h3>
-                </div>
+                    </div>
+                    <div className="mobileSectionSeparator">
+
+                    </div>
+                    <div className="mobileSectionHalf">
+
+                    </div>
+                    <div className="mobileSectionSeparator">
+
+                    </div>
+                    <div className="mobileSectionHalf">
+
+                        <div style={{marginRight: "30px", marginTop: "30px"}}>
+
+                            <BrandCard name={"CANNA"}
+                                       imgSrc={"http://akjacks.com/images/sale/Canna/Canna-logo.png"}
+                            />
+                        </div>
+                        <div style={{marginRight: "30px", marginTop: "30px"}}>
+                            <BrandCard name={"MEDICINA MODERNA"}
+                                       imgSrc={"https://i.ibb.co/x8NJ89x/banner.png"}
+                            />
+                        </div>
+                        <div style={{marginRight: "30px", marginTop: "30px"}}>
+                            <BrandCard name={"GROW THE JUNGLE"}
+                                       imgSrc={"https://http2.mlstatic.com/storage/mshops-appearance-api/images/49/75651549/logo-2021090312474054700.png"}
+                            />
+                        </div>
+                    </div>
+                </section>
+
             </div>
 
 
