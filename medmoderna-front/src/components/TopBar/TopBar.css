@@ -150,4 +150,8 @@
     .topbarIcons {
         display: none;
     }
+
+    .searchBar {
+        left: 16vw
+    }
 }

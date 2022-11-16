@@ -34,3 +34,9 @@ body{
 *::after,*::before {
   box-sizing: border-box;
 }
+
+@media (max-width: 420px) {
+  body {
+    overflow-y: hidden;
+  }
+}
