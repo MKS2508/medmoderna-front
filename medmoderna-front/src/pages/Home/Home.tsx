@@ -90,11 +90,10 @@ const Home = () => {
 
                     <div className="ParallaxVideo">
 
-                        <video autoPlay muted  poster={gifBack}>
+                        <video autoPlay muted  >
 
                             <source type="video/mp4" src={videoBackUrlFromGithub} />
                         </video>
-                        <img className="backgroundGif" alt={"background"} src ={gifBack}/>
                         <div className="caption">
 
                             <span className="border">
