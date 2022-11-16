@@ -90,7 +90,7 @@ const Home = () => {
 
                     <div className="ParallaxVideo">
 
-                        <video autoPlay muted playsInline>
+                        <video autoPlay muted loop playsInline>
 
                             <source type="video/mp4" src={videoBackUrlFromGithub} />
                         </video>
