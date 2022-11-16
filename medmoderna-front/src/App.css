@@ -37,6 +37,6 @@ body{
 
 @media (max-width: 420px) {
   body {
-    overflow-y: hidden;
+    overflow-x: hidden;
   }
 }
