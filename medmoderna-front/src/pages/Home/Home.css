@@ -34,7 +34,7 @@
 }
 .ParallaxVideo{
     min-width: 100vw;
-    min-height: 120vh;
+    min-height: 110vh;
 }
 .ParallaxVideo video{
     min-width: 100vw;
@@ -137,19 +137,29 @@
     }
 
     .mobileSectionFull{
+        text-align: center;
         display: grid;
         grid-template-columns: repeat(auto-fit, 18rem);
-
+        padding-top: 5vh;
         padding-left: 12vw;
         justify-content: center;
         width: 100vw;
-        height: 120vh;
+        height: 90vh;
         background-color: #EAE6E6FF;
+    }
+    .mobileSectionFull h1{
+        font-size: 30px;
+
+    }
+    .mobileSectionHalf h1{
+        padding-top: 3vh;
+        font-size: 30px;
+
     }
     .mobileSectionHalf{
         padding-left: 20vw;
-
-        display: flex;
+        text-align: center;
+        display: grid;
         width: 100vw;
         height: 50vh;
     }
@@ -191,7 +201,6 @@
     }
     .mobileBrands {
         padding-top: 2rem;
-        padding-left: 4vw;
         display: grid;
         grid-template-columns: repeat(auto-fit, 70vw);
         justify-content: center;

@@ -38,7 +38,7 @@ const AddressMapMobile = () => {
         <div className="google-map-code">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5886.208184788902!2d-2.420187248556861!3d42.46807477334467!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa6f5617fabcc60ac!2sMedicina%20Moderna%20Growshop!5e0!3m2!1ses-419!2ses!4v1655328560324!5m2!1ses-419!2ses"
-                width="300" height="450" frameBorder="0" style={{border: 0, borderRadius: "5%"}}
+                width="300" height="550" frameBorder="0" style={{border: 0, borderRadius: "5%"}}
                 allowFullScreen={false} aria-hidden="false"
                 tabIndex={0}/>
         </div>
@@ -285,11 +285,19 @@ const Home = () => {
                 {/*pc*/}
                 <section className="mobile">
                     <div className="mobileSectionFull">
-                        <div style={{display: 'flex', justifyContent: 'center', marginTop: "2rem", borderRadius: "20%"}}>
+                        <h1>¿Dónde estamos? 📍</h1>
+                        <div
+                            style={{display: 'flex', justifyContent: 'center', borderRadius: "20%"}}>
                             <AddressMapMobile/>
                         </div>
+
+                    </div>
+                    <div className="mobileSectionSeparator">
+                    </div>
+                    <div className="mobileSectionFull">
                         <div>
                             <AnimatePresence>
+                                <h1>Nuestras RRSS 💚</h1>
                                 <motion.iframe
                                     className="iframeIg"
                                     initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: "500"}}
@@ -307,6 +315,8 @@ const Home = () => {
 
                     </div>
                     <div className="mobileSectionHalf">
+                        <h1>Nuestras Marcas 💚</h1>
+
                         <div className="mobileBrands">
 
                             <div>
@@ -341,7 +351,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                    </div >
+                    </div>
                     <div className="mobileSectionSeparator">
 
                     </div>
