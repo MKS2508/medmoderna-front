@@ -20,6 +20,7 @@ import {IoLogoWhatsapp} from "react-icons/io";
 import videoBack from "../../assets/4K cannabis 004 - San Rafael'71 Tangerine Dream .mp4";
 import gifBack from "../../assets/back.gif";
 import poster from "../../assets/poster.png";
+import ProductCardMobile from "../../components/Product/ProductCardMobile";
 
 const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
 const AddressMap = () => {
@@ -47,14 +48,31 @@ const AddressMapMobile = () => {
 }
 
 const HomeProducts = (data: { products: IProductProps[] }) => {
-    return <div className={ "HomeProductsSection"}>
+    return <div className={"HomeProductsSection"}>
         {
             data.products.map((item) =>
                 <>
                     <div style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardHome productId={item.productId} name={item.name} price={item.price} description={item.description}
+                        <ProductCardHome productId={item.productId} name={item.name} price={item.price}
+                                         description={item.description}
                                          imgSrc={item.imgSrc}
                                          brand={item.brand}/>
+                    </div>
+                </>
+            )
+        }
+    </div>
+}
+const HomeProductsMobile = (data: { products: IProductProps[] }) => {
+    return <div className={"productsWrapperMobile"}>
+        {
+            data.products.map((item) =>
+                <>
+                    <div style={{marginRight: "30px", marginTop: "30px"}}>
+                        <ProductCardMobile productId={item.productId} name={item.name} price={item.price}
+                                           description={item.description}
+                                           imgSrc={item.imgSrc}
+                                           brand={item.brand}/>
                     </div>
                 </>
             )
@@ -66,19 +84,49 @@ const Home = () => {
     const homeProds: IProductProps[] = [{
         description: "",
         name: "GROTEK MONSTER BLOOM",
-        imgSrc:"https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        brand: "GROTEK",
+        price: 50.0
+    }, {
+        description: "",
+        name: "GROTEK MONSTER BLOOM",
+        imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        brand: "GROTEK",
+        price: 50
+    }, {
+        description: "",
+        name: "GROTEK MONSTER BLOOM",
+        imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        brand: "GROTEK",
+        price: 50.0
+    }, {
+        description: "",
+        name: "GROTEK MONSTER BLOOM",
+        imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        brand: "GROTEK",
+        price: 50.0
+    }, {
+        description: "",
+        name: "GROTEK MONSTER BLOOM",
+        imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        brand: "GROTEK",
+        price: 50
+    }, {
+        description: "",
+        name: "GROTEK MONSTER BLOOM",
+        imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        brand: "GROTEK",
+        price: 50.0
+    }, {
+        description: "",
+        name: "GROTEK MONSTER BLOOM",
+        imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50.0
     },{
         description: "",
         name: "GROTEK MONSTER BLOOM",
-        imgSrc:"https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
-        brand: "GROTEK",
-        price: 50
-    },{
-        description: "",
-        name: "GROTEK MONSTER BLOOM",
-        imgSrc:"https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
+        imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50.0
     },];
@@ -122,15 +170,22 @@ const Home = () => {
 
                         <video autoPlay muted loop playsInline poster={poster}>
 
-                            <source type="video/mp4" src={videoBackUrlFromGithub} />
+                            <source type="video/mp4" src={videoBackUrlFromGithub}/>
                         </video>
                         <div className="caption">
 
                             <span className="border">
                         <div>
-                                <img className={"logoHome"}
-                                     src={"https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png"}
-                                     alt={"logo"} width={"350px"}/>
+                            <AnimatePresence>
+                                 <motion.img className={"logoHome"}
+                                             initial={{opacity: 0,}}
+                                             animate={{opacity: 1}}
+                                             exit={{opacity: 0.3}}
+                                             transition={{duration: 2}}
+                                             src={"https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png"}
+                                             alt={"logo"} width={"350px"}/>
+                            </AnimatePresence>
+
                         </div>
                     </span>
                         </div>
@@ -209,7 +264,7 @@ const Home = () => {
                             paddingTop: "2rem",
                             backgroundColor: "whitesmoke"
                         }}>
-                            <h1>Algunos de nuestros productos</h1>
+                            <h1>Algunos de nuestros productos ☘️</h1>
                         </div>
                         <div style={{display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke"}}>
                             <h2>{" < CBD > "}</h2>
@@ -300,11 +355,9 @@ const Home = () => {
                 {/*pc*/}
                 <section className="mobile">
                     <div className="mobileSectionFull" style={{backgroundColor: "#EAE6E6FF", height: "100rem"}}>
-                        <h1>Algunos de nuestros productos </h1>
-                        <div
-                            style={{display: 'grid', justifyContent: 'center', borderRadius: "20%"}}>
-                            <HomeProducts products={homeProds}></HomeProducts>
-                        </div>
+                        <h1>Algunos de nuestros productos ☘️</h1>
+
+                        <HomeProductsMobile products={homeProds}></HomeProductsMobile>
 
                     </div>
                     <div className="mobileSectionFull" style={{backgroundColor: "white", height: "700px"}}>
@@ -317,14 +370,14 @@ const Home = () => {
                     </div>
                     <div className="mobileSectionSeparator">
                     </div>
-                    <div className="mobileSectionFull" style={{paddingTop: 0, height:"600px"}}>
+                    <div className="mobileSectionFull" style={{paddingTop: 0, height: "600px"}}>
                         <div>
                             <AnimatePresence>
                                 <h1 style={{paddingTop: "5vh", paddingBottom: "5vh"}}>Nuestras RRSS 💚</h1>
                                 <motion.iframe
                                     className="iframeIg"
-                                    initial={{opacity: 0, scale: 1,height: "500", }}
-                                    animate={{opacity: 1, scale: 1, height: "500",  }}
+                                    initial={{opacity: 0, scale: 1, height: "500",}}
+                                    animate={{opacity: 1, scale: 1, height: "500",}}
                                     exit={{opacity: 0.3}}
                                     transition={{duration: 1}}
                                     key={igPost} width="100%" height="100%" src={igPost}
@@ -334,13 +387,13 @@ const Home = () => {
                         </div>
 
                     </div>
-                    <div className="mobileSectionFull" style={{paddingTop: "7rem", height:"700px"}}>
+                    <div className="mobileSectionFull" style={{paddingTop: "7rem", height: "700px"}}>
                         <div>
                             <AnimatePresence>
 
                                 <motion.iframe
                                     className="iframeIg"
-                                    initial={{opacity: 0, scale: 1,height: "680"}}
+                                    initial={{opacity: 0, scale: 1, height: "680"}}
                                     animate={{opacity: 1, scale: 1, height: "680"}}
                                     exit={{opacity: 0.3}}
                                     transition={{duration: 1.5}}

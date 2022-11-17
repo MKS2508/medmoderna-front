@@ -90,8 +90,10 @@
     text-align: center;
 
 }
+
 .HomeProductsSection {
-    display:grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 22rem);
     justify-content: center;
     padding-top: 2rem;
     padding-left: 6vw;
@@ -123,7 +125,24 @@
     font-size: 25px;
 }
 
-@media (max-width: 420px) {
+.productsWrapperMobile{
+    padding-left: 10vw;
+    position: relative;
+    overflow-y: hidden;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+@media (max-width: 440px) {
+
+    .HomeProductsSection {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 16rem);
+        justify-content: center;
+        padding-top: 2rem;
+        padding-left: 6vw;
+    }
+
     .mobile {
         display: block;
     }
@@ -180,7 +199,7 @@
         display: flex;
         width: 100vw;
         height: 1rem;
-        background-color: #008F28;;
+        background-color: #008F28;
 
     }
     .ParallaxVideo > .backgroundGif {

@@ -189,7 +189,7 @@ nav {
     position: absolute;
     top: 20vh;
 }
-@media (max-width: 420px) {
+@media (max-width: 440px) {
 
     .logoBanner{
         display: flex;

@@ -8,6 +8,7 @@ import spinner2 from "../../assets/spinner3.svg"
 import {AnimatePresence, motion} from 'framer-motion';
 import ProductCard from "../../components/Product/ProductCard";
 import {useParams} from "react-router-dom";
+import ProductCardMobile from "../../components/Product/ProductCardMobile";
 
 
 const Products = (props: IProductPageProps) => {
@@ -29,42 +30,83 @@ const Products = (props: IProductPageProps) => {
 
 
     const ProductCards = (data: { products: IProductProps[] }) => {
-        return(
-        <>
-            <div className="wrapper-grid">
+        return (
+            <>
+                <div className="wrapper-grid">
 
-                {
+                    {
 
-                    data.products.map((item, index) =>
-                        <>
-                            <AnimatePresence>
-                                {/*<ProductCard key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>*/}
-                                { (!loading) ?
-
-
-                                    <motion.div
-                                        custom={{delay: (index + 1) * 0.25}}
-                                        initial='hidden'
-                                        animate={variants.visible({delay: (index + 1) * 0.1})}
-                                        variants={variants}
-                                        key={item.name}
+                        data.products.map((item, index) =>
+                            <>
+                                <AnimatePresence>
+                                    {/*<ProductCard key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>*/}
+                                    {(!loading) ?
 
 
-                                    >
-                                        <ProductCard key={item.name} imgSrc={item.imgSrc}
-                                                     description={item.description} price={item.price}
-                                                     productId={item.productId} name={item.name} brand={item.brand} category={item.category}/>
-                                    </motion.div>
+                                        <motion.div
+                                            custom={{delay: (index + 1) * 0.25}}
+                                            initial='hidden'
+                                            animate={variants.visible({delay: (index + 1) * 0.1})}
+                                            variants={variants}
+                                            key={item.name}
 
-                                    : <></>}
-                            </AnimatePresence>
 
-                        </>
-                    )
-                }
+                                        >
+                                            <ProductCard key={item.name} imgSrc={item.imgSrc}
+                                                         description={item.description} price={item.price}
+                                                         productId={item.productId} name={item.name} brand={item.brand}
+                                                         category={item.category}/>
+                                        </motion.div>
 
-            </div>
-        </>)
+                                        : <></>}
+                                </AnimatePresence>
+
+                            </>
+                        )
+                    }
+
+                </div>
+            </>)
+
+    };
+    const ProductCardsMobile = (data: { products: IProductProps[] }) => {
+        return (
+            <>
+                <div className="wrapper-grid">
+
+                    {
+
+                        data.products.map((item, index) =>
+                            <>
+                                <AnimatePresence>
+                                    {/*<ProductCard key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>*/}
+                                    {(!loading) ?
+
+
+                                        <motion.div
+                                            custom={{delay: (index + 1) * 0.25}}
+                                            initial='hidden'
+                                            animate={variants.visible({delay: (index + 1) * 0.1})}
+                                            variants={variants}
+                                            key={item.name}
+
+
+                                        >
+                                            <ProductCardMobile key={item.name} imgSrc={item.imgSrc}
+                                                               description={item.description} price={item.price}
+                                                               productId={item.productId} name={item.name}
+                                                               brand={item.brand} category={item.category}/>
+                                        </motion.div>
+
+                                        : <></>}
+                                </AnimatePresence>
+
+                            </>
+                        )
+                    }
+
+                </div>
+            </>)
 
     };
 
@@ -93,8 +135,9 @@ const Products = (props: IProductPageProps) => {
         if (brand !== undefined) {
             props2.name = brand;
             products = await getProductsFromBrand(props2, brand);
+        } else if (brand === undefined) {
+            products = await getProductsFromCategory(props2)
         }
-        else if (brand === undefined) { products = await getProductsFromCategory(props2)}
         setProps2(props2)
         return products;
 
@@ -123,7 +166,7 @@ const Products = (props: IProductPageProps) => {
                     exit={{opacity: 0}}
                 >
                     <div className="title">
-                        
+
                         <h1>CATALOGO DE {props.name}</h1>
                         <h2>{props.description}</h2>
                     </div>
@@ -137,7 +180,13 @@ const Products = (props: IProductPageProps) => {
                             <img src={spinner2} className="filter-green" width="200vh" alt="spinner"/>
                         </div>
                     </AnimatePresence>
-                    <ProductCards products={products}/>
+
+                    <section className="normalSection">
+                        <ProductCards products={products}/>
+                    </section>
+                    <section className="mobile">
+                        <ProductCardsMobile products={products}/>
+                    </section>
 
                 </>
             }

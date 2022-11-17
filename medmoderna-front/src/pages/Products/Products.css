@@ -177,8 +177,18 @@
 
 
 
+.mobile {
+    display: none;
+}
+@media (max-width: 440px) {
 
-@media (max-width: 420px) {
+
+    .normalSection {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
     .title {
         padding: 0!important;
         text-align: center;
@@ -189,8 +199,7 @@
     }
 
     .wrapper-grid {
-        grid-template-columns: repeat(auto-fit, 13rem);
-
+        grid-template-columns: repeat(auto-fit, 16rem);
     }
     .title h1 {
         padding-right: 10vw;
