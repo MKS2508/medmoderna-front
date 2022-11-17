@@ -19,6 +19,7 @@ import ReactWhatsapp from "react-whatsapp";
 import {IoLogoWhatsapp} from "react-icons/io";
 import videoBack from "../../assets/4K cannabis 004 - San Rafael'71 Tangerine Dream .mp4";
 import gifBack from "../../assets/back.gif";
+import poster from "../../assets/poster.png";
 
 const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
 const AddressMap = () => {
@@ -119,9 +120,9 @@ const Home = () => {
 
                     <div className="ParallaxVideo">
 
-                        <video autoPlay muted loop playsInline>
+                        <video autoPlay muted loop playsInline poster={poster}>
 
-                            <source type="video/mp4" src={videoBackUrlFromGithub}/>
+                            <source type="video/mp4" src={videoBackUrlFromGithub} />
                         </video>
                         <div className="caption">
 
