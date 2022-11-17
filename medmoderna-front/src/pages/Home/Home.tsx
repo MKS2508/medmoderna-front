@@ -134,6 +134,26 @@ const Home = () => {
     const [igPost, setIgPost] = useState<string>("https://www.instagram.com/p/COi_Ep9nW2A/embed");
     const [fbPost, setFbPost] = useState<string>("https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid024VCQ8PL6NxmVcJPRxrYbSZmbXTZxfosYuRdQWCWewSV78vbi39djjbNoBx43KLXLl%26id%3D110763457854490&show_text=true&width=300");
     const [videoUrl, setVideoUrl] = useState<string>("");
+    const [isVisible, setIsVisible] = useState(true);
+
+
+    const listenToScroll = () => {
+        let heightToHideFrom = 30;
+        const winScroll = document.body.scrollTop ||
+            document.documentElement.scrollTop;
+
+        if (winScroll > heightToHideFrom) {
+            isVisible &&      // to limit setting state only the first time
+            setIsVisible(false);
+        } else {
+            setIsVisible(true);
+        }
+
+        if (window.location.pathname != "/") {
+            setIsVisible(false)
+        }
+    };
+
     useEffect(() => {
         if (videoUrl.length < 1) {
             let directUrl: any = undefined;
@@ -150,7 +170,13 @@ const Home = () => {
             } else {
                 //setIgPost(setRandomPost(postsUrls))
             }
+            if (window.location.pathname != "/") {
+                setIsVisible(false)
+            }
 
+            window.addEventListener("scroll", listenToScroll);
+            return () =>
+                window.removeEventListener("scroll", listenToScroll);
         }, 5000);
         return () => clearInterval(interval);
     }, []);
@@ -172,7 +198,7 @@ const Home = () => {
 
                             <source type="video/mp4" src={videoBackUrlFromGithub}/>
                         </video>
-                        <div className="caption">
+                        <div className={(!isVisible && window.screen.width < 440) ? "captionWithSidebar" : "caption"}>
 
                             <span className="border">
                         <div>
@@ -360,6 +386,9 @@ const Home = () => {
                         <HomeProductsMobile products={homeProds}></HomeProductsMobile>
 
                     </div>
+                    <div className="mobileSectionSeparator">
+                    </div>
+
                     <div className="mobileSectionFull" style={{backgroundColor: "white", height: "700px"}}>
                         <h1>¿Dónde estamos? 📍</h1>
                         <div
@@ -425,8 +454,6 @@ const Home = () => {
 
                         </div>
                     </div>
-                    <div className="mobileSectionSeparator">
-                    </div>
                     <div style={{backgroundColor: "#EAE6E6FF", height: "400px"}} className="mobileSectionHalf">
 
 
@@ -445,9 +472,6 @@ const Home = () => {
                         </div>
 
                     </div>
-                    <div className="mobileSectionSeparator">
-
-                    </div>
                     <div className="mobileSectionHalf">
 
 
@@ -464,7 +488,6 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-
                 </section>
 
             </div>

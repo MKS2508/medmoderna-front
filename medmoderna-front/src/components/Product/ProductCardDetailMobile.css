@@ -1,0 +1,48 @@
+.imgBoxDetail {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.mobileSection {
+    overflow-x: hidden;
+}
+.waMobile {
+    display: grid;
+    justify-content: center;
+
+}
+.imgBoxDetail img {
+    width: 100vw;
+
+}
+
+.titleDetail {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 16rem);
+    padding-left: 5vw;
+    padding-bottom: 5vh;
+}
+
+.titleDetail h1 {
+    text-align: center;
+    font-size: 40px;
+}
+.titleDetail h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.bar {
+    color: white!important;
+    padding-left: 20px;
+    width: 100vw;
+    display: grid;
+    justify-content: center;
+    font-size: 5em;
+    align-items: center;
+    margin-left: 0!important;
+    background-color: rgba(31, 30, 30, 0.55);
+}

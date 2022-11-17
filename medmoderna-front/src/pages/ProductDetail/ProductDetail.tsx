@@ -9,10 +9,11 @@ import {AnimatePresence, motion} from 'framer-motion';
 import ProductCard from "../../components/Product/ProductCard";
 import {Link, useParams} from "react-router-dom";
 import ProductCardDetail from "../../components/Product/ProductCardDetail";
+import ProductCardDetailMobile from "../../components/Product/ProductCardDetailMobile";
 
 
 const ProductDetail = (props: IProductPageProps) => {
-    let params  = useParams();
+    let params = useParams();
 
     console.log({params: useParams(), id: params.id})
     const variants = {
@@ -28,7 +29,6 @@ const ProductDetail = (props: IProductPageProps) => {
             }
         })
     }
-
 
 
     const [product, setProduct] = useState<IProductProps>({
@@ -77,30 +77,45 @@ const ProductDetail = (props: IProductPageProps) => {
 
 
                     <AnimatePresence>
-                        <div  hidden={!showSpinner} style={{justifyContent: "center", display:"flex", paddingTop:"12rem"}}>
+                        <div hidden={!showSpinner}
+                             style={{justifyContent: "center", display: "flex", paddingTop: "12rem"}}>
                             <img src={spinner2} className="filter-green" width="200vw" alt="spinner"/>
                         </div>
 
-                    <div
+                        <div
 
-                        hidden={showSpinner} style={{display:"flex", justifyContent: "center", paddingTop:"12rem"}}>
-                        <motion.div
-                            initial={{opacity: 0}}
-                            animate={{opacity: 1}}
-                            exit={{opacity: 0}}
-                            transition={{duration: 2}}
-                            className="bar" style={{position: "fixed", top: 30, left: 0}}>
-                            <h3 style={{fontSize: "1.5rem", textAlign: "start"}}>
-                                <Link to={`/${product.category}`}> <span
-                                    style={{color: "#0dd47c", fontWeight: "bolder",}}>{product.category}</span></Link> <span hidden={showSpinner}>/</span>
-                                <Link to={`/MARCAS/${product.brand}`}> <span
-                                    style={{color: "#0dd47c", fontWeight: "bolder",}}>{product.brand}</span> </Link></h3>
-                        </motion.div>
+                            hidden={showSpinner}
+                            style={{display: "flex", justifyContent: "center", paddingTop: "12rem"}}>
+                            <motion.div
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                                transition={{duration: 2}}
+                                className="bar" style={{position: "fixed", top: 30, left: 0}}>
+                                <h3 style={{fontSize: "1.5rem", textAlign: "start"}}>
+                                    <Link to={`/${product.category}`}> <span
+                                        style={{
+                                            color: "#0dd47c",
+                                            fontWeight: "bolder",
+                                        }}>{product.category}</span></Link> <span hidden={showSpinner}>/</span>
+                                    <Link to={`/MARCAS/${product.brand}`}> <span
+                                        style={{color: "#0dd47c", fontWeight: "bolder",}}>{product.brand}</span> </Link>
+                                </h3>
+                            </motion.div>
 
-                        <ProductCardDetail  key={product.name} imgSrc={product.imgSrc}
-                                     description={product.description} price={product.price}
-                                     productId={product.productId} name={product.name} brand={product.brand} category={product.category}/>
-                    </div>
+                            {(screen.width < 440) ?
+                                <ProductCardDetailMobile key={product.name} imgSrc={product.imgSrc}
+                                                   description={product.description}
+                                                   price={product.price}
+                                                   productId={product.productId} name={product.name}
+                                                   brand={product.brand}
+                                                   category={product.category}/> :
+                                <ProductCardDetail key={product.name} imgSrc={product.imgSrc}
+                                                   description={product.description} price={product.price}
+                                                   productId={product.productId} name={product.name}
+                                                   brand={product.brand} category={product.category}/>
+                            }
+                        </div>
                     </AnimatePresence>
 
                 </div>

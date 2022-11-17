@@ -19,21 +19,44 @@ const ProductCardMobile = (props: IProductProps) => {
 
         }} onMouseOver={(event) => {
             setShowButton(true)
-        }} className="cardMobile" key="cardMobile">
+        }} onMouseEnter={() => {
+            setShowButton(true)
+        }}
+             className="cardMobile" key="cardMobile">
 
-            <div className="imgBox">
-                <img
+            <div className="imgBox" onMouseLeave={() => {
+                setShowButton(false)
+
+            }} onMouseOver={(event) => {
+                setShowButton(true)
+            }} onMouseEnter={() => {
+                setShowButton(true)
+            }}>
+                <img onMouseLeave={() => {
+                    setShowButton(false)
+
+                }} onMouseOver={(event) => {
+                    setShowButton(true)
+                }} onMouseEnter={() => {
+                    setShowButton(true)
+                }}
                     src={imageSource}
                     alt="mouse corsair"/>
             </div>
 
-            <div className="contentBox">
-                <h3>{props.name}</h3>
-                {
-                    (showButton == true) ?
+            <div onMouseLeave={() => {
+                setShowButton(false)
 
-                     <Link className="button-85" to={`/product/${props.productId}`}> <span>Ver</span> </Link> : <></>
-                }
+            }} onMouseOver={(event) => {
+                setShowButton(true)
+            }} onMouseEnter={() => {
+                setShowButton(true)
+            }} className="contentBox">
+                <h3>{props.name}</h3>
+
+
+                     <Link className="button-85" to={`/product/${props.productId}`}> <span>Ver</span> </Link>
+
 
 
             </div>

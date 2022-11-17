@@ -88,7 +88,6 @@
     top: 40%;
     width: 100%;
     text-align: center;
-
 }
 
 .HomeProductsSection {
@@ -128,7 +127,7 @@
 .productsWrapperMobile{
     padding-left: 10vw;
     position: relative;
-    overflow-y: hidden;
+    overflow-x: hidden;
     display: grid;
     align-content: center;
     justify-content: center;
@@ -144,6 +143,8 @@
     }
 
     .mobile {
+        overflow-y: hidden;
+
         display: block;
     }
     .ParallaxVideo{
@@ -214,10 +215,13 @@
         width:80vw;
         height: 100%;
 
-
     }
 
-
+    .sectionWithSidebar {
+        z-index: 30;
+        width:80vw;
+        height: 100%;
+    }
     .brandCard {
         width: 100%!important;
         margin-top: 1rem;
@@ -230,8 +234,24 @@
         justify-content: center;
     }
     .caption {
+        overflow-y: hidden;
+
         display: flex;
+        transition: ease;
+        transition-duration: .3s;
         justify-content: start;
+    }
+    .captionWithSidebar {
+        overflow-y: hidden;
+
+        transition: ease;
+        transition-duration: .3s;
+        position: absolute;
+        left: 18vw;
+        top: 38vh;
+        max-width: 100%;
+        text-align: center;
+
     }
 }
 
