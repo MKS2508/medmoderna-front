@@ -298,7 +298,7 @@ const Home = () => {
                 </div>
                 {/*pc*/}
                 <section className="mobile">
-                    <div className="mobileSectionFull" style={{backgroundColor: "#EAE6E6FF", height: "160vh"}}>
+                    <div className="mobileSectionFull" style={{backgroundColor: "#EAE6E6FF", height: "100rem"}}>
                         <h1>Algunos de nuestros productos </h1>
                         <div
                             style={{display: 'grid', justifyContent: 'center', borderRadius: "20%"}}>
@@ -306,7 +306,7 @@ const Home = () => {
                         </div>
 
                     </div>
-                    <div className="mobileSectionFull" style={{backgroundColor: "white"}}>
+                    <div className="mobileSectionFull" style={{backgroundColor: "white", height: "700px"}}>
                         <h1>¿Dónde estamos? 📍</h1>
                         <div
                             style={{display: 'flex', justifyContent: 'center', borderRadius: "20%"}}>
@@ -316,7 +316,7 @@ const Home = () => {
                     </div>
                     <div className="mobileSectionSeparator">
                     </div>
-                    <div className="mobileSectionFull">
+                    <div className="mobileSectionFull" style={{paddingTop: 0, height:"600px"}}>
                         <div>
                             <AnimatePresence>
                                 <h1 style={{paddingTop: "5vh", paddingBottom: "5vh"}}>Nuestras RRSS 💚</h1>
@@ -333,7 +333,7 @@ const Home = () => {
                         </div>
 
                     </div>
-                    <div className="mobileSectionFull" style={{paddingTop: 0, height:"70vh"}}>
+                    <div className="mobileSectionFull" style={{paddingTop: "7rem", height:"700px"}}>
                         <div>
                             <AnimatePresence>
 
@@ -353,7 +353,7 @@ const Home = () => {
                     <div className="mobileSectionSeparator">
 
                     </div>
-                    <div className="mobileSectionHalf" style={{height: "60vh"}}>
+                    <div className="mobileSectionHalf" style={{height: "500px"}}>
                         <h1>Nuestras Marcas 💚</h1>
 
                         <div className="mobileBrands">
@@ -373,7 +373,7 @@ const Home = () => {
                     </div>
                     <div className="mobileSectionSeparator">
                     </div>
-                    <div style={{backgroundColor: "#EAE6E6FF"}} className="mobileSectionHalf">
+                    <div style={{backgroundColor: "#EAE6E6FF", height: "400px"}} className="mobileSectionHalf">
 
 
                         <div className="mobileBrands">
