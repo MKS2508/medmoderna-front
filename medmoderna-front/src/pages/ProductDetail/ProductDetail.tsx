@@ -62,7 +62,9 @@ const ProductDetail = (props: IProductPageProps) => {
         console.log({props})
         setProduct(await getProduct());
     }
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     useEffect(() => {
         setLoading(true);
         initializePage(page).then(() => setLoading(false))

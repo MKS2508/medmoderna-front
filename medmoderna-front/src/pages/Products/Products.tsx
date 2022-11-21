@@ -153,6 +153,9 @@ const Products = (props: IProductPageProps) => {
     }
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+    useEffect(() => {
         setLoading(true);
         initializePage(page).then(() => setLoading(false))
     }, [page, props]);

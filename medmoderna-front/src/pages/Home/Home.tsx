@@ -156,6 +156,8 @@ const Home = () => {
     };
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+
         if (videoUrl.length < 1) {
             let directUrl: any = undefined;
             //ytdl.getInfo("https://www.youtube.com/watch?v=R92eQiYabQQ").then((data) => {directUrl= data});
