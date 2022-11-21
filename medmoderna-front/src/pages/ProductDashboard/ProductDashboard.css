@@ -5,12 +5,14 @@
     display: flex;
     justify-content: center;
 }
+
 .background {
     width: 100vw;
     height: 100%;
     background-size: cover;
     background-image: url("https://i.ibb.co/6DwwVvW/parallax2.jpg");
 }
+
 .center {
     height: 20vh;
     width: 100vw;
@@ -45,7 +47,7 @@
     width: 100%;
     display: grid;
     grid: auto / auto auto;
-    grid-template-columns: repeat(auto-fit,minmax(40%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
     grid-gap: 30px;
 }
 
@@ -121,9 +123,91 @@
     transition: all 0.4s;
 }
 
+.buttons {
+
+    position: relative;
+    left: -20px;
+    display: flex;
+    width: 600px;
+    
+    justify-content: space-around;
+}
+/* CSS */
+.button-24 {
+    background: #53dd44;
+    border: 1px solid #0a720a;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #0a720a;
+}
+
+.button-24:active {
+    opacity: .5;
+}/* CSS */
+
+.button-25 {
+    background: #435eec;
+    border: 1px solid #0c2b7e;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.button-25:hover,
+.button-25:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #435eec;
+}
+
+.button-25:active {
+    opacity: .5;
+}
+
 @media screen and (max-width: 900px) {
     .cardForm .row {
-        grid-template-columns: repeat(auto-fit,minmax(70%, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(70%, 1fr));
     }
 
     .cardForm {

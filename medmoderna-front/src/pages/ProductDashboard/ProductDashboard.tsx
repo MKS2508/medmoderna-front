@@ -2,16 +2,13 @@ import './ProductDashboard.css';
 import React, {useEffect, useState} from "react";
 import {IProductPageProps} from "../../models/IProductPageProps";
 import {IProductProps} from "../../models/IProductProps";
-import {postProduct, getProductById, editProduct} from "../../services/api-products-service";
-import spinner from "../../assets/spinner.svg"
-import spinner2 from "../../assets/spinner3.svg"
-import {AnimatePresence, motion} from 'framer-motion';
-import ProductCard, {ProductCardPreview} from "../../components/Product/ProductCard";
+import {editProduct, getImagesFromQuery, getProductById, postProduct} from "../../services/api-products-service";
+import {ProductCardPreview} from "../../components/Product/ProductCard";
 import {useParams} from "react-router-dom";
-import ProductCardDetail from "../../components/Product/ProductCardDetail";
 
 
 const ProductDashboard = (props: IProductPageProps) => {
+
     let params = useParams();
     let editMode = (params.id !== undefined);
 
@@ -42,6 +39,8 @@ const ProductDashboard = (props: IProductPageProps) => {
     });
 
     const [loading, setLoading] = useState<boolean>(false);
+    const [imageIndex, setImageIndex] = useState<number>(0);
+    const [images, setImages] = useState<any[]>([]);
     const [page, setActivePage] = useState<number>(0);
     const [productName, setProductName] = useState<string>("Nombre");
     const [productImage, setProductImage] = useState<string>("");
@@ -60,13 +59,22 @@ const ProductDashboard = (props: IProductPageProps) => {
         return product;
 
     };
+
+    const getRelatedImages = async (title: string): Promise<any[]> => {
+
+        return await getImagesFromQuery(title);
+
+    };
+
+
     const initializePage = async (pageParam: number) => {
         //a este metodo se llama cada vez que renderizamos el componente por primera vez o al cambiar la pagina
         // llama al get products, con el id de categoria cogido de las props y el  num de pagina del estado
         // getProducts(props, pageParam)
         //si page es 0 (inicial) y props.pagination es null,
-        console.log({prod: await  getProduct()})
+        console.log({prod: await getProduct()})
         setProduct(await getProduct());
+
     }
 
     useEffect(() => {
@@ -123,7 +131,7 @@ const ProductDashboard = (props: IProductPageProps) => {
             name: productName,
             price: productPrice,
         }
-        await editProduct(params.id,defProduct);
+        await editProduct(params.id, defProduct);
         alert('A product was edited: ' + productName);
         console.log({defProduct});
     }
@@ -131,30 +139,69 @@ const ProductDashboard = (props: IProductPageProps) => {
         <div className="background">
             {
                 <>
-                    <div style={{paddingTop:"8vw"}}></div>
+                    <div style={{paddingTop: "8vw"}}></div>
 
                     <div className="cardForm">
 
                         <form onSubmit={(editMode) ? handleSubmitEdit : handleSubmitPost}>
-                            <div style={{display:"flex", justifyContent:"center"}}>
+                            <div style={{display: "flex", justifyContent: "center"}}>
 
-                            <h2>Nuevo Producto</h2>
+                                <h2>Nuevo Producto</h2>
                             </div>
-                            <div style={{display:"flex", justifyContent:"center"}}>
-                                <ProductCardPreview name={productName} price={productPrice} description={productName} imgSrc={(editMode) ? product.imgSrc : productImage}
-                                             brand={(editMode) ? product.brand : productBrand}/>
+                            <div style={{display: "flex", justifyContent: "center"}}>
+                                <ProductCardPreview name={productName} price={productPrice} description={productName}
+                                                    imgSrc={productImage}
+                                                    brand={(editMode) ? product.brand : productBrand}/>
                             </div>
+
                             <div className="row">
                                 <div className="col">
+                                    <div className="row">
+                                        <div className="col">
+                                            <div className={"buttons"}>
+
+                                            <button onClick={async ()=>{
+                                                let imagesRelated = await getRelatedImages(productName);
+                                                console.warn({imagesRelated})
+                                                await setImages(imagesRelated);
+                                                await setProductImage(imagesRelated[0].url)
+                                                await setImageIndex(0);
+                                                console.warn({img: imagesRelated[0].url})
+                                            }} className="button-24">Search Images 🔎</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={"buttons"}>
+                                        <button  disabled={(imageIndex == 0)}  onClick={async ()=>{
+                                            let actualIndex = imageIndex;
+                                            await setProductImage(images[actualIndex + 1].url)
+                                            await setImageIndex(actualIndex + 1)
+                                        }} className="button-24"> Prev Image </button>
+                                        <button onClick={async ()=>{
+                                            let actualIndex = imageIndex;
+                                            await setProductImage(`http://localhost:4567/?url=${images[actualIndex].url}`)
+                                        }} className="button-25"> Remove Background 🧙🏻‍♂️️</button>
+                                        <button className="button-24"> Set Image ✅</button>
+                                        <button disabled={(imageIndex == images.length)} onClick={async ()=>{
+                                            let actualIndex = imageIndex;
+                                            await setProductImage(images[actualIndex + 1].url)
+                                            await setImageIndex(actualIndex + 1)
+                                        }} className="button-24"> Next Image</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+
+                                <div className="col">
                                     <div className="form-group">
-                                        <input placeholder="Nombre" type="text" value={ productName}
+                                        <input placeholder="Nombre" type="text" value={productName}
                                                onChange={(event) => handleChangeName(event)}/>
                                     </div>
                                 </div>
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <input placeholder="Imagen" type="url" value={ productImage}
+                                        <input placeholder="Imagen" type="url" value={productImage}
                                                onChange={(event) => handleChangeImage(event)}/>
                                     </div>
                                 </div>
@@ -181,7 +228,8 @@ const ProductDashboard = (props: IProductPageProps) => {
 
                                 <div className="col">
                                     <div className="form-group">
-                                        <input type="number" value={(editMode) ? product.price :productPrice} placeholder="Precio"
+                                        <input type="number" value={(editMode) ? product.price : productPrice}
+                                               placeholder="Precio"
                                                onChange={(event) => handleChangePrice(event)}/>
                                     </div>
                                 </div>
@@ -200,7 +248,7 @@ const ProductDashboard = (props: IProductPageProps) => {
                         </form>
 
                     </div>
-                    <div style={{paddingTop:"8vw"}}></div>
+                    <div style={{paddingTop: "8vw"}}></div>
 
                 </>
 

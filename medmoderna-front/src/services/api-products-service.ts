@@ -59,6 +59,24 @@ export const getProductsFromQuery = async (query: string): Promise<IProductProps
 
     }));
 }
+
+export const getImagesFromQuery = async (query: string): Promise<IProductProps[]> => {
+    //si se le pasa tanmanio usa una url o otra
+    const testingURL = "http://localhost:8080/api"
+    const apiUrl = `${API_URL}/products/images/${query}`;
+    return new Promise<any[]>((async (resolve, reject) => {
+        try {
+            const response = await axios.get(apiUrl);
+            const images: [] = response.data.images;
+            console.warn({images, response});
+            (images) ? resolve(images) : reject(new Error(`404 on ${apiUrl}`))
+        } catch (e:any) {
+            console.log(new Error(e));
+            reject(e)
+        }
+
+    }));
+}
 export const getProductById = async (id?: any): Promise<IProductProps> => {
     //si se le pasa tanmanio usa una url o otra
     const testingURL = "http://localhost:8080/api"
