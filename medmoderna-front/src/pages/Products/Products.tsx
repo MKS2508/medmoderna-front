@@ -9,6 +9,7 @@ import {AnimatePresence, motion} from 'framer-motion';
 import ProductCard from "../../components/Product/ProductCard";
 import {useParams} from "react-router-dom";
 import ProductCardMobile from "../../components/Product/ProductCardMobile";
+import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 
 
 const Products = (props: IProductPageProps) => {
@@ -158,7 +159,7 @@ const Products = (props: IProductPageProps) => {
     const showSpinner = (loading || products.length < 1);
 
     return (
-        <>
+        <AnimatedPage>
             <AnimatePresence>
                 <motion.div
                     initial={{opacity: 0}}
@@ -191,7 +192,7 @@ const Products = (props: IProductPageProps) => {
                 </>
             }
 
-        </>
+        </AnimatedPage>
     );
 
 }

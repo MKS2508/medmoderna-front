@@ -41,7 +41,9 @@ const productRoutes = renderProductRoute(productRoutesProps);
 const allRoutesItems =  [pageRoutes, productRoutes];
 
 
-const RoutesWrap = () => {const location = useLocation(); return <Routes location={location} key={location.pathname}>{allRoutesItems}</Routes>;};
+const RoutesWrap = () => {const location = useLocation(); return <AnimatePresence exitBeforeEnter>
+    <Routes location={location} key={location.pathname}>{allRoutesItems}</Routes>
+</AnimatePresence> ;};
 
 const AnimatedRoutes = () => <RoutesWrap/>;
 

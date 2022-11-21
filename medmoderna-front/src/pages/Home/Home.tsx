@@ -21,6 +21,7 @@ import videoBack from "../../assets/4K cannabis 004 - San Rafael'71 Tangerine Dr
 import gifBack from "../../assets/back.gif";
 import poster from "../../assets/poster.png";
 import ProductCardMobile from "../../components/Product/ProductCardMobile";
+import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 
 const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
 const AddressMap = () => {
@@ -187,7 +188,7 @@ const Home = () => {
     };
 
 
-    return (<>
+    return (<AnimatedPage>
 
             <div>
                 <div className="">
@@ -500,7 +501,7 @@ const Home = () => {
                     width={400}/>
             </div>*/}
 
-        </>
+        </AnimatedPage>
 
 
     )

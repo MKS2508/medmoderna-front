@@ -5,6 +5,7 @@ import {IProductProps} from "../../models/IProductProps";
 import {editProduct, getImagesFromQuery, getProductById, postProduct} from "../../services/api-products-service";
 import {ProductCardPreview} from "../../components/Product/ProductCard";
 import {useParams} from "react-router-dom";
+import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 
 
 const ProductDashboard = (props: IProductPageProps) => {
@@ -72,8 +73,10 @@ const ProductDashboard = (props: IProductPageProps) => {
         // llama al get products, con el id de categoria cogido de las props y el  num de pagina del estado
         // getProducts(props, pageParam)
         //si page es 0 (inicial) y props.pagination es null,
-        console.log({prod: await getProduct()})
-        setProduct(await getProduct());
+        let product = await getProduct();
+        setProduct(product);
+        //setProductName(product.name)
+
 
     }
 
@@ -136,126 +139,129 @@ const ProductDashboard = (props: IProductPageProps) => {
         console.log({defProduct});
     }
     return (
-        <div className="background">
-            {
-                <>
-                    <div style={{paddingTop: "8vw"}}></div>
+        <AnimatedPage>
+            <div className="background">
+                {
+                    <>
+                        <div style={{paddingTop: "8vw"}}></div>
 
-                    <div className="cardForm">
+                        <div className="cardForm">
 
-                        <form onSubmit={(editMode) ? handleSubmitEdit : handleSubmitPost}>
-                            <div style={{display: "flex", justifyContent: "center"}}>
+                            <form onSubmit={(editMode) ? handleSubmitEdit : handleSubmitPost}>
+                                <div style={{display: "flex", justifyContent: "center"}}>
 
-                                <h2>Nuevo Producto</h2>
-                            </div>
-                            <div style={{display: "flex", justifyContent: "center"}}>
-                                <ProductCardPreview name={productName} price={productPrice} description={productName}
-                                                    imgSrc={productImage}
-                                                    brand={(editMode) ? product.brand : productBrand}/>
-                            </div>
+                                    <h2>Nuevo Producto</h2>
+                                </div>
+                                <div style={{display: "flex", justifyContent: "center"}}>
+                                    <ProductCardPreview name={(editMode) ? product.name : productName} price={productPrice} description={productName}
+                                                        imgSrc={productImage}
+                                                        brand={(editMode) ? product.brand : productBrand}/>
+                                </div>
 
-                            <div className="row">
-                                <div className="col">
-                                    <div className="row">
-                                        <div className="col">
-                                            <div className={"buttons"}>
+                                <div className="row">
+                                    <div className="col">
+                                        <div className="row">
+                                            <div className="col">
+                                                <div className={"buttons"}>
 
-                                            <button onClick={async ()=>{
-                                                let imagesRelated = await getRelatedImages(productName);
-                                                console.warn({imagesRelated})
-                                                await setImages(imagesRelated);
-                                                await setProductImage(imagesRelated[0].url)
-                                                await setImageIndex(0);
-                                                console.warn({img: imagesRelated[0].url})
-                                            }} className="button-24">Search Images 🔎</button>
+                                                    <button onClick={async ()=>{
+                                                        let imagesRelated = await getRelatedImages(productName);
+                                                        console.warn({imagesRelated})
+                                                        await setImages(imagesRelated);
+                                                        await setProductImage(imagesRelated[0].url)
+                                                        await setImageIndex(0);
+                                                        console.warn({img: imagesRelated[0].url})
+                                                    }} className="button-24">Search Images 🔎</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className={"buttons"}>
-                                        <button  disabled={(imageIndex == 0)}  onClick={async ()=>{
-                                            let actualIndex = imageIndex;
-                                            await setProductImage(images[actualIndex + 1].url)
-                                            await setImageIndex(actualIndex + 1)
-                                        }} className="button-24"> Prev Image </button>
-                                        <button onClick={async ()=>{
-                                            let actualIndex = imageIndex;
-                                            await setProductImage(`http://localhost:4567/?url=${images[actualIndex].url}`)
-                                        }} className="button-25"> Remove Background 🧙🏻‍♂️️</button>
-                                        <button className="button-24"> Set Image ✅</button>
-                                        <button disabled={(imageIndex == images.length)} onClick={async ()=>{
-                                            let actualIndex = imageIndex;
-                                            await setProductImage(images[actualIndex + 1].url)
-                                            await setImageIndex(actualIndex + 1)
-                                        }} className="button-24"> Next Image</button>
+                                        <div className={"buttons"}>
+                                            <button  disabled={(imageIndex == 0)}  onClick={async ()=>{
+                                                let actualIndex = imageIndex;
+                                                await setProductImage(images[actualIndex - 1].url)
+                                                await setImageIndex(actualIndex - 1)
+                                            }} className="button-24"> Prev Image </button>
+                                            <button onClick={async ()=>{
+                                                let actualIndex = imageIndex;
+                                                await setProductImage(`http://localhost:4567/?url=${images[actualIndex].url}`)
+                                            }} className="button-25"> Remove Background 🧙🏻‍♂️️</button>
+                                            <button className="button-24"> Set Image ✅</button>
+                                            <button disabled={(imageIndex == images.length)} onClick={async ()=>{
+                                                let actualIndex = imageIndex;
+                                                await setProductImage(images[actualIndex + 1].url)
+                                                await setImageIndex(actualIndex + 1)
+                                            }} className="button-24"> Next Image</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="row">
+                                <div className="row">
 
-                                <div className="col">
-                                    <div className="form-group">
-                                        <input placeholder="Nombre" type="text" value={productName}
-                                               onChange={(event) => handleChangeName(event)}/>
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <input placeholder="Nombre" type="text" value={productName}
+                                                   onChange={(event) => handleChangeName(event)}/>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="col">
-                                    <div className="form-group">
-                                        <input placeholder="Imagen" type="url" value={productImage}
-                                               onChange={(event) => handleChangeImage(event)}/>
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <input placeholder="Imagen" type="url" value={productImage}
+                                                   onChange={(event) => handleChangeImage(event)}/>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="col">
-                                    <div className="form-group">
-                                        <input type="text" value={productBrand} placeholder="Marca"
-                                               onChange={(event) => handleChangeBrand(event)}/>
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <input type="text" value={productBrand} placeholder="Marca"
+                                                   onChange={(event) => handleChangeBrand(event)}/>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="col">
-                                    <div className="form-group">
-                                        <input type="text" value={productCategory} placeholder="Categoria"
-                                               onChange={(event) => handleChangeCategory(event)}/>
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <input type="text" value={productCategory} placeholder="Categoria"
+                                                   onChange={(event) => handleChangeCategory(event)}/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="col">
-                                    <div className="form-group">
-                                        <input type="text" value={productId} placeholder="ID Producto"
-                                               onChange={(event) => handleChangeProductId(event)}/>
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <input type="text" value={productId} placeholder="ID Producto"
+                                                   onChange={(event) => handleChangeProductId(event)}/>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="col">
-                                    <div className="form-group">
-                                        <input type="number" value={(editMode) ? product.price : productPrice}
-                                               placeholder="Precio"
-                                               onChange={(event) => handleChangePrice(event)}/>
+                                    <div className="col">
+                                        <div className="form-group">
+                                            <input type="number" value={(editMode) ? product.price : productPrice}
+                                                   placeholder="Precio"
+                                                   onChange={(event) => handleChangePrice(event)}/>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="col">
-                                    <div className="form-group">
+                                    <div className="col">
+                                        <div className="form-group">
                                         <textarea value={productDesc} placeholder="Description" rows={3}
                                                   onChange={(event) => handleChangeDesc(event)}/>
+                                        </div>
+                                    </div>
+
+                                    <div className="col">
+                                        <input type="submit" value={(editMode) ? "EDITAR" : "CREAR"}/>
                                     </div>
                                 </div>
+                            </form>
 
-                                <div className="col">
-                                    <input type="submit" value={(editMode) ? "EDITAR" : "CREAR"}/>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
+                        <div style={{paddingTop: "8vw"}}></div>
 
-                    </div>
-                    <div style={{paddingTop: "8vw"}}></div>
-
-                </>
+                    </>
 
 
-            }
+                }
 
-        </div>
+            </div>
+
+        </AnimatedPage>
     );
 
 }

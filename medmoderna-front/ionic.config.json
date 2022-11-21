@@ -1,0 +1,7 @@
+{
+  "name": "medicinamoderna",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
