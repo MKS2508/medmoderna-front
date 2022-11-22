@@ -16,6 +16,9 @@ import './TopBar.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.css';
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
+// @ts-ignore
+import ScrollText from 'react-scroll-text'
+
 import {config} from "@fortawesome/fontawesome-svg-core";
 import {ReactSVG} from 'react-svg'
 import {FaCannabis, FaBong, FaJoint, FaFacebookSquare} from "react-icons/fa";
@@ -161,13 +164,14 @@ const TopBar = () => {
                                 exit={{opacity: 0}}
                                 transition={{duration: 0.6}}
                                 className="miniHeader">
+                        <ScrollText key={"1"} style={{color: "white!important"}}>
+
                         <h3>
                             <a href={""} style={{color: "inherit"}}>
-                                <span style={{fontSize: 17}}>📍</span> Puedes encontrarnos en Avenida de Mendavia, Nº16
-                                Pabellón 2, 26009 Logroño, La Rioja <span style={{fontSize: 17}}></span>
+                                Puedes encontrarnos en Avenida de Mendavia, Nº16 Pabellón 2, 26009 Logroño, La Rioja
                             </a>
                         </h3>
-
+                        </ScrollText>
                     </motion.div>
                     <motion.div initial={{opacity: 0}}
                                 animate={{opacity: 1}}
@@ -180,7 +184,7 @@ const TopBar = () => {
 
             }
             {
-                (true) ? <div className="logoBanner" onClick={() => navigate("/")}>
+                (true) ? <div className="logoBanner" onClick={() => {navigate("/"); setIsVisible(false); window.scroll(0,0)}}>
                     <img alt="logo" src={logo}/>
                 </div> : <></>
             }

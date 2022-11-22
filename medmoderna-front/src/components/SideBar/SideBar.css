@@ -148,6 +148,8 @@ nav .ul-item li:hover {
     transition: 1s ease;
 }
 
+.tooltipBorder {
+}
 
 @media (max-width:950px) {
     .header-mobile {

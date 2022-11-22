@@ -73,7 +73,7 @@
     border: none;
     font-size: 24px;
     backdrop-filter: blur(30px);
-    background-color: rgba(217, 208, 208, 0.1);
+    background-color: rgba(217, 208, 208, 0.83);
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
     padding: 10px 0 10px 20px;
     color: #ffffff;
@@ -98,6 +98,7 @@
     box-shadow: none;
     transition: all 0.5s;
 }
+
 
 .cardForm .row input[type="submit"] {
     backdrop-filter: blur(30px);
@@ -129,7 +130,7 @@
     left: -20px;
     display: flex;
     width: 600px;
-    
+
     justify-content: space-around;
 }
 /* CSS */
@@ -204,7 +205,17 @@
 .button-25:active {
     opacity: .5;
 }
+@media (max-width: 440px) {
+    .buttons {
+        display: grid;
+        position: relative;
+        grid-template-columns: repeat(auto-fit, 40vw);
 
+        width: 120%;
+
+        justify-content: center;
+    }
+}
 @media screen and (max-width: 900px) {
     .cardForm .row {
         grid-template-columns: repeat(auto-fit, minmax(70%, 1fr));

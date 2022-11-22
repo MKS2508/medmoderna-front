@@ -6,6 +6,7 @@ import {editProduct, getImagesFromQuery, getProductById, postProduct} from "../.
 import {ProductCardPreview} from "../../components/Product/ProductCard";
 import {useParams} from "react-router-dom";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
+import ProductCardMobile from "../../components/Product/ProductCardMobile";
 
 
 const ProductDashboard = (props: IProductPageProps) => {
@@ -155,47 +156,62 @@ const ProductDashboard = (props: IProductPageProps) => {
                                     <h2>Nuevo Producto</h2>
                                 </div>
                                 <div style={{display: "flex", justifyContent: "center"}}>
-                                    <ProductCardPreview name={(editMode) ? product.name : productName} price={productPrice} description={productName}
+                                    <ProductCardPreview name={(editMode) ? product.name : productName}
+                                                        price={productPrice} description={productName}
                                                         imgSrc={productImage}
                                                         brand={(editMode) ? product.brand : productBrand}/>
+
+                                </div>
+                                <div style={{display: "flex", justifyContent: "center"}}>
+                                    <ProductCardMobile name={(editMode) ? product.name : productName}
+                                                       price={productPrice} description={productName}
+                                                       imgSrc={(productImage.length > 1) ? productImage : `https://static.wixstatic.com/media/ca863c_8922c3cdc76f4d51bcaaeac397b9e09e~mv2.png/v1/fit/w_500,h_500,q_90/file.png`}
+                                                       brand={(editMode) ? product.brand : productBrand}/>
                                 </div>
 
-                                <div className="row">
-                                    <div className="col">
-                                        <div className="row">
-                                            <div className="col">
-                                                <div className={"buttons"}>
+                                <div className={"mobileButtons"}></div>
+                                <div className={"bigButtons"}>
+                                    <div className="row">
+                                        <div className="col">
+                                            <div className="row">
+                                                <div className="col">
+                                                    <div className={"buttons"}>
 
-                                                    <button onClick={async ()=>{
-                                                        let imagesRelated = await getRelatedImages(productName);
-                                                        console.warn({imagesRelated})
-                                                        await setImages(imagesRelated);
-                                                        await setProductImage(imagesRelated[0].url)
-                                                        await setImageIndex(0);
-                                                        console.warn({img: imagesRelated[0].url})
-                                                    }} className="button-24">Search Images 🔎</button>
+                                                        <button onClick={async () => {
+                                                            let imagesRelated = await getRelatedImages(productName);
+                                                            console.warn({imagesRelated})
+                                                            await setImages(imagesRelated);
+                                                            await setProductImage(imagesRelated[0].url)
+                                                            await setImageIndex(0);
+                                                            console.warn({img: imagesRelated[0].url})
+                                                        }} className="button-24">Search Images 🔎
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className={"buttons"}>
-                                            <button  disabled={(imageIndex == 0)}  onClick={async ()=>{
-                                                let actualIndex = imageIndex;
-                                                await setProductImage(images[actualIndex - 1].url)
-                                                await setImageIndex(actualIndex - 1)
-                                            }} className="button-24"> Prev Image </button>
-                                            <button onClick={async ()=>{
-                                                let actualIndex = imageIndex;
-                                                await setProductImage(`http://localhost:4567/?url=${images[actualIndex].url}`)
-                                            }} className="button-25"> Remove Background 🧙🏻‍♂️️</button>
-                                            <button className="button-24"> Set Image ✅</button>
-                                            <button disabled={(imageIndex == images.length)} onClick={async ()=>{
-                                                let actualIndex = imageIndex;
-                                                await setProductImage(images[actualIndex + 1].url)
-                                                await setImageIndex(actualIndex + 1)
-                                            }} className="button-24"> Next Image</button>
+                                            <div className={"buttons"}>
+                                                <button disabled={(imageIndex == 0)} onClick={async () => {
+                                                    let actualIndex = imageIndex;
+                                                    await setProductImage(images[actualIndex - 1].url)
+                                                    await setImageIndex(actualIndex - 1)
+                                                }} className="button-24"> Prev Image
+                                                </button>
+                                                <button onClick={async () => {
+                                                    let actualIndex = imageIndex;
+                                                    await setProductImage(`http://localhost:4567/?url=${images[actualIndex].url}`)
+                                                }} className="button-25"> Remove Background 🧙🏻‍♂️️
+                                                </button>
+                                                <button disabled={(imageIndex == images.length)} onClick={async () => {
+                                                    let actualIndex = imageIndex;
+                                                    await setProductImage(images[actualIndex + 1].url)
+                                                    await setImageIndex(actualIndex + 1)
+                                                }} className="button-24"> Next Image
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div className="row">
 
                                     <div className="col">

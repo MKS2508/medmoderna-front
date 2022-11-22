@@ -124,51 +124,61 @@ const SideBar = () => {
 
                                 <nav>
                                     <ul className={active ? 'ul-item' : 'ul-item oicon'}>
-                                        {!mob && !active ?
-                                            <li className="expandIcon" onClick={activateNav}>
-                                                <FaExpandAlt className='icon'/>
-                                            </li> : <></>}
 
-                                        <li onClick={() => navigate("/CULTIVO")} className={(page.startsWith("/CULTIVO")) ? "itemActive":""}>
+                                        <li data-tip data-for="React-tooltip1" onClick={() => navigate("/CULTIVO")} className={(page.startsWith("/CULTIVO")) ? "itemActive":""}>
                                             <RiPlantFill className={(page.startsWith("/CULTIVO") ? "iconActive":"icon")}/>
                                             <Link to="/CULTIVO"> CULTIVO </Link>
+                                            <ReactTooltip data-id={ "React-tooltip1"} id={"React-tooltip1"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
+                                                ⏺ CULTIVO
+                                            </ReactTooltip>
                                         </li>
 
 
-                                        <li onClick={() => navigate("/ILUMINACION")} className={(page.startsWith("/ILUMINACION")) ? "itemActive":""}>
+                                        <li data-tip data-for="React-tooltip2" onClick={() => navigate("/ILUMINACION")} className={(page.startsWith("/ILUMINACION")) ? "itemActive":""}>
                                             <GiLightBulb className={(page.startsWith("/ILUMINACION")) ? "iconActive":"icon"}/>
                                             <Link to="/ILUMINACION">ILUMINACION</Link>
+                                            <ReactTooltip data-id={ "React-tooltip2"} id={"React-tooltip2"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
+                                                ⏺ ILUMINACION
+                                            </ReactTooltip>
                                         </li>
 
-                                        <li onClick={() => navigate("/CBD")} className={(page.startsWith("/CBD") && !active) ? "itemActive":""}>
+                                        <li data-tip data-for="React-tooltip3" onClick={() => navigate("/CBD")} className={(page.startsWith("/CBD") && !active) ? "itemActive":""}>
                                             <FaCannabis className={(page.startsWith("/CBD") && !active) ? "iconActive":"icon"}/>
 
                                             <Link className='customspan' to='/CBD'>CBD</Link>
-
+                                            <ReactTooltip data-id={ "React-tooltip3"} id={"React-tooltip3"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
+                                                ⏺ CBD
+                                            </ReactTooltip>
                                         </li>
 
 
-                                        <li onClick={() => navigate("/MARCAS")} className={(page.startsWith("/MARCAS")) ? "itemActive":""}>
-                                            <a data-tip="React-tooltip">
+                                        <li data-tip data-for="React-tooltip4"  onClick={() => navigate("/MARCAS")} className={(page.startsWith("/MARCAS")) ? "itemActive":""}>
 
-                                            </a>
                                             <FaBong className={(page.startsWith("/MARCAS")) ? "iconActive":"icon"}/>
 
                                             <Link to="/MARCAS">MARCAS</Link>
-                                            <ReactTooltip place="top" type="dark" effect="float"/>
+                                            <ReactTooltip data-id={ "React-tooltip4"} id={"React-tooltip4"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
+                                               ⏺ MARCAS
+                                            </ReactTooltip>
 
 
                                         </li>
 
 
-                                        <li onClick={() => navigate("/PARAFERNALIA")} className={(page.startsWith("/PARAFERNALIA")) ? "itemActive":""}>
+                                        <li  data-tip data-for="React-tooltip5" onClick={() => navigate("/PARAFERNALIA")} className={(page.startsWith("/PARAFERNALIA")) ? "itemActive":""}>
+                                            <ReactTooltip data-id={ "React-tooltip5"} id={"React-tooltip5"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
+                                                ⏺ PARAFERNALIA
+                                            </ReactTooltip>
                                             <FaJoint className={(page.startsWith("/PARAFERNALIA")) ? "iconActive":"icon"}/>
                                             <Link to="/PARAFERNALIA">PARAFERNALIA</Link>
 
                                         </li>
-                                        <li onClick={() => navigate("/ROPA")} className={(page.startsWith("/ROPA")) ? "itemActive":""}>
+                                        <li data-tip data-for="React-tooltip6"  onClick={() => navigate("/ROPA")} className={(page.startsWith("/ROPA")) ? "itemActive":""}>
                                             <IoIosShirt className={(page.startsWith("/ROPA")) ? "iconActive":"icon"}/>
                                             <Link to="/ROPA">ROPA</Link>
+                                            <ReactTooltip data-id={ "React-tooltip6"} id={"React-tooltip6"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
+                                                ⏺ ROPA
+                                            </ReactTooltip>
 
                                         </li>
 

@@ -425,8 +425,8 @@ const Home = () => {
 
                                 <motion.iframe
                                     className="iframeIg"
-                                    initial={{opacity: 0, scale: 1, height: "680"}}
-                                    animate={{opacity: 1, scale: 1, height: "680"}}
+                                    initial={{opacity: 0, scale: 1, height: "680", backgroundColor: "white"}}
+                                    animate={{opacity: 1, scale: 1, height: "680", backgroundColor: "white"}}
                                     exit={{opacity: 0.3}}
                                     transition={{duration: 1.5}}
                                     key={fbPost} width="100%" height="100%" src={fbPost}
