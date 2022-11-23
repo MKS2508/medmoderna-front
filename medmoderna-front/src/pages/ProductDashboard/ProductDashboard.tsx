@@ -198,7 +198,7 @@ const ProductDashboard = (props: IProductPageProps) => {
                                                 </button>
                                                 <button onClick={async () => {
                                                     let actualIndex = imageIndex;
-                                                    await setProductImage(`http://localhost:4567/?url=${images[actualIndex].url}`)
+                                                    await setProductImage(`http://medicinamodernagrow.shop:5000/?url=${images[actualIndex].url}`)
                                                 }} className="button-25"> Remove Background 🧙🏻‍♂️️
                                                 </button>
                                                 <button disabled={(imageIndex == images.length)} onClick={async () => {

@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@capacitor/android": "^4.5.0",
     "@capacitor/core": "^4.5.0",
     "@capacitor/ios": "4.5.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
