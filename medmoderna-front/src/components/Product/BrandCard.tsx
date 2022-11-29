@@ -8,8 +8,9 @@ const BrandCard = (props: IBrandProps) => {
 
     return <>
             <div className="brandCard" key="card" style={{ backgroundSize: "cover"}}>
-
-                <img src={props.imgSrc} alt={"img"} width="100%" height="95%"/>
+                <Link to={props.name}>
+                    <img src={props.imgSrc} alt={"img"} width="100%" height="95%"/>
+                </Link>
             </div>
 
 
