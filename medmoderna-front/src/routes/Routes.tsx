@@ -6,6 +6,7 @@ import React from "react";
 import Home from "../pages/Home/Home";
 import {AnimatePresence} from "framer-motion";
 import ProductDashboard from "../pages/ProductDashboard/ProductDashboard";
+import Brands from "../pages/Brands/Brands";
 
 const productRoutesProps: RouteProps[] = [
     //abstaer name, description, id a constantes ?
@@ -13,7 +14,7 @@ const productRoutesProps: RouteProps[] = [
     {path: "/PARAFERNALIA", element: <Products name={"PARAFERNALIA"} id={2} description={"Aqui puedes encontrar lo relacionado con papeles, mecheros, grinders..."} elementsSize={10} pagination={0} />},
     {path: "/ILUMINACION", element: <Products name={"ILUMINACION"} id={3} description={"Aqui puedes encontrar lo relacionado con iluminacion para tu cultivo..."}  elementsSize={10} pagination={0}/>},
     {path: "/CULTIVO", element: <Products name={"CULTIVO"} id={4} description={"Aqui puedes encontrar lo relacionado con productos para tu cultivo"}  elementsSize={10} pagination={0}/> },
-    {path: "/MARCAS", element: <Products name={"MARCAS"} id={5} description={"Todas nuestras marcas"}  elementsSize={10} pagination={0}/>},
+    {path: "/MARCAS", element: <Brands name={"MARCAS"} id={5} description={"Todas nuestras marcas"}  elementsSize={10} pagination={0}/>},
     {path: "/MARCAS/:brand", element: <Products name={":brand"} id={5} description={"Todas los productos de :brand"}  elementsSize={10} pagination={0}/>},
     {path: "/SEARCH/:query", element: <Products name={":query"} id={5} description={"Todas los productos de :brand"}  elementsSize={10} pagination={0}/>},
     {path: "/ADMIN", element: <ProductDashboard name={":id"} id={88} description={":id"}  elementsSize={10} pagination={0} productId={""}/>},

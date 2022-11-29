@@ -289,7 +289,6 @@ const Home = () => {
                         <div className="caption">
                         <span className="border2">
                             <div>
-                                <h4>No dudes en preguntarnos a través de whatsapp</h4>
                             </div>
                         </span>
                         </div>
@@ -351,16 +350,21 @@ const Home = () => {
                         <div style={{marginRight: "30px", marginTop: "30px"}}>
 
                             <BrandCard name={"CANNA"}
+                                       description={""}
                                        imgSrc={"http://akjacks.com/images/sale/Canna/Canna-logo.png"}
-                            />
+                             link={""}/>
                         </div>
                         <div style={{marginRight: "30px", marginTop: "30px"}}>
                             <BrandCard name={"MEDICINA MODERNA"}
+                                       description={""}
+                                       link={""}
                                        imgSrc={"https://i.ibb.co/x8NJ89x/banner.png"}
                             />
                         </div>
                         <div style={{marginRight: "30px", marginTop: "30px"}}>
                             <BrandCard name={"GROW THE JUNGLE"}
+                                       description={""}
+                                       link={""}
                                        imgSrc={"https://http2.mlstatic.com/storage/mshops-appearance-api/images/49/75651549/logo-2021090312474054700.png"}
                             />
                         </div>
