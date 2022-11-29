@@ -28,12 +28,12 @@ const pageRoutesProps: RouteProps[] = [
 
 const renderProductRoute = (productRoutes: RouteProps[]): React.ReactElement[] =>{
 
-    return productRoutes.map((route) => <Route path={route.path} element={route.element}/>)
+    return productRoutes.map((route) => <Route key={route.path} path={route.path} element={route.element}/>)
 
 }
 
 const renderPageRoute = (pageRoutes: RouteProps[]): React.ReactElement[] => pageRoutes.map((route) => <Route
-    path={route.path} element={route.element}/>)
+    path={route.path}  key={route.path} element={route.element}/>)
 
 
 const pageRoutes = renderPageRoute(pageRoutesProps);

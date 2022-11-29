@@ -6,7 +6,7 @@ import {getProductsFromBrand, getProductsFromCategory} from "../../services/api-
 import spinner from "../../assets/spinner.svg"
 import spinner2 from "../../assets/spinner3.svg"
 import {AnimatePresence, motion} from 'framer-motion';
-import ProductCard from "../../components/Product/ProductCard";
+import ProductCard, {ProductCardLoading} from "../../components/Product/ProductCard";
 import {useParams} from "react-router-dom";
 import ProductCardMobile from "../../components/Product/ProductCardMobile";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
@@ -33,7 +33,7 @@ const Products = (props: IProductPageProps) => {
     const ProductCards = (data: { products: IProductProps[] }) => {
         return (
             <>
-                <div className="wrapper-grid">
+                <div className="wrapper-grid" key="wrapper">
 
                     {
 
@@ -46,13 +46,10 @@ const Products = (props: IProductPageProps) => {
 
                                         <motion.div
                                             custom={{delay: (index + 1) * 0.25}}
-                                            initial='hidden'
-                                            animate={variants.visible({delay: (index + 1) * 0.1})}
-                                            variants={variants}
+
                                             key={item.name}
-
-
                                         >
+
                                             <ProductCard key={item.name} imgSrc={item.imgSrc}
                                                          description={item.description} price={item.price}
                                                          productId={item.productId} name={item.name} brand={item.brand}
@@ -70,10 +67,24 @@ const Products = (props: IProductPageProps) => {
             </>)
 
     };
+    const ProductCardsLoading = () => {
+        let products = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        return (
+            <div key="wrapperLoad" className="wrapper-grid">
+                {
+                    products.map((item, index) =>
+                        <ProductCardLoading key={`${item}load${index}`}/>
+                    )
+                }
+
+            </div>
+        )
+
+    };
     const ProductCardsMobile = (data: { products: IProductProps[] }) => {
         return (
             <>
-                <div className="wrapper-grid">
+                <div key="wrapperMob" className="wrapper-grid">
 
                     {
 
@@ -149,7 +160,26 @@ const Products = (props: IProductPageProps) => {
         // getProducts(props, pageParam)
         //si page es 0 (inicial) y props.pagination es null,
         console.log({props})
-        setProducts(await getProducts(props, pageParam));
+        function compare( a:any, b:any ) {
+            if ( a.name < b.name ){
+                return -1;
+            }
+            if ( a.name > b.name ){
+                return 1;
+            }
+            return 0;
+        }
+        let productsfecth = await getProducts(props, pageParam);
+        productsfecth = productsfecth.sort(compare);
+        let productsSorted = [...products]
+        productsSorted = productsSorted.sort(compare);
+
+            if(products.length < 1){
+                setProducts(productsfecth);
+            } else {
+            }
+
+
     }
 
     useEffect(() => {
@@ -179,11 +209,9 @@ const Products = (props: IProductPageProps) => {
 
             {
                 <>
-                    <AnimatePresence>
-                        <div className="center" hidden={!showSpinner}>
-                            <img src={spinner2} className="filter-green" width="200vh" alt="spinner"/>
+                        <div hidden={!showSpinner}>
+                            <ProductCardsLoading/>
                         </div>
-                    </AnimatePresence>
 
                     <section className="normalSection">
                         <ProductCards products={products}/>

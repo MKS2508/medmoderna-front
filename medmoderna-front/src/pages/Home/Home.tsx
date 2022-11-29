@@ -1,24 +1,16 @@
 import './Home.css'
-import LazyLoad from 'react-lazy-load';
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import {Carousel} from 'react-responsive-carousel';
 import React, {useEffect, useState} from "react";
-import TopBar from "../../components/TopBar/TopBar";
-import SideBar from "../../components/SideBar/SideBar";
-import {Button, Col, Row} from 'antd';
-import {FacebookEmbed} from 'react-social-media-embed';
-import ProductCard from "../../components/Product/ProductCard";
 import ProductCardHome from "../../components/Product/ProductCardHome";
 import {AnimatePresence, motion} from 'framer-motion';
 import BrandCard from "../../components/Product/BrandCard";
 import {IProductProps} from '../../models/IProductProps';
 import logo from '../../assets/logo3.png'
-import banner from '../../assets/banner.png'
-import {RiInstagramFill, RiWhatsappFill} from "react-icons/ri";
-import {FaFacebookSquare} from "react-icons/fa";
-import ReactWhatsapp from "react-whatsapp";
-import {IoLogoWhatsapp} from "react-icons/io";
-import videoBack from "../../assets/4K cannabis 004 - San Rafael'71 Tangerine Dream .mp4";
-import gifBack from "../../assets/back.gif";
+import fondo from '../../assets/fondo1.png'
+import fondo3 from '../../assets/fondo3.png'
+import fondo2 from '../../assets/fondo2.png'
+
 import poster from "../../assets/poster.png";
 import ProductCardMobile from "../../components/Product/ProductCardMobile";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
@@ -53,8 +45,8 @@ const HomeProducts = (data: { products: IProductProps[] }) => {
         {
             data.products.map((item) =>
                 <>
-                    <div style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardHome productId={item.productId} name={item.name} price={item.price}
+                    <div key={item.name} style={{marginRight: "30px", marginTop: "30px"}}>
+                        <ProductCardHome key={item.name} productId={item.productId} name={item.name} price={item.price}
                                          description={item.description}
                                          imgSrc={item.imgSrc}
                                          brand={item.brand}/>
@@ -69,8 +61,9 @@ const HomeProductsMobile = (data: { products: IProductProps[] }) => {
         {
             data.products.map((item) =>
                 <>
-                    <div style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardMobile productId={item.productId} name={item.name} price={item.price}
+                    <div key={item.name} style={{marginRight: "30px", marginTop: "30px"}}>
+                        <ProductCardMobile key={item.name} productId={item.productId} name={item.name}
+                                           price={item.price}
                                            description={item.description}
                                            imgSrc={item.imgSrc}
                                            brand={item.brand}/>
@@ -124,7 +117,7 @@ const Home = () => {
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50.0
-    },{
+    }, {
         description: "",
         name: "GROTEK MONSTER BLOOM",
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
@@ -197,10 +190,27 @@ const Home = () => {
 
                     <div className="ParallaxVideo">
 
-                        <video autoPlay muted loop playsInline poster={poster}>
+                        <Carousel infiniteLoop={true} autoPlay={true} className={"carruseltop"} interval={3000}
+                                  width={"100vw"} showThumbs={false} showIndicators={false} showArrows={false}
+                                  stopOnHover={false}>
+                            <div className={"bgimg-1"}>
+                                <img src={fondo} alt={"fondo1"}/>
+                            </div>
+                            <div>
+                                <video autoPlay muted loop playsInline poster={poster}>
 
-                            <source type="video/mp4" src={videoBackUrlFromGithub}/>
-                        </video>
+                                    <source type="video/mp4" src={videoBackUrlFromGithub}/>
+                                </video>
+                            </div>
+
+                            <div className={"bgimg-1"}>
+                                <img src={fondo2} alt={"fondo2"}/>
+                            </div>
+                            <div className={"bgimg-1"}>
+                                <img src={fondo3} alt={"fondo3"}/>
+                            </div>
+                        </Carousel>
+
                         <div className={(!isVisible && window.screen.width < 440) ? "captionWithSidebar" : "caption"}>
 
                             <span className="border">
@@ -223,7 +233,9 @@ const Home = () => {
                 </div>
 
                 <div className="section">
-                    <div style={{display: 'flex', justifyContent: 'space-around'}}>
+
+
+                    <div style={{display: 'flex', justifyContent: 'space-around', marginTop: "10vh"}}>
 
                         <p style={{maxWidth: "500px", fontSize: "1.2rem"}}>
                             Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor,
@@ -277,9 +289,7 @@ const Home = () => {
                         <div className="caption">
                         <span className="border2">
                             <div>
-                                <h2>Puedes contactarnos a traves de Whatsapp</h2>
-                                <h4>Te lo llevamos a casa en pedidos superiores a 50 EUR</h4>
-
+                                <h4>No dudes en preguntarnos a través de whatsapp</h4>
                             </div>
                         </span>
                         </div>

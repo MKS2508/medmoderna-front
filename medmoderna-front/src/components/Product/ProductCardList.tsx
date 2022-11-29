@@ -4,10 +4,10 @@ import {Link} from "react-router-dom";
 
 const ProductCardList = (props: IProductProps) => {
 
-    return <span style={{display: "inline-block"}}>
+    return <span key={props.name} style={{display: "inline-block"}}>
 
 
-        <img width={"50px"} style={{display: "inline-block", float: "left", marginRight: "20px"}}
+        <img key={props.name} width={"50px"} style={{display: "inline-block", float: "left", marginRight: "20px"}}
              src={`data:image/png;base64,${props.imgSrc}`}
              alt={"item"}
         />
@@ -31,7 +31,7 @@ export const ProductCardPreview = (props: IProductProps) => {
                 <img
                     src={`https://static.wixstatic.com/media/ca863c_8922c3cdc76f4d51bcaaeac397b9e09e~mv2.png/v1/fit/w_500,h_500,q_90/file.png`}
                     alt="No imagen"/>
-            </div> : <div className="imgBox">
+            </div> : <div key={"imgBox"} className="imgBox">
                 <img
                     src={`${imageSource}`}
                     alt="No imagen"/>
