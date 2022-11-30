@@ -1,5 +1,5 @@
 export interface IBrandProps {
-  name?: string,
+  name: string,
   description?: string,
   link?: string,
   imgSrc?: string

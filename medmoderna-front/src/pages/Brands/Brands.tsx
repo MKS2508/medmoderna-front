@@ -40,7 +40,6 @@ const Brands = (props: IProductPageProps) => {
 
 
                                         <div
-                                            custom={{delay: (index + 1) * 0.25}}
                                             key={item.name}
                                         >
 
@@ -107,7 +106,7 @@ const Brands = (props: IProductPageProps) => {
         window.scrollTo(0, 0)
     }, [])
     useEffect(() => {
-        initializePage(page).then(() => setLoading(false))
+        initializePage(page)
     }, [page, props]);
 
     return (
