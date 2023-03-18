@@ -10,6 +10,7 @@ import ProductCard, {ProductCardLoading} from "../../components/Product/ProductC
 import {useParams} from "react-router-dom";
 import ProductCardMobile from "../../components/Product/ProductCardMobile";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
+import ProductCardsListResponsive from "../../components/Product/ProductCardsListResponsive/ProductCardsListResponsive";
 
 
 const Products = (props: IProductPageProps) => {
@@ -214,11 +215,15 @@ const Products = (props: IProductPageProps) => {
                         </div>
 
                     <section className="normalSection">
-                        <ProductCards products={products}/>
+                        {(!loading) ?
+                            <ProductCardsListResponsive products={products}/> : <></>
+                        }
                     </section>
                     <section className="mobile">
-                        <ProductCardsMobile products={products}/>
-                    </section>
+                        {(!loading) ?
+
+                            <ProductCardsListResponsive products={products}/> : <></>
+                        }                    </section>
 
                 </>
             }

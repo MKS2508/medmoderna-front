@@ -11,6 +11,8 @@ import {Link, useParams} from "react-router-dom";
 import ProductCardDetail from "../../components/Product/ProductCardDetail";
 import ProductCardDetailMobile from "../../components/Product/ProductCardDetailMobile";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
+import ProductCardDetailResponsive
+    from "../../components/Product/ProductCardDetailResponsive/ProductCardDetailResponsive";
 
 
 const ProductDetail = (props: IProductPageProps) => {
@@ -39,7 +41,7 @@ const ProductDetail = (props: IProductPageProps) => {
         imgSrc: "",
         name: "",
         price: 0,
-        productId: ""
+        productId: 0
     });
 
     const [loading, setLoading] = useState<boolean>(false);
@@ -108,15 +110,15 @@ const ProductDetail = (props: IProductPageProps) => {
                                 </motion.div>
 
                                 {(screen.width < 440) ?
-                                    <ProductCardDetailMobile key={product.name} imgSrc={product.imgSrc}
+                                    <ProductCardDetailResponsive key={product.name} imgSrc={product.imgSrc}
                                                              description={product.description}
                                                              price={product.price}
-                                                             productId={product.productId} name={product.name}
+                                                             productId={product.productId.toString()} name={product.name}
                                                              brand={product.brand}
                                                              category={product.category}/> :
-                                    <ProductCardDetail key={product.name} imgSrc={product.imgSrc}
+                                    <ProductCardDetailResponsive key={product.name} imgSrc={product.imgSrc}
                                                        description={product.description} price={product.price}
-                                                       productId={product.productId} name={product.name}
+                                                       productId={product.productId.toString()} name={product.name}
                                                        brand={product.brand} category={product.category}/>
                                 }
                             </div>

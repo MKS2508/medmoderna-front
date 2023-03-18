@@ -1,8 +1,0 @@
-{
-	"appId": "io.ionic.medicinamoderna",
-	"appName": "medicinamoderna",
-	"bundledWebRuntime": false,
-	"npmClient": "npm",
-	"webDir": "dist",
-	"cordova": {}
-}

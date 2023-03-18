@@ -11,7 +11,7 @@ const BrandCard = (props: IBrandProps) => {
                 <Link to={props.name}>
                     <img src={props.imgSrc} alt={"img"} width="100%" height="95%"/>
                 </Link>
-            </div>
+            </div   >
 
 
     </>

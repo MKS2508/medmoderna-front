@@ -184,10 +184,11 @@
 
 
     .normalSection {
-        display: none;
+        display: none!important;
     }
     .mobile {
         display: block;
+        margin-left:10%;
     }
     .title {
         padding: 0!important;

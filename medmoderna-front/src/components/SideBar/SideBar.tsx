@@ -14,6 +14,7 @@ import {AnimatePresence, motion} from "framer-motion";
 import {IProductProps} from "../../models/IProductProps";
 import {getProductsFromQuery} from "../../services/api-products-service";
 import ReactTooltip from 'react-tooltip';
+import {AiOutlinePlusCircle} from "react-icons/all";
 
 
 const SideBar = () => {
@@ -180,6 +181,13 @@ const SideBar = () => {
                                                 ⏺ ROPA
                                             </ReactTooltip>
 
+                                        </li>
+                                        <li data-tip data-for="React-tooltip6"  onClick={() => navigate("/ADMIN")} className={(page.startsWith("/ADMIN")) ? "itemActive":""}>
+                                            <AiOutlinePlusCircle className={(page.startsWith("/ADMIN")) ? "iconActive":"icon"}/>
+                                            <Link to="/ROPA">ADMIN</Link>
+                                            <ReactTooltip data-id={ "React-tooltip6"} id={"React-tooltip6"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
+                                                ⏺ ADMIN
+                                            </ReactTooltip>
                                         </li>
 
 

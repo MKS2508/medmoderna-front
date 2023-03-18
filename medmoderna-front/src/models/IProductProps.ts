@@ -1,10 +1,10 @@
 export interface IProductProps {
-  productId?: string | number,
+  productId: number,
   name: string,
   description: string,
-  price?:number,
+  price:number,
   imgSrc: string,
-  category?: string,
+  category: string,
   brand:string
 
 }

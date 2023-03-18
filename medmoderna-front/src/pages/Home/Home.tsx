@@ -14,6 +14,7 @@ import fondo2 from '../../assets/fondo2.png'
 import poster from "../../assets/poster.png";
 import ProductCardMobile from "../../components/Product/ProductCardMobile";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
+import ProductCardsListResponsive from "../../components/Product/ProductCardsListResponsive/ProductCardsListResponsive";
 
 const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
 const AddressMap = () => {
@@ -41,20 +42,7 @@ const AddressMapMobile = () => {
 }
 
 const HomeProducts = (data: { products: IProductProps[] }) => {
-    return <div className={"HomeProductsSection"}>
-        {
-            data.products.map((item) =>
-                <>
-                    <div key={item.name} style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardHome key={item.name} productId={item.productId} name={item.name} price={item.price}
-                                         description={item.description}
-                                         imgSrc={item.imgSrc}
-                                         brand={item.brand}/>
-                    </div>
-                </>
-            )
-        }
-    </div>
+    return (<ProductCardsListResponsive products={data.products}/>)
 }
 const HomeProductsMobile = (data: { products: IProductProps[] }) => {
     return <div className={"productsWrapperMobile"}>

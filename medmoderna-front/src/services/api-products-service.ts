@@ -127,6 +127,7 @@ export const postProduct = async (newProduct: IProductProps): Promise<IProductPr
     const apiUrl = `${API_URL}/products/`;
     return new Promise<IProductProps>((async (resolve, reject) => {
         try {
+            debugger;
             const response = await axios.post(apiUrl, newProduct);
             const product: IProductProps =  response.data;
             console.warn({product, response});
