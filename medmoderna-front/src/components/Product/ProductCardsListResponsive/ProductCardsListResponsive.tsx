@@ -5,6 +5,7 @@ import logo from '../../../assets/logo4.png';
 import Modal from 'react-modal';
 import ProductCardDetail from "../ProductCardDetail";
 import ProductCardDetailResponsive from '../ProductCardDetailResponsive/ProductCardDetailResponsive';
+import { Link } from 'react-router-dom';
 
 
 type ProductCardsListResponsiveProps = {
@@ -13,33 +14,8 @@ type ProductCardsListResponsiveProps = {
 
 
 const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({ products }) => {
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-    Modal.setAppElement('#root');
 
-    const customStyles = {
-        content: {
-            overflow: "hidden",
-            display: "flex",
-            alignContent: "center",
-            alignItems:"center",
-            top: "20vh",
-            left: "10vw",
-            width: "85vw",
-            height: "100%"
-        },
-    };
 
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
 
 
     return (
@@ -56,22 +32,8 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
                         <div className="item-price-and-button">
                             {/*@ts-ignore*/}
                             <div className="item-price" ><p className="card-price">{item.price.toFixed(2)}€</p></div>
-                            <button className="item-button"  onClick={openModal} ><i className="gg-info"></i></button>
+                            <Link className="item-button" to={`/product/${item.productId}`}><i className="gg-info"></i></Link>
                         </div>
-                    </div>
-                    <div>
-                        <Modal id={"modal"}
-                               isOpen={modalIsOpen}
-                               style={customStyles}
-                               onAfterOpen={afterOpenModal}
-                               onRequestClose={closeModal}
-                               contentLabel="Example Modal"
-                        >
-                            <div>
-                                <ProductCardDetailResponsive key={"1"} imgSrc={item.imgSrc} description={item.description} price={item.price} productId={(item.productId) ? item.productId.toString(): ""} name={item.name} brand={item.brand} category={"item.category"}/>
-                            </div>
-                        </Modal>
-
                     </div>
                 </div>
 
