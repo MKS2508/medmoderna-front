@@ -50,7 +50,7 @@ const HomeProductsMobile = (data: { products: IProductProps[] }) => {
             data.products.map((item) =>
                 <>
                     <div key={item.name} style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardMobile key={item.name} productId={item.productId} name={item.name}
+                        <ProductCardMobile key={item.name} category={item.category} productId={item.productId} name={item.name}
                                            price={item.price}
                                            description={item.description}
                                            imgSrc={item.imgSrc}
@@ -64,49 +64,65 @@ const HomeProductsMobile = (data: { products: IProductProps[] }) => {
 
 const Home = () => {
     const homeProds: IProductProps[] = [{
+        productId:4334,
         description: "",
         name: "GROTEK MONSTER BLOOM",
+        category: "",
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50.0
     }, {
+        productId:43224,
         description: "",
         name: "GROTEK MONSTER BLOOM",
+        category: "",
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50
     }, {
+        productId:432124,
         description: "",
         name: "GROTEK MONSTER BLOOM",
+        category: "",
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50.0
     }, {
+        productId:13224,
         description: "",
         name: "GROTEK MONSTER BLOOM",
+        category: "",
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50.0
     }, {
+        productId:432114,
         description: "",
         name: "GROTEK MONSTER BLOOM",
+        category: "",
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50
     }, {
+        productId:43214214,
         description: "",
         name: "GROTEK MONSTER BLOOM",
+        category: "",
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50.0
     }, {
+        productId:432432114,
         description: "",
         name: "GROTEK MONSTER BLOOM",
+        category: "",
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",
         price: 50.0
     }, {
+        productId:43211323,
         description: "",
+        category: "",
         name: "GROTEK MONSTER BLOOM",
         imgSrc: "https://latahullaverde.com/wp-content/uploads/2020/12/latahullaverde-Fertilizantes-Grotek-Monster-Bloom-130gr.jpg.png",
         brand: "GROTEK",

@@ -37,7 +37,7 @@ const ProductDashboard = (props: IProductPageProps) => {
         imgSrc: "",
         name: "",
         price: 0,
-        productId: ""
+        productId: 0
     });
 
     const [loading, setLoading] = useState<boolean>(false);
@@ -48,7 +48,7 @@ const ProductDashboard = (props: IProductPageProps) => {
     const [productImage, setProductImage] = useState<string>("");
     const [productDesc, setProductDesc] = useState<string>("");
     const [productBrand, setProductBrand] = useState<string>("");
-    const [productId, setProductId] = useState<string>("");
+    const [productId, setProductId] = useState<number>(0);
     const [productCategory, setProductCategory] = useState<string>("");
     const [productPrice, setProductPrice] = useState<number>(10);
 
@@ -156,15 +156,15 @@ const ProductDashboard = (props: IProductPageProps) => {
                                     <h2>Nuevo Producto</h2>
                                 </div>
                                 <div style={{display: "flex", justifyContent: "center"}}>
-                                    <ProductCardPreview name={(editMode) ? product.name : productName}
-                                                        price={productPrice} description={productName}
+                                    <ProductCardPreview  productId={productId} name={(editMode) ? product.name : productName}
+                                                        price={productPrice} category={productCategory} description={productName}
                                                         imgSrc={productImage}
                                                         brand={(editMode) ? product.brand : productBrand}/>
 
                                 </div>
                                 <div style={{display: "flex", justifyContent: "center"}}>
-                                    <ProductCardMobile name={(editMode) ? product.name : productName}
-                                                       price={productPrice} description={productName}
+                                    <ProductCardMobile productId={productId} name={(editMode) ? product.name : productName}
+                                                       price={productPrice}  category={productCategory}  description={productName}
                                                        imgSrc={(productImage.length > 1) ? productImage : `https://static.wixstatic.com/media/ca863c_8922c3cdc76f4d51bcaaeac397b9e09e~mv2.png/v1/fit/w_500,h_500,q_90/file.png`}
                                                        brand={(editMode) ? product.brand : productBrand}/>
                                 </div>
