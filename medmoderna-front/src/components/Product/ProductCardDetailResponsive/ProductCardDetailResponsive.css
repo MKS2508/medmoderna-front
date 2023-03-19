@@ -398,7 +398,7 @@
 .navbar {
     padding: 1rem;
     position: absolute;
-    top: -5rem;
+    top: -6rem;
     left: 1vw;
     background-color: rgb(113, 185, 87);
     backdrop-filter: blur(10px);
@@ -516,7 +516,14 @@
 
         max-width: 70vw;
     }
-
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+    }
 
     .nav-link {
         font-size: 0.8rem; /* Reducir el tamaño de fuente */

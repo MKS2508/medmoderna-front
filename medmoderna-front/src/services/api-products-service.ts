@@ -156,3 +156,35 @@ export const editProduct = async (id: any, newProduct: IProductProps): Promise<I
 
     }));
 }
+export const getAllProducts = async (): Promise<IProductProps[]> => {
+    const apiUrl = `${API_URL}/products`;
+
+    return new Promise<IProductProps[]>((async (resolve, reject) => {
+        try {
+            const response = await axios.get(apiUrl);
+            const products: IProductProps[] = response.data.products;
+            (products) ? resolve(products) : reject(new Error(`404 on ${apiUrl}`));
+        } catch (e: any) {
+            console.log(new Error(e));
+            reject(e);
+        }
+    }));
+};
+
+export const deleteProduct = async (id: string): Promise<void> => {
+    const apiUrl = `${API_URL}/products/${id}`;
+
+    return new Promise<void>((async (resolve, reject) => {
+        try {
+            const response = await axios.delete(apiUrl);
+            if (response.status === 200) {
+                resolve();
+            } else {
+                reject(new Error(`Error al eliminar el producto con id ${id} en ${apiUrl}`));
+            }
+        } catch (e: any) {
+            console.log(new Error(e));
+            reject(e);
+        }
+    }));
+};
