@@ -23,7 +23,7 @@ const ProductCardNew: React.FC<IProductCardProps> = ({ name, productId,  descrip
     const shortenedDescription = shortenedLines.join("\n");
     const showNotification = (message:any) => {
         toast(message, {
-            position: "top-right",
+            position: "top-center",
             autoClose: 3000,
             hideProgressBar: true,
             closeOnClick: true,
@@ -35,7 +35,7 @@ const ProductCardNew: React.FC<IProductCardProps> = ({ name, productId,  descrip
 
     return (
         <>
-            <ToastContainer />
+
             <div className="prod-card-new">
                 <div className="prod-card-new-logo">
                     <img src={logo} alt="Logo" className="prod-card-new-logo-img" />
@@ -45,13 +45,13 @@ const ProductCardNew: React.FC<IProductCardProps> = ({ name, productId,  descrip
                     <h3>{name}</h3>
                     <p>{shortenedDescription}</p>
                     <div className="prod-details-new">
-                        <div className="prod-price-new" style={{position: "absolute", bottom: "10px", left: "10px"}}>{price.toFixed(2)}€</div>
-                        <button className="prod-btn-new" style={{position: "absolute", bottom: "10px", right: "10px"}}>
+                        <div className="prod-price-new" style={{position: "absolute", bottom: "12px", left: "10px"}}>{price.toFixed(2)}€</div>
+                        <button className="prod-btn-new" style={{position: "absolute", bottom: "2px", right: "10px"}}>
                             <Link to={`/product/${productId}`} >
                                 <AiFillEye size={"20"}/>
                             </Link>
                         </button>
-                        <button className="prod-btn-new"  style={{position: "absolute", bottom: "10px", right: "80px"}} onClick={() => showNotification("Añadido al carrito!")}>
+                        <button className="prod-btn-new"  style={{position: "absolute", bottom: "2px", right: "80px"}} onClick={() => showNotification("Añadido al carrito!")}>
                             <FaShoppingCart size={"20"}/>
                         </button>
 

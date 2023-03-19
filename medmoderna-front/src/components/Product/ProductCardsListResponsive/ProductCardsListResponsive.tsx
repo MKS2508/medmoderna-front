@@ -8,6 +8,7 @@ import ProductCardNew from "../../Product/ProductCardNew/ProductCardNew";
 import ProductCardDetailResponsive from '../ProductCardDetailResponsive/ProductCardDetailResponsive';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from "react-toastify";
 
 
 type ProductCardsListResponsiveProps = {
@@ -22,10 +23,10 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
 
     // @ts-ignore
     return (<>
+        <ToastContainer></ToastContainer>
 
         <div className="shopping-list">
             {products.map(item => (<>
-
                 <ProductCardNew
                     key={item.name}
                     imgSrc={item.imgSrc}
@@ -35,7 +36,8 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
                     name={item.name}
                     brand={item.brand}
                     category={item.category}
-                    maxLines={1} maxCharsPerLine={90}                />
+                    maxLines={3} maxCharsPerLine={80}
+                />
 
             </>))}
         </div>

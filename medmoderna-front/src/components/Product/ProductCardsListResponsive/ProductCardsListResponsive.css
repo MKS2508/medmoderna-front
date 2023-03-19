@@ -86,12 +86,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px;
+    gap: 20px;
     padding: 20px;
     border-radius: 16px;
 
-    margin: 0 5vw 0 7vw;
-}
+    margin: 0 10%;}
 
 .shopping-item {
     position: relative;
