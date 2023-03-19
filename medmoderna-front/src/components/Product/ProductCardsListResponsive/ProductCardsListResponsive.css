@@ -86,10 +86,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
+    gap: 30px;
     padding: 20px;
     border-radius: 16px;
-    margin: 0 10%;
+
+    margin: 0 5vw 0 7vw;
 }
 
 .shopping-item {

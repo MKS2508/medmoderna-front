@@ -1,63 +1,68 @@
-
+/* General styles */
 .title {
-    display: grid;
+    display: flex;
     justify-content: center;
+    align-items: center;
     padding-top: 10vh;
 }
 
 .logoHome {
     filter: drop-shadow(7px 4px 2px #043b04);
-
 }
 
 .title h1 {
     text-align: center;
-
     font-size: 40px;
 }
+
 .title h2 {
     text-align: center;
     font-size: 25px;
 }
+
 .iframeIg {
     filter: drop-shadow(0 0.4rem 0.55rem rgba(0, 0, 0, 0.2));
     border-radius: 10px;
 }
-
 .carruseltop {
     position: relative;
     height: 100vh;
 }
 
-.carruseltop > div > img{
+.carruseltop > div > img {
     position: relative;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .bgimg-1,
 .bgimg-2,
-.bgimg-3{
+.bgimg-3 {
     position: relative;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.ParallaxVideo{
+
+.ParallaxVideo {
     min-width: 100vw;
     min-height: 110vh;
 }
-.ParallaxVideo video{
+
+.ParallaxVideo video {
     min-width: 100vw;
     min-height: 110vh;
-    top:0;
+    top: 0;
 }
+
 .ParallaxVideo > .backgroundGif {
     display: none;
     min-width: 100vw;
     min-height: 110vh;
-    top:0;
+    top: 0;
 }
+
 .video-container {
     position: absolute;
     top: 0;
@@ -66,33 +71,30 @@
     height: 100vh!important;
     overflow: hidden;
 }
+
 .video-container video {
-    /* Make video to at least 100% wide and tall */
-
-
-    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
     width: 100vw!important;
     height: 110vh!important;
-
-
 }
 
-.bgimg-1 > img{
-
+.bgimg-1 > img {
     min-width: 100vw;
     height: 110vh;
 }
+
 .bgimg-2 {
     background-image: url("https://i.ibb.co/6DwwVvW/parallax2.jpg");
     min-width: 100vw;
     min-height: 40vh;
 }
+
 .bgimg-3 {
     background-image: url("../../assets/fondo1.png");
     min-width: 100vw;
     min-height: 60vh;
 }
 
+/* Caption styles */
 .caption {
     position: absolute;
     left: 0;
@@ -101,10 +103,35 @@
     text-align: center;
 }
 
+.caption .border > div {
+    padding-top: 20px;
+    color: white;
+    border-radius: 10px;
+    max-width: 40vw;
+    position: relative;
+    left: 30%;
+    justify-content: center;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.caption .border2 > div {
+    color: white;
+    background: white;
+    border-radius: 10px;
+    max-width: 40vw;
+    position: relative;
+    left: 30%;
+    justify-content: center;
+    font-size: 25px;
+}
+
+/* Product styles */
 .HomeProductsSection {
     display: grid;
     grid-template-columns: repeat(auto-fit, 22rem);
     justify-content: center;
+    gap: 1rem;
     padding-top: 2rem;
     padding-left: 6vw;
 }

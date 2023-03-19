@@ -1,4 +1,4 @@
-import {REACT_APP_API_KEY, API_URL} from"../config"
+import {REACT_APP_API_KEY, API_URL, TESTING_URL} from "../config"
 import axios from "axios";
 import {IProductPageProps} from "../models/IProductPageProps";
 import {IProductProps} from "../models/IProductProps";
@@ -142,7 +142,7 @@ export const postProduct = async (newProduct: IProductProps): Promise<IProductPr
 export const editProduct = async (id: any, newProduct: IProductProps): Promise<IProductProps> => {
     //si se le pasa tanmanio usa una url o otra
     const testingURL = "http://localhost:8080/api"
-    const apiUrl = `${API_URL}/products/${id}`;
+    const apiUrl = `${TESTING_URL}/products/${id}`;
     return new Promise<IProductProps>((async (resolve, reject) => {
         try {
             const response = await axios.put(apiUrl, newProduct);
@@ -157,7 +157,7 @@ export const editProduct = async (id: any, newProduct: IProductProps): Promise<I
     }));
 }
 export const getAllProducts = async (p: { size: number; page: number }): Promise<IProductProps[]> => {
-    const apiUrl = `${API_URL}/products?size=10`;
+    const apiUrl = `${TESTING_URL}/products?size=${p.size}&page=${p.page}`;
 
     return new Promise<IProductProps[]>((async (resolve, reject) => {
         try {

@@ -2,14 +2,14 @@
     background-color: rgba(179, 187, 201, 0.249);
     border-radius: 10px;
     padding: 20px;
-    width: 300px;
+    width: 280px;
     height: 450px;
     backdrop-filter: blur(3px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
-}
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;}
 .prod-card-new:hover .prod-card-new-logo-img {
     transform: rotate(360deg);
 }
@@ -37,6 +37,7 @@
 .prod-card-new:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(114, 185, 87, 0.6);
     background-position: 0 100%;
 }
 
@@ -44,7 +45,8 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 40px;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .prod-card-new-info {
@@ -53,6 +55,9 @@
 }
 
 .prod-card-new-info h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 28px;
     line-height: 1.2;
     margin: 0;
@@ -78,9 +83,16 @@
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .prod-btn-new {
+    opacity: 0;
+    transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
     background-color: #4caf50;
     color: white;
     border: none;
@@ -88,7 +100,6 @@
     padding: 10px 15px;
     cursor: pointer;
     text-transform: uppercase;
-    transition: background-color 0.3s, transform 0.3s;
     display: inline-block;
     vertical-align: middle;
 }
@@ -125,4 +136,13 @@
 
 .prod-card-new:hover .prod-card-new-img {
     transform: scale(1.1);
+}
+
+.prod-card-new:hover .prod-price-new {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+}
+
+.prod-card-new:hover .prod-btn-new {
+    opacity: 1;
 }

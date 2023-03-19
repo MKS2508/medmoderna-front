@@ -7,6 +7,7 @@ import ProductCardDetail from "../ProductCardDetail";
 import ProductCardNew from "../../Product/ProductCardNew/ProductCardNew";
 import ProductCardDetailResponsive from '../ProductCardDetailResponsive/ProductCardDetailResponsive';
 import { Link } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 type ProductCardsListResponsiveProps = {
