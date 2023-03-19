@@ -6,12 +6,77 @@
     min-height: 100vh;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     margin-bottom: 100px;
+    max-width: 70vw;
 }
 
+.background-image1 {
+    position: absolute;
+    top: 20vh;
+    left: 12vw;
+    width: 30%;
+
+    z-index: -1; /* Esto asegura que la imagen de fondo quede detrás de todo el contenido */
+}
+.background-image2 {
+    position: absolute;
+    top: 50vh;
+    left: 12vw;
+    width: 30%;
+
+    z-index: -1; /* Esto asegura que la imagen de fondo quede detrás de todo el contenido */
+}
+.background-image3 {
+    position: absolute;
+    top: 80vh;
+    left: 12vw;
+    width: 30%;
+
+    z-index: -1; /* Esto asegura que la imagen de fondo quede detrás de todo el contenido */
+}
+.background-image4 {
+    position: absolute;
+    top: 110vh;
+    left: 12vw;
+    width: 30%;
+
+    z-index: -1; /* Esto asegura que la imagen de fondo quede detrás de todo el contenido */
+}
+.background-image5 {
+    position: absolute;
+    top: 20vh;
+    left: 78vw;
+    width: 30%;
+    z-index: -1; /* Esto asegura que la imagen de fondo quede detrás de todo el contenido */
+}
+.background-image6 {
+    position: absolute;
+    top: 50vh;
+    left: 78vw;
+    width: 30%;
+
+    z-index: -1; /* Esto asegura que la imagen de fondo quede detrás de todo el contenido */
+}
+.background-image7 {
+    position: absolute;
+    top: 80vh;
+    left: 78vw;
+    width: 30%;
+
+    z-index: -1; /* Esto asegura que la imagen de fondo quede detrás de todo el contenido */
+}
+.background-image8 {
+    position: absolute;
+    top: 110vh;
+    left: 78vw;
+    width: 30%;
+
+    z-index: -1; /* Esto asegura que la imagen de fondo quede detrás de todo el contenido */
+}
 .container {
+    z-index: 12;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -139,6 +204,29 @@
 .product-colors .orange {
     background-color: #f18557;
 }
+.glass-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+    transition: all 0.2s ease;
+}
+
+.glass-button:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 12px;
+    transform: translateY(-1px);
+}
+
+.glass-button:active {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+    transform: translateY(0px);
+}
 
 .product-colors .active:after {
     content: "";
@@ -159,25 +247,34 @@
     color: #a2a2a2;
 
 }
-.details button {
-    background-color: #000;
-    color: #fff;
+.details .glasbutton {
+    background-color: rgb(75, 73, 73);
+        color: #fff;
     border: none;
     outline: none;
-    padding: 12px 24px;
     margin-top: 24px;
     font-size: 16px;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 600;
-    border-radius: 40px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
 
-.details button:hover {
-    background-color: #fff;
+.spacer {
+    height: 20px;
+    width: 0;
+}
+
+.glass-button:hover {
+    background-color: rgb(113, 185, 87);
     color: #000;
+}
+
+.backButton {
+    margin-bottom: 2rem;
+
 }
 
 @media (max-width: 1080px) {
@@ -207,7 +304,40 @@
         max-width: 100%;
     }
 }
+.paypal-btn {
+    background-color: #0070ba;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.paypal-btn:hover {
+    background-color: #004c8c;
+}
+
+.paypal-btn:active {
+    background-color: #002d5b;
+}
+
 @media (max-width: 768px) {
+
+    .background-images {
+        display: none;
+        opacity: 0;
+    }
+    .navbar {
+        position: static; /* Cambiar a 'static' para que no esté posicionado de forma absoluta */
+        top: auto;
+        left: auto;
+        flex-direction: column; /* Cambiar la dirección del Flexbox a columna */
+        padding: 1rem 0; /* Agregar algo de espacio alrededor de la barra de navegación */
+    }
     .container {
         width: 80vw;
         height: auto;
@@ -263,5 +393,166 @@
     width: 10px;
     height: 2px;
     bottom: 8px;
-    background-color: rgb(114, 185, 87);
+    background-color: rgb(113, 185, 87);
+}
+.navbar {
+    padding: 1rem;
+    position: absolute;
+    top: -5rem;
+    left: 1vw;
+    background-color: rgb(113, 185, 87);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: auto; /* Añadir esta línea para ajustar automáticamente el ancho */
+}
+
+.navbar-menu {
+
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.boldi {
+    font-weight: 900;
+
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: white;
+    color: #10131f;
+
+}
+.acceptedPaymentsBig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(113, 185, 87);
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.acceptedPaymentsMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(113, 185, 87);
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.acceptedPaymentsItem {
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.acceptedPaymentsItem:last-child {
+    margin-bottom: 0;
+}
+
+.acceptedPaymentsItem img {
+    max-width: 100%;
+    height: auto;
+}
+.acceptedPaymentsHeader {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.acceptedPaymentsHeader:hover {
+
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.acceptedPaymentsItem:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Estilos para pantallas móviles */
+@media (max-width: 480px) {
+    .product-card-detail-responsive {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        min-height: 100vh;
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        margin-bottom: 100px;
+        margin-left: 12vw;
+
+        max-width: 70vw;
+    }
+
+
+    .nav-link {
+        font-size: 0.8rem; /* Reducir el tamaño de fuente */
+        padding: 0.4rem 0.8rem; /* Reducir el espaciado */
+    }
+
+    .navbar-menu li {
+        margin: 0.3rem 0; /* Reducir los márgenes verticales */
+    }
+    .navbar {
+        padding: 0.5rem 0; /* Reducir el espaciado alrededor de la barra de navegación */
+    }
+    .acceptedPayments2{
+        padding: 15px;
+    }
+    .acceptedPaymentsBig{
+        display: none;
+    }
+    .acceptedPaymentsHeader {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .acceptedPaymentsItem {
+        margin-bottom: 15px;
+    }
+
+    .acceptedPaymentsItem img {
+        width: 80%;
+    }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 481px) {
+    .acceptedPaymentsMobile{
+        display: none;
+    }
+
 }
