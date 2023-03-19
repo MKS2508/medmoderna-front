@@ -1,0 +1,128 @@
+.prod-card-new {
+    background-color: rgba(179, 187, 201, 0.249);
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    height: 450px;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.prod-card-new:hover .prod-card-new-logo-img {
+    transform: rotate(360deg);
+}
+
+.prod-card-new::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    right: -50%;
+    width: 200%;
+    height: 120%;
+    transform: skewY(345deg) rotate(45deg);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+
+.prod-card-new:hover::before {
+    top: -70%;
+    right: -70%;
+    transform: skewY(345deg) rotate(45deg);
+    background-color: #72B957;
+}
+
+.prod-card-new:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    background-position: 0 100%;
+}
+
+.prod-card-new-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.prod-card-new-info {
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.prod-card-new-info h3 {
+    font-size: 28px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.prod-card-new-info p {
+    font-size: 18px;
+    line-height: 1.4;
+    margin: 10px 0;
+}
+
+
+.prod-details-new {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prod-price-new {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4caf50;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.prod-btn-new {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.prod-btn-new:hover {
+    background-color: #3b9e47;
+    transform: scale(1.05);
+}
+
+.prod-card-new-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+.prod-card-new-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+.prod-card-new:hover .prod-card-new-logo-img {
+    transform: rotate(360deg);
+}
+
+
+.prod-card-new:hover .prod-card-new-img {
+    transform: scale(1.1);
+}

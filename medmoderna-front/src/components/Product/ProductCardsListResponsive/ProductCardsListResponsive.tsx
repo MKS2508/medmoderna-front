@@ -4,6 +4,7 @@ import {IProductProps} from "../../../models/IProductProps";
 import logo from '../../../assets/logo4.png';
 import Modal from 'react-modal';
 import ProductCardDetail from "../ProductCardDetail";
+import ProductCardNew from "../../Product/ProductCardNew/ProductCardNew";
 import ProductCardDetailResponsive from '../ProductCardDetailResponsive/ProductCardDetailResponsive';
 import { Link } from 'react-router-dom';
 
@@ -18,28 +19,26 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
 
 
 
-    return (
+    // @ts-ignore
+    return (<>
+
         <div className="shopping-list">
-            {products.map(item => (
+            {products.map(item => (<>
 
+                <ProductCardNew
+                    key={item.name}
+                    imgSrc={item.imgSrc}
+                    description={item.description}
+                    price={item.price}
+                    productId={item.productId}
+                    name={item.name}
+                    brand={item.brand}
+                    category={item.category}
+                    maxLines={1} maxCharsPerLine={90}                />
 
-                <div key={item.productId} className="shopping-item">
-                    <img src={logo} className={"imageContainer"} alt={ "logo"}/>
-
-                    <img src={`data:image/png;base64,${item.imgSrc}`} alt={item.name} className="item-image" />
-                    <div className="item-details">
-                        <div className="item-name">{item.name}</div>
-                        <div className="item-price-and-button">
-                            {/*@ts-ignore*/}
-                            <div className="item-price" ><p className="card-price">{item.price.toFixed(2)}€</p></div>
-                            <Link className="item-button" to={`/product/${item.productId}`}><i className="gg-info"></i></Link>
-                        </div>
-                    </div>
-                </div>
-
-            ))}
+            </>))}
         </div>
-    );
+    </>);
 };
 
 export default ProductCardsListResponsive;

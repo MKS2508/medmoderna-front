@@ -4,6 +4,7 @@ import "./AdminDashboard.css";
 import { deleteProduct, getAllProducts, postProduct, editProduct } from "../../services/api-products-service";
 
 const AdminDashboard: React.FC = () => {
+    const [editingProductId, setEditingProductId] = useState<number | null>(null);
     const [selectedProducts, setSelectedProducts] = useState<Set<number>>(new Set());
     const [products, setProducts] = useState<IProductProps[]>([]);
     const [selectedRowIds, setSelectedRowIds] = useState<Set<number>>(new Set());
@@ -22,17 +23,19 @@ const AdminDashboard: React.FC = () => {
         loadData();
     }, []);
 
+
     const loadData = async () => {
-        const allProducts = await getAllProducts();
+        const allProducts = await getAllProducts({ page: 1, size: 100 });
         setProducts(allProducts);
-        alert(JSON.stringify(allProducts, null, 2));
     };
+
 
 
     const handleDelete = async (product: IProductProps) => {
         await deleteProduct(product.productId.toString());
         loadData();
     };
+
     const handleProductSelection = (productId: number, isSelected: boolean) => {
         setSelectedProducts((prevSelectedProducts) => {
             const updatedSelectedProducts = new Set(prevSelectedProducts);
@@ -52,8 +55,16 @@ const AdminDashboard: React.FC = () => {
         loadData();
     };
 
+    // Función para manejar la edición de productos
     const handleEdit = (product: IProductProps) => {
-        setEditedProduct(product);
+        setEditingProductId(product.productId);
+    };
+
+    // Función para manejar la confirmación de edición de productos
+    const handleConfirmEdit = async (product: IProductProps) => {
+        await editProduct(product.productId.toString(), product);
+        setEditingProductId(null);
+        loadData();
     };
 
     const handleUpdateProduct = async (e: React.FormEvent) => {
@@ -66,6 +77,7 @@ const AdminDashboard: React.FC = () => {
     };
 
     const handleNewProductSubmit = async (e: React.FormEvent) => {
+        const [editingProductId, setEditingProductId] = useState<number | null>(null);
         e.preventDefault();
         await postProduct(newProduct);
         loadData();
@@ -95,20 +107,109 @@ const AdminDashboard: React.FC = () => {
                     <th>Acciones</th>
                 </tr>
                 </thead>
+
                 <tbody>
-                {products.map((product) => (
-                    <tr key={product.productId}>
-                        <td>{product.productId}</td>
-                        <td>{product.name}</td>
-                        <td>{product.category}</td>
-                        <td>{product.brand}</td>
-                        <td>{product.price}</td>
-                        <td>
-                            <button onClick={() => handleEdit(product)}>Editar</button>
-                            <button onClick={() => handleDelete(product)}>Eliminar</button>
-                        </td>
-                    </tr>
-                ))}
+                {products.map((product) => {
+                    const isEditing = product.productId === editingProductId;
+                    return (
+                        <tr key={product.productId}>
+                            <td>{product.productId}</td>
+                            <td>
+                                {isEditing ? (
+                                    <input
+                                        type="text"
+                                        value={product.name}
+                                        onChange={(e) =>
+                                            setProducts(
+                                                products.map((p) =>
+                                                    p.productId === product.productId
+                                                        ? { ...p, name: e.target.value }
+                                                        : p
+                                                )
+                                            )
+                                        }
+                                    />
+                                ) : (
+                                    product.name
+                                )}
+                            </td>
+                            {/* Agrega inputs para las otras celdas que deseas que sean editables */}
+                            <td>
+                                {isEditing ? (
+                                    <input
+                                        type="text"
+                                        value={product.category}
+                                        onChange={(e) =>
+                                            setProducts(
+                                                products.map((p) =>
+                                                    p.productId === product.productId
+                                                        ? { ...p, category: e.target.value }
+                                                        : p
+                                                )
+                                            )
+                                        }
+                                    />
+                                ) : (
+                                    product.category
+                                )}
+                            </td>
+                            <td>
+                                {isEditing ? (
+                                    <input
+                                        type="text"
+                                        value={product.brand}
+                                        onChange={(e) =>
+                                            setProducts(
+                                                products.map((p) =>
+                                                    p.productId === product.productId
+                                                        ? { ...p, brand: e.target.value }
+                                                        : p
+                                                )
+                                            )
+                                        }
+                                    />
+                                ) : (
+                                    product.brand
+                                )}
+                            </td>
+                            <td>
+                                {isEditing ? (
+                                    <input
+                                        type="number"
+                                        value={product.price}
+                                        onChange={(e) =>
+                                            setProducts(
+                                                products.map((p) =>
+                                                    p.productId === product.productId
+                                                        ? { ...p, price: parseFloat(e.target.value) }
+                                                        : p
+                                                )
+                                            )
+                                        }
+                                    />
+                                ) : (
+                                    product.price
+                                )}
+                            </td>
+                            <td>
+                                <img
+                                    src={`data:image/png;base64,${product.imgSrc}`}
+                                    alt={product.name}
+                                    width="50"
+                                    height="50"
+                                />
+                            </td>
+                            <td>
+                                {isEditing ? (
+                                    <button onClick={() => handleConfirmEdit(product)}>Confirmar</button>
+                                ) : (
+                                    <button onClick={() => handleEdit(product)}>Editar</button>
+                                )}
+                                <button onClick={() => handleDelete(product)}>Eliminar</button>
+                            </td>
+                        </tr>
+                    );
+                })}
                 </tbody>
             </table>
             <button onClick={handleBulkDelete}>Eliminar seleccionados</button>
@@ -134,4 +235,6 @@ const AdminDashboard: React.FC = () => {
 };
 
 export default AdminDashboard;
+
+
 

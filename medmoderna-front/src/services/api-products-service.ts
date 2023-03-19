@@ -156,13 +156,14 @@ export const editProduct = async (id: any, newProduct: IProductProps): Promise<I
 
     }));
 }
-export const getAllProducts = async (): Promise<IProductProps[]> => {
-    const apiUrl = `${API_URL}/products`;
+export const getAllProducts = async (p: { size: number; page: number }): Promise<IProductProps[]> => {
+    const apiUrl = `${API_URL}/products?size=10`;
 
     return new Promise<IProductProps[]>((async (resolve, reject) => {
         try {
             const response = await axios.get(apiUrl);
             const products: IProductProps[] = response.data.products;
+            console.log(response);
             (products) ? resolve(products) : reject(new Error(`404 on ${apiUrl}`));
         } catch (e: any) {
             console.log(new Error(e));
