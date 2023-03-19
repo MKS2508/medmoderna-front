@@ -7,6 +7,7 @@ import Home from "../pages/Home/Home";
 import {AnimatePresence} from "framer-motion";
 import ProductDashboard from "../pages/ProductDashboard/ProductDashboard";
 import Brands from "../pages/Brands/Brands";
+import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 
 const productRoutesProps: RouteProps[] = [
     //abstaer name, description, id a constantes ?
@@ -18,6 +19,7 @@ const productRoutesProps: RouteProps[] = [
     {path: "/MARCAS/:brand", element: <Products name={location.pathname.split("MARCAS/")[1]} id={5} description={"Todas los productos de ".concat(location.pathname.split("MARCAS/")[1])}  elementsSize={10} pagination={0}/>},
     {path: "/SEARCH/:query", element: <Products name={":query"} id={5} description={"Catalogo de ".concat(location.pathname.split("MARCAS/")[1])}  elementsSize={10} pagination={0}/>},
     {path: "/ADMIN", element: <ProductDashboard name={":id"} id={88} description={":id"}  elementsSize={10} pagination={0} productId={""}/>},
+    {path: "/PANEL", element: <AdminDashboard/>},
     {path: "/edit/:id", element: <ProductDashboard name={":id"} id={88} description={":id"}  elementsSize={10} pagination={0} productId={""}/>},
     {path: "/product/:id", element: <ProductDetail name={":id"} id={5} description={":id"}  elementsSize={10} pagination={0} productId={""}/>},
     {path: "/ROPA", element: <Products name={"ROPA"} id={6} elementsSize={10} pagination={0} description={"Toda nuestra ropa"}/> },

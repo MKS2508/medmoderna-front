@@ -1,5 +1,5 @@
 export interface IProductProps {
-  productId: number,
+  productId: number ,
   name: string,
   description: string,
   price:number,
