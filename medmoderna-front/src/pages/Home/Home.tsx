@@ -213,7 +213,7 @@ const Home = () => {
 
 <>
 
-    <div hidden={!isLoading2} >
+    <div hidden={imagesLoaded} >
         <LoadingPage  logoSrc={"a"}/>
     </div>
 
