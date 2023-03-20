@@ -138,9 +138,42 @@
 }
 
 @media (max-width: 480px) {
+    .shopping-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 16px;
+
+        margin: 0 5%;}
     .shopping-item {
         width: 280px;
     }
+}
+@media (max-width: 420px) {
+    .shopping-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 16px;
+
+        margin: 0 4%;}
+
+}
+@media (max-width: 400px) {
+    .shopping-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 16px;
+
+        margin: 0 3%;}
+
 }
 
 .item-image {

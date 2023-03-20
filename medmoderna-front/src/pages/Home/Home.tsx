@@ -10,6 +10,7 @@ import logo from '../../assets/logo3.png'
 import fondo from '../../assets/fondo1.png'
 import fondo3 from '../../assets/fondo3.png'
 import fondo2 from '../../assets/fondo2.png'
+import { FacebookEmbed } from 'react-social-media-embed';
 
 import poster from "../../assets/poster.png";
 import videoHome from "../../assets/videohome.mp4";
@@ -18,6 +19,9 @@ import ProductCardMobile from "../../components/Product/ProductCardMobile";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import ProductCardsListResponsive from "../../components/Product/ProductCardsListResponsive/ProductCardsListResponsive";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
+import {FaCannabis, FaCapsules, FaBong, FaTshirt, FaLightbulb, FaHandHoldingWater} from "react-icons/fa";
+import ProductSwitcher from "../../components/Product/ProductSwitcher/ProductSwitcher";
 
 const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
 const videoBackUrlFromYt = "https://rr5---sn-h5qzened.googlevideo.com/videoplayback?expire=1679341167&ei=D2IYZMrDBcuO1gKAv7iQCg&ip=157.90.242.21&id=o-AA2C0anPp629L8_gkbxdDxa7cPbh1ZZEobx35fRHnhWN&itag=399&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C271%2C278%2C313%2C394%2C395%2C396%2C397%2C398%2C399%2C400%2C401&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=tzGqlaiIqYYNDAgCCLohwcAL&gir=yes&clen=21641026&dur=78.099&lmt=1609461168862480&keepalive=yes&fexp=24007246&c=WEB&txp=5431432&n=MaHWNrhCAR2xl8&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRAIgC0mnT9ezpyG1rZyhWPKQAqd8CYuBBVcnN-KM7SMyh2wCID8zbpVYe9dkUdsxj8N5KqeYf8WpDHUGFMjb4Xzs5SsS&ratebypass=yes&rm=sn-4g5e6e7s&req_id=daf18eb411fa3ee&ipbypass=yes&redirect_counter=2&cm2rm=sn-h5nhv8pa-h5qe7l&cms_redirect=yes&cmsv=e&mh=b3&mip=81.9.208.14&mm=29&mn=sn-h5qzened&ms=rdu&mt=1679319232&mv=m&mvi=5&pl=21&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIhAP6OKkUv44H92mJyjkBsaEmaa2e834AS-Aq9lGrsW5nWAiAnUCBrgfGeIDWahwIS3ahwqftdxuQJIQIXk3tLM5U2Cw%3D%3D";
@@ -81,7 +85,7 @@ const AddressMapMobile = () => {
     );
 }
 
-const HomeProducts = (data: { products: IProductProps[] }) => {
+export const HomeProducts = (data: { products: IProductProps[] }) => {
     return (<ProductCardsListResponsive isHome={true} products={data.products}/>)
 }
 const HomeProductsMobile = (data: { products: IProductProps[] }) => {
@@ -279,8 +283,6 @@ const Home = () => {
 
                 <div style={{display: 'flex', justifyContent: 'space-around', marginTop: "10vh"}}>
 
-                    <p style={{maxWidth: "500px", fontSize: "1.2rem"}}>
-                        En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas. Nuestra tienda es el lugar perfecto para quienes desean tener su propio jardín de hierbas o cultivar sus propias flores y verduras. Ofrecemos productos de alta calidad y también ofrecemos asesoramiento para ayudarte a obtener los mejores resultados con tu jardinería.</p>
 
 
                     <AnimatePresence>
@@ -288,11 +290,21 @@ const Home = () => {
                         <div>
                             <motion.iframe
                                 className="iframeIg"
-                                initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: 400, marginTop: 30}}
-                                animate={{opacity: 1, scale: 1, borderRadius: "10px", height: 720}}
+                                initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: 400, marginTop: 30, marginBottom: "2rem"}}
+                                animate={{opacity: 1, scale: 1, borderRadius: "10px", height: 400 , marginBottom: "2rem"}}
                                 exit={{opacity: 0.3}}
                                 transition={{duration: 1.5}}
-                                key={igPost} width="460" height={720} src={igPost}
+                                key={igPost} width="460" height={400} src={igPost}
+                                frameBorder="0"/>
+                        </div>
+                        <div>
+                            <motion.iframe
+                                className="iframeIg"
+                                initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: 400, marginTop: 30, marginBottom: "2rem"}}
+                                animate={{opacity: 1, scale: 1, borderRadius: "10px", height: 400 , marginBottom: "2rem"}}
+                                exit={{opacity: 0.3}}
+                                transition={{duration: 1.5}}
+                                key={igPost} width="460" height={400} src={igPost}
                                 frameBorder="0"/>
                         </div>
 
@@ -311,7 +323,43 @@ const Home = () => {
                 </div>
 
 
+                <section>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginTop: "2rem",
+                        paddingTop: "2rem",
+                        backgroundColor: "whitesmoke"
+                    }}>
+                        <h1>Mas productos destacados</h1>
+                    </div>
 
+                </section>
+
+                <section>
+                    <div className="bgimg-1">
+
+                        <div className="video-container2">
+                            <video className="videoAbajo" autoPlay muted loop playsInline >
+                                <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
+
+                        </div>
+                    </div>
+
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        paddingTop: "2rem",
+                        backgroundColor: "whitesmoke"
+                    }}>
+
+                    </div>
+                    <div style={{zIndex: 30, position: "relative", textAlign:"center", width:"300px", display: "flex", alignItems: "center", margin: "0 auto", borderRadius:"12px"}}>
+
+                    </div>
+                    <ProductSwitcher homeProds={homeProds}></ProductSwitcher>
+
+                </section>
                 <div style={{display: 'flex', justifyContent: 'center', marginTop: "3rem", paddingTop: "2rem"}}>
                     <h2>Puedes encontrarnos en <a href={"https://goo.gl/maps/V8UuLN7WnG8rMHiM6"}>Avenida de
                         Mendavia, Nº16
@@ -338,6 +386,72 @@ const Home = () => {
 
                 </div>
                 <div style={{fontSize: "30px", zIndex: 2, color: "black", position: "relative", textAlign:"center", width:"30%", display: "flex", alignItems: "center", margin: "0 auto", backgroundColor: "white", borderRadius:"12px"}}>
+                    <h1 style={{fontSize: "30px", zIndex: 2, color: "black", position: "relative", textAlign:"center", width:"100%"}}>Categorias</h1>
+                </div>
+
+
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    backgroundColor: "whitesmoke"
+                }}>
+                    <CategoryCard
+                        name="PARAFERNALIA"
+                        link="/parafernalia"
+                        Icon={FaCannabis}
+                    />
+                    <CategoryCard
+                        name="ROPA"
+                        link="/ropa"
+                        Icon={FaTshirt}
+                    />
+                    <CategoryCard
+                        name="CBD"
+                        link="/cbd"
+                        Icon={FaCapsules}
+                    />
+                </div>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    paddingTop: "2rem",
+                    backgroundColor: "whitesmoke"
+                }}>
+                    <CategoryCard
+                        name="CULTIVO"
+                        link="/CULTIVO"
+                        Icon={FaHandHoldingWater}
+                    />
+                    <CategoryCard
+                        name="ILUMINACION"
+                        link="/ILUMINACION"
+                        Icon={FaLightbulb}
+                    />
+
+                </div>
+                <div style={{display: 'flex', justifyContent: 'center', paddingTop: "10rem"}}>
+                    <div  style={{ backgroundColor: "white", borderRadius: "20%", marginRight: "1rem"}}>
+                        <FacebookEmbed
+
+                            url="https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"
+                            width={500}/>
+                    </div>
+                    <div  style={{ backgroundColor: "white", borderRadius: "20%" , marginLeft: "1rem", marginBottom: "2rem"}}>
+                        <FacebookEmbed
+
+                            url="https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"
+                            width={500}/>
+                    </div>
+                </div>
+                <div className="bgimg-1">
+
+                    <div className="video-container2">
+                        <video className="videoAbajo" autoPlay muted loop playsInline >
+                            <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
+
+                    </div>
+                </div>
+                <div style={{marginTop: "5.5rem", fontSize: "30px", zIndex: 2, color: "black", position: "relative", textAlign:"center", width:"30%", display: "flex", alignItems: "center", margin: "0 auto", backgroundColor: "white", borderRadius:"12px"}}>
                     <h1 style={{fontSize: "30px", zIndex: 2, color: "black", position: "relative", textAlign:"center", width:"100%"}}>Nuestras marcas</h1>
                 </div>
 
@@ -393,45 +507,7 @@ const Home = () => {
                         />
                     </div>
                 </div>
-                <section>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        marginTop: "8rem",
-                        paddingTop: "2rem",
-                        backgroundColor: "whitesmoke"
-                    }}>
-                        <h1>Mas productos destacados️</h1>
-                    </div>
 
-                </section>
-
-                <section>
-                    <div className="bgimg-1">
-
-                        <div className="video-container2">
-                            <video className="videoAbajo" autoPlay muted loop playsInline   poster={poster}>
-                                <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
-
-                        </div>
-                    </div>
-
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        paddingTop: "2rem",
-                        backgroundColor: "whitesmoke"
-                    }}>
-
-                    </div>
-                    <div style={{zIndex: 30, position: "relative", textAlign:"center", width:"300px", display: "flex", alignItems: "center", margin: "0 auto", borderRadius:"12px"}}>
-                        <button> {"<"} </button>
-                        <h1 style={{fontSize: "30px", zIndex: 30, color: "white", position: "relative", textAlign:"center", width:"100%"}}>CBD</h1>
-                        <button> {">"} </button>
-                    </div>
-                    <HomeProducts products={homeProds}></HomeProducts>
-
-                </section>
 
             </div>
             {/*pc*/}

@@ -16,7 +16,7 @@ const LoadingPage: React.FC<LoadingPageProps> = ({ logoSrc }) => {
             <div className="loader-logo-container">
                 <ClipLoader size={250} color={"#4caf50"} />
                 <img className="loader-logo" src={(logoSrc.length < 2) ? logo : logoSrc} alt="Logo" />
-                <BeatLoader size={20} color={"#4caf50"}  style={{position: "absolute", bottom: -40 }}/>
+                <BeatLoader size={20} color={"#fff8f8"}  style={{position: "absolute", bottom: -40 }}/>
 
             </div>
 
