@@ -168,10 +168,10 @@ const Home = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 2000);
+        }, 500);
         const timer2 = setTimeout(() => {
             setIsLoading2(false);
-        }, 8000);
+        }, 3000);
 
         window.scrollTo(0, 0)
 
@@ -226,7 +226,7 @@ const Home = () => {
 
                 <div ref={wrapperRef} className="ParallaxVideo">
 
-                    <Carousel  animationHandler={"slide"} infiniteLoop={true} autoPlay={true} className={"carruseltop"} interval={3000}
+                    <Carousel  animationHandler={"slide"} infiniteLoop={true} autoPlay={true} className={"carruseltop"} interval={5000}
                                width={"100vw"} showThumbs={false} showIndicators={false} showArrows={false}
                                stopOnHover={false}>
                         <div className={"bgimg-1"}>
@@ -280,8 +280,7 @@ const Home = () => {
                 <div style={{display: 'flex', justifyContent: 'space-around', marginTop: "10vh"}}>
 
                     <p style={{maxWidth: "500px", fontSize: "1.2rem"}}>
-                        Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor,
-                        euis</p>
+                        En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas. Nuestra tienda es el lugar perfecto para quienes desean tener su propio jardín de hierbas o cultivar sus propias flores y verduras. Ofrecemos productos de alta calidad y también ofrecemos asesoramiento para ayudarte a obtener los mejores resultados con tu jardinería.</p>
 
 
                     <AnimatePresence>
@@ -304,7 +303,7 @@ const Home = () => {
                     <div className="caption">
                         <span className="border2">
                             <div>
-                            <p style={{color:"black"}}>{!imagesLoaded ? "Loading images..." : "Images loaded"}</p>
+                            <p style={{color:"black"}}>En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas.</p>
 
                             </div>
                         </span>
