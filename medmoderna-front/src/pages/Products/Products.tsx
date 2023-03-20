@@ -216,13 +216,13 @@ const Products = (props: IProductPageProps) => {
 
                     <section className="normalSection">
                         {(!loading) ?
-                            <ProductCardsListResponsive products={products}/> : <></>
+                            <ProductCardsListResponsive isHome={false} products={products}/> : <></>
                         }
                     </section>
                     <section className="mobile">
                         {(!loading) ?
 
-                            <ProductCardsListResponsive products={products}/> : <></>
+                            <ProductCardsListResponsive  isHome={false}  products={products}/> : <></>
                         }                    </section>
 
                 </>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { IProductProps } from "../../models/IProductProps";
 import "./AdminDashboard.css";
 import { deleteProduct, getAllProducts, postProduct, editProduct } from "../../services/api-products-service";
-import ProductCardNew from "../../components/Product/ProductCardNew/ProductCardNew";
+import ProductCardNewHome from "../../components/Product/ProductCardNew/ProductCardNew";
 import 'react-toastify/dist/ReactToastify.css';
 
 const AdminDashboard: React.FC = () => {
@@ -218,7 +218,7 @@ const AdminDashboard: React.FC = () => {
                     </div>
 
                     <div className="preview-container">
-                        <ProductCardNew
+                        <ProductCardNewHome
                             key={newProductName}
                             imgSrc={newProductImgSrc}
                             description={newProductDescription}

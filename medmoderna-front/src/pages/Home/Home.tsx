@@ -46,7 +46,7 @@ const AddressMapMobile = () => {
 }
 
 const HomeProducts = (data: { products: IProductProps[] }) => {
-    return (<ProductCardsListResponsive products={data.products}/>)
+    return (<ProductCardsListResponsive isHome={true} products={data.products}/>)
 }
 const HomeProductsMobile = (data: { products: IProductProps[] }) => {
     return <div className={"productsWrapperMobile"}>
@@ -260,24 +260,6 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <section>
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            marginTop: "3rem",
-                            paddingTop: "2rem",
-                            backgroundColor: "whitesmoke"
-                        }}>
-                            <h1>Algunos de nuestros productos ☘️</h1>
-                        </div>
-                        <div style={{display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke"}}>
-                            <h2>{" < CBD > "}</h2>
-                        </div>
-
-                        <HomeProducts products={homeProds}></HomeProducts>
-
-
-                    </section>
 
 
                     <div style={{display: 'flex', justifyContent: 'center', marginTop: "3rem", paddingTop: "2rem"}}>
@@ -285,12 +267,12 @@ const Home = () => {
                             Mendavia, Nº16
                             Pabellón 2, 26009 Logroño, La Rioja</a></h2>
                     </div>
-                    <div style={{display: 'flex', justifyContent: 'center', marginTop: "2rem", borderRadius: "20%"}}>
+                    <div style={{display: 'flex', justifyContent: 'center', marginTop: "2rem", marginBottom: "2rem",borderRadius: "20%"}}>
                         <AddressMap/>
                     </div>
                     <div className="bgimg-1">
 
-            <div className="video-container2">
+                    <div className="video-container2">
                     <video className="videoAbajo" autoPlay muted loop playsInline   poster={poster}>
                         <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
 
@@ -305,13 +287,17 @@ const Home = () => {
                     }}>
 
                     </div>
+                    <div style={{fontSize: "30px", zIndex: 30, color: "black", position: "relative", textAlign:"center", width:"30%", display: "flex", alignItems: "center", margin: "0 auto", backgroundColor: "white", borderRadius:"12px"}}>
+                        <h1 style={{fontSize: "30px", zIndex: 30, color: "black", position: "relative", textAlign:"center", width:"100%"}}>Nuestras marcas</h1>
+                    </div>
+
 
                     <div style={{
                         display: 'flex',
                         justifyContent: 'center',
-                        paddingTop: "2rem",
                         backgroundColor: "whitesmoke"
                     }}>
+
                         <div style={{marginRight: "30px", marginTop: "30px"}}>
 
                             <BrandCard name={"CANNA"}
@@ -361,29 +347,48 @@ const Home = () => {
                         <div style={{
                             display: 'flex',
                             justifyContent: 'center',
-                            marginTop: "3rem",
+                            marginTop: "8rem",
                             paddingTop: "2rem",
                             backgroundColor: "whitesmoke"
                         }}>
-                            <h1>Algunos de nuestros productos ☘️</h1>
+                            <h1>Mas productos destacados️</h1>
                         </div>
-                        <div style={{display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke"}}>
-                            <h2>{" < CBD > "}</h2>
-                        </div>
-
-                        <HomeProducts products={homeProds}></HomeProducts>
-
 
                     </section>
 
+                    <section>
+                        <div className="bgimg-1">
 
+                            <div className="video-container2">
+                                <video className="videoAbajo" autoPlay muted loop playsInline   poster={poster}>
+                                    <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
+
+                            </div>
+                        </div>
+
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            paddingTop: "2rem",
+                            backgroundColor: "whitesmoke"
+                        }}>
+
+                        </div>
+                        <div style={{zIndex: 30, position: "relative", textAlign:"center", width:"300px", display: "flex", alignItems: "center", margin: "0 auto", borderRadius:"12px"}}>
+                            <button> {"<"} </button>
+                            <h1 style={{fontSize: "30px", zIndex: 30, color: "white", position: "relative", textAlign:"center", width:"100%"}}>CBD</h1>
+                            <button> {">"} </button>
+                        </div>
+                        <HomeProducts products={homeProds}></HomeProducts>
+
+                    </section>
 
                 </div>
                 {/*pc*/}
 
                 <section className="mobile">
                     <div className="mobileSectionFull" style={{backgroundColor: "#EAE6E6FF", height: "100rem"}}>
-                        <h1>Algunos de nuestros productos ☘️</h1>
+                        <h1>Nuestros productos mas vendidos️</h1>
 
                         <HomeProductsMobile products={homeProds}></HomeProductsMobile>
 

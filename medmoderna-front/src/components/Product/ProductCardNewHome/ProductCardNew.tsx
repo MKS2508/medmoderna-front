@@ -36,7 +36,7 @@ const ProductCardNewHome: React.FC<IProductCardProps> = ({ name, productId,  des
     return (
         <>
 
-            <div className="prod-card-new">
+            <div className="prod-card-new2">
                 <div className="prod-card-new-logo">
                     <img src={logo} alt="Logo" className="prod-card-new-logo-img" />
                 </div>
