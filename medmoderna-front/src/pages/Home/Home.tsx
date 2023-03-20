@@ -104,6 +104,18 @@ const Home = () => {
     const [isVisible, setIsVisible] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [imagesLoaded, setImagesLoaded] = useState(false);
+
+    const handleImageLoad = () => {
+        // Verificamos si todas las imágenes se han cargado
+        const allImagesLoaded = [...document.querySelectorAll(" img")].every(
+            (img) => img.complete && img.naturalHeight !== 0
+        );
+        console.log(allImagesLoaded)
+        alert("cargadas")
+        setImagesLoaded(allImagesLoaded);
+
+    };
 
     const listenToScroll = () => {
         let heightToHideFrom = 30;
@@ -136,6 +148,8 @@ const Home = () => {
             console.log({directUrl})
 
         }
+        handleImageLoad()
+
         const interval = setInterval(() => {
             console.log('This will run every 10 second!');
 
@@ -165,7 +179,7 @@ const Home = () => {
     return (
         <>
             {
-                (isLoading) ?
+                (isLoading ) ?
 
         <LoadingPage logoSrc={"a"}/>
 :
@@ -255,6 +269,8 @@ const Home = () => {
                         <div className="caption">
                         <span className="border2">
                             <div>
+                                      {imagesLoaded && <p>Todas las imágenes han sido cargadas.</p>}
+
                             </div>
                         </span>
                         </div>
