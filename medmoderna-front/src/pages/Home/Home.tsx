@@ -139,6 +139,7 @@ const Home = () => {
     const [videoUrl, setVideoUrl] = useState<string>("");
     const [isVisible, setIsVisible] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoading2, setIsLoading2] = useState(true);
 
 
 
@@ -167,7 +168,11 @@ const Home = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 3000);
+        }, 2000);
+        const timer2 = setTimeout(() => {
+            setIsLoading2(false);
+        }, 8000);
+
         window.scrollTo(0, 0)
 
         if (videoUrl.length < 1) {
@@ -204,48 +209,51 @@ const Home = () => {
 
 
     return (
-        <>
-            {
-                (isLoading ) ?
-
-        <LoadingPage logoSrc={"a"}/>
-:
-        <AnimatedPage>
 
 
-            <div>
-                <div className="">
+<>
 
-                    <div ref={wrapperRef} className="ParallaxVideo">
+    <div hidden={!isLoading2} >
+        <LoadingPage  logoSrc={"a"}/>
+    </div>
 
-                        <Carousel  animationHandler={"slide"} infiniteLoop={true} autoPlay={true} className={"carruseltop"} interval={3000}
-                                  width={"100vw"} showThumbs={false} showIndicators={false} showArrows={false}
-                                  stopOnHover={false}>
-                            <div className={"bgimg-1"}>
-                                <img src={fondo} alt={"fondo1"}/>
-                            </div>
-                            <div>
-                                <video autoPlay muted loop playsInline style={{maxHeight: "110vh"}}  poster={poster}>
 
-                                    <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/VideoHomeAcortaco.mp4"}/>
+    <AnimatedPage>
 
-                                </video>
-                            </div>
-                            <div className={"bgimg-1"}>
-                                <img src={fondo2} alt={"fondo2"}/>
-                            </div>
-                            <div className={"bgimg-1"}>
-                                <img src={fondo3} alt={"fondo3"}/>
-                            </div>
-                            <div>
-                                <video autoPlay muted loop playsInline style={{maxHeight: "110vh", width: "100vw"}}  poster={poster}>
 
-                                    <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>
-                                </video>
-                            </div>
-                        </Carousel>
+        <div hidden={isLoading}>
+            <div className="">
 
-                        <div className={(!isVisible && window.screen.width < 440) ? "captionWithSidebar" : "caption"}>
+                <div ref={wrapperRef} className="ParallaxVideo">
+
+                    <Carousel  animationHandler={"slide"} infiniteLoop={true} autoPlay={true} className={"carruseltop"} interval={3000}
+                               width={"100vw"} showThumbs={false} showIndicators={false} showArrows={false}
+                               stopOnHover={false}>
+                        <div className={"bgimg-1"}>
+                            <img src={fondo} alt={"fondo1"}/>
+                        </div>
+                        <div>
+                            <video autoPlay muted loop playsInline style={{maxHeight: "110vh"}}  poster={poster}>
+
+                                <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/VideoHomeAcortaco.mp4"}/>
+
+                            </video>
+                        </div>
+                        <div className={"bgimg-1"}>
+                            <img src={fondo2} alt={"fondo2"}/>
+                        </div>
+                        <div className={"bgimg-1"}>
+                            <img src={fondo3} alt={"fondo3"}/>
+                        </div>
+                        <div>
+                            <video autoPlay muted loop playsInline style={{maxHeight: "110vh", width: "100vw"}}  poster={poster}>
+
+                                <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>
+                            </video>
+                        </div>
+                    </Carousel>
+
+                    <div className={(!isVisible && window.screen.width < 440) ? "captionWithSidebar" : "caption"}>
 
                             <span className="border">
                         <div>
@@ -261,63 +269,150 @@ const Home = () => {
 
                         </div>
                     </span>
-                        </div>
                     </div>
-
                 </div>
 
-                <div className="section">
+            </div>
+
+            <div className="section">
 
 
-                    <div style={{display: 'flex', justifyContent: 'space-around', marginTop: "10vh"}}>
+                <div style={{display: 'flex', justifyContent: 'space-around', marginTop: "10vh"}}>
 
-                        <p style={{maxWidth: "500px", fontSize: "1.2rem"}}>
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor,
-                            euis</p>
+                    <p style={{maxWidth: "500px", fontSize: "1.2rem"}}>
+                        Lorem ipsum dolor sit amet consectetur adipiscing elit, curae a cum integer at auctor,
+                        euis</p>
 
 
-                        <AnimatePresence>
+                    <AnimatePresence>
 
-                            <div>
-                                <motion.iframe
-                                    className="iframeIg"
-                                    initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: 400, marginTop: 30}}
-                                    animate={{opacity: 1, scale: 1, borderRadius: "10px", height: 720}}
-                                    exit={{opacity: 0.3}}
-                                    transition={{duration: 1.5}}
-                                    key={igPost} width="460" height={720} src={igPost}
-                                    frameBorder="0"/>
-                            </div>
+                        <div>
+                            <motion.iframe
+                                className="iframeIg"
+                                initial={{opacity: 0, scale: 0.7, borderRadius: "20%", height: 400, marginTop: 30}}
+                                animate={{opacity: 1, scale: 1, borderRadius: "10px", height: 720}}
+                                exit={{opacity: 0.3}}
+                                transition={{duration: 1.5}}
+                                key={igPost} width="460" height={720} src={igPost}
+                                frameBorder="0"/>
+                        </div>
 
-                        </AnimatePresence>
+                    </AnimatePresence>
 
-                    </div>
-                    <div className="bgimg-3">
-                        <div className="caption">
+                </div>
+                <div className="bgimg-3">
+                    <div className="caption">
                         <span className="border2">
                             <div>
                             <p style={{color:"black"}}>{!imagesLoaded ? "Loading images..." : "Images loaded"}</p>
 
                             </div>
                         </span>
-                        </div>
                     </div>
+                </div>
 
 
 
-                    <div style={{display: 'flex', justifyContent: 'center', marginTop: "3rem", paddingTop: "2rem"}}>
-                        <h2>Puedes encontrarnos en <a href={"https://goo.gl/maps/V8UuLN7WnG8rMHiM6"}>Avenida de
-                            Mendavia, Nº16
-                            Pabellón 2, 26009 Logroño, La Rioja</a></h2>
-                    </div>
-                    <div style={{display: 'flex', justifyContent: 'center', marginTop: "2rem", marginBottom: "2rem",borderRadius: "20%"}}>
-                        <AddressMap/>
-                    </div>
-                    <div className="bgimg-1">
+                <div style={{display: 'flex', justifyContent: 'center', marginTop: "3rem", paddingTop: "2rem"}}>
+                    <h2>Puedes encontrarnos en <a href={"https://goo.gl/maps/V8UuLN7WnG8rMHiM6"}>Avenida de
+                        Mendavia, Nº16
+                        Pabellón 2, 26009 Logroño, La Rioja</a></h2>
+                </div>
+                <div style={{display: 'flex', justifyContent: 'center', marginTop: "2rem", marginBottom: "2rem",borderRadius: "20%"}}>
+                    <AddressMap/>
+                </div>
+                <div className="bgimg-1">
 
                     <div className="video-container2">
-                    <video className="videoAbajo" autoPlay muted loop playsInline   poster={poster}>
-                        <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
+                        <video className="videoAbajo" autoPlay muted loop playsInline   poster={poster}>
+                            <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
+
+                    </div>
+                </div>
+
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    paddingTop: "2rem",
+                    backgroundColor: "whitesmoke"
+                }}>
+
+                </div>
+                <div style={{fontSize: "30px", zIndex: 30, color: "black", position: "relative", textAlign:"center", width:"30%", display: "flex", alignItems: "center", margin: "0 auto", backgroundColor: "white", borderRadius:"12px"}}>
+                    <h1 style={{fontSize: "30px", zIndex: 30, color: "black", position: "relative", textAlign:"center", width:"100%"}}>Nuestras marcas</h1>
+                </div>
+
+
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    backgroundColor: "whitesmoke"
+                }}>
+
+                    <div style={{marginRight: "30px", marginTop: "30px"}}>
+
+                        <BrandCard name={"CANNA"}
+                                   description={""}
+                                   imgSrc={"http://akjacks.com/images/sale/Canna/Canna-logo.png"}
+                                   link={""}/>
+                    </div>
+                    <div style={{marginRight: "30px", marginTop: "30px"}}>
+                        <BrandCard name={"MEDICINA MODERNA"}
+                                   description={""}
+                                   link={""}
+                                   imgSrc={"https://i.ibb.co/x8NJ89x/banner.png"}
+                        />
+                    </div>
+                    <div style={{marginRight: "30px", marginTop: "30px"}}>
+                        <BrandCard name={"GROW THE JUNGLE"}
+                                   description={""}
+                                   link={""}
+                                   imgSrc={"https://http2.mlstatic.com/storage/mshops-appearance-api/images/49/75651549/logo-2021090312474054700.png"}
+                        />
+                    </div>
+                </div>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    paddingTop: "2rem",
+                    backgroundColor: "whitesmoke"
+                }}>
+                    <div style={{marginRight: "30px", marginTop: "15px", marginBottom: "50px"}}>
+
+                        <BrandCard name={"RAW"}
+                                   imgSrc={"https://hbiinternational.com/wp-content/uploads/2019/07/RAW-Rolling-Papers-Logo-1332px.png"}
+                        />
+                    </div>
+                    <div style={{marginRight: "30px", marginTop: "15px"}}>
+                        <BrandCard name={"GORILLA GRILLZ"}
+                                   imgSrc={"https://www.gorillagrillz.com/wp-content/uploads/2021/02/Gorilla-Grillz_Blanco-e1612635853486-300x200.png"}
+                        />
+                    </div>
+                    <div style={{marginRight: "30px", marginTop: "15px"}}>
+                        <BrandCard name={"GROTEK"}
+                                   imgSrc={"https://www.led-grower.eu/user/categories/orig/grotek-logo.png"}
+                        />
+                    </div>
+                </div>
+                <section>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginTop: "8rem",
+                        paddingTop: "2rem",
+                        backgroundColor: "whitesmoke"
+                    }}>
+                        <h1>Mas productos destacados️</h1>
+                    </div>
+
+                </section>
+
+                <section>
+                    <div className="bgimg-1">
+
+                        <div className="video-container2">
+                            <video className="videoAbajo" autoPlay muted loop playsInline   poster={poster}>
+                                <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
 
                         </div>
                     </div>
@@ -330,229 +425,145 @@ const Home = () => {
                     }}>
 
                     </div>
-                    <div style={{fontSize: "30px", zIndex: 30, color: "black", position: "relative", textAlign:"center", width:"30%", display: "flex", alignItems: "center", margin: "0 auto", backgroundColor: "white", borderRadius:"12px"}}>
-                        <h1 style={{fontSize: "30px", zIndex: 30, color: "black", position: "relative", textAlign:"center", width:"100%"}}>Nuestras marcas</h1>
+                    <div style={{zIndex: 30, position: "relative", textAlign:"center", width:"300px", display: "flex", alignItems: "center", margin: "0 auto", borderRadius:"12px"}}>
+                        <button> {"<"} </button>
+                        <h1 style={{fontSize: "30px", zIndex: 30, color: "white", position: "relative", textAlign:"center", width:"100%"}}>CBD</h1>
+                        <button> {">"} </button>
+                    </div>
+                    <HomeProducts products={homeProds}></HomeProducts>
+
+                </section>
+
+            </div>
+            {/*pc*/}
+
+            <section className="mobile">
+                <div className="mobileSectionFull" style={{backgroundColor: "#EAE6E6FF", height: "100rem"}}>
+                    <h1>Nuestros productos mas vendidos️</h1>
+
+                    <HomeProductsMobile products={homeProds}></HomeProductsMobile>
+
+                </div>
+                <div className="mobileSectionSeparator">
+                </div>
+
+                <div className="mobileSectionFull" style={{backgroundColor: "white", height: "700px"}}>
+                    <h1>¿Dónde estamos? 📍</h1>
+                    <div
+                        style={{display: 'flex', justifyContent: 'center', borderRadius: "20%"}}>
+                        <AddressMapMobile/>
                     </div>
 
+                </div>
+                <div className="mobileSectionSeparator">
+                </div>
+                <div className="mobileSectionFull" style={{paddingTop: 0, height: "600px"}}>
+                    <div>
+                        <AnimatePresence>
+                            <h1 style={{paddingTop: "5vh", paddingBottom: "5vh"}}>Nuestras RRSS 💚</h1>
+                            <motion.iframe
+                                className="iframeIg"
+                                initial={{opacity: 0, scale: 1, height: "500",}}
+                                animate={{opacity: 1, scale: 1, height: "500",}}
+                                exit={{opacity: 0.3}}
+                                transition={{duration: 1}}
+                                key={igPost} width="100%" height="100%" src={igPost}
+                                frameBorder="0"/>
+                        </AnimatePresence>
 
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        backgroundColor: "whitesmoke"
-                    }}>
-
-                        <div style={{marginRight: "30px", marginTop: "30px"}}>
-
-                            <BrandCard name={"CANNA"}
-                                       description={""}
-                                       imgSrc={"http://akjacks.com/images/sale/Canna/Canna-logo.png"}
-                             link={""}/>
-                        </div>
-                        <div style={{marginRight: "30px", marginTop: "30px"}}>
-                            <BrandCard name={"MEDICINA MODERNA"}
-                                       description={""}
-                                       link={""}
-                                       imgSrc={"https://i.ibb.co/x8NJ89x/banner.png"}
-                            />
-                        </div>
-                        <div style={{marginRight: "30px", marginTop: "30px"}}>
-                            <BrandCard name={"GROW THE JUNGLE"}
-                                       description={""}
-                                       link={""}
-                                       imgSrc={"https://http2.mlstatic.com/storage/mshops-appearance-api/images/49/75651549/logo-2021090312474054700.png"}
-                            />
-                        </div>
                     </div>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        paddingTop: "2rem",
-                        backgroundColor: "whitesmoke"
-                    }}>
-                        <div style={{marginRight: "30px", marginTop: "15px", marginBottom: "50px"}}>
 
+                </div>
+                <div className="mobileSectionFull" style={{paddingTop: "7rem", height: "700px"}}>
+                    <div>
+                        <AnimatePresence>
+
+                            <motion.iframe
+                                className="iframeIg"
+                                initial={{opacity: 0, scale: 1, height: "680", backgroundColor: "white"}}
+                                animate={{opacity: 1, scale: 1, height: "680", backgroundColor: "white"}}
+                                exit={{opacity: 0.3}}
+                                transition={{duration: 1.5}}
+                                key={fbPost} width="100%" height="100%" src={fbPost}
+                                frameBorder="0"/>
+                        </AnimatePresence>
+
+                    </div>
+
+                </div>
+                <div className="mobileSectionSeparator">
+
+                </div>
+                <div className="mobileSectionHalf" style={{height: "500px"}}>
+                    <h1>Nuestras Marcas 💚</h1>
+
+                    <div className="mobileBrands">
+
+                        <div>
                             <BrandCard name={"RAW"}
                                        imgSrc={"https://hbiinternational.com/wp-content/uploads/2019/07/RAW-Rolling-Papers-Logo-1332px.png"}
                             />
                         </div>
-                        <div style={{marginRight: "30px", marginTop: "15px"}}>
+                        <div>
                             <BrandCard name={"GORILLA GRILLZ"}
                                        imgSrc={"https://www.gorillagrillz.com/wp-content/uploads/2021/02/Gorilla-Grillz_Blanco-e1612635853486-300x200.png"}
                             />
                         </div>
-                        <div style={{marginRight: "30px", marginTop: "15px"}}>
+
+                    </div>
+                </div>
+                <div style={{backgroundColor: "#EAE6E6FF", height: "400px"}} className="mobileSectionHalf">
+
+
+                    <div className="mobileBrands">
+                        <div>
                             <BrandCard name={"GROTEK"}
                                        imgSrc={"https://www.led-grower.eu/user/categories/orig/grotek-logo.png"}
                             />
                         </div>
+                        <div>
+
+                            <BrandCard name={"CANNA"}
+                                       imgSrc={"http://akjacks.com/images/sale/Canna/Canna-logo.png"}
+                            />
+                        </div>
                     </div>
-                    <section>
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            marginTop: "8rem",
-                            paddingTop: "2rem",
-                            backgroundColor: "whitesmoke"
-                        }}>
-                            <h1>Mas productos destacados️</h1>
-                        </div>
-
-                    </section>
-
-                    <section>
-                        <div className="bgimg-1">
-
-                            <div className="video-container2">
-                                <video className="videoAbajo" autoPlay muted loop playsInline   poster={poster}>
-                                    <source type="video/mp4" src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
-
-                            </div>
-                        </div>
-
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            paddingTop: "2rem",
-                            backgroundColor: "whitesmoke"
-                        }}>
-
-                        </div>
-                        <div style={{zIndex: 30, position: "relative", textAlign:"center", width:"300px", display: "flex", alignItems: "center", margin: "0 auto", borderRadius:"12px"}}>
-                            <button> {"<"} </button>
-                            <h1 style={{fontSize: "30px", zIndex: 30, color: "white", position: "relative", textAlign:"center", width:"100%"}}>CBD</h1>
-                            <button> {">"} </button>
-                        </div>
-                        <HomeProducts products={homeProds}></HomeProducts>
-
-                    </section>
 
                 </div>
-                {/*pc*/}
+                <div className="mobileSectionHalf">
 
-                <section className="mobile">
-                    <div className="mobileSectionFull" style={{backgroundColor: "#EAE6E6FF", height: "100rem"}}>
-                        <h1>Nuestros productos mas vendidos️</h1>
 
-                        <HomeProductsMobile products={homeProds}></HomeProductsMobile>
-
-                    </div>
-                    <div className="mobileSectionSeparator">
-                    </div>
-
-                    <div className="mobileSectionFull" style={{backgroundColor: "white", height: "700px"}}>
-                        <h1>¿Dónde estamos? 📍</h1>
-                        <div
-                            style={{display: 'flex', justifyContent: 'center', borderRadius: "20%"}}>
-                            <AddressMapMobile/>
-                        </div>
-
-                    </div>
-                    <div className="mobileSectionSeparator">
-                    </div>
-                    <div className="mobileSectionFull" style={{paddingTop: 0, height: "600px"}}>
+                    <div className="mobileBrands">
                         <div>
-                            <AnimatePresence>
-                                <h1 style={{paddingTop: "5vh", paddingBottom: "5vh"}}>Nuestras RRSS 💚</h1>
-                                <motion.iframe
-                                    className="iframeIg"
-                                    initial={{opacity: 0, scale: 1, height: "500",}}
-                                    animate={{opacity: 1, scale: 1, height: "500",}}
-                                    exit={{opacity: 0.3}}
-                                    transition={{duration: 1}}
-                                    key={igPost} width="100%" height="100%" src={igPost}
-                                    frameBorder="0"/>
-                            </AnimatePresence>
-
+                            <BrandCard name={"MEDICINA MODERNA"}
+                                       imgSrc={"https://i.ibb.co/x8NJ89x/banner.png"}
+                            />
                         </div>
-
-                    </div>
-                    <div className="mobileSectionFull" style={{paddingTop: "7rem", height: "700px"}}>
                         <div>
-                            <AnimatePresence>
-
-                                <motion.iframe
-                                    className="iframeIg"
-                                    initial={{opacity: 0, scale: 1, height: "680", backgroundColor: "white"}}
-                                    animate={{opacity: 1, scale: 1, height: "680", backgroundColor: "white"}}
-                                    exit={{opacity: 0.3}}
-                                    transition={{duration: 1.5}}
-                                    key={fbPost} width="100%" height="100%" src={fbPost}
-                                    frameBorder="0"/>
-                            </AnimatePresence>
-
-                        </div>
-
-                    </div>
-                    <div className="mobileSectionSeparator">
-
-                    </div>
-                    <div className="mobileSectionHalf" style={{height: "500px"}}>
-                        <h1>Nuestras Marcas 💚</h1>
-
-                        <div className="mobileBrands">
-
-                            <div>
-                                <BrandCard name={"RAW"}
-                                           imgSrc={"https://hbiinternational.com/wp-content/uploads/2019/07/RAW-Rolling-Papers-Logo-1332px.png"}
-                                />
-                            </div>
-                            <div>
-                                <BrandCard name={"GORILLA GRILLZ"}
-                                           imgSrc={"https://www.gorillagrillz.com/wp-content/uploads/2021/02/Gorilla-Grillz_Blanco-e1612635853486-300x200.png"}
-                                />
-                            </div>
-
+                            <BrandCard name={"GROW THE JUNGLE"}
+                                       imgSrc={"https://http2.mlstatic.com/storage/mshops-appearance-api/images/49/75651549/logo-2021090312474054700.png"}
+                            />
                         </div>
                     </div>
-                    <div style={{backgroundColor: "#EAE6E6FF", height: "400px"}} className="mobileSectionHalf">
+                </div>
+            </section>
+
+        </div >
 
 
-                        <div className="mobileBrands">
-                            <div>
-                                <BrandCard name={"GROTEK"}
-                                           imgSrc={"https://www.led-grower.eu/user/categories/orig/grotek-logo.png"}
-                                />
-                            </div>
-                            <div>
-
-                                <BrandCard name={"CANNA"}
-                                           imgSrc={"http://akjacks.com/images/sale/Canna/Canna-logo.png"}
-                                />
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className="mobileSectionHalf">
-
-
-                        <div className="mobileBrands">
-                            <div>
-                                <BrandCard name={"MEDICINA MODERNA"}
-                                           imgSrc={"https://i.ibb.co/x8NJ89x/banner.png"}
-                                />
-                            </div>
-                            <div>
-                                <BrandCard name={"GROW THE JUNGLE"}
-                                           imgSrc={"https://http2.mlstatic.com/storage/mshops-appearance-api/images/49/75651549/logo-2021090312474054700.png"}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-
-
-            {/* <div style={{display: 'flex', justifyContent: 'center'}}>
+        {/* <div style={{display: 'flex', justifyContent: 'center'}}>
 
                 <FacebookEmbed
                     url="https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"
                     width={400}/>
             </div>*/}
 
-        </AnimatedPage>
-            }
+    </AnimatedPage>
+
 </>
+
+
+
     )
 }
 
