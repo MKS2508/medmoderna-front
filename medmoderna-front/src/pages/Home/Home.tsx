@@ -186,7 +186,7 @@ const Home = () => {
                             <div>
                                 <video autoPlay muted loop playsInline style={{maxHeight: "110vh"}}  poster={poster}>
 
-                                    <source type="video/mp4" src={videoHome}/>
+                                    <source type="video/mp4" src={"https://github.com/MKS2508/medmoderna-front/blob/master/medmoderna-front/src/assets/videohome.mp4"}/>
                                 </video>
                             </div>
                             <div className={"bgimg-1"}>
@@ -198,7 +198,7 @@ const Home = () => {
                             <div>
                                 <video autoPlay muted loop playsInline style={{maxHeight: "110vh", width: "100vw"}}  poster={poster}>
 
-                                    <source type="video/mp4" src={videoHome2}/>
+                                    <source type="video/mp4" src={"https://github.com/MKS2508/medmoderna-front/blob/master/medmoderna-front/src/assets/VideoHomeAcortaco.mp4"}/>
                                 </video>
                             </div>
                         </Carousel>
@@ -291,8 +291,7 @@ const Home = () => {
 
             <div className="video-container2">
                     <video className="videoAbajo" autoPlay muted loop playsInline   poster={poster}>
-                        <source type="video/mp4" src={videoHome}/>
-                    </video>
+                        <source type="video/mp4" src={"https://github.com/MKS2508/medmoderna-front/blob/master/medmoderna-front/src/assets/videohome.mp4"}/>                    </video>
 
                         </div>
                     </div>
