@@ -22,6 +22,7 @@ import LoadingPage from "../../components/LoadingPage/LoadingPage";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import {FaCannabis, FaCapsules, FaBong, FaTshirt, FaLightbulb, FaHandHoldingWater} from "react-icons/fa";
 import ProductSwitcher from "../../components/Product/ProductSwitcher/ProductSwitcher";
+import Footer from "../../components/Footer/Footer";
 
 const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
 const videoBackUrlFromYt = "https://rr5---sn-h5qzened.googlevideo.com/videoplayback?expire=1679341167&ei=D2IYZMrDBcuO1gKAv7iQCg&ip=157.90.242.21&id=o-AA2C0anPp629L8_gkbxdDxa7cPbh1ZZEobx35fRHnhWN&itag=399&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C271%2C278%2C313%2C394%2C395%2C396%2C397%2C398%2C399%2C400%2C401&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=tzGqlaiIqYYNDAgCCLohwcAL&gir=yes&clen=21641026&dur=78.099&lmt=1609461168862480&keepalive=yes&fexp=24007246&c=WEB&txp=5431432&n=MaHWNrhCAR2xl8&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRAIgC0mnT9ezpyG1rZyhWPKQAqd8CYuBBVcnN-KM7SMyh2wCID8zbpVYe9dkUdsxj8N5KqeYf8WpDHUGFMjb4Xzs5SsS&ratebypass=yes&rm=sn-4g5e6e7s&req_id=daf18eb411fa3ee&ipbypass=yes&redirect_counter=2&cm2rm=sn-h5nhv8pa-h5qe7l&cms_redirect=yes&cmsv=e&mh=b3&mip=81.9.208.14&mm=29&mn=sn-h5qzened&ms=rdu&mt=1679319232&mv=m&mvi=5&pl=21&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIhAP6OKkUv44H92mJyjkBsaEmaa2e834AS-Aq9lGrsW5nWAiAnUCBrgfGeIDWahwIS3ahwqftdxuQJIQIXk3tLM5U2Cw%3D%3D";
@@ -632,6 +633,7 @@ const Home = () => {
                     url="https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"
                     width={400}/>
             </div>*/}
+        <Footer/>
 
     </AnimatedPage>
 
