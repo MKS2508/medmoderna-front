@@ -13,7 +13,7 @@ import fondo2 from '../../assets/fondo2.png'
 
 import poster from "../../assets/poster.png";
 import videoHome from "../../assets/videohome.mp4";
-import videoHome2 from "../../assets/videohome.mp4";
+import videoHome2 from "../../assets/VideoHomeAcortaco.mp4";
 import ProductCardMobile from "../../components/Product/ProductCardMobile";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import ProductCardsListResponsive from "../../components/Product/ProductCardsListResponsive/ProductCardsListResponsive";
@@ -357,6 +357,25 @@ const Home = () => {
                             />
                         </div>
                     </div>
+                    <section>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: "3rem",
+                            paddingTop: "2rem",
+                            backgroundColor: "whitesmoke"
+                        }}>
+                            <h1>Algunos de nuestros productos ☘️</h1>
+                        </div>
+                        <div style={{display: 'flex', justifyContent: 'center', backgroundColor: "whitesmoke"}}>
+                            <h2>{" < CBD > "}</h2>
+                        </div>
+
+                        <HomeProducts products={homeProds}></HomeProducts>
+
+
+                    </section>
+
 
 
                 </div>
