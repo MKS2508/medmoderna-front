@@ -1,0 +1,36 @@
+/* Loader.css */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+}
+
+.loader-logo-container {
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-spinner {
+    position: absolute;
+    z-index: 1;
+}
+
+.loader-logo {
+    position: absolute;
+    z-index: 2;
+    max-width: 150px;
+    max-height: 150px;
+}
+
+

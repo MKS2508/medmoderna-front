@@ -293,3 +293,25 @@
     }
 }
 
+
+.video-container2{
+
+    position: absolute;
+    left: 0;
+    margin: auto;
+    height: 80vh;
+
+    background: red;
+
+    overflow: hidden;
+    transform: translatez(0);
+}
+
+.videoAbajo video{
+
+    position: absolute;
+
+
+
+}
+

@@ -22,7 +22,7 @@ import ScrollText from 'react-scroll-text'
 import {config} from "@fortawesome/fontawesome-svg-core";
 import {ReactSVG} from 'react-svg'
 import {FaCannabis, FaBong, FaJoint, FaFacebookSquare} from "react-icons/fa";
-import {RiPlantFill, RiInstagramFill, RiWhatsappFill} from "react-icons/ri";
+import {RiPlantFill, RiInstagramFill, RiWhatsappFill, RiShoppingCart2Fill, RiUser2Fill} from "react-icons/ri";
 import {GiLightBulb} from "react-icons/gi";
 
 import logo from '../../assets/logo4.png'
@@ -204,17 +204,11 @@ const TopBar = () => {
                 }
 
                 <div key={"topbarIcons"} className="topbarIcons">
+                    <div className="topbarIcon2">
+                        <RiUser2Fill size={46} className='iconRRSS'/>
+                    </div>
                     <div className="topbarIcon">
-
-                                <span className="wa">
-                                         {/*@ts-ignore*/}
-                                    <ReactWhatsapp
-                                        style={{backgroundColor: "transparent", border: "none"}}
-                                        number="+34601185250" message={"Hola malaraza"}>
-                                        <RiWhatsappFill size={46} className='iconRRSS'/>
-                                    </ReactWhatsapp>
-                                </span>
-
+                        <RiShoppingCart2Fill size={46} className='iconRRSS'/>
                     </div>
                     <div className="instaIcon">
                         <a href="https://www.instagram.com/medicinamoderna_growshop/?hl=es">

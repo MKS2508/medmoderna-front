@@ -93,20 +93,26 @@
 
     position: fixed;
     top: 35px;
-    right: 120px;
+    right: 100px;
 
 }
 
 .topbarIcon {
     z-index: 21;
     position: fixed;
-    top: 35px;
-
-    right: 205px;
-
+    top: 34px;
+    right: 190px;
 }
 
+.topbarIcon2 {
+    z-index: 21;
+    position: fixed;
+    top: 36px;
+    right: 260px;
+}
 .topbarIcon > a {
+    color: inherit;
+}.topbarIcon2 > a {
     color: inherit;
 }
 
@@ -135,6 +141,10 @@
     transition: 0.3s;
     color: rgb(0, 255, 145);
 }
+.topbarIcon2 > span :hover {
+    transition: 0.3s;
+    color: rgb(0, 255, 145);
+}
 
 .number > a:hover {
     color: inherit;
@@ -149,6 +159,13 @@
 }
 
 .topbarIcon:hover {
+    transition: 0.3s;
+
+    color: rgb(0, 255, 145);
+}
+.topbarIcon2:hover {
+    transition: 0.3s;
+
     color: rgb(0, 255, 145);
 }
 
