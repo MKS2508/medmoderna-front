@@ -1,7 +1,7 @@
 import './Home.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import {Carousel} from 'react-responsive-carousel';
-import React, {useEffect, useState} from "react";
+import React, {RefObject, useEffect, useRef, useState} from "react";
 import ProductCardHome from "../../components/Product/ProductCardHome";
 import {AnimatePresence, motion} from 'framer-motion';
 import BrandCard from "../../components/Product/BrandCard";
@@ -32,7 +32,41 @@ const AddressMap = () => {
         </div>
     );
 }
+ const useOnLoadImages = (ref: RefObject<HTMLElement>) => {
+    const [status, setStatus] = useState(false);
 
+    useEffect(() => {
+        const updateStatus = (images: HTMLImageElement[]) => {
+            setStatus(
+                images.map((image) => image.complete).every((item) => item === true)
+            );
+        };
+
+        if (!ref?.current) return;
+
+        const imagesLoaded = Array.from(ref.current.querySelectorAll("img"));
+        console.log("LLEGA")
+        console.log({imagesLoaded})
+        if (imagesLoaded.length === 0) {
+            setStatus(true);
+            return;
+        }
+
+        imagesLoaded.forEach((image) => {
+            image.addEventListener("load", () => updateStatus(imagesLoaded), {
+                once: true
+            });
+            image.addEventListener("error", () => updateStatus(imagesLoaded), {
+                once: true
+            });
+        });
+        console.log("LLEGA2")
+
+        return;
+    }, [ref]);
+
+    return status;
+};
 const AddressMapMobile = () => {
     return (
         <div className="google-map-code">
@@ -104,18 +138,10 @@ const Home = () => {
     const [isVisible, setIsVisible] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
 
-    const [imagesLoaded, setImagesLoaded] = useState(false);
 
-    const handleImageLoad = () => {
-        // Verificamos si todas las imágenes se han cargado
-        const allImagesLoaded = [...document.querySelectorAll(" img")].every(
-            (img) => img.complete && img.naturalHeight !== 0
-        );
-        console.log(allImagesLoaded)
-        alert("cargadas")
-        setImagesLoaded(allImagesLoaded);
 
-    };
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const imagesLoaded = useOnLoadImages(wrapperRef);
 
     const listenToScroll = () => {
         let heightToHideFrom = 30;
@@ -148,7 +174,6 @@ const Home = () => {
             console.log({directUrl})
 
         }
-        handleImageLoad()
 
         const interval = setInterval(() => {
             console.log('This will run every 10 second!');
@@ -189,7 +214,7 @@ const Home = () => {
             <div>
                 <div className="">
 
-                    <div className="ParallaxVideo">
+                    <div ref={wrapperRef} className="ParallaxVideo">
 
                         <Carousel  animationHandler={"slide"} infiniteLoop={true} autoPlay={true} className={"carruseltop"} interval={3000}
                                   width={"100vw"} showThumbs={false} showIndicators={false} showArrows={false}
@@ -269,7 +294,7 @@ const Home = () => {
                         <div className="caption">
                         <span className="border2">
                             <div>
-                                      {imagesLoaded && <p>Todas las imágenes han sido cargadas.</p>}
+                            <p style={{color:"black"}}>{!imagesLoaded ? "Loading images..." : "Images loaded"}</p>
 
                             </div>
                         </span>
