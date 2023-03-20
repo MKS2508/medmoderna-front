@@ -34,8 +34,10 @@ const AddressMap = () => {
 }
  const useOnLoadImages = (ref: RefObject<HTMLElement>) => {
     const [status, setStatus] = useState(false);
+     console.log("1")
 
     useEffect(() => {
+        console.log("2")
         const updateStatus = (images: HTMLImageElement[]) => {
             setStatus(
                 images.map((image) => image.complete).every((item) => item === true)
