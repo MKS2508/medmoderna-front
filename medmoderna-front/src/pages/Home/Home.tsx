@@ -338,8 +338,8 @@ const Home = () => {
                 }}>
 
                 </div>
-                <div style={{fontSize: "30px", zIndex: 30, color: "black", position: "relative", textAlign:"center", width:"30%", display: "flex", alignItems: "center", margin: "0 auto", backgroundColor: "white", borderRadius:"12px"}}>
-                    <h1 style={{fontSize: "30px", zIndex: 30, color: "black", position: "relative", textAlign:"center", width:"100%"}}>Nuestras marcas</h1>
+                <div style={{fontSize: "30px", zIndex: 2, color: "black", position: "relative", textAlign:"center", width:"30%", display: "flex", alignItems: "center", margin: "0 auto", backgroundColor: "white", borderRadius:"12px"}}>
+                    <h1 style={{fontSize: "30px", zIndex: 2, color: "black", position: "relative", textAlign:"center", width:"100%"}}>Nuestras marcas</h1>
                 </div>
 
 
