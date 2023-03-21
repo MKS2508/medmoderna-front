@@ -31,7 +31,7 @@ const ProductCardDetail = (props: IProductProps) => {
 
                         <div className="imgBoxDetail">
                             <img
-                                src={`data:image/png;base64,${props.imgSrc}`}
+                                src={`${props.imgSrc}`}
                                 alt="mouse corsair"/>
                         </div>
                         <h2 style={{maxWidth: "50vw"}}>{props.description}</h2>

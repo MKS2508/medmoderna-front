@@ -8,7 +8,7 @@ const ProductCardList = (props: IProductProps) => {
 
 
         <img key={props.name} width={"50px"} style={{display: "inline-block", float: "left", marginRight: "20px"}}
-             src={`data:image/png;base64,${props.imgSrc}`}
+             src={`${props.imgSrc}`}
              alt={"item"}
         />
         <h4 style={{color:"white"}}>{props.name}</h4>
@@ -21,7 +21,7 @@ export const ProductCardPreview = (props: IProductProps) => {
     if (props.imgSrc.startsWith("http")) {
         imageSource = props.imgSrc;
     } else {
-        imageSource = `data:image/png;base64,${props.imgSrc}`
+        imageSource = `${props.imgSrc}`
     }
     return <>
 

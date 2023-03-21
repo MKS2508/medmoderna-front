@@ -79,7 +79,7 @@ const ProductCardDetailResponsive: React.FC<Props> = ({
                     <div className="imgBx">
 
                         <img
-                            src={`data:image/png;base64,${imgSrc}`}
+                            src={`${imgSrc}`}
                             alt={name}
                             className="product-image"
                         />

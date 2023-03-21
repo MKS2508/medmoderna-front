@@ -13,7 +13,7 @@ const ProductCard = (props: IProductProps) => {
 
             <div className="imgBox">
                 <img
-                    src={`data:image/png;base64,${props.imgSrc}`}
+                    src={`${props.imgSrc}`}
                     alt="mouse corsair"/>
             </div>
 
@@ -102,7 +102,7 @@ export const ProductCardPreview = (props: IProductProps) => {
     if (props.imgSrc.startsWith("http")) {
         imageSource = props.imgSrc;
     } else {
-        imageSource = `data:image/png;base64,${props.imgSrc}`
+        imageSource = `${props.imgSrc}`
     }
     return <>
 

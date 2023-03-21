@@ -33,7 +33,7 @@ const ProductCardDetailMobile = (props: IProductProps) => {
 
                         <div className="imgBoxDetail">
                             <img
-                                src={`data:image/png;base64,${props.imgSrc}`}
+                                src={`${props.imgSrc}`}
                                 alt="image"/>
                         </div>
                         <h2 >{props.description}</h2>

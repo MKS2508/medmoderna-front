@@ -10,7 +10,7 @@ const ProductCardMobile = (props: IProductProps) => {
     if (props.imgSrc.startsWith("http")) {
         imageSource = props.imgSrc;
     } else {
-        imageSource = `data:image/png;base64,${props.imgSrc}`;
+        imageSource = `${props.imgSrc}`;
         }
     return (<>
 

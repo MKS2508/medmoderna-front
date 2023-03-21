@@ -357,7 +357,7 @@ const AdminDashboard: React.FC = () => {
                                                 {(product.imgSrc.startsWith("data:image")
                                                         ?
                                                         <img src={`${product.imgSrc}`} alt={product.name} style={{ maxWidth: "50px" }}  /> :
-                                                        <img src={`data:image/png;base64,${product.imgSrc}`} alt={product.name} style={{ maxWidth: "50px" }}  />
+                                                        <img src={`${product.imgSrc}`} alt={product.name} style={{ maxWidth: "50px" }}  />
                                                 )}
                                             </>
 
@@ -383,7 +383,7 @@ const AdminDashboard: React.FC = () => {
                                                 {(product.imgSrc2 && product.imgSrc2.startsWith("data:image")
                                                         ?
                                                         <img src={`${product.imgSrc2}`} alt={product.name} style={{ maxWidth: "50px" }}  /> :
-                                                        <img src={`data:image/png;base64,${product.imgSrc2}`} alt={product.name} style={{ maxWidth: "50px" }}  />
+                                                        <img src={`${product.imgSrc2}`} alt={product.name} style={{ maxWidth: "50px" }}  />
                                                 )}
                                             </>
 
