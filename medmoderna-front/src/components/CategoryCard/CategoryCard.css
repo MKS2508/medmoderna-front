@@ -49,3 +49,22 @@
 .categoryCard:hover .categoryCard-text {
     color: #ffffff;
 }
+/* Existing CSS styles... */
+
+/* Responsive styles for small screens */
+@media screen and (max-width: 768px) {
+    .categoryCard {
+        width: 45vw;
+        height: 100px;
+        margin: 10px;
+    }
+
+    .categoryCard-icon {
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+
+    .categoryCard-text {
+        font-size: 1.2rem;
+    }
+}
