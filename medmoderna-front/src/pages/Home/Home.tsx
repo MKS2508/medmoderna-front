@@ -206,7 +206,7 @@ const Home = () => {
             <AnimatedPage>
 
 
-                <div hidden={isLoading}>
+                <div hidden={isLoading}  ref={wrapperRef}>
 
                     <SeccionCarruselPrincipal/>
 
