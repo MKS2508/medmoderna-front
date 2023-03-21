@@ -97,7 +97,7 @@ const SeccionCarruselPrincipal = () => {
                         <video autoPlay muted loop playsInline  width={"100%"} height={"100%"}>
                             <source
                                 type="video/mp4"
-                                src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}
+                                src={"https://medmoderna.b-cdn.net/videohome3.mp4"}
                             />
                         </video>
                     </div>
