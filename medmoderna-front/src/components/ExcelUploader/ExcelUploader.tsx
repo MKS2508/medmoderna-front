@@ -2,17 +2,11 @@ import React, { useState, ChangeEvent } from 'react';
 import * as XLSX from 'xlsx';
 import './ExcelUploader.css'
 import { Workbook } from 'exceljs';
+import {toast} from "react-toastify";
+import {postProduct} from "../../services/api-products-service";
+import {IProductProps} from "../../models/IProductProps";
 
-export interface IProductProps {
-    productId?: string | number;
-    name: string;
-    description: string;
-    price?: number;
-    imgSrc: string;
-    imgSrc2: string;
-    category?: string;
-    brand: string;
-}
+
 function uint8ArrayToBase64(uint8Array:any) {
     const CHUNK_SIZE = 8192; // 8KB
     let binaryString = '';
@@ -103,7 +97,7 @@ const ExcelUploader: React.FC = () => {
                         price: row[1] ? row[1] : 0,
                         brand: row[2] && row[2].length > 0 ? row[2] : 'undefined',
                         category: 'CBD',
-                        productId: index + 932,
+                        productId: index + Math.random() * 1001,
                         imgSrc: imgSrc,
                         imgSrc2: imgSrc2,
                         description: row[4] && row[4].length > 0 ? row[4] : 'undefined',
@@ -116,8 +110,39 @@ const ExcelUploader: React.FC = () => {
             setProducts(productsArray);
         }
     };
+    const insertAllProducts = async () => {
+        for (const product of products) {
+            await createProduct(product);
+        }
+    };
 
-// En el componente ExcelUploader, modifica el código de retorno de esta manera:
+    const createProduct = async (product: IProductProps) => {
+        try {
+            const createdProduct = await postProduct(product);
+            toast("Producto creado", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            console.log(createdProduct);
+        } catch (error) {
+            toast("Error al crear producto", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            console.error(error);
+        }
+    };
+
     return (
         <div className="uploadExcelContainer">
             <h2 className="title">Subir productos desde Excel</h2>
@@ -127,6 +152,7 @@ const ExcelUploader: React.FC = () => {
                 accept=".xlsx"
                 onChange={handleFileUpload}
             />
+            <button onClick={insertAllProducts}>INSERTAR TODOS</button>
             <ul className={"productList"}>
                 {products.map((product, index) => (
                     <li key={index} className={"productListItem"}>
@@ -140,11 +166,13 @@ const ExcelUploader: React.FC = () => {
                             <img src={product.imgSrc} alt={product.name} />
                             <img src={product.imgSrc2} alt={product.name} />
                         </div>
+                        <button onClick={() => createProduct(product)}>CREAR PRODUCTO</button>
                     </li>
                 ))}
             </ul>
         </div>
     );
+
 
 };
 

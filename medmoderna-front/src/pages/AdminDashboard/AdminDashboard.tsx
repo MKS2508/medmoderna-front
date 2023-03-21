@@ -16,6 +16,7 @@ const AdminDashboard: React.FC = () => {
     // New product form state
     const [newProductName, setNewProductName] = useState<string>('');
     const [newProductImgSrc, setNewProductImgSrc] = useState<string>('');
+    const [newProductImgSrc2, setNewProductImgSrc2] = useState<string>('');
     const [newProductDescription, setNewProductDescription] = useState<string>('');
     const [newProductBrand, setNewProductBrand] = useState<string>('');
     const [newProductCategory, setNewProductCategory] = useState<string>('');
@@ -29,6 +30,7 @@ const AdminDashboard: React.FC = () => {
             category: newProductCategory,
             description: newProductDescription,
             imgSrc: newProductImgSrc,
+            imgSrc2: newProductImgSrc2,
             name: newProductName,
             price: newProductPrice,
         };
@@ -41,6 +43,7 @@ const AdminDashboard: React.FC = () => {
         category: "",
         description: "",
         imgSrc: "",
+        imgSrc2: "",
         name: "",
         price: 0,
         productId: 0,
@@ -222,6 +225,7 @@ const AdminDashboard: React.FC = () => {
                         <ProductCardNewHome
                             key={newProductName}
                             imgSrc={newProductImgSrc}
+                            imgSrc2={newProductImgSrc2}
                             description={newProductDescription}
                             price={newProductPrice}
                             productId={0}
@@ -242,7 +246,8 @@ const AdminDashboard: React.FC = () => {
                             <th>Categoría</th>
                             <th>Marca</th>
                             <th>Precio</th>
-                            <th>Imagen</th>
+                            <th>Imagen 1</th>
+                            <th>Imagen 2</th>
                             <th>Descripción</th>
                             <th>Acciones</th>
 
@@ -348,7 +353,40 @@ const AdminDashboard: React.FC = () => {
                                                 }
                                             />
                                         ) : (
-                                            <img src={`data:image/png;base64,${product.imgSrc}`} alt={product.name} style={{ maxWidth: "50px" }} />
+                                            <>
+                                                {(product.imgSrc.startsWith("data:image")
+                                                        ?
+                                                        <img src={`${product.imgSrc}`} alt={product.name} style={{ maxWidth: "50px" }}  /> :
+                                                        <img src={`data:image/png;base64,${product.imgSrc}`} alt={product.name} style={{ maxWidth: "50px" }}  />
+                                                )}
+                                            </>
+
+                                        )}
+                                    </td>
+                                    <td>
+                                        {isEditing ? (
+                                            <input
+                                                type="text"
+                                                value={product.imgSrc}
+                                                onChange={(e) =>
+                                                    setProducts(
+                                                        products.map((p) =>
+                                                            p.productId === product.productId
+                                                                ? { ...p, imgSrc2: e.target.value }
+                                                                : p
+                                                        )
+                                                    )
+                                                }
+                                            />
+                                        ) : (
+                                            <>
+                                                {(product.imgSrc2 && product.imgSrc2.startsWith("data:image")
+                                                        ?
+                                                        <img src={`${product.imgSrc2}`} alt={product.name} style={{ maxWidth: "50px" }}  /> :
+                                                        <img src={`data:image/png;base64,${product.imgSrc2}`} alt={product.name} style={{ maxWidth: "50px" }}  />
+                                                )}
+                                            </>
+
                                         )}
                                     </td>
                                     <td>
