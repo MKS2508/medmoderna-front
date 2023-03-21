@@ -1,6 +1,6 @@
 .bgimg-texto {
     background-image: url("../../assets/fondo1.png");
-    min-width: 100vw;
+    min-width: 90vw;
     min-height: 60vh;
     position: relative;
     background-attachment: fixed;
@@ -30,4 +30,17 @@
 
 .texto-descriptivo {
     color: black;
+}
+
+/* Responsive styles for small screens */
+@media screen and (max-width: 768px) {
+    .captionTexto {
+        top: 50%;
+    }
+
+    .captionTexto .borderTexto > div {
+        max-width: 80vw;
+        left: 10%;
+        font-size: 18px;
+    }
 }

@@ -35,3 +35,17 @@
     overflow: hidden;
     transform: translatez(0);
 }
+
+/* Responsive styles for small screens */
+@media screen and (max-width: 768px) {
+    .categorias-container,
+    .categorias-spacer {
+        padding-left: 5vw;
+        flex-wrap: wrap;
+    }
+
+    .video-container2 {
+        height: 60vh;
+        width: 100vw;
+    }
+}

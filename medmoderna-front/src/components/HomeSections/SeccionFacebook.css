@@ -15,6 +15,18 @@
 .facebook-post {
     background-color: white;
     border-radius: 20%;
-    margin: 0 1rem;
     margin-bottom: 2rem;
+}
+
+/* Responsive styles for small screens */
+@media screen and (max-width: 768px) {
+    .facebook-posts {
+        flex-wrap: wrap;
+        padding-top: 2rem;
+    }
+
+    .facebook-post {
+        margin-bottom: 1rem;
+        width: 80%;
+    }
 }

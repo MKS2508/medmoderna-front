@@ -50,7 +50,7 @@ const SeccionCarruselPrincipal = () => {
     const imagesLoaded = useOnLoadImages(wrapperRef);
     return (<>
 
-            <div hidden={imagesLoaded}>
+            <div hidden={true}>
                 <LoadingPage logoSrc={"a"}/>
             </div>
 
@@ -86,14 +86,6 @@ const SeccionCarruselPrincipal = () => {
                 >
                     <div className={"bgimg-1"}>
                         <img src={fondo} alt={"fondo1"}/>
-                    </div>
-                    <div className="video-container" >
-                        <video autoPlay muted loop playsInline  width={"100%"} height={"100%"}>
-                            <source
-                                type="video/mp4"
-                                src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/VideoHomeAcortaco.mp4"}
-                            />
-                        </video>
                     </div>
                     <div className={"bgimg-1"}>
                         <img src={fondo2} alt={"fondo2"}/>

@@ -29,3 +29,18 @@
     text-align: center;
     flex-grow: 1;
 }
+
+@media screen and (max-width: 768px) {
+
+    .switcherButton {
+        position: relative;
+        left: 25vw;
+        background: none;
+        border: none;
+        color: #72B957;
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin: 0 10px;
+        transition: 0.5s;
+    }
+}

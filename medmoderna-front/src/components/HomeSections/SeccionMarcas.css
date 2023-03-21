@@ -55,3 +55,22 @@
     padding-top: 2rem;
     background-color: whitesmoke;
 }
+/* Existing CSS styles... */
+
+/* Responsive styles for small screens */
+@media screen and (max-width: 768px) {
+    .brandcards-container {
+        flex-wrap: wrap;
+    }
+
+    .brandcard-item {
+        margin-right: 10px;
+        margin-top: 10px;
+        flex-basis: 50%;
+        text-align: center;
+    }
+
+    .video-container-background-marcas {
+        height: 100vh;
+    }
+}

@@ -37,3 +37,18 @@
 .brandCard:hover .brandCard-img {
     transform: scale(1.1);
 }
+/* Existing CSS styles... */
+
+/* Responsive styles for small screens */
+@media screen and (max-width: 768px) {
+    .brandCard {
+        width: 45vw;
+        height: 100px;
+        margin: 10px;
+    }
+
+    .brandCard-img {
+        width: 90%;
+        height: 90%;
+    }
+}

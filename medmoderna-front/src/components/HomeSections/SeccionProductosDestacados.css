@@ -23,22 +23,31 @@
     margin: 0 auto;
     border-radius: 12px;
 }
-.bgimg-productsSection
-{
+
+.bgimg-productsSection {
     position: relative;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.video-container-background-products{
 
+.video-container-background-products {
     position: absolute;
     left: 0;
     margin: auto;
     height: 80vh;
-
-    background: red;
-
     overflow: hidden;
     transform: translatez(0);
+}
+
+/* Responsive styles for small screens */
+@media screen and (max-width: 768px) {
+    .video-container-background-products {
+        height: 200vh;
+        width: 100vw;
+    }
+
+    .switcher-container {
+        width: 80vw;
+    }
 }

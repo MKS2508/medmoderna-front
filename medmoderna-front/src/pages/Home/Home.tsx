@@ -292,8 +292,20 @@ const Home = () => {
 
                     {/* Movil - Pantallas pequeñas */}
                     <section className="mobile">
+                        <SeccionInstagram igPost={igPost} igPost2={igPost}/>
+                        <SeccionTextoDescriptivo textoDescriptivo={"En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas."}/>
+                        <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"} />
+                        <SeccionMapa />
+                        <SeccionCategorias
+                            title="Categorías"
+                            videoSrc="https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"
+                        />
+                        <SeccionFacebook url={"https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"} width={280} />
 
-
+                        <SeccionMarcas
+                            title="Algunas de nuestras marcas"
+                            videoSrc="https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"
+                        />
 
                     </section>
                     {/* Movil - Pantallas pequeñas */}

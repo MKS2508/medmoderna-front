@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SeccionProductosDestacados.css";
 import ProductSwitcher from "../Product/ProductSwitcher/ProductSwitcher";
 
-
 interface IProductSwitcherProps {
     homeProds: any[]; // Reemplaza 'any' con el tipo adecuado para tus productos
-    title:string;
+    title: string;
     videoSrc: string;
 }
 
 const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({ homeProds, videoSrc, title }) => {
+    const [displayedProducts, setDisplayedProducts] = useState(homeProds);
+
+    const updateDisplayedProducts = () => {
+        if (window.innerWidth <= 768) {
+            setDisplayedProducts(homeProds.slice(0, 2));
+        } else {
+            setDisplayedProducts(homeProds);
+        }
+    };
+
+    useEffect(() => {
+        updateDisplayedProducts();
+        window.addEventListener("resize", updateDisplayedProducts);
+
+        return () => {
+            window.removeEventListener("resize", updateDisplayedProducts);
+        };
+    }, [homeProds]);
+
     return (
         <section id={"seccionProductosDestacados"}>
             <section>
@@ -21,7 +39,7 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({ homeProds
             <section>
                 <div className="bgimg-productsSection">
                     <div className="video-container-background-products">
-                        <video  autoPlay muted loop playsInline>
+                        <video autoPlay muted loop playsInline>
                             <source
                                 type="video/mp4"
                                 src={videoSrc}
@@ -32,7 +50,7 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({ homeProds
 
                 <div className="productos-destacados-spacer"></div>
                 <div className="switcher-container"></div>
-                <ProductSwitcher homeProds={homeProds}></ProductSwitcher>
+                <ProductSwitcher homeProds={displayedProducts}></ProductSwitcher>
             </section>
         </section>
     );

@@ -39,6 +39,7 @@ const SeccionInstagram: React.FC<SeccionInstagramProps> = ({ igPost , igPost2}) 
                         height={400}
                         src={igPost}
                         frameBorder="0"
+                        style={{ maxWidth: '100%' }} // Agregar esta línea para ajustar el ancho
                     />
                     <motion.iframe
                         className="iframeIg"
@@ -56,6 +57,7 @@ const SeccionInstagram: React.FC<SeccionInstagramProps> = ({ igPost , igPost2}) 
                             borderRadius: '10px',
                             height: 400,
                             marginBottom: '2rem',
+
                         }}
                         exit={{ opacity: 0.3 }}
                         transition={{ duration: 1.5 }}
@@ -64,6 +66,7 @@ const SeccionInstagram: React.FC<SeccionInstagramProps> = ({ igPost , igPost2}) 
                         height={400}
                         src={igPost2}
                         frameBorder="0"
+                        style={{ maxWidth: '90%' }} // Agregar esta línea para ajustar el ancho
                     />
                 </AnimatePresence>
             </div>

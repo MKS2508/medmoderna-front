@@ -1,7 +1,6 @@
 .instagram-title {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
     padding-top: 2rem;
     background-color: whitesmoke;
 }
@@ -10,4 +9,19 @@
     display: flex;
     justify-content: space-around;
     margin-top: 10vh;
+    flex-wrap: wrap; /* Agregar esta línea para permitir el ajuste de elementos */
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .instagram-posts  {
+        margin-top: 0;
+    }
+
+    .instagram-posts .iframeIg {
+        width: 80%;
+        max-width: 400px; /* Ajustar el ancho máximo para evitar que el iframe sea demasiado grande */
+        margin: 1rem auto; /* Centrar el iframe y agregar margen arriba y abajo */
+        padding-left: 5vw;
+    }
 }
