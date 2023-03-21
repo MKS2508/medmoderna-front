@@ -31,6 +31,7 @@ import SeccionMapa from "../../components/HomeSections/SeccionMapa";
 import SeccionFacebook from "../../components/HomeSections/SeccionFacebook";
 import {homeProds} from "../../assets/HomeProds/HomeProductsLists";
 import SeccionTextoDescriptivo from "../../components/HomeSections/SeccionTextoDescriptivo";
+import SeccionCarruselPrincipal from "../../components/HomeSections/SeccionCarruselPrincipal";
 
 
 const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
@@ -45,6 +46,39 @@ const AddressMap = () => {
                 tabIndex={0}/>
         </div>
     );
+}
+const AddressMapMobile = () => {
+    return (
+        <div className="google-map-code">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5886.208184788902!2d-2.420187248556861!3d42.46807477334467!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa6f5617fabcc60ac!2sMedicina%20Moderna%20Growshop!5e0!3m2!1ses-419!2ses!4v1655328560324!5m2!1ses-419!2ses"
+                width="300" height="550" frameBorder="0" style={{border: 0, borderRadius: "5%"}}
+                allowFullScreen={false} aria-hidden="false"
+                tabIndex={0}/>
+        </div>
+    );
+}
+
+export const HomeProducts = (data: { products: IProductProps[] }) => {
+    return (<ProductCardsListResponsive isHome={true} products={data.products}/>)
+}
+const HomeProductsMobile = (data: { products: IProductProps[] }) => {
+    return <div className={"productsWrapperMobile"}>
+        {
+            data.products.map((item) =>
+                <>
+                    <div key={item.name} style={{marginRight: "30px", marginTop: "30px"}}>
+                        <ProductCardMobile key={item.name} category={item.category} productId={item.productId}
+                                           name={item.name}
+                                           price={item.price}
+                                           description={item.description}
+                                           imgSrc={item.imgSrc}
+                                           brand={item.brand}/>
+                    </div>
+                </>
+            )
+        }
+    </div>
 }
 const useOnLoadImages = (ref: RefObject<HTMLElement>) => {
     const [status, setStatus] = useState(false);
@@ -83,39 +117,6 @@ const useOnLoadImages = (ref: RefObject<HTMLElement>) => {
 
     return status;
 };
-const AddressMapMobile = () => {
-    return (
-        <div className="google-map-code">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5886.208184788902!2d-2.420187248556861!3d42.46807477334467!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa6f5617fabcc60ac!2sMedicina%20Moderna%20Growshop!5e0!3m2!1ses-419!2ses!4v1655328560324!5m2!1ses-419!2ses"
-                width="300" height="550" frameBorder="0" style={{border: 0, borderRadius: "5%"}}
-                allowFullScreen={false} aria-hidden="false"
-                tabIndex={0}/>
-        </div>
-    );
-}
-
-export const HomeProducts = (data: { products: IProductProps[] }) => {
-    return (<ProductCardsListResponsive isHome={true} products={data.products}/>)
-}
-const HomeProductsMobile = (data: { products: IProductProps[] }) => {
-    return <div className={"productsWrapperMobile"}>
-        {
-            data.products.map((item) =>
-                <>
-                    <div key={item.name} style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardMobile key={item.name} category={item.category} productId={item.productId}
-                                           name={item.name}
-                                           price={item.price}
-                                           description={item.description}
-                                           imgSrc={item.imgSrc}
-                                           brand={item.brand}/>
-                    </div>
-                </>
-            )
-        }
-    </div>
-}
 
 const Home = () => {
 
@@ -127,9 +128,9 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isLoading2, setIsLoading2] = useState(true);
 
-
     const wrapperRef = useRef<HTMLDivElement>(null);
     const imagesLoaded = useOnLoadImages(wrapperRef);
+
 
     const listenToScroll = () => {
         let heightToHideFrom = 30;
@@ -207,80 +208,14 @@ const Home = () => {
 
                 <div hidden={isLoading}>
 
-                    <section id={"seccionCarruselPrincipal"}>
-                        <div ref={wrapperRef} className="ParallaxVideo">
-
-                            <Carousel animationHandler={"slide"} infiniteLoop={true} autoPlay={true}
-                                      className={"carruseltop"} interval={5000}
-                                      width={"100vw"} showThumbs={false} showIndicators={false} showArrows={false}
-                                      stopOnHover={false}>
-                                <div className={"bgimg-1"}>
-                                    <img src={fondo} alt={"fondo1"}/>
-                                </div>
-                                <div>
-                                    <video autoPlay muted loop playsInline style={{maxHeight: "110vh"}} poster={poster}>
-
-                                        <source type="video/mp4"
-                                                src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/VideoHomeAcortaco.mp4"}/>
-
-                                    </video>
-                                </div>
-                                <div className={"bgimg-1"}>
-                                    <img src={fondo2} alt={"fondo2"}/>
-                                </div>
-                                <div className={"bgimg-1"}>
-                                    <img src={fondo3} alt={"fondo3"}/>
-                                </div>
-                                <div>
-                                    <video autoPlay muted loop playsInline style={{maxHeight: "110vh", width: "100vw"}}
-                                           poster={poster}>
-
-                                        <source type="video/mp4"
-                                                src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>
-                                    </video>
-                                </div>
-                            </Carousel>
-
-                            <div
-                                className={(!isVisible && window.screen.width < 440) ? "captionWithSidebar" : "caption"}>
-
-                            <span className="border">
-                        <div>
-                            <AnimatePresence>
-                                 <motion.img className={"logoHome"}
-                                             initial={{opacity: 0,}}
-                                             animate={{opacity: 1}}
-                                             exit={{opacity: 0.3}}
-                                             transition={{duration: 2}}
-                                             src={"https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png"}
-                                             alt={"logo"} width={"350px"}/>
-                            </AnimatePresence>
-
-                        </div>
-                    </span>
-                            </div>
-                        </div>
-                    </section>
-
+                    <SeccionCarruselPrincipal/>
 
                     {/* PC - Pantallas grandes */}
                     <div className="section">
 
                         <SeccionInstagram igPost={igPost} igPost2={igPost}/>
 
-                        <section id={"seccionTextoDescriptivo"}>
-                            <div className="bgimg-3">
-                                <div className="caption">
-                        <span className="border2">
-                            <div>
-                            <p style={{color: "black"}}>En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas.</p>
-
-                            </div>
-                        </span>
-                                </div>
-                            </div>
-
-                        </section>
+                        <SeccionTextoDescriptivo textoDescriptivo={"En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas."}/>
                         <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"} />
                         <SeccionMapa />
                         <SeccionCategorias
@@ -301,34 +236,13 @@ const Home = () => {
                     {/* Movil - Pantallas pequeñas */}
                     <section className="mobile">
 
-                        <SeccionInstagram igPost={igPost} igPost2={igPost}/>
 
-                        <SeccionTextoDescriptivo textoDescriptivo={"En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas."}/>
-                        <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"} />
-                        <SeccionMapa />
-                        <SeccionCategorias
-                            title="Categorías"
-                            videoSrc="https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"
-                        />
 
-                        <SeccionFacebook url={"https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"} width={400} />
-
-                        <SeccionMarcas
-                            title="Algunas de nuestras marcas"
-                            videoSrc="https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"
-                        />
                     </section>
                     {/* Movil - Pantallas pequeñas */}
 
                 </div>
 
-
-                {/* <div style={{display: 'flex', justifyContent: 'center'}}>
-
-                <FacebookEmbed
-                    url="https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"
-                    width={400}/>
-            </div>*/}
                 <Footer/>
 
             </AnimatedPage>

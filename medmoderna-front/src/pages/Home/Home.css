@@ -1,131 +1,3 @@
-/* General styles */
-.title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10vh;
-}
-
-.logoHome {
-    filter: drop-shadow(7px 4px 2px #043b04);
-}
-
-.title h1 {
-    text-align: center;
-    font-size: 40px;
-}
-
-.title h2 {
-    text-align: center;
-    font-size: 25px;
-}
-
-.iframeIg {
-    height: 600px;
-    filter: drop-shadow(0 0.4rem 0.55rem rgba(0, 0, 0, 0.2));
-    border-radius: 10px;
-}
-.carruseltop {
-    position: relative;
-    height: 100vh;
-}
-
-.carruseltop > div > img {
-    position: relative;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.bgimg-1,
-.bgimg-2,
-.bgimg-3 {
-    position: relative;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.ParallaxVideo {
-    min-width: 100vw;
-    min-height: 110vh;
-}
-
-.ParallaxVideo video {
-    min-width: 100vw;
-    min-height: 110vh;
-    top: 0;
-}
-
-.ParallaxVideo > .backgroundGif {
-    display: none;
-    min-width: 100vw;
-    min-height: 110vh;
-    top: 0;
-}
-
-.video-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100vw!important;
-    height: 100vh!important;
-    overflow: hidden;
-}
-
-.video-container video {
-    width: 100vw!important;
-    height: 110vh!important;
-}
-
-.bgimg-1 > img {
-    min-width: 100vw;
-    height: 110vh;
-}
-
-.bgimg-2 {
-    background-image: url("https://i.ibb.co/6DwwVvW/parallax2.jpg");
-    min-width: 100vw;
-    min-height: 40vh;
-}
-
-.bgimg-3 {
-    background-image: url("../../assets/fondo1.png");
-    min-width: 100vw;
-    min-height: 60vh;
-}
-
-/* Caption styles */
-.caption {
-    position: absolute;
-    left: 0;
-    top: 40%;
-    width: 100%;
-    text-align: center;
-}
-
-.caption .border > div {
-    padding-top: 20px;
-    color: white;
-    border-radius: 10px;
-    max-width: 40vw;
-    position: relative;
-    left: 30%;
-    justify-content: center;
-    font-size: 25px;
-    text-transform: uppercase;
-}
-
-.caption .border2 > div {
-    color: white;
-    background: white;
-    border-radius: 10px;
-    max-width: 40vw;
-    position: relative;
-    left: 30%;
-    justify-content: center;
-    font-size: 25px;
-}
 
 /* Product styles */
 .HomeProductsSection {
@@ -136,34 +8,12 @@
     padding-top: 2rem;
     padding-left: 6vw;
 }
+
 .mobile {
     display: none;
 }
-.caption .border > div {
-    padding-top: 20px;
-    color: white;
 
-    border-radius: 10px;
-    max-width: 40vw;
-    position: relative;
-    left: 30%;
-    justify-content: center;
-    font-size: 25px;
-    text-transform: uppercase;
-
-}
-.caption .border2 > div {
-    color: white;
-    background: white;
-    border-radius: 10px;
-    max-width: 40vw;
-    position: relative;
-    left: 30%;
-    justify-content: center;
-    font-size: 25px;
-}
-
-.productsWrapperMobile{
+.productsWrapperMobile {
     padding-left: 10vw;
     position: relative;
     overflow-x: hidden;
@@ -171,129 +21,6 @@
     align-content: center;
     justify-content: center;
 }
-@media (max-width: 440px) {
-
-    .HomeProductsSection {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 16rem);
-        justify-content: center;
-        padding-top: 2rem;
-        padding-left: 6vw;
-    }
-
-    .mobile {
-        overflow-y: hidden;
-
-        display: block;
-    }
-    .ParallaxVideo{
-        width: 100vw!important;
-        height: 100vw!important;
-    }
-    .section {
-        display: none;
-    }
-    .ParallaxVideo video{
-        object-fit: cover;
-        width: 100vw!important;
-        height: 100vw!important;
-        top:0;
-    }
-
-    .mobileSectionFull{
-        text-align: center;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 18rem);
-        padding-top: 5vh;
-        padding-left: 12vw;
-        justify-content: center;
-        width: 100vw;
-        height: 90vh;
-        background-color: #EAE6E6FF;
-    }
-    .mobileSectionFull h1{
-        font-size: 30px;
-
-    }
-    .mobileSectionHalf h1{
-        padding-top: 3vh;
-        font-size: 30px;
-
-    }
-    .mobileSectionHalf{
-        padding-left: 20vw;
-        text-align: center;
-        display: grid;
-        width: 100vw;
-        height: 50vh;
-    }
-    .mobileSectionSeparator h2 {
-        color: white;
-
-
-    }
-    .mobileSectionSeparator {
-
-        text-align: center;
-        backdrop-filter: blur(50px);
-        display: flex;
-        width: 100vw;
-        height: 1rem;
-        background-color: #008F28;
-
-    }
-    .ParallaxVideo > .backgroundGif {
-        display: none;
-        object-fit: cover;
-        width: 100vw;
-        height: 100%!important;
-        top:0;
-    }
-    .logoHome {
-        z-index: 30;
-        width:80vw;
-        height: 100%;
-
-    }
-
-    .sectionWithSidebar {
-        z-index: 30;
-        width:80vw;
-        height: 100%;
-    }
-    .brandCard {
-        width: 100%!important;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-    .mobileBrands {
-        padding-top: 2rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 70vw);
-        justify-content: center;
-    }
-    .caption {
-        overflow-y: hidden;
-
-        display: flex;
-        transition: ease;
-        transition-duration: .3s;
-        justify-content: start;
-    }
-    .captionWithSidebar {
-        overflow-y: hidden;
-
-        transition: ease;
-        transition-duration: .3s;
-        position: absolute;
-        left: 18vw;
-        top: 38vh;
-        max-width: 100%;
-        text-align: center;
-
-    }
-}
-
 
 .video-container2{
 
@@ -316,3 +43,85 @@
 
 }
 
+@media (max-width: 440px) {
+
+
+    .ParallaxVideo{
+        width: 100vw!important;
+        height: 100vw!important;
+    }
+
+    .ParallaxVideo video{
+        object-fit: cover;
+        width: 100vw!important;
+        height: 100vw!important;
+        top:0;
+    }
+
+    .ParallaxVideo > .backgroundGif {
+        display: none;
+        object-fit: cover;
+        width: 100vw;
+        height: 100%!important;
+        top:0;
+    }
+    .logoHome {
+        z-index: 30;
+        width:80vw;
+        height: 100%;
+
+    }
+
+    .sectionWithSidebar {
+        z-index: 30;
+        width:80vw;
+        height: 100%;
+    }
+
+    .caption {
+        overflow-y: hidden;
+
+        display: flex;
+        transition: ease;
+        transition-duration: .3s;
+        justify-content: start;
+    }
+    .captionWithSidebar {
+        overflow-y: hidden;
+
+        transition: ease;
+        transition-duration: .3s;
+        position: absolute;
+        left: 18vw;
+        top: 38vh;
+        max-width: 100%;
+        text-align: center;
+
+    }
+}
+/* Your mobile styles here */
+
+/* Media query para tablets en modo vertical */
+@media (max-width: 768px) {
+    /* Aquí tus estilos personalizados para esta resolución */
+}
+
+/* Media query para tablets en modo horizontal y dispositivos de escritorio pequeños */
+@media (max-width: 1024px) {
+    /* Aquí tus estilos personalizados para esta resolución */
+}
+
+/* Media query para dispositivos de escritorio medianos */
+@media (max-width: 1366px) {
+    /* Aquí tus estilos personalizados para esta resolución */
+}
+
+/* Media query para dispositivos de escritorio grandes */
+@media (max-width: 1440px) {
+    /* Aquí tus estilos personalizados para esta resolución */
+}
+
+/* Media query para dispositivos de escritorio extra grandes */
+@media (max-width: 1920px) {
+    /* Aquí tus estilos personalizados para esta resolución */
+}

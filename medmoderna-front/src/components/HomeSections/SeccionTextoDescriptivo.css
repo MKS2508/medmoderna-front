@@ -1,5 +1,5 @@
 .bgimg-texto {
-    background-image: url('../../assets/fondo1.png');
+    background-image: url("../../assets/fondo1.png");
     min-width: 100vw;
     min-height: 60vh;
     position: relative;
@@ -7,7 +7,6 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 
 /* Caption styles */
 .captionTexto {

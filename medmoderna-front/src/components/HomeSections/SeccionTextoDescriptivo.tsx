@@ -1,13 +1,13 @@
 import React from 'react';
-import './SeccionProductosDestacados.css';
+import './SeccionTextoDescriptivo.css';
 
-interface SeccionProductosDestacadosProps {
+interface SeccionTextoDescriptivoProps {
     textoDescriptivo: string;
 }
 
-const SeccionProductosDestacados: React.FC<SeccionProductosDestacadosProps> = ({ textoDescriptivo }) => {
+const SeccionTextoDescriptivo: React.FC<SeccionTextoDescriptivoProps> = ({ textoDescriptivo }) => {
     return (
-        <section id="seccion-productos-destacados">
+        <section id="seccion-texto-descriptivo">
             <div className="bgimg-texto">
                 <div className="captionTexto">
           <span className="borderTexto">
@@ -21,4 +21,4 @@ const SeccionProductosDestacados: React.FC<SeccionProductosDestacadosProps> = ({
     );
 };
 
-export default SeccionProductosDestacados;
+export default SeccionTextoDescriptivo;
