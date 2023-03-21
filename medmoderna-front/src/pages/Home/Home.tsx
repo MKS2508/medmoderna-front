@@ -207,8 +207,65 @@ const Home = () => {
 
 
                 <div hidden={isLoading}  ref={wrapperRef}>
+                    <section hidden={true} id={"seccionCarruselPrincipal"}>
+                        <div ref={wrapperRef} className="ParallaxVideo">
 
-                    <SeccionCarruselPrincipal/>
+                            <Carousel animationHandler={"slide"} infiniteLoop={true} autoPlay={true}
+                                      className={"carruseltop"} interval={5000}
+                                      width={"100vw"} showThumbs={false} showIndicators={false} showArrows={false}
+                                      stopOnHover={false}>
+                                <div className={"bgimg-1"}>
+                                    <img src={fondo} alt={"fondo1"}/>
+                                </div>
+                                <div>
+                                    <video autoPlay muted loop playsInline style={{maxHeight: "110vh"}} poster={poster}>
+
+                                        <source type="video/mp4"
+                                                src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/VideoHomeAcortaco.mp4"}/>
+
+                                    </video>
+                                </div>
+                                <div className={"bgimg-1"}>
+                                    <img src={fondo2} alt={"fondo2"}/>
+                                </div>
+                                <div className={"bgimg-1"}>
+                                    <img src={fondo3} alt={"fondo3"}/>
+                                </div>
+                                <div>
+                                    <video autoPlay muted loop playsInline style={{maxHeight: "110vh", width: "100vw"}}
+                                           poster={poster}>
+
+                                        <source type="video/mp4"
+                                                src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>
+                                    </video>
+                                </div>
+                            </Carousel>
+
+                            <div
+                                className={(!isVisible && window.screen.width < 440) ? "captionWithSidebar" : "caption"}>
+
+                            <span className="border">
+                        <div>
+                            <AnimatePresence>
+                                 <motion.img className={"logoHome"}
+                                             initial={{opacity: 0,}}
+                                             animate={{opacity: 1}}
+                                             exit={{opacity: 0.3}}
+                                             transition={{duration: 2}}
+                                             src={"https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png"}
+                                             alt={"logo"} width={"350px"}/>
+                            </AnimatePresence>
+
+                        </div>
+                    </span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div hidden={false}>
+                        <SeccionCarruselPrincipal />
+
+                    </div>
 
                     {/* PC - Pantallas grandes */}
                     <div className="section">
