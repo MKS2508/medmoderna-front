@@ -4,7 +4,7 @@ export interface IProductProps {
   description: string,
   price:number,
   imgSrc: string,
-  imgSrc2: string,
+  imgSrc2?: string,
   category: string,
   brand:string
 
