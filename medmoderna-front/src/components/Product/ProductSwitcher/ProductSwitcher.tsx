@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import "./ProductSwitcher.css";
-import {HomeProducts} from "../../../pages/Home/Home";
+import {IProductProps} from "../../../models/IProductProps";
+import ProductCardsListResponsive from "../ProductCardsListResponsive/ProductCardsListResponsive";
 
 interface IProductSwitcherProps {
     homeProds: any[]; // Reemplaza 'any' con el tipo adecuado para tus productos
 }
-
+export const HomeProducts = (data: { products: IProductProps[] }) => {
+    return (<ProductCardsListResponsive isHome={true} products={data.products}/>)
+}
 const categories = ["CBD", "ROPA", "PARAFERNALIA", "CULTIVO", "ILUMINACIÓN"];
 
 const ProductSwitcher: React.FC<IProductSwitcherProps> = ({ homeProds }) => {

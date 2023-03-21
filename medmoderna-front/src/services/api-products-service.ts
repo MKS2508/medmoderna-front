@@ -7,7 +7,7 @@ export const getProductsFromCategory = async (props: IProductPageProps): Promise
     console.log({propsName: props.name})
     //si se le pasa tanmanio usa una url o otra
     const testingURL = "http://localhost:8080/api"
-    const apiUrl = (!props.elementsSize) ? `${API_URL}/products/category/${props.name}?page=${props.pagination}&size=10` :`${API_URL}/products/category/${props.name}?page=0${props.pagination}&size=${props.elementsSize}`;
+    const apiUrl = (!props.elementsSize) ? `${API_URL}/products/category/${props.name}?page=${props.pagination}&size=40` :`${API_URL}/products/category/${props.name}?page=0${props.pagination}&size=${props.elementsSize}`;
     const testingURL2 = `${testingURL}/${props.name}`;
     return new Promise<IProductProps[]>((async (resolve, reject) => {
         try {
@@ -27,7 +27,7 @@ export const getProductsFromBrand = async (props: IProductPageProps, brand: stri
     console.log({propsName: props.name})
     //si se le pasa tanmanio usa una url o otra
     const testingURL = "http://localhost:8080/api"
-    const apiUrl = (!props.elementsSize) ? `${API_URL}/products/brand/${brand}?page=${props.pagination}&size=10` :`${API_URL}/products/brand/${brand}?page=0${props.pagination}&size=${props.elementsSize}`;
+    const apiUrl = (!props.elementsSize) ? `${API_URL}/products/brand/${brand}?page=${props.pagination}&size=40` :`${API_URL}/products/brand/${brand}?page=0${props.pagination}&size=${props.elementsSize}`;
     const testingURL2 = `${testingURL}/${props.name}`;
     return new Promise<IProductProps[]>((async (resolve, reject) => {
         try {
@@ -121,7 +121,7 @@ export const getHomeProducts = async ( ids: string[] ): Promise<IProductProps[]>
 
 }
 
-export const postProduct = async (newProduct: IProductProps): Promise<IProductProps> => {
+export const postProduct2 = async (newProduct: IProductProps): Promise<IProductProps> => {
     //si se le pasa tanmanio usa una url o otra
     const testingURL = "http://localhost:8080/api"
     const apiUrl = `${API_URL}/products/`;
@@ -139,7 +139,28 @@ export const postProduct = async (newProduct: IProductProps): Promise<IProductPr
 
     }));
 }
-export const editProduct = async (id: any, newProduct: IProductProps): Promise<IProductProps> => {
+export const postProduct= async (newProduct: IProductProps): Promise<IProductProps> => {
+    const apiUrl = `${API_URL}/products/`;
+    const formData = new FormData();
+    Object.entries(newProduct).forEach(([key, value]) => formData.append(key, value));
+
+    return new Promise<IProductProps>(async (resolve, reject) => {
+        try {
+            const response = await axios.post(apiUrl, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            const product: IProductProps = response.data;
+            product ? resolve(product) : reject(new Error(`404 on ${apiUrl}`));
+        } catch (e: any) {
+            console.log(new Error(e));
+            reject(e);
+        }
+    });
+};
+
+export const editProduct2 = async (id: any, newProduct: IProductProps): Promise<IProductProps> => {
     //si se le pasa tanmanio usa una url o otra
     const testingURL = "http://localhost:8080/api"
     const apiUrl = `${TESTING_URL}/products/${id}`;
@@ -156,6 +177,27 @@ export const editProduct = async (id: any, newProduct: IProductProps): Promise<I
 
     }));
 }
+export const editProduct = async (id: any, newProduct: IProductProps): Promise<IProductProps> => {
+    const apiUrl = `${API_URL}/products/${id}`;
+    const formData = new FormData();
+    Object.entries(newProduct).forEach(([key, value]) => formData.append(key, value));
+
+    return new Promise<IProductProps>(async (resolve, reject) => {
+        try {
+            const response = await axios.put(apiUrl, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            const product: IProductProps = response.data;
+            product ? resolve(product) : reject(new Error(`404 on ${apiUrl}`));
+        } catch (e: any) {
+            console.log(new Error(e));
+            reject(e);
+        }
+    });
+};
+
 export const getAllProducts = async (p: { size: number; page: number }): Promise<IProductProps[]> => {
     const apiUrl = `${TESTING_URL}/products?size=${p.size}&page=${p.page}`;
 

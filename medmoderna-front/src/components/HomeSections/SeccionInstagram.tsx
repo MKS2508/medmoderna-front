@@ -61,7 +61,7 @@ const SeccionInstagram: React.FC<SeccionInstagramProps> = ({ igPost , igPost2}) 
                         }}
                         exit={{ opacity: 0.3 }}
                         transition={{ duration: 1.5 }}
-                        key={igPost2}
+                        key={igPost2+"_"}
                         width="460"
                         height={400}
                         src={igPost2}

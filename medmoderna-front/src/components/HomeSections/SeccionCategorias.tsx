@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SeccionCategorias.css";
 import { FaCannabis, FaTshirt, FaCapsules, FaHandHoldingWater, FaLightbulb } from "react-icons/fa";
 import CategoryCard from "../CategoryCard/CategoryCard";
+import LazyLoad from "react-lazyload";
+import axios from "axios";
 
 interface ISeccionCategoriasProps {
     title: string;
     videoSrc: string;
+    isVideoFetched: (fetched: boolean) => void; // Nueva propiedad
 }
 
-const SeccionCategorias: React.FC<ISeccionCategoriasProps> = ({ title, videoSrc }) => {
+const SeccionCategorias: React.FC<ISeccionCategoriasProps> = ({ title, videoSrc, isVideoFetched }) => {
+    const [videoData, setVideoData] = useState<Blob | null>(null);
+
+    useEffect(() => {
+        const fetchVideo = async () => {
+            try {
+                let response = await axios.get(videoSrc, { responseType: 'blob' });
+                setVideoData(response.data);
+                isVideoFetched(true); // Llama a la función cuando se obtiene el video
+
+            } catch (error) {
+                console.warn("Error al obtener el video sin proxy:", error);
+
+                try {
+                    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                    const response = await axios.get(proxyUrl + videoSrc, { responseType: 'blob' });
+                    setVideoData(response.data);
+                    isVideoFetched(true); // Llama a la función cuando se obtiene el video
+                } catch (error) {
+                    console.error("Error al obtener el video con proxy:", error);
+                }
+            }
+        };
+
+        fetchVideo();
+    }, [videoSrc]);
+
     return (
         <section className="seccion-categorias">
             <section>
@@ -18,9 +47,13 @@ const SeccionCategorias: React.FC<ISeccionCategoriasProps> = ({ title, videoSrc 
             </section>
             <div className="bgimg-categories">
                 <div className="video-container2">
-                    <video className="videoAbajo" autoPlay muted loop playsInline>
-                        <source type="video/mp4" src={videoSrc} />
-                    </video>
+                    {videoData && (
+                        <LazyLoad>
+                            <video className="videoAbajo" autoPlay muted loop playsInline>
+                                <source type="video/mp4" src={URL.createObjectURL(videoData)} />
+                            </video>
+                        </LazyLoad>
+                    )}
                 </div>
             </div>
             <div className="categorias-container">

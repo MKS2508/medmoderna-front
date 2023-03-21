@@ -4,6 +4,7 @@ import "./AdminDashboard.css";
 import { deleteProduct, getAllProducts, postProduct, editProduct } from "../../services/api-products-service";
 import ProductCardNewHome from "../../components/Product/ProductCardNew/ProductCardNew";
 import 'react-toastify/dist/ReactToastify.css';
+import ExcelUploader from "../../components/ExcelUploader/ExcelUploader";
 
 const AdminDashboard: React.FC = () => {
     const [editingProductId, setEditingProductId] = useState<number | null>(null);
@@ -488,7 +489,7 @@ const AdminDashboard: React.FC = () => {
                         </form>
                     </>
                 )}
-
+                <ExcelUploader/>
             </div>
         </div>
     );

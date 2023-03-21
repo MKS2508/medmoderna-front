@@ -29,7 +29,7 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
         {(!isHome ?         <div className="shopping-list">
                 {products.map(item => (<>
                     <ProductCardNew
-                        key={item.name}
+                        key={item.name  + "_" + Math.floor(Math.random() * 100401).toString()}
                         imgSrc={item.imgSrc}
                         description={item.description}
                         price={item.price}
@@ -45,7 +45,7 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
          :        <div className="shopping-list">
         {products.map(item => (<>
             <ProductCardNewHome
-            key={item.name}
+            key={item.name  + Math.floor(Math.random() * 10001).toString()}
             imgSrc={item.imgSrc}
             description={item.description}
             price={item.price}

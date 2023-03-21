@@ -1,13 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SeccionMarcas.css";
 import BrandCard from "../Product/BrandCard";
+import axios from "axios";
+import LazyLoad from "react-lazyload";
 
 interface ISeccionMarcasProps {
     title: string;
     videoSrc: string;
+    isVideoFetched: (fetched: boolean) => void; // Nueva propiedad
 }
 
-const SeccionMarcas: React.FC<ISeccionMarcasProps> = ({ title, videoSrc }) => {
+const SeccionMarcas: React.FC<ISeccionMarcasProps> = ({ title, videoSrc , isVideoFetched}) => {
+    const [videoData, setVideoData] = useState<Blob | null>(null);
+
+    useEffect(() => {
+        const fetchVideo = async () => {
+            try {
+                let response = await axios.get(videoSrc, { responseType: 'blob' });
+                setVideoData(response.data);
+                isVideoFetched(true); // Llama a la función cuando se obtiene el video
+
+            } catch (error) {
+                console.warn("Error al obtener el video sin proxy:", error);
+
+                try {
+                    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                    const response = await axios.get(proxyUrl + videoSrc, { responseType: 'blob' });
+                    setVideoData(response.data);
+                    isVideoFetched(true); // Llama a la función cuando se obtiene el video
+
+                } catch (error) {
+                    console.error("Error al obtener el video con proxy:", error);
+                }
+            }
+        };
+
+        fetchVideo();
+    }, [videoSrc]);
+
     return (
         <section id="seccionMarcas">
             <section>
@@ -17,12 +47,13 @@ const SeccionMarcas: React.FC<ISeccionMarcasProps> = ({ title, videoSrc }) => {
             </section>
             <div className="bgimg-marcasSection">
                 <div className="video-container-background-marcas">
-                    <video autoPlay muted loop playsInline>
-                        <source
-                            type="video/mp4"
-                            src={videoSrc}
-                        />
-                    </video>
+                    {videoData && (
+                        <LazyLoad>
+                            <video autoPlay muted loop playsInline>
+                                <source type="video/mp4" src={URL.createObjectURL(videoData)} />
+                            </video>
+                        </LazyLoad>
+                    )}
                 </div>
             </div>
 

@@ -1,91 +1,31 @@
 import './Home.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import {Carousel} from 'react-responsive-carousel';
-import React, {RefObject, useEffect, useRef, useState} from "react";
-import ProductCardHome from "../../components/Product/ProductCardHome";
-import {AnimatePresence, motion} from 'framer-motion';
-import BrandCard from "../../components/Product/BrandCard";
-import {IProductProps} from '../../models/IProductProps';
-import logo from '../../assets/logo3.png'
-import fondo from '../../assets/fondo1.png'
-import fondo3 from '../../assets/fondo3.png'
-import fondo2 from '../../assets/fondo2.png'
-import {FacebookEmbed} from 'react-social-media-embed';
-
-import poster from "../../assets/poster.png";
-import videoHome from "../../assets/videohome.mp4";
-import videoHome2 from "../../assets/VideoHomeAcortaco.mp4";
-import ProductCardMobile from "../../components/Product/ProductCardMobile";
-import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
-import ProductCardsListResponsive from "../../components/Product/ProductCardsListResponsive/ProductCardsListResponsive";
-import LoadingPage from "../../components/LoadingPage/LoadingPage";
-import CategoryCard from "../../components/CategoryCard/CategoryCard";
-import {FaCannabis, FaCapsules, FaBong, FaTshirt, FaLightbulb, FaHandHoldingWater} from "react-icons/fa";
-import ProductSwitcher from "../../components/Product/ProductSwitcher/ProductSwitcher";
-import Footer from "../../components/Footer/Footer";
-import SeccionProductosDestacados from "../../components/HomeSections/SeccionProductosDestacados";
-import SeccionMarcas from "../../components/HomeSections/SeccionMarcas";
-import SeccionCategorias from "../../components/HomeSections/SeccionCategorias";
-import SeccionInstagram from "../../components/HomeSections/SeccionInstagram";
-import SeccionMapa from "../../components/HomeSections/SeccionMapa";
-import SeccionFacebook from "../../components/HomeSections/SeccionFacebook";
+import React, { Suspense, lazy, RefObject, useEffect, useRef, useState } from 'react';
 import {homeProds} from "../../assets/HomeProds/HomeProductsLists";
-import SeccionTextoDescriptivo from "../../components/HomeSections/SeccionTextoDescriptivo";
-import SeccionCarruselPrincipal from "../../components/HomeSections/SeccionCarruselPrincipal";
+
+import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
+import LoadingPage from "../../components/LoadingPage/LoadingPage";
+
+import Footer from "../../components/Footer/Footer";
+// Importa los componentes usando React.lazy
+const SeccionProductosDestacados = lazy(() => import('../../components/HomeSections/SeccionProductosDestacados'));
+const SeccionMarcas = lazy(() => import('../../components/HomeSections/SeccionMarcas'));
+const SeccionCategorias = lazy(() => import('../../components/HomeSections/SeccionCategorias'));
+const SeccionInstagram = lazy(() => import('../../components/HomeSections/SeccionInstagram'));
+const SeccionMapa = lazy(() => import('../../components/HomeSections/SeccionMapa'));
+const SeccionFacebook = lazy(() => import('../../components/HomeSections/SeccionFacebook'));
+const SeccionTextoDescriptivo = lazy(() => import('../../components/HomeSections/SeccionTextoDescriptivo'));
+const SeccionCarruselPrincipal = lazy(() => import('../../components/HomeSections/SeccionCarruselPrincipal'));
+
+import LazyLoadComponent from '../../components/LazyLoadComponent';
+import LazyLoad from 'react-lazyload';
 
 
-const videoBackUrlFromGithub = "https://github.com/MKS2508/medmoderna-front/raw/master/medmoderna-front/src/assets/4K%20cannabis%20004%20-%20San%20Rafael'71%20Tangerine%20Dream%20.mp4";
-const videoBackUrlFromYt = "https://rr5---sn-h5qzened.googlevideo.com/videoplayback?expire=1679341167&ei=D2IYZMrDBcuO1gKAv7iQCg&ip=157.90.242.21&id=o-AA2C0anPp629L8_gkbxdDxa7cPbh1ZZEobx35fRHnhWN&itag=399&aitags=133%2C134%2C135%2C136%2C137%2C160%2C242%2C243%2C244%2C247%2C248%2C271%2C278%2C313%2C394%2C395%2C396%2C397%2C398%2C399%2C400%2C401&source=youtube&requiressl=yes&vprv=1&mime=video%2Fmp4&ns=tzGqlaiIqYYNDAgCCLohwcAL&gir=yes&clen=21641026&dur=78.099&lmt=1609461168862480&keepalive=yes&fexp=24007246&c=WEB&txp=5431432&n=MaHWNrhCAR2xl8&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRAIgC0mnT9ezpyG1rZyhWPKQAqd8CYuBBVcnN-KM7SMyh2wCID8zbpVYe9dkUdsxj8N5KqeYf8WpDHUGFMjb4Xzs5SsS&ratebypass=yes&rm=sn-4g5e6e7s&req_id=daf18eb411fa3ee&ipbypass=yes&redirect_counter=2&cm2rm=sn-h5nhv8pa-h5qe7l&cms_redirect=yes&cmsv=e&mh=b3&mip=81.9.208.14&mm=29&mn=sn-h5qzened&ms=rdu&mt=1679319232&mv=m&mvi=5&pl=21&lsparams=ipbypass,mh,mip,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIhAP6OKkUv44H92mJyjkBsaEmaa2e834AS-Aq9lGrsW5nWAiAnUCBrgfGeIDWahwIS3ahwqftdxuQJIQIXk3tLM5U2Cw%3D%3D";
-const AddressMap = () => {
-    return (
-        <div className="google-map-code">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5886.208184788902!2d-2.420187248556861!3d42.46807477334467!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa6f5617fabcc60ac!2sMedicina%20Moderna%20Growshop!5e0!3m2!1ses-419!2ses!4v1655328560324!5m2!1ses-419!2ses"
-                width="800" height="600" frameBorder="0" style={{border: 0, borderRadius: "10%"}}
-                allowFullScreen={false} aria-hidden="false"
-                tabIndex={0}/>
-        </div>
-    );
-}
-const AddressMapMobile = () => {
-    return (
-        <div className="google-map-code">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5886.208184788902!2d-2.420187248556861!3d42.46807477334467!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa6f5617fabcc60ac!2sMedicina%20Moderna%20Growshop!5e0!3m2!1ses-419!2ses!4v1655328560324!5m2!1ses-419!2ses"
-                width="300" height="550" frameBorder="0" style={{border: 0, borderRadius: "5%"}}
-                allowFullScreen={false} aria-hidden="false"
-                tabIndex={0}/>
-        </div>
-    );
-}
 
-export const HomeProducts = (data: { products: IProductProps[] }) => {
-    return (<ProductCardsListResponsive isHome={true} products={data.products}/>)
-}
-const HomeProductsMobile = (data: { products: IProductProps[] }) => {
-    return <div className={"productsWrapperMobile"}>
-        {
-            data.products.map((item) =>
-                <>
-                    <div key={item.name} style={{marginRight: "30px", marginTop: "30px"}}>
-                        <ProductCardMobile key={item.name} category={item.category} productId={item.productId}
-                                           name={item.name}
-                                           price={item.price}
-                                           description={item.description}
-                                           imgSrc={item.imgSrc}
-                                           brand={item.brand}/>
-                    </div>
-                </>
-            )
-        }
-    </div>
-}
 const useOnLoadImages = (ref: RefObject<HTMLElement>) => {
     const [status, setStatus] = useState(false);
-    console.log("1")
 
     useEffect(() => {
-        console.log("2")
         const updateStatus = (images: HTMLImageElement[]) => {
             setStatus(
                 images.map((image) => image.complete).every((item) => item === true)
@@ -95,7 +35,6 @@ const useOnLoadImages = (ref: RefObject<HTMLElement>) => {
         if (!ref?.current) return;
 
         const imagesLoaded = Array.from(ref.current.querySelectorAll("img"));
-        console.log("LLEGA")
         console.log({imagesLoaded})
         if (imagesLoaded.length === 0) {
             setStatus(true);
@@ -110,7 +49,6 @@ const useOnLoadImages = (ref: RefObject<HTMLElement>) => {
                 once: true
             });
         });
-        console.log("LLEGA2")
 
         return;
     }, [ref]);
@@ -158,6 +96,7 @@ const useOnLoadVideos = (ref: RefObject<HTMLElement>) => {
 
     return status;
 };
+
 const Home = () => {
 
     const postsUrls = ["https://www.instagram.com/p/Ckqxnp9DKZx/embed", "https://www.instagram.com/p/COi_Ep9nW2A/embed", "https://www.instagram.com/p/CjpsbJkAaQl/embed", "https://www.instagram.com/p/CeTSXK1sDpU/embed", "https://www.instagram.com/p/CdbJE9pDOtR/embed", "https://www.instagram.com/p/CfGzFDFMkoW/embed", "https://www.instagram.com/p/Ce6EsEQMa_A/embed"];
@@ -167,6 +106,12 @@ const Home = () => {
     const [isVisible, setIsVisible] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
     const [isLoading2, setIsLoading2] = useState(true);
+
+    const [loadSeccionMarcas, setLoadSeccionMarcas] = React.useState(false);
+
+    const handleSeccionMarcasVisible = () => {
+        setLoadSeccionMarcas(true);
+    };
 
     const wrapperRef = useRef<HTMLDivElement>(null);
     const imagesLoaded = useOnLoadImages(wrapperRef);
@@ -237,79 +182,113 @@ const Home = () => {
         }, 5000);
         return () => clearInterval(interval);
     }, []);
+
     const setRandomPost = (postsUrls: string[]) => {
         let randomPost = postsUrls[Math.floor(Math.random() * postsUrls.length)];
         //setIgPost(randomPost);
         return randomPost;
     };
 
+    const [videoMarcasFetched, setVideoMarcasFetched] = useState(false);
+    const [videoProductosFetched, setVideoProductosFetched] = useState(false);
+    const [videoCategoriasFetched, setVideoCategoriasFetched] = useState(false);
+
+    const handleVideoMarcasFetched = (fetched: boolean) => {
+        setVideoMarcasFetched(fetched);
+    };
+    const handleVideoProductosFetched = (fetched: boolean) => {
+        setVideoProductosFetched(fetched);
+    };
+    const handleVideoCategoriasFetched = (fetched: boolean) => {
+        setVideoCategoriasFetched(fetched);
+    };
 
     return (
 
 
         <>
 
-            <div hidden={imagesLoaded && !videosLoaded && !isLoading2}>
+            <div hidden={imagesLoaded && !videosLoaded && !isLoading2 && videoMarcasFetched && videoProductosFetched  && videoCategoriasFetched  }>
                 <LoadingPage logoSrc={"a"}/>
             </div>
 
 
             <AnimatedPage>
-
-
-                <div hidden={isLoading}  ref={wrapperRef}>
-                    <div hidden={false} ref={videoContainerRef}>
+                <div hidden={false} ref={wrapperRef}>
+                    <Suspense fallback={<div>Loading...</div>}>
                         <SeccionCarruselPrincipal />
-
-                    </div>
-
+                    </Suspense>
                     {/* PC - Pantallas grandes */}
                     <div ref={videoContainerRef2} className="section">
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionInstagram igPost={igPost} igPost2={igPost} />
+                        </Suspense>
 
-                        <SeccionInstagram igPost={igPost} igPost2={igPost}/>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionTextoDescriptivo textoDescriptivo={"En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas."} />
+                        </Suspense>
 
-                        <SeccionTextoDescriptivo textoDescriptivo={"En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas."}/>
-                        <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://medmoderna.b-cdn.net/videohome3.mp4"} />
-                        <SeccionMapa />
-                        <SeccionCategorias
-                            title="Categorías"
-                            videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"
-                        />
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://medmoderna.b-cdn.net/videohome3.mp4"}
+                                                        isVideoFetched={handleVideoProductosFetched}
+                            />
+                        </Suspense>
 
-                        <SeccionFacebook url={"https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"} width={400} />
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionMapa />
+                        </Suspense>
 
-                        <SeccionMarcas
-                            title="Algunas de nuestras marcas"
-                            videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"
-                        />
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionCategorias title="Categorías" videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"       isVideoFetched={handleVideoCategoriasFetched}/>
+                        </Suspense>
 
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionFacebook url={"https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"} width={400} />
+                        </Suspense>
+
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionMarcas
+                                title="Algunas de nuestras marcas"
+                                videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"
+                                isVideoFetched={handleVideoMarcasFetched}
+                            />
+                        </Suspense>
                     </div>
                     {/* PC - Pantallas grandes */}
 
                     {/* Movil - Pantallas pequeñas */}
                     <section className="mobile">
-                        <SeccionInstagram igPost={igPost} igPost2={igPost}/>
-                        <SeccionTextoDescriptivo textoDescriptivo={"En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas."}/>
-                        <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://medmoderna.b-cdn.net/videohome3.mp4"} />
-                        <SeccionMapa />
-                        <SeccionCategorias
-                            title="Categorías"
-                            videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"
-                        />
-                        <SeccionFacebook url={"https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"} width={280} />
-
-                        <SeccionMarcas
-                            title="Algunas de nuestras marcas"
-                            videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"
-                        />
-
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionInstagram igPost={igPost} igPost2={igPost} />
+                        </Suspense>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionTextoDescriptivo textoDescriptivo={"En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas."} />
+                        </Suspense>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionProductosDestacados
+                                isVideoFetched={handleVideoProductosFetched}
+                                homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://medmoderna.b-cdn.net/videohome3.mp4"} />
+                        </Suspense>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionMapa />
+                        </Suspense>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionCategorias title="Categorías" videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"       isVideoFetched={handleVideoCategoriasFetched}/>
+                        </Suspense>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionFacebook url={"https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"} width={280} />
+                        </Suspense>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <SeccionMarcas
+                                title="Algunas de nuestras marcas"
+                                videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"
+                                isVideoFetched={handleVideoMarcasFetched}
+                            />
+                        </Suspense>
                     </section>
                     {/* Movil - Pantallas pequeñas */}
-
                 </div>
-
-                <Footer/>
-
+                <Footer />
             </AnimatedPage>
 
         </>
