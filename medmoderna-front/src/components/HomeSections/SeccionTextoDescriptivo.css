@@ -1,0 +1,34 @@
+.bgimg-texto {
+    background-image: url('../../assets/fondo1.png');
+    min-width: 100vw;
+    min-height: 60vh;
+    position: relative;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* Caption styles */
+.captionTexto {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+}
+
+.captionTexto .borderTexto > div {
+    color: white;
+    background: white;
+    border-radius: 10px;
+    max-width: 40vw;
+    position: relative;
+    left: 30%;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.texto-descriptivo {
+    color: black;
+}
