@@ -122,36 +122,31 @@ const useOnLoadVideos = (ref: RefObject<HTMLElement>) => {
 
     useEffect(() => {
         const updateStatus = (videos: HTMLVideoElement[]) => {
+            videos.map((vid)=>{
+                console.log({title: vid.outerHTML,
+                    stado: vid.readyState})
+
+            })
             setStatus(
-                videos
-                    .map((video) => video.readyState === 4) // Check if the video is in the 'HAVE_ENOUGH_DATA' readyState
-                    .every((item) => item === true)
+                videos.map((video) => video.readyState >= 3).every((item) => item === true)
             );
         };
 
         if (!ref?.current) return;
 
         const videosLoaded = Array.from(ref.current.querySelectorAll("video"));
-
+        console.log(videosLoaded)
         if (videosLoaded.length === 0) {
             setStatus(true);
             return;
         }
 
-        const handleLoadedMetadata = (event: Event) => {
-            const video = event.target as HTMLVideoElement;
-            if (video.readyState === 4) {
-                updateStatus(videosLoaded);
-            }
+        const handleLoadedMetadata = () => {
+            updateStatus(videosLoaded);
         };
 
         videosLoaded.forEach((video) => {
-            video.addEventListener("loadedmetadata", handleLoadedMetadata, {
-                once: true,
-            });
-            video.addEventListener("error", () => updateStatus(videosLoaded), {
-                once: true,
-            });
+            video.addEventListener("loadedmetadata", handleLoadedMetadata);
         });
 
         return () => {
@@ -163,7 +158,6 @@ const useOnLoadVideos = (ref: RefObject<HTMLElement>) => {
 
     return status;
 };
-
 const Home = () => {
 
     const postsUrls = ["https://www.instagram.com/p/Ckqxnp9DKZx/embed", "https://www.instagram.com/p/COi_Ep9nW2A/embed", "https://www.instagram.com/p/CjpsbJkAaQl/embed", "https://www.instagram.com/p/CeTSXK1sDpU/embed", "https://www.instagram.com/p/CdbJE9pDOtR/embed", "https://www.instagram.com/p/CfGzFDFMkoW/embed", "https://www.instagram.com/p/Ce6EsEQMa_A/embed"];
@@ -176,8 +170,18 @@ const Home = () => {
 
     const wrapperRef = useRef<HTMLDivElement>(null);
     const imagesLoaded = useOnLoadImages(wrapperRef);
-    const videosLoaded = useOnLoadVideos(wrapperRef);
+    const videoContainerRef = useRef(null);
+    const videoContainerRef2 = useRef(null);
+    const videosLoaded = useOnLoadVideos(videoContainerRef);
+    const videosLoaded2 = useOnLoadVideos(videoContainerRef2);
 
+
+    useEffect(() => {
+        if (videosLoaded) {
+            // Realiza alguna acción cuando todos los videos estén cargados
+            console.log("Todos los videos han sido cargados!!!!!! ❤️‍🔥");
+        }
+    }, [videosLoaded, videosLoaded2]);
 
     const listenToScroll = () => {
         let heightToHideFrom = 30;
@@ -245,7 +249,7 @@ const Home = () => {
 
         <>
 
-            <div hidden={imagesLoaded && videosLoaded && !isLoading2}>
+            <div hidden={imagesLoaded && !videosLoaded && !isLoading2}>
                 <LoadingPage logoSrc={"a"}/>
             </div>
 
@@ -254,84 +258,29 @@ const Home = () => {
 
 
                 <div hidden={isLoading}  ref={wrapperRef}>
-                    <section hidden={true} id={"seccionCarruselPrincipal"}>
-                        <div ref={wrapperRef} className="ParallaxVideo">
-
-                            <Carousel animationHandler={"slide"} infiniteLoop={true} autoPlay={true}
-                                      className={"carruseltop"} interval={5000}
-                                      width={"100vw"} showThumbs={false} showIndicators={false} showArrows={false}
-                                      stopOnHover={false}>
-                                <div className={"bgimg-1"}>
-                                    <img src={fondo} alt={"fondo1"}/>
-                                </div>
-                                <div>
-                                    <video autoPlay muted loop playsInline style={{maxHeight: "110vh"}} poster={poster}>
-
-                                        <source type="video/mp4"
-                                                src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/VideoHomeAcortaco.mp4"}/>
-
-                                    </video>
-                                </div>
-                                <div className={"bgimg-1"}>
-                                    <img src={fondo2} alt={"fondo2"}/>
-                                </div>
-                                <div className={"bgimg-1"}>
-                                    <img src={fondo3} alt={"fondo3"}/>
-                                </div>
-                                <div>
-                                    <video autoPlay muted loop playsInline style={{maxHeight: "110vh", width: "100vw"}}
-                                           poster={poster}>
-
-                                        <source type="video/mp4"
-                                                src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}/>
-                                    </video>
-                                </div>
-                            </Carousel>
-
-                            <div
-                                className={(!isVisible && window.screen.width < 440) ? "captionWithSidebar" : "caption"}>
-
-                            <span className="border">
-                        <div>
-                            <AnimatePresence>
-                                 <motion.img className={"logoHome"}
-                                             initial={{opacity: 0,}}
-                                             animate={{opacity: 1}}
-                                             exit={{opacity: 0.3}}
-                                             transition={{duration: 2}}
-                                             src={"https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png"}
-                                             alt={"logo"} width={"350px"}/>
-                            </AnimatePresence>
-
-                        </div>
-                    </span>
-                            </div>
-                        </div>
-                    </section>
-
-                    <div hidden={false}>
+                    <div hidden={false} ref={videoContainerRef}>
                         <SeccionCarruselPrincipal />
 
                     </div>
 
                     {/* PC - Pantallas grandes */}
-                    <div className="section">
+                    <div ref={videoContainerRef2} className="section">
 
                         <SeccionInstagram igPost={igPost} igPost2={igPost}/>
 
                         <SeccionTextoDescriptivo textoDescriptivo={"En Medicina Moderna Grow Shop encontrarás una amplia selección de productos para la cultura y el crecimiento de plantas, así como todas las herramientas que necesitas."}/>
-                        <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"} />
+                        <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://medmoderna.b-cdn.net/videohome3.mp4"} />
                         <SeccionMapa />
                         <SeccionCategorias
                             title="Categorías"
-                            videoSrc="https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"
+                            videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"
                         />
 
                         <SeccionFacebook url={"https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater"} width={400} />
 
                         <SeccionMarcas
                             title="Algunas de nuestras marcas"
-                            videoSrc="https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"
+                            videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"
                         />
 
                     </div>
