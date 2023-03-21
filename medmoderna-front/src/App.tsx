@@ -14,6 +14,7 @@ import {ReactSearchAutocomplete} from "react-search-autocomplete";
 import {getProductsFromQuery} from "./services/api-products-service";
 import ProductCardList from "./components/Product/ProductCardList";
 import {IProductProps} from "./models/IProductProps";
+import {ToastContainer} from "react-toastify";
 
 
 function App() {
@@ -57,7 +58,9 @@ function App() {
             <Router>
                 <TopBar/>
                 <SideBar/>
+
                 <AnimatedRoutes/>
+                <ToastContainer/>
 
             </Router>
 

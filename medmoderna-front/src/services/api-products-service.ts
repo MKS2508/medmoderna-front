@@ -1,149 +1,106 @@
-import {REACT_APP_API_KEY, API_URL, TESTING_URL} from "../config"
+import { API_URL } from "../config";
 import axios from "axios";
-import {IProductPageProps} from "../models/IProductPageProps";
-import {IProductProps} from "../models/IProductProps";
+import { IProductPageProps } from "../models/IProductPageProps";
+import { IProductProps } from "../models/IProductProps";
 
-export const getProductsFromCategory = async (props: IProductPageProps): Promise<IProductProps[]> => {
-    console.log({propsName: props.name})
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
-    const apiUrl = (!props.elementsSize) ? `${API_URL}/products/category/${props.name}?page=${props.pagination}&size=40` :`${API_URL}/products/category/${props.name}?page=0${props.pagination}&size=${props.elementsSize}`;
-    const testingURL2 = `${testingURL}/${props.name}`;
-    return new Promise<IProductProps[]>((async (resolve, reject) => {
-        try {
-            const response = await axios.get(apiUrl);
-            const requestOK: boolean = (response.status === 200);
-            const products: IProductProps[] = (requestOK) ? response.data.products : null;
-            console.warn({products, requestOK, response});
-            (products) ? resolve(products) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
+const buildUrl = (base: string, params: Record<string, string | number>) =>
+    Object.entries(params).reduce((url, [key, value], index) => {
+        return `${url}${index === 0 ? "?" : "&"}${key}=${value}`;
+    }, base);
+
+const request = async <T>(url: string): Promise<T> => {
+    try {
+        const response = await axios.get(url);
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error(`Error on ${url}`);
         }
+    } catch (error: any) {
+        console.error(new Error(error));
+        throw error;
+    }
+};
 
-    }));
-}
-export const getProductsFromBrand = async (props: IProductPageProps, brand: string): Promise<IProductProps[]> => {
-    console.log({propsName: props.name})
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
-    const apiUrl = (!props.elementsSize) ? `${API_URL}/products/brand/${brand}?page=${props.pagination}&size=40` :`${API_URL}/products/brand/${brand}?page=0${props.pagination}&size=${props.elementsSize}`;
-    const testingURL2 = `${testingURL}/${props.name}`;
-    return new Promise<IProductProps[]>((async (resolve, reject) => {
-        try {
-            const response = await axios.get(apiUrl);
-            const products: IProductProps[] =  response.data.products;
-            console.warn({products, response});
-            (products) ? resolve(products) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
-        }
+export const getProductsFromCategory = async (
+    props: IProductPageProps
+): Promise<IProductProps[]> => {
+    const apiUrl = buildUrl(`${API_URL}/products/category/${props.name}`, {
+        page: (props.pagination ? props.pagination : 0),
+        size: props.elementsSize || 40,
+    });
 
-    }));
-}
-export const getProductsFromQuery = async (query: string): Promise<IProductProps[]> => {
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
-    const apiUrl = `${API_URL}/products/search/${query}?page=${0}&size=30`;
-    return new Promise<IProductProps[]>((async (resolve, reject) => {
-        try {
-            const response = await axios.get(apiUrl);
-            const products: IProductProps[] =  response.data.products;
-            console.warn({products, response});
-            (products) ? resolve(products) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
-        }
+    const { products } = await request<{ products: IProductProps[] }>(apiUrl);
+    return products;
+};
 
-    }));
-}
+export const getProductsFromBrand = async (
+    props: IProductPageProps,
+    brand: string
+): Promise<IProductProps[]> => {
+    const apiUrl = buildUrl(`${API_URL}/products/brand/${brand}`, {
+        page: (props.pagination ? props.pagination : 0),
+        size: props.elementsSize || 40,
+    });
 
-export const getImagesFromQuery = async (query: string): Promise<IProductProps[]> => {
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
+    const { products } = await request<{ products: IProductProps[] }>(apiUrl);
+    return products;
+};
+
+export const getProductsFromQuery = async (
+    query: string
+): Promise<IProductProps[]> => {
+    const apiUrl = buildUrl(`${API_URL}/products/search/${query}`, {
+        page: 0,
+        size: 30,
+    });
+
+    const { products } = await request<{ products: IProductProps[] }>(apiUrl);
+    return products;
+};
+export const getAllProducts = async (    props: IProductPageProps,
+): Promise<IProductProps[]> => {
+    const apiUrl = buildUrl(`${API_URL}/products/`, {
+        page: (props.pagination ? props.pagination : 0),
+        size: props.elementsSize || 40,
+    });
+    const { products } = await request<{ products: IProductProps[] }>(apiUrl);
+    return products;
+};
+export const getImagesFromQuery = async (
+    query: string
+): Promise<any[]> => {
     const apiUrl = `${API_URL}/products/images/${query}`;
-    return new Promise<any[]>((async (resolve, reject) => {
-        try {
-            const response = await axios.get(apiUrl);
-            const images: [] = response.data.images;
-            console.warn({images, response});
-            (images) ? resolve(images) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
-        }
 
-    }));
-}
-export const getProductById = async (id?: any): Promise<IProductProps> => {
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
+    const { images } = await request<{ images: any[] }>(apiUrl);
+    return images;
+};
+
+export const getProductById = async (
+    id?: any
+): Promise<IProductProps> => {
     const apiUrl = `${API_URL}/products/${id}`;
-    return new Promise<IProductProps>((async (resolve, reject) => {
-        try {
-            const response = await axios.get(apiUrl);
-            const product: IProductProps =  response.data;
-            console.warn({product, response});
-            (product) ? resolve(product) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
-        }
 
-    }));
-}
+    const product = await request<IProductProps>(apiUrl);
+    return product;
+};
 
-export const getHomeProducts = async ( ids: string[] ): Promise<IProductProps[]> => {
-// export const getHomeProducts = async ( ids: string[] , num: number): Promise<IProductProps[]> => {
-    let promesas : Promise<IProductProps>[] = [];
+export const getHomeProducts = async (
+    ids: string[]
+): Promise<IProductProps[]> => {
+    const products = await Promise.all(ids.map(getProductById));
+    return products;
+};
 
-    let products : IProductProps[] = [];
-    
-    return new Promise<IProductProps[]>((resolve, reject) =>{
-        try{
-            ids.map((id)=>{
-                promesas.push(getProductById(id));
-            })
-    
-            Promise.all(promesas).then( res => {
-                products=res;
-            }).catch(e => console.log(e))
-            
-            resolve(products);
-        }
-        catch (e:any) {
-            console.log(new Error(e));
-            reject(e);
-        }
-    })
+// ...
+// Aquí puedes agregar los métodos postProduct, editProduct y deleteProduct que se mantienen sin cambios
+// ...
 
-}
-
-export const postProduct2 = async (newProduct: IProductProps): Promise<IProductProps> => {
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
-    const apiUrl = `${API_URL}/products/`;
-    return new Promise<IProductProps>((async (resolve, reject) => {
-        try {
-            debugger;
-            const response = await axios.post(apiUrl, newProduct);
-            const product: IProductProps =  response.data;
-            console.warn({product, response});
-            (product) ? resolve(product) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
-        }
-
-    }));
-}
 export const postProduct= async (newProduct: IProductProps): Promise<IProductProps> => {
     const apiUrl = `${API_URL}/products/`;
     const formData = new FormData();
     Object.entries(newProduct).forEach(([key, value]) => formData.append(key, value));
-
+    console.log(newProduct)
     return new Promise<IProductProps>(async (resolve, reject) => {
         try {
             const response = await axios.post(apiUrl, formData, {
@@ -160,23 +117,7 @@ export const postProduct= async (newProduct: IProductProps): Promise<IProductPro
     });
 };
 
-export const editProduct2 = async (id: any, newProduct: IProductProps): Promise<IProductProps> => {
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
-    const apiUrl = `${TESTING_URL}/products/${id}`;
-    return new Promise<IProductProps>((async (resolve, reject) => {
-        try {
-            const response = await axios.put(apiUrl, newProduct);
-            const product: IProductProps =  response.data;
-            console.warn({product, response});
-            (product) ? resolve(product) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
-        }
 
-    }));
-}
 export const editProduct = async (id: any, newProduct: IProductProps): Promise<IProductProps> => {
     const apiUrl = `${API_URL}/products/${id}`;
     const formData = new FormData();
@@ -198,21 +139,7 @@ export const editProduct = async (id: any, newProduct: IProductProps): Promise<I
     });
 };
 
-export const getAllProducts = async (p: { size: number; page: number }): Promise<IProductProps[]> => {
-    const apiUrl = `${TESTING_URL}/products?size=${p.size}&page=${p.page}`;
 
-    return new Promise<IProductProps[]>((async (resolve, reject) => {
-        try {
-            const response = await axios.get(apiUrl);
-            const products: IProductProps[] = response.data.products;
-            console.log(response);
-            (products) ? resolve(products) : reject(new Error(`404 on ${apiUrl}`));
-        } catch (e: any) {
-            console.log(new Error(e));
-            reject(e);
-        }
-    }));
-};
 
 export const deleteProduct = async (id: string): Promise<void> => {
     const apiUrl = `${API_URL}/products/${id}`;

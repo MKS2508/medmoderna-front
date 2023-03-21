@@ -97,7 +97,7 @@ const ExcelUploader: React.FC = () => {
                         price: row[1] ? row[1] : 0,
                         brand: row[2] && row[2].length > 0 ? row[2] : 'undefined',
                         category: 'CBD',
-                        productId: index + Math.random() * 1001,
+                        productId: index + Math.floor(Math.random() * 10001),
                         imgSrc: imgSrc,
                         imgSrc2: imgSrc2,
                         description: row[4] && row[4].length > 0 ? row[4] : 'undefined',

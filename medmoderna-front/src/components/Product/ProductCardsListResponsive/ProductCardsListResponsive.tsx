@@ -25,7 +25,6 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
 
     // @ts-ignore
     return (<>
-        <ToastContainer></ToastContainer>
         {(!isHome ?         <div className="shopping-list">
                 {products.map(item => (<>
                     <ProductCardNew
