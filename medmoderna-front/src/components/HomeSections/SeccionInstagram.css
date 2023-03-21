@@ -1,0 +1,13 @@
+.instagram-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    background-color: whitesmoke;
+}
+
+.instagram-posts {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10vh;
+}

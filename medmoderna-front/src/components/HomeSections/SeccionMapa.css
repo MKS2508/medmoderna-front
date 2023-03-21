@@ -1,0 +1,14 @@
+.mapa-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+}
+
+.mapa-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 20%;
+}

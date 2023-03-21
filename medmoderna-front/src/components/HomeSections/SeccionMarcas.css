@@ -1,0 +1,57 @@
+.marcas-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    background-color: whitesmoke;
+}
+
+.bgimg-marcasSection {
+    position: relative;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.video-container-background-marcas {
+    position: absolute;
+    left: 0;
+    margin: auto;
+    height: 80vh;
+    background: red;
+    overflow: hidden;
+    transform: translatez(0);
+}
+
+.marcas-spacer {
+    margin-top: 5.5rem;
+    font-size: 30px;
+    z-index: 2;
+    color: black;
+    position: relative;
+    text-align: center;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.brandcards-container {
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+
+.brandcard-item {
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.marcas-spacer {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    background-color: whitesmoke;
+}

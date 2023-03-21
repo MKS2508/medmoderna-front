@@ -1,0 +1,37 @@
+.categorias-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    background-color: whitesmoke;
+}
+
+.categorias-spacer {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    background-color: whitesmoke;
+}
+
+.categorias-container {
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+
+.bgimg-categories {
+    position: relative;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.video-container2 {
+    position: absolute;
+    left: 0;
+    margin: auto;
+    height: 80vh;
+    background: red;
+    overflow: hidden;
+    transform: translatez(0);
+}

@@ -1,0 +1,44 @@
+.productos-destacados-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    background-color: whitesmoke;
+}
+
+.productos-destacados-spacer {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    background-color: whitesmoke;
+}
+
+.switcher-container {
+    z-index: 30;
+    position: relative;
+    text-align: center;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+.bgimg-productsSection
+{
+    position: relative;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.video-container-background-products{
+
+    position: absolute;
+    left: 0;
+    margin: auto;
+    height: 80vh;
+
+    background: red;
+
+    overflow: hidden;
+    transform: translatez(0);
+}
