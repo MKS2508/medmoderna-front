@@ -60,7 +60,7 @@ const AdminDashboard: React.FC = () => {
     }, []);
 
     const loadData = async () => {
-        const allProducts = await getAllProducts({ page:page, size: 10 });
+        const allProducts = await getAllProducts({ page:0, size: 100 });
         setProducts(allProducts);
     };
 
@@ -354,11 +354,9 @@ const AdminDashboard: React.FC = () => {
                                             />
                                         ) : (
                                             <>
-                                                {(product.imgSrc.startsWith("data:image")
-                                                        ?
-                                                        <img src={`${product.imgSrc}`} alt={product.name} style={{ maxWidth: "50px" }}  /> :
+
                                                         <img src={`${product.imgSrc}`} alt={product.name} style={{ maxWidth: "50px" }}  />
-                                                )}
+
                                             </>
 
                                         )}
@@ -367,7 +365,14 @@ const AdminDashboard: React.FC = () => {
                                         {isEditing ? (
                                             <input
                                                 type="text"
-                                                value={product.imgSrc}
+                                                value={product.imgSrc2
+
+
+
+
+
+
+                                            }
                                                 onChange={(e) =>
                                                     setProducts(
                                                         products.map((p) =>
@@ -380,11 +385,7 @@ const AdminDashboard: React.FC = () => {
                                             />
                                         ) : (
                                             <>
-                                                {(product.imgSrc2 && product.imgSrc2.startsWith("data:image")
-                                                        ?
-                                                        <img src={`${product.imgSrc2}`} alt={product.name} style={{ maxWidth: "50px" }}  /> :
                                                         <img src={`${product.imgSrc2}`} alt={product.name} style={{ maxWidth: "50px" }}  />
-                                                )}
                                             </>
 
                                         )}

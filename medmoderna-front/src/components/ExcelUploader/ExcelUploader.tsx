@@ -100,7 +100,7 @@ const ExcelUploader: React.FC = () => {
                         productId: index + Math.floor(Math.random() * 10001),
                         imgSrc: imgSrc,
                         imgSrc2: imgSrc2,
-                        description: row[4] && row[4].length > 0 ? row[4] : 'undefined',
+                        description: row[5] && row[5].length > 0 ? row[5] : 'undefined',
                     };
                     productsArray.push(product);
                 }

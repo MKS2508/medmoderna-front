@@ -58,11 +58,11 @@ export const getProductsFromQuery = async (
     const { products } = await request<{ products: IProductProps[] }>(apiUrl);
     return products;
 };
-export const getAllProducts = async (    props: IProductPageProps,
+export const getAllProducts = async (    p: {size:number, page:number},
 ): Promise<IProductProps[]> => {
     const apiUrl = buildUrl(`${API_URL}/products/`, {
-        page: (props.pagination ? props.pagination : 0),
-        size: props.elementsSize || 40,
+        page: p.page,
+        size: p.size,
     });
     const { products } = await request<{ products: IProductProps[] }>(apiUrl);
     return products;
@@ -144,7 +144,7 @@ export const editProduct = async (id: any, newProduct: IProductProps): Promise<I
 export const deleteProduct = async (id: string): Promise<void> => {
     const apiUrl = `${API_URL}/products/${id}`;
 
-    return new Promise<void>((async (resolve, reject) => {
+    return new Promise<void>(async (resolve, reject) => {
         try {
             const response = await axios.delete(apiUrl);
             if (response.status === 200) {
@@ -156,5 +156,5 @@ export const deleteProduct = async (id: string): Promise<void> => {
             console.log(new Error(e));
             reject(e);
         }
-    }));
+    });
 };
