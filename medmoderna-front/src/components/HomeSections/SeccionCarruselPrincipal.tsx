@@ -55,7 +55,7 @@ const SeccionCarruselPrincipal = () => {
             </div>
 
         <section id={"seccionCarruselPrincipal"}>
-                <div className="logoHome" style={{position:"absolute", zIndex:1, top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
+                <div className="logoHome" style={{position:"absolute", zIndex:1, top: "80%", left: "50%", transform: "translate(-50%, -50%)"}}>
                     <AnimatePresence>
 
                     <motion.img
@@ -88,7 +88,7 @@ const SeccionCarruselPrincipal = () => {
                         <img src={fondo} alt={"fondo1"}/>
                     </div>
                     <div className="video-container" >
-                        <video autoPlay muted loop playsInline  width={"100%"}>
+                        <video autoPlay muted loop playsInline  width={"100%"} height={"100%"}>
                             <source
                                 type="video/mp4"
                                 src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/VideoHomeAcortaco.mp4"}
@@ -102,7 +102,7 @@ const SeccionCarruselPrincipal = () => {
                         <img src={fondo3} alt={"fondo3"}/>
                     </div>
                     <div className="video-container">
-                        <video autoPlay muted loop playsInline width={"100%"}>
+                        <video autoPlay muted loop playsInline  width={"100%"} height={"100%"}>
                             <source
                                 type="video/mp4"
                                 src={"https://media.githubusercontent.com/media/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/videohome.mp4"}

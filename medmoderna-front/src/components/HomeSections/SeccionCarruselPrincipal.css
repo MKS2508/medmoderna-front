@@ -8,7 +8,7 @@
 /* General styles */
 .logoHome {
     filter: drop-shadow(7px 4px 2px #043b04);
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -152,6 +152,20 @@
 
 @media (max-width: 440px) {
 
+    .HomeProductsSection {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 16rem);
+        justify-content: center;
+        padding-top: 2rem;
+        padding-left: 6vw;
+    }
+
+
+    .mobile {
+        overflow-x: hidden;
+
+        display: block;
+    }
     .ParallaxVideo{
         width: 100vw!important;
         height: 100vw!important;
@@ -166,6 +180,48 @@
         top:0;
     }
 
+    .mobileSectionFull{
+        text-align: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 18rem);
+        padding-top: 5vh;
+        padding-left: 12vw;
+        justify-content: center;
+        width: 100vw;
+        height: 90vh;
+        background-color: #EAE6E6FF;
+    }
+    .mobileSectionFull h1{
+        font-size: 30px;
+
+    }
+    .mobileSectionHalf h1{
+        padding-top: 3vh;
+        font-size: 30px;
+
+    }
+    .mobileSectionHalf{
+        padding-left: 20vw;
+        text-align: center;
+        display: grid;
+        width: 100vw;
+        height: 50vh;
+    }
+    .mobileSectionSeparator h2 {
+        color: white;
+
+
+    }
+    .mobileSectionSeparator {
+
+        text-align: center;
+        backdrop-filter: blur(50px);
+        display: flex;
+        width: 100vw;
+        height: 1rem;
+        background-color: #008F28;
+
+    }
     .ParallaxVideo > .backgroundGif {
         display: none;
         object-fit: cover;
@@ -174,6 +230,7 @@
         top:0;
     }
     .logoHome {
+        margin-top: 10vh;
         z-index: 30;
         width:80vw;
         height: 100%;
@@ -185,7 +242,17 @@
         width:80vw;
         height: 100%;
     }
-
+    .brandCard {
+        width: 100%!important;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .mobileBrands {
+        padding-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 70vw);
+        justify-content: center;
+    }
     .caption {
         overflow-y: hidden;
 
