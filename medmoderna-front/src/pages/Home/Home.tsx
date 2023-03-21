@@ -117,6 +117,52 @@ const useOnLoadImages = (ref: RefObject<HTMLElement>) => {
 
     return status;
 };
+const useOnLoadVideos = (ref: RefObject<HTMLElement>) => {
+    const [status, setStatus] = useState(false);
+
+    useEffect(() => {
+        const updateStatus = (videos: HTMLVideoElement[]) => {
+            setStatus(
+                videos
+                    .map((video) => video.readyState === 4) // Check if the video is in the 'HAVE_ENOUGH_DATA' readyState
+                    .every((item) => item === true)
+            );
+        };
+
+        if (!ref?.current) return;
+
+        const videosLoaded = Array.from(ref.current.querySelectorAll("video"));
+
+        if (videosLoaded.length === 0) {
+            setStatus(true);
+            return;
+        }
+
+        const handleLoadedMetadata = (event: Event) => {
+            const video = event.target as HTMLVideoElement;
+            if (video.readyState === 4) {
+                updateStatus(videosLoaded);
+            }
+        };
+
+        videosLoaded.forEach((video) => {
+            video.addEventListener("loadedmetadata", handleLoadedMetadata, {
+                once: true,
+            });
+            video.addEventListener("error", () => updateStatus(videosLoaded), {
+                once: true,
+            });
+        });
+
+        return () => {
+            videosLoaded.forEach((video) => {
+                video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+            });
+        };
+    }, [ref]);
+
+    return status;
+};
 
 const Home = () => {
 
@@ -130,6 +176,7 @@ const Home = () => {
 
     const wrapperRef = useRef<HTMLDivElement>(null);
     const imagesLoaded = useOnLoadImages(wrapperRef);
+    const videosLoaded = useOnLoadVideos(wrapperRef);
 
 
     const listenToScroll = () => {
@@ -198,7 +245,7 @@ const Home = () => {
 
         <>
 
-            <div hidden={imagesLoaded && !isLoading2}>
+            <div hidden={imagesLoaded && videosLoaded && !isLoading2}>
                 <LoadingPage logoSrc={"a"}/>
             </div>
 
