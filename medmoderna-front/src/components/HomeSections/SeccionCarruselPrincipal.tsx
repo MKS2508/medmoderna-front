@@ -1,11 +1,16 @@
 import React, {RefObject, useEffect, useRef, useState} from 'react';
 import {Carousel} from 'react-responsive-carousel';
 import {AnimatePresence, motion} from 'framer-motion';
-import fondo from '../../assets/fondo1.png'
-import fondo3 from '../../assets/fondo3.png'
-import fondo2 from '../../assets/fondo2.png'
+
 import poster from "../../assets/poster.png";
 import LoadingPage from "../LoadingPage/LoadingPage";
+import {
+    IMAGEN_CARRUSEL_1,
+    IMAGEN_CARRUSEL_2,
+    IMAGEN_CARRUSEL_3,
+    LOGO_CARRUSEL,
+    VIDEO_LINK_4
+} from "../../WebParameters";
 
 
 const SeccionCarruselPrincipal = () => {
@@ -63,7 +68,7 @@ const SeccionCarruselPrincipal = () => {
                         animate={{opacity: 1}}
                         exit={{opacity: 0.3}}
                         transition={{duration: 4}}
-                        src={"https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png"}
+                        src={LOGO_CARRUSEL}
                         alt={"logo"}
                         width={"350px"}
                     />
@@ -85,19 +90,19 @@ const SeccionCarruselPrincipal = () => {
                     stopOnHover={false}
                 >
                     <div className={"bgimg-1"}>
-                        <img src={fondo} alt={"fondo1"}/>
+                        <img src={IMAGEN_CARRUSEL_1} alt={"fondo1"}/>
                     </div>
                     <div className={"bgimg-1"}>
-                        <img src={fondo2} alt={"fondo2"}/>
+                        <img src={IMAGEN_CARRUSEL_2} alt={"fondo2"}/>
                     </div>
                     <div className={"bgimg-1"}>
-                        <img src={fondo3} alt={"fondo3"}/>
+                        <img src={IMAGEN_CARRUSEL_3} alt={"fondo3"}/>
                     </div>
                     <div className="video-container">
                         <video autoPlay muted loop playsInline  width={"100%"} height={"100%"}>
                             <source
                                 type="video/mp4"
-                                src={"https://medmoderna.b-cdn.net/videohome3.mp4"}
+                                src={VIDEO_LINK_4}
                             />
                         </video>
                     </div>
