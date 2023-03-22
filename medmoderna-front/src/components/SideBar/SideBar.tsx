@@ -20,10 +20,8 @@ import {AiOutlinePlusCircle} from "react-icons/all";
 const SideBar = () => {
 
     config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
-    const [active, setActive] = useState(false)
-    const [mobileMode, setMobileMode] = useState(false)
-
     const [isVisible, setIsVisible] = useState(true);
+
     const listenToScroll = () => {
         let heightToHideFrom = 30;
         const winScroll = document.body.scrollTop ||
@@ -40,6 +38,7 @@ const SideBar = () => {
             setIsVisible(false)
         }
     };
+
     useEffect(() => {
 
         if (window.location.pathname != "/") {
@@ -59,50 +58,9 @@ const SideBar = () => {
     };
 
     let navigate = useNavigate();
-    const activateNav = () => {
-        setActive(!active)
-    }
-    const closeNav = () => {
-        setActive(false)
-    }
 
 
-    function getWindowDimensions() {
-        const width = window.innerWidth
-        const height = window.innerHeight
-        return {
-            width,
-            height
-        };
-    }
-
-    function useWindowDimensions() {
-
-        const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-        useEffect(() => {
-            function handleResize() {
-                setWindowDimensions(getWindowDimensions());
-            }
-
-            window.addEventListener('resize', handleResize);
-
-            return () => window.removeEventListener('resize', handleResize);
-        }, []);
-
-        return windowDimensions;
-    }
-
-    const checkMobileMode = () => {
-        const bol = (width <= 950);
-        return bol;
-        //setMobileMode(bol);
-    }
-    const {height, width} = useWindowDimensions();
     let page = getCurrentPage();
-
-    const mob = checkMobileMode();
-
-    //TODO: IMPORTANTE FALTA ESTILO ACTIVE LIST ITEM SELECTED
     return (<>
             <div>
                 <AnimatePresence>
@@ -112,25 +70,17 @@ const SideBar = () => {
                                         animate={{opacity: 1}}
                                         exit={{opacity: 0}}
                                         transition={{duration: 1}}
-                                        className={active ? 'header' : 'header-mobile'} onMouseLeave={closeNav}>
-
-                                {/*(!active) ? <div className="logo" onClick={() => navigate("/")}>
-                                        <img width="110%" alt="logo" src={logo}/>
-                                    </div> :
-                                    <div className="banner" onClick={() => navigate("/")}>
-                                        <img width="100%" height="85%" alt="logo" src={banner}/>
-                                    </div>
-                                */}
+                                        className={'header-mobile'}>
 
 
                                 <nav>
-                                    <ul className={active ? 'ul-item' : 'ul-item oicon'}>
+                                    <ul className='ul-item oicon'>
 
                                         <li data-tip data-for="React-tooltip1" onClick={() => navigate("/CULTIVO")} className={(page.startsWith("/CULTIVO")) ? "itemActive":""}>
                                             <RiPlantFill className={(page.startsWith("/CULTIVO") ? "iconActive":"icon")}/>
                                             <Link to="/CULTIVO"> CULTIVO </Link>
                                             <ReactTooltip data-id={ "React-tooltip1"} id={"React-tooltip1"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
-                                                ⏺ CULTIVO
+                                                 CULTIVO
                                             </ReactTooltip>
                                         </li>
 
@@ -139,16 +89,16 @@ const SideBar = () => {
                                             <GiLightBulb className={(page.startsWith("/ILUMINACION")) ? "iconActive":"icon"}/>
                                             <Link to="/ILUMINACION">ILUMINACION</Link>
                                             <ReactTooltip data-id={ "React-tooltip2"} id={"React-tooltip2"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
-                                                ⏺ ILUMINACION
+                                                 ILUMINACION
                                             </ReactTooltip>
                                         </li>
 
-                                        <li data-tip data-for="React-tooltip3" onClick={() => navigate("/CBD")} className={(page.startsWith("/CBD") && !active) ? "itemActive":""}>
-                                            <FaCannabis className={(page.startsWith("/CBD") && !active) ? "iconActive":"icon"}/>
+                                        <li data-tip data-for="React-tooltip3" onClick={() => navigate("/CBD")} className={(page.startsWith("/CBD")) ? "itemActive":""}>
+                                            <FaCannabis className={(page.startsWith("/CBD")) ? "iconActive":"icon"}/>
 
                                             <Link className='customspan' to='/CBD'>CBD</Link>
                                             <ReactTooltip data-id={ "React-tooltip3"} id={"React-tooltip3"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
-                                                ⏺ CBD
+                                                 CBD
                                             </ReactTooltip>
                                         </li>
 
@@ -159,7 +109,7 @@ const SideBar = () => {
 
                                             <Link to="/MARCAS">MARCAS</Link>
                                             <ReactTooltip data-id={ "React-tooltip4"} id={"React-tooltip4"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
-                                               ⏺ MARCAS
+                                               MARCAS
                                             </ReactTooltip>
 
 
@@ -168,7 +118,7 @@ const SideBar = () => {
 
                                         <li  data-tip data-for="React-tooltip5" onClick={() => navigate("/PARAFERNALIA")} className={(page.startsWith("/PARAFERNALIA")) ? "itemActive":""}>
                                             <ReactTooltip data-id={ "React-tooltip5"} id={"React-tooltip5"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
-                                                ⏺ PARAFERNALIA
+                                                 PARAFERNALIA
                                             </ReactTooltip>
                                             <FaJoint className={(page.startsWith("/PARAFERNALIA")) ? "iconActive":"icon"}/>
                                             <Link to="/PARAFERNALIA">PARAFERNALIA</Link>
@@ -178,7 +128,7 @@ const SideBar = () => {
                                             <IoIosShirt className={(page.startsWith("/ROPA")) ? "iconActive":"icon"}/>
                                             <Link to="/ROPA">ROPA</Link>
                                             <ReactTooltip data-id={ "React-tooltip6"} id={"React-tooltip6"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
-                                                ⏺ ROPA
+                                                 ROPA
                                             </ReactTooltip>
 
                                         </li>
@@ -186,7 +136,7 @@ const SideBar = () => {
                                             <AiOutlinePlusCircle className={(page.startsWith("/ADMIN")) ? "iconActive":"icon"}/>
                                             <Link to="/ROPA">ADMIN</Link>
                                             <ReactTooltip data-id={ "React-tooltip6"} id={"React-tooltip6"} place="right"  effect="solid" border={true} borderClass={"tooltipBorder"} backgroundColor={"#008F28"} textColor={"#ffffff"} borderColor={"#10131f"}>
-                                                ⏺ ADMIN
+                                                 ADMIN
                                             </ReactTooltip>
                                         </li>
 

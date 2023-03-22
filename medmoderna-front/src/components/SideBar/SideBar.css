@@ -1,12 +1,5 @@
-.header {
-    z-index: 20;
-    display: flex;
-    position: fixed;
-    flex-direction: column;
-    inset: 4% 85% 0 0;
-    background-color: hsl(0, 9%, 91%);
-    transition: all 400ms;
-}
+
+
 
 
 .header-mobile {
@@ -17,8 +10,33 @@
     position: fixed;
     flex-direction: column;
     align-items: center;
-    background-color: hsl(0, 9%, 91%);
+    background-color: hsla(0, 9%, 91%, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(10px);
 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Transiciones suaves para elementos de menú */
+nav .ul-item li, .menu-icon .menu {
+    /* ... */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+/* Efecto de sombra en hover */
+.header-mobile > nav .ul-item li:hover,
+.header > nav .ul-item li:hover,
+.menu-icon .menu:hover {
+    /* ... */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes adicionales en la animación del hover */
+nav .ul-item li:hover {
+    /* ... */
+    transform: scale(1.05);
 }
 
 nav .ul-item {
@@ -52,7 +70,6 @@ nav .ul-item li {
 }
 .header-mobile > nav .ul-item li:hover {
     border-radius: 100%;
-    background-color: rgb(125, 118, 118);
 }
 .header > nav .ul-item li:hover {
     background-color: rgb(125, 118, 118);
@@ -73,10 +90,6 @@ nav .ul-item li {
     border-radius: 100%;
 }
 
-.header > nav .ul-item > .itemActive {
-    border-radius: 0%;
-    background-color: rgb(125, 118, 118);
-}
 
 nav .ul-item li:hover > .icon{
     color:#00FF91FF;
@@ -117,10 +130,6 @@ nav .ul-item li a {
 .header-mobile .rrssIcons {
 
     height: 50px;
-}
-.header .rrssIcons {
-
-    height: 100px;
 }
 
 
@@ -176,4 +185,53 @@ nav .ul-item li:hover {
         font-size: clamp(1rem,2vw + 1rem, 4rem);
     }
 }
+/* Nueva media query para adaptar mejor el diseño a dispositivos móviles */
+@media (max-width: 767px) {
+    .header-mobile {
+        height: 100vh;
+        width: 15vw;
+        z-index: 20;
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        align-items: center;
+        background-color: hsla(0, 9%, 91%, 0.13);
+        border-radius: 10px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
+    }
+    nav .ul-item li {
+        transform: scale(0.85);
+    }
+    .logo {
+        padding-top: 5%;
+        padding-bottom: 10%;
+    }
+}
+
+/* Media query ajustada para dispositivos tablet */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .header-mobile {
+        height: 100vh;
+        width: 12vw;
+        z-index: 20;
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        align-items: center;
+        background-color: hsl(0, 9%, 91%);
+    }
+
+    nav .ul-item li {
+        transform: scale(0.9);
+    }
+
+    .logo {
+        padding-top: 5%;
+        padding-bottom: 10%;
+    }
+}
+
+/* Media query ajustada para pantallas más grandes */

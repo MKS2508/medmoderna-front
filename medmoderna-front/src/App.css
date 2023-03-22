@@ -10,11 +10,9 @@
 
 body{
   overflow-x: hidden;
-  background-color: rgba(255, 255, 255, 0.4);
   opacity: 1;
-  background-image:  radial-gradient(#56be2d 4px, transparent 4px), radial-gradient(#56be2d 4px, #ffffff 4px);
-  background-size: 80px 80px;
-  background-position: 0 0,40px 40px;
+  background-image: radial-gradient(#56be2d 1.9500000000000002px, #e5e5f7 1.9500000000000002px);
+  background-size: 39px 39px;
 }
 
 *::after,*::before {

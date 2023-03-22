@@ -1,7 +1,7 @@
-import { API_URL } from "../config";
+import {API_URL} from "../config";
 import axios from "axios";
-import { IProductPageProps } from "../models/IProductPageProps";
-import { IProductProps } from "../models/IProductProps";
+import {IProductPageProps} from "../models/IProductPageProps";
+import {IProductProps} from "../models/IProductProps";
 import {toast} from "react-toastify";
 
 const buildUrl = (base: string, params: Record<string, string | number>) =>
@@ -25,27 +25,24 @@ const request = async <T>(url: string): Promise<T> => {
 
 export const getProductsFromCategory = async (
     props: IProductPageProps
-): Promise<IProductProps[]> => {
+): Promise<{ products: IProductProps[] , totalItems: number, currentPage: number}> => {
     const apiUrl = buildUrl(`${API_URL}/products/category/${props.name}`, {
         page: (props.pagination ? props.pagination : 0),
         size: props.elementsSize || 40,
     });
 
-    const { products } = await request<{ products: IProductProps[] }>(apiUrl);
-    return products;
+    return await request<{ products: IProductProps[], totalItems: number, currentPage: number }>(apiUrl);
 };
 
 export const getProductsFromBrand = async (
-    props: IProductPageProps,
-    brand: string
-): Promise<IProductProps[]> => {
-    const apiUrl = buildUrl(`${API_URL}/products/brand/${brand}`, {
+    props: IProductPageProps
+): Promise<{ products: IProductProps[] , totalItems: number, currentPage: number}> => {
+    const apiUrl = buildUrl(`${API_URL}/products/brand/${props.name}`, {
         page: (props.pagination ? props.pagination : 0),
         size: props.elementsSize || 40,
     });
 
-    const { products } = await request<{ products: IProductProps[] }>(apiUrl);
-    return products;
+    return await request<{ products: IProductProps[], totalItems: number, currentPage: number }>(apiUrl);
 };
 
 export const getProductsFromQuery = async (

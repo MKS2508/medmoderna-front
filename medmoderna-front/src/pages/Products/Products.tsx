@@ -19,6 +19,10 @@ const Products = (props: IProductPageProps) => {
     const handlePageChange = (newPage: number) => {
         if (newPage >= 0 && newPage < totalPages) {
             setActivePage(newPage);
+            let updatePageProps = {...props2}
+            updatePageProps.pagination = newPage;
+
+            getProducts(updatePageProps, newPage)
         }
     }
     let params = useParams();
@@ -135,33 +139,37 @@ const Products = (props: IProductPageProps) => {
     const [page, setActivePage] = useState<number>(0);
 
     const [props2, setProps2] = useState<IProductPageProps>({
-        description: "",
-        elementsSize: 0,
-        id: 0,
-        name: "",
-        pagination: 0,
+        description: props.description,
+        elementsSize: props.elementsSize,
+        id:props.id,
+        name: props.name,
+        pagination: props.pagination,
         productId: ""
     });
 
     const getProducts = async (props: IProductPageProps, page: number) => {
-        let props2 = {...props};
-
+        let totalProds = 0;
         if (props.pagination !== page) {
             props2.pagination = page
+            props.pagination = page
         }
 
 
         let products = await getProductsFromCategory(props2);
         if (brand !== undefined) {
             props2.name = brand;
-            products = await getProductsFromBrand(props2, brand);
-        } else if (brand === undefined) {
-            products = await getProductsFromCategory(props2)
+            products = await getProductsFromBrand(props2);
+        } else if (brand == undefined) {
+            products = await getProductsFromCategory(props)
+            console.log(products)
         }
         setProps2(props2)
+        setLoading(false)
+        setProducts(products.products)
         return products;
 
     };
+
     const initializePage = async (pageParam: number) => {
         //a este metodo se llama cada vez que renderizamos el componente por primera vez o al cambiar la pagina
         // llama al get products, con el id de categoria cogido de las props y el  num de pagina del estado
@@ -177,11 +185,10 @@ const Products = (props: IProductPageProps) => {
             }
             return 0;
         }
-        let productsfecth = await getProducts(props, pageParam);
-
-        productsfecth = productsfecth.sort(compare);
-        setTotalPages(Math.ceil(30 / productsfecth.length));
-
+        let productsAndPaginationProps = await getProducts(props, pageParam);
+        let productsfecth = productsAndPaginationProps.products.sort(compare);
+        setTotalPages(Math.ceil( productsAndPaginationProps.totalItems / props.elementsSize));
+        setActivePage(productsAndPaginationProps.currentPage)
         let productsSorted = [...products]
         productsSorted = productsSorted.sort(compare);
 
@@ -239,6 +246,7 @@ const Products = (props: IProductPageProps) => {
             }
 
             <div className="pagination">
+                <h1>Pagina {(page == 0 ? 1 : page)}</h1>
                 <button
                     onClick={() => handlePageChange(page - 1)}
                     disabled={page === 0}

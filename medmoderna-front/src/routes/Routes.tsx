@@ -11,7 +11,7 @@ import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 
 const productRoutesProps: RouteProps[] = [
     //abstaer name, description, id a constantes ?
-    {path: "/CBD", element: <Products name={"CBD"} id={1} description={"Aqui puedes encontrar lo relacionado con el CBD. Flores, extractos..."} elementsSize={10} pagination={0}/>},//coger estos dos valores de parametros en la url. tambien coger name
+    {path: "/CBD", element: <Products name={"CBD"} id={1} description={"Aqui puedes encontrar lo relacionado con el CBD. Flores, extractos..."} elementsSize={9} pagination={0}/>},//coger estos dos valores de parametros en la url. tambien coger name
     {path: "/PARAFERNALIA", element: <Products name={"PARAFERNALIA"} id={2} description={"Aqui puedes encontrar lo relacionado con papeles, mecheros, grinders..."} elementsSize={10} pagination={0} />},
     {path: "/ILUMINACION", element: <Products name={"ILUMINACION"} id={3} description={"Aqui puedes encontrar lo relacionado con iluminacion para tu cultivo..."}  elementsSize={10} pagination={0}/>},
     {path: "/CULTIVO", element: <Products name={"CULTIVO"} id={4} description={"Aqui puedes encontrar lo relacionado con productos para tu cultivo"}  elementsSize={10} pagination={0}/> },
