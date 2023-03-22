@@ -21,10 +21,9 @@ const SeccionMarcas: React.FC<ISeccionMarcasProps> = ({ title, videoSrc , isVide
                 isVideoFetched(true); // Llama a la función cuando se obtiene el video
             } catch (error) {
                 console.warn("Error al obtener el video sin proxy:", error);
-
                 // Intenta obtener el video utilizando el proxy solo si falla la primera petición
                 try {
-                    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                    const proxyUrl = '';
                     const response = await axios.get(proxyUrl + videoSrc, { responseType: 'blob' });
                     setVideoData(response.data);
                     isVideoFetched(true); // Llama a la función cuando se obtiene el video

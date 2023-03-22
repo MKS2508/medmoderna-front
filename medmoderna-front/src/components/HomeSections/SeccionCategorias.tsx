@@ -25,7 +25,7 @@ const SeccionCategorias: React.FC<ISeccionCategoriasProps> = ({ title, videoSrc,
 
                 // Intenta obtener el video utilizando el proxy solo si falla la primera petición
                 try {
-                    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                    const proxyUrl = '';
                     const response = await axios.get(proxyUrl + videoSrc, { responseType: 'blob' });
                     setVideoData(response.data);
                     isVideoFetched(true); // Llama a la función cuando se obtiene el video

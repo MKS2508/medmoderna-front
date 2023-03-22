@@ -19,6 +19,7 @@ const SeccionCarruselPrincipal = lazy(() => import('../../components/HomeSection
 
 import LazyLoadComponent from '../../components/LazyLoadComponent';
 import LazyLoad from 'react-lazyload';
+import {API_URL} from "../../config";
 
 
 
@@ -229,7 +230,7 @@ const Home = () => {
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={"https://medmoderna.b-cdn.net/videohome3.mp4"}
+                            <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={API_URL + "/videohome3.mp4"}
                                                         isVideoFetched={handleVideoProductosFetched}
                             />
                         </Suspense>
@@ -239,7 +240,7 @@ const Home = () => {
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionCategorias title="Categorías" videoSrc="https://medmoderna.b-cdn.net/videohome3.mp4"       isVideoFetched={handleVideoCategoriasFetched}/>
+                            <SeccionCategorias title="Categorías" videoSrc={API_URL + "/videohome3.mp4"}       isVideoFetched={handleVideoCategoriasFetched}/>
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
