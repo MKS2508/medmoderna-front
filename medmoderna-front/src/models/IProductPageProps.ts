@@ -4,5 +4,5 @@ export interface IProductPageProps {
   description?: string,
   pagination?: number,
   productId?: string,
-  elementsSize?:number
+  elementsSize:number
 }

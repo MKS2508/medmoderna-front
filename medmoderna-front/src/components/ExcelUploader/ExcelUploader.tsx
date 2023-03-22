@@ -119,26 +119,10 @@ const ExcelUploader: React.FC = () => {
     const createProduct = async (product: IProductProps) => {
         try {
             const createdProduct = await postProduct(product);
-            toast("Producto creado", {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+
             console.log(createdProduct);
         } catch (error) {
-            toast("Error al crear producto", {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+
             console.error(error);
         }
     };

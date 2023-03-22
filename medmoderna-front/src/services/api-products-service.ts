@@ -2,6 +2,7 @@ import { API_URL } from "../config";
 import axios from "axios";
 import { IProductPageProps } from "../models/IProductPageProps";
 import { IProductProps } from "../models/IProductProps";
+import {toast} from "react-toastify";
 
 const buildUrl = (base: string, params: Record<string, string | number>) =>
     Object.entries(params).reduce((url, [key, value], index) => {
@@ -109,8 +110,26 @@ export const postProduct= async (newProduct: IProductProps): Promise<IProductPro
                 },
             });
             const product: IProductProps = response.data;
+            toast("Producto creado correctamente ✅", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             product ? resolve(product) : reject(new Error(`404 on ${apiUrl}`));
         } catch (e: any) {
+            toast("Error al crear producto ❌", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             console.log(new Error(e));
             reject(e);
         }
@@ -132,7 +151,25 @@ export const editProduct = async (id: any, newProduct: IProductProps): Promise<I
             });
             const product: IProductProps = response.data;
             product ? resolve(product) : reject(new Error(`404 on ${apiUrl}`));
+            toast(`Producto con id ${id} editado correctamente ✅`, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         } catch (e: any) {
+            toast(`Error al editar el producto con id ${id}  ❌ `, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             console.log(new Error(e));
             reject(e);
         }
@@ -148,8 +185,26 @@ export const deleteProduct = async (id: string): Promise<void> => {
         try {
             const response = await axios.delete(apiUrl);
             if (response.status === 200) {
+                toast(`Producto con id ${id} eliminado correctamente ✅`, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
                 resolve();
             } else {
+                toast(`Error al eliminar el producto con id ${id} ❌`, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
                 reject(new Error(`Error al eliminar el producto con id ${id} en ${apiUrl}`));
             }
         } catch (e: any) {

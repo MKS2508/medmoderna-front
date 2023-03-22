@@ -14,6 +14,13 @@ import ProductCardsListResponsive from "../../components/Product/ProductCardsLis
 
 
 const Products = (props: IProductPageProps) => {
+    const [totalPages, setTotalPages] = useState<number>(1);
+    // Función para manejar el cambio de página
+    const handlePageChange = (newPage: number) => {
+        if (newPage >= 0 && newPage < totalPages) {
+            setActivePage(newPage);
+        }
+    }
     let params = useParams();
     let brand = params.brand;
     const variants = {
@@ -171,7 +178,10 @@ const Products = (props: IProductPageProps) => {
             return 0;
         }
         let productsfecth = await getProducts(props, pageParam);
+
         productsfecth = productsfecth.sort(compare);
+        setTotalPages(Math.ceil(30 / productsfecth.length));
+
         let productsSorted = [...products]
         productsSorted = productsSorted.sort(compare);
 
@@ -228,8 +238,32 @@ const Products = (props: IProductPageProps) => {
                 </>
             }
 
-        </AnimatedPage>
-    );
+            <div className="pagination">
+                <button
+                    onClick={() => handlePageChange(page - 1)}
+                    disabled={page === 0}
+                    className={page === 0 ? "disabled" : ""}
+                >
+                    &laquo; Anterior
+                </button>
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handlePageChange(index)}
+                        className={index === page ? "active" : ""}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={() => handlePageChange(page + 1)}
+                    disabled={page === totalPages - 1}
+                    className={page === totalPages - 1 ? "disabled" : ""}
+                >
+                    Siguiente &raquo;
+                </button>
+            </div>
+        </AnimatedPage>    );
 
 }
 

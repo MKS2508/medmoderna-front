@@ -36,6 +36,7 @@ const AdminDashboard: React.FC = () => {
         };
         await postProduct(newProduct);
         alert('A new product was submitted: ' + newProductName);
+
         setProducts([...products, newProduct]);
     };
     const [newProduct, setNewProduct] = useState<IProductProps>({
