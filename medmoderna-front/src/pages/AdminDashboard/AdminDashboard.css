@@ -63,8 +63,7 @@
 
 .product-table {
     width: 100%;
-    max-height: 80vh;
-
+    overflow-x: auto;
     border-collapse: collapse;
     border-spacing: 0;
     font-family: var(--main-font-family);
@@ -169,6 +168,7 @@ button[type="submit"]:hover {
     overflow-x: auto;
     overflow-y: auto;
     max-width: 100%;
+    max-height: 400px;
     margin-top: 20px;
 }
 
