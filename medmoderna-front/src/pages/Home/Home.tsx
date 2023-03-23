@@ -245,7 +245,7 @@ const Home = () => {
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionProductosDestacados mobileStack={false} hasVideo={true} height={"130vh"} homeProds={homeProds} title={SECCION_HOME_TEXTO_PRODUCTOS_DESTACADOS} videoSrc={VIDEO_LINK_1}
+                            <SeccionProductosDestacados mobileStack={false} hasVideo={true} height={(window.innerWidth < 700 ? "120vh" : "150vh") } homeProds={homeProds} title={SECCION_HOME_TEXTO_PRODUCTOS_DESTACADOS} videoSrc={VIDEO_LINK_1}
                                                         isVideoFetched={handleVideoProductosFetched}
                             />
                         </Suspense>

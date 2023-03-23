@@ -27,7 +27,7 @@ export const getProductsFromCategory = async (
     props: IProductPageProps
 ): Promise<{ products: IProductProps[] , totalItems: number, currentPage: number}> => {
     const apiUrl = buildUrl(`${API_URL}/products/category/${props.name}`, {
-        page: (props.pagination ? props.pagination : 0),
+        page: (props.pagination ? props.pagination : 1),
         size: props.elementsSize || 40,
     });
 

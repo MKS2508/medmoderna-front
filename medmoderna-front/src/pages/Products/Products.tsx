@@ -8,7 +8,6 @@ import spinner2 from "../../assets/spinner3.svg"
 import {AnimatePresence, motion} from 'framer-motion';
 import ProductCard, {ProductCardLoading} from "../../components/Product/ProductCard";
 import {useParams} from "react-router-dom";
-import ProductCardMobile from "../../components/Product/ProductCardMobile";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import ProductCardsListResponsive from "../../components/Product/ProductCardsListResponsive/ProductCardsListResponsive";
 
@@ -91,46 +90,6 @@ const Products = (props: IProductPageProps) => {
 
             </div>
         )
-
-    };
-    const ProductCardsMobile = (data: { products: IProductProps[] }) => {
-        return (
-            <>
-                <div key="wrapperMob" className="wrapper-grid">
-
-                    {
-
-                        data.products.map((item, index) =>
-                            <>
-                                <AnimatePresence>
-                                    {/*<ProductCard key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>*/}
-                                    {(!loading) ?
-
-
-                                        <motion.div
-                                            custom={{delay: (index + 1) * 0.25}}
-                                            initial='hidden'
-                                            animate={variants.visible({delay: (index + 1) * 0.1})}
-                                            variants={variants}
-                                            key={item.name}
-
-
-                                        >
-                                            <ProductCardMobile key={item.name} imgSrc={item.imgSrc}
-                                                               description={item.description} price={item.price}
-                                                               productId={item.productId} name={item.name}
-                                                               brand={item.brand} category={item.category}/>
-                                        </motion.div>
-
-                                        : <></>}
-                                </AnimatePresence>
-
-                            </>
-                        )
-                    }
-
-                </div>
-            </>)
 
     };
 
