@@ -3,7 +3,6 @@ import './ProductCardsListResponsive.css';
 import {IProductProps} from "../../../models/IProductProps";
 import logo from '../../../assets/logo4.png';
 import Modal from 'react-modal';
-import ProductCardDetail from "../ProductCardDetail";
 import ProductCardNew from "../../Product/ProductCardNew/ProductCardNew";
 import ProductCardNewHome from "../../Product/ProductCardNewHome/ProductCardNew";
 import ProductCardDetailResponsive from '../ProductCardDetailResponsive/ProductCardDetailResponsive';
@@ -36,7 +35,7 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
                         name={item.name}
                         brand={item.brand}
                         category={item.category}
-                        maxLines={3} maxCharsPerLine={80} index={index}                    />
+                        maxLines={2} maxCharsPerLine={70} index={index}                    />
 
                 </>))}
             </div>
@@ -52,7 +51,7 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
                 name={item.name}
                 brand={item.brand}
                 category={item.category}
-                maxLines={3} maxCharsPerLine={80} index={index}            />
+                maxLines={2} maxCharsPerLine={70} index={index}            />
 
             </>))}
             </div>
