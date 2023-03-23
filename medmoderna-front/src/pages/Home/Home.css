@@ -156,47 +156,6 @@
 }
 @media (max-width: 440px) {
 
-    .HomeProductsSection {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 16rem);
-        justify-content: center;
-        padding-top: 2rem;
-        padding-left: 6vw;
-    }
-    .video-container{
-
-        position: absolute;
-        left: 0;
-        margin: auto;
-        height: 110vh;
-        min-height: 110vh;
-
-        background: red;
-
-        overflow: hidden;
-        transform: translatez(0);
-    }
-    .video-container video{
-
-        position: absolute;
-        left: 0;
-        margin: auto;
-        height: 110vh;
-        min-height: 110vh;
-
-        background: red;
-
-        overflow: hidden;
-        transform: translatez(0);
-    }
-
-    .videoAbajo video{
-
-        position: absolute;
-
-
-
-    }
 
     @media (max-width: 440px) {
 
@@ -294,28 +253,14 @@
 
     .video-container{
 
-        position: absolute;
         left: 0;
         margin: auto;
-        height: 110vh;
 
-        background: red;
 
         overflow: hidden;
         transform: translatez(0);
 }
-    .video-container video {
 
-        position: absolute;
-        left: 0;
-        margin: auto;
-        height: 110vh;
-        min-height: 110vh;
-    }
-    .videoAbajo video {
-
-        position: absolute;
-    }
 
 }
 

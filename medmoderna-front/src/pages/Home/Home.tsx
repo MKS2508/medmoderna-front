@@ -239,7 +239,7 @@ const Home = () => {
 
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionRedesSociales igPosts={[igPost, igPost]} videoSrc={""}  height="80vh" cardWidth={"450px"} cardHeight={"600px"} mobileStack={true} title={SECCION_HOME_TEXTO_INSTAGRAM}/>
+                            <SeccionRedesSociales hasVideo={false} igPosts={[igPost, igPost]} videoSrc={""}  height="80vh" cardWidth={"450px"} cardHeight={"600px"} mobileStack={true} title={SECCION_HOME_TEXTO_INSTAGRAM}/>
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
@@ -247,7 +247,7 @@ const Home = () => {
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionProductosDestacados mobileStack={false} height={"145vh"} homeProds={homeProds} title={SECCION_HOME_TEXTO_PRODUCTOS_DESTACADOS} videoSrc={VIDEO_LINK_1}
+                            <SeccionProductosDestacados mobileStack={false} hasVideo={true} height={"130vh"} homeProds={homeProds} title={SECCION_HOME_TEXTO_PRODUCTOS_DESTACADOS} videoSrc={VIDEO_LINK_1}
                                                         isVideoFetched={handleVideoProductosFetched}
                             />
                         </Suspense>
@@ -257,11 +257,11 @@ const Home = () => {
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionCategorias   categories={CATEGORIES} title={SECCION_HOME_TEXTO_CATEGORIAS} videoSrc={VIDEO_LINK_2}  height={"60vh"}     isVideoFetched={handleVideoCategoriasFetched}/>
+                            <SeccionCategorias  categories={CATEGORIES} title={SECCION_HOME_TEXTO_CATEGORIAS} videoSrc={VIDEO_LINK_2}  height={"60vh"}     isVideoFetched={handleVideoCategoriasFetched}/>
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionRedesSociales igPosts={[FACEBOOK_LINK_2, FACEBOOK_LINK_2]} videoSrc={""}  height="80vh" cardWidth={"450px"} cardHeight={"600px"} mobileStack={true} title={SECCION_HOME_TEXTO_FACEBOOK}/>
+                            <SeccionRedesSociales igPosts={[FACEBOOK_LINK_2, FACEBOOK_LINK_2]} videoSrc={""}  hasVideo={false} height="80vh" cardWidth={"450px"} cardHeight={"600px"} mobileStack={true} title={SECCION_HOME_TEXTO_FACEBOOK}/>
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>

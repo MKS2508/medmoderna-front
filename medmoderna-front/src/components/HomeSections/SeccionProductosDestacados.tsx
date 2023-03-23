@@ -15,6 +15,7 @@ interface IProductSwitcherProps {
     videoSrc: string;
     isVideoFetched: (fetched: boolean) => void;
     mobileStack: boolean;
+    hasVideo?: boolean
 }
 
 const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
@@ -23,7 +24,7 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
                                                                          title,
                                                                          isVideoFetched,
                                                                          height,
-                                                                         mobileStack,
+                                                                         mobileStack,hasVideo
                                                                      }) => {
     const [displayedProducts, setDisplayedProducts] = useState(homeProds);
     const [categoryIndex, setCategoryIndex] = useState(0);
@@ -92,6 +93,7 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
     return (
         <section id={"seccionProductosDestacados"}>
             <SeccionResponsiveVideoBackground
+                hasVideo={hasVideo}
                 videoSrc={videoSrc}
                 title={
                     <div>

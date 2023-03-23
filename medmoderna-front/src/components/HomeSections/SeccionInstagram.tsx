@@ -12,11 +12,12 @@ interface SeccionInstagramProps {
     cardWidth: string;
     cardHeight: string;
     mobileStack?: boolean;
+    hasVideo?: boolean;
 }
 
 
 
-const SeccionRedesSociales: React.FC<SeccionInstagramProps> = ({ title, height, videoSrc, igPosts, cardWidth,cardHeight, mobileStack }) => {
+const SeccionRedesSociales: React.FC<SeccionInstagramProps> = ({ title, height, videoSrc, igPosts, cardWidth,cardHeight, mobileStack, hasVideo }) => {
     const [responsiveCardWidth, setResponsiveCardWidth] = useState(cardWidth);
     const [responsiveCardHeight, setResponsiveCardHeight] = useState(cardHeight);
     useEffect(() => {
@@ -56,7 +57,7 @@ const SeccionRedesSociales: React.FC<SeccionInstagramProps> = ({ title, height, 
 
 
     return (
-        <SeccionResponsiveVideoBackground videoSrc={videoSrc} title={title} height={height} mobileStack={mobileStack}>
+        <SeccionResponsiveVideoBackground hasVideo={hasVideo} videoSrc={videoSrc} title={title} height={height} mobileStack={mobileStack}>
             {igPosts.map((igPost, index) => (
                 <AnimatePresence key={index}>
 

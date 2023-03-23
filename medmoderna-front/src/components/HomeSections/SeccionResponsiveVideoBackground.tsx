@@ -12,17 +12,18 @@ interface ISeccionResponsiveVideoBackgroundProps {
     children: React.ReactNode[];
     mobileStack?: boolean; // Agrega esta línea
     posterSrc?:string;
+    hasVideo?: boolean;
 }
 
-const VideoComponent = (props: any) => {
-    const { videoSrc, posterSrc } = props;
+const VideoComponent = (props: ISeccionResponsiveVideoBackgroundProps) => {
+    const { videoSrc, posterSrc, height, hasVideo } = props;
 
-    if (!videoSrc || videoSrc.length < 1) {
+    if (hasVideo == false) {
         return null;
     }
 
     return (
-        <div className="video-container">
+        <div className="video-container" style={{height:height}}>
             <video autoPlay muted loop playsInline
                 poster={posterSrc}
             >
@@ -34,7 +35,7 @@ const VideoComponent = (props: any) => {
 };
 
 
-const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgroundProps> = ({ title, videoSrc, height, isVideoFetched, children, mobileStack }) => {
+const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgroundProps> = ({ title, videoSrc, height, isVideoFetched, children, mobileStack, hasVideo }) => {
     const [videoData, setVideoData] = useState<Blob | null>(null);
     const [responsiveHeight, setResponsiveHeight] = useState(height);
 
@@ -136,7 +137,7 @@ const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgrou
 
                 { (
                     <LazyLoad>
-                        <VideoComponent className="videoAbajo" posterSrc={VIDEO_POSTER_1}  videoSrc={VIDEO_LINK_3}/>
+                        <VideoComponent title={title} hasVideo={hasVideo} children={children} posterSrc={VIDEO_POSTER_1}  videoSrc={videoSrc} height={height}/>
                     </LazyLoad>
                 )}
             </div>
