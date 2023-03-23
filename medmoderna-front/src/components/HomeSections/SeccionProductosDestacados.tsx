@@ -138,6 +138,7 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
                             category={item.category}
                             maxLines={3}
                             maxCharsPerLine={80}
+                            maxCharsPerLine={70}
                         />
                     </>
                 ))}
