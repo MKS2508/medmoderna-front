@@ -53,6 +53,42 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
         setCategoryIndex((prevIndex) => (prevIndex - 1 + CATEGORIES.length) % CATEGORIES.length);
     };
 
+    function useWindowSize() {
+        const [windowSize, setWindowSize] = useState({
+            width: 0,
+            height: 0,
+        });
+
+        useEffect(() => {
+            function handleResize() {
+                // @ts-ignore
+                setWindowSize({
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                });
+            }
+
+            window.addEventListener("resize", handleResize);
+            handleResize();
+
+            return () => window.removeEventListener("resize", handleResize);
+        }, []);
+
+        return windowSize;
+    }
+
+
+    const windowSize = useWindowSize();
+
+    // ...
+
+    const getVisibleProducts = () => {
+        if (windowSize.width <= 768) {
+            return displayedProducts.slice(0, 1);
+        } else {
+            return displayedProducts;
+        }
+    };
     return (
         <section id={"seccionProductosDestacados"}>
             <SeccionResponsiveVideoBackground
@@ -86,7 +122,7 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
                 isVideoFetched={isVideoFetched}
                 height={height}
             >
-                {displayedProducts.map((item, index) => (
+                {getVisibleProducts().map((item, index) => (
                     <>
                         <ProductCardNewHome
                             key={item.name + Math.floor(Math.random() * 10001).toString()}

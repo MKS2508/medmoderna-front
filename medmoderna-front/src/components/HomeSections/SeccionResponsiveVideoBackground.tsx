@@ -23,11 +23,8 @@ const VideoComponent = (props: any) => {
 
     return (
         <div className="video-container">
-            <video
-                width="100%"
-                height="auto"
+            <video autoPlay muted loop playsInline
                 poster={posterSrc}
-                controls
             >
                 <source src={videoSrc} type="video/mp4" />
                 Your browser does not support the video tag.
@@ -40,6 +37,7 @@ const VideoComponent = (props: any) => {
 const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgroundProps> = ({ title, videoSrc, height, isVideoFetched, children, mobileStack }) => {
     const [videoData, setVideoData] = useState<Blob | null>(null);
     const [responsiveHeight, setResponsiveHeight] = useState(height);
+
     const fetchVideo = async () => {
         try {
             if (typeof videoSrc === "string") {
@@ -70,6 +68,7 @@ const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgrou
     useEffect(() => {
         fetchVideo();
     }, [videoSrc]);
+
 
     const renderChildren = () => {
         const half = Math.ceil(children.length / 2);
@@ -135,7 +134,7 @@ const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgrou
 
             <div className="video-container2">
 
-                {videoData && (
+                { (
                     <LazyLoad>
                         <VideoComponent className="videoAbajo" posterSrc={VIDEO_POSTER_1}  videoSrc={VIDEO_LINK_3}/>
                     </LazyLoad>
