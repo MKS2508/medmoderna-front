@@ -1,87 +1,109 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./SeccionProductosDestacados.css";
-import ProductSwitcher from "../Product/ProductSwitcher/ProductSwitcher";
-import LazyLoad from "react-lazyload";
-import axios from "axios";
+import SeccionResponsiveVideoBackground from "./SeccionResponsiveVideoBackground";
+import ProductCardNewHome from "../Product/ProductCardNewHome/ProductCardNew";
+import {CATEGORIES} from "../../WebParameters";
+import {IProductProps} from "../../models/IProductProps";
+import {getProductsFromCategory} from "../../services/api-products-service";
+import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
+import { motion } from "framer-motion";
 
 interface IProductSwitcherProps {
-    homeProds: any[]; // Reemplaza 'any' con el tipo adecuado para tus productos
+    homeProds: IProductProps[];
     title: string;
+    height: string;
     videoSrc: string;
-    isVideoFetched: (fetched: boolean) => void; // Nueva propiedad
+    isVideoFetched: (fetched: boolean) => void;
+    mobileStack: boolean;
 }
 
-const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({ homeProds, videoSrc, title , isVideoFetched}) => {
+const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
+                                                                         homeProds,
+                                                                         videoSrc,
+                                                                         title,
+                                                                         isVideoFetched,
+                                                                         height,
+                                                                         mobileStack,
+                                                                     }) => {
     const [displayedProducts, setDisplayedProducts] = useState(homeProds);
-    const [videoData, setVideoData] = useState<Blob | null>(null);
-
-    const updateDisplayedProducts = () => {
-        if (window.innerWidth <= 768) {
-            setDisplayedProducts(homeProds.slice(0, 2));
-        } else {
-            setDisplayedProducts(homeProds);
-        }
-    };
+    const [categoryIndex, setCategoryIndex] = useState(0);
 
     useEffect(() => {
-        updateDisplayedProducts();
-        window.addEventListener("resize", updateDisplayedProducts);
-
-        return () => {
-            window.removeEventListener("resize", updateDisplayedProducts);
-        };
-    }, [homeProds]);
-
-    useEffect(() => {
-        const fetchVideo = async () => {
+        const fetchProducts = async () => {
             try {
-                let response = await axios.get(videoSrc, { responseType: 'blob' });
-                setVideoData(response.data);
-                isVideoFetched(true); // Llama a la función cuando se obtiene el video
+                const result = await getProductsFromCategory({
+                    id: 0,
+                    name: CATEGORIES[categoryIndex].name,
+                    elementsSize: 5
+                });
+                setDisplayedProducts(result.products);
             } catch (error) {
-                console.warn("Error al obtener el video sin proxy:", error);
-
-                // Intenta obtener el video utilizando el proxy solo si falla la primera petición
-                try {
-                    const proxyUrl = '';
-
-                    const response = await axios.get(proxyUrl + videoSrc, { responseType: 'blob' });
-                    setVideoData(response.data);
-                    isVideoFetched(true); // Llama a la función cuando se obtiene el video
-                } catch (proxyError) {
-                    console.error("Error al obtener el video con proxy:", proxyError);
-                }
+                console.error("Error al obtener productos por categoría:", error);
             }
         };
 
-        fetchVideo();
-    }, [videoSrc]);
+        fetchProducts();
+    }, [categoryIndex]);
+
+    const handleNextCategory = () => {
+        setCategoryIndex((prevIndex) => (prevIndex + 1) % CATEGORIES.length);
+    };
+
+    const handlePrevCategory = () => {
+        setCategoryIndex((prevIndex) => (prevIndex - 1 + CATEGORIES.length) % CATEGORIES.length);
+    };
 
     return (
         <section id={"seccionProductosDestacados"}>
-            <section>
-                <div className="productos-destacados-title">
-                    <h1>{title}</h1>
-                </div>
-            </section>
+            <SeccionResponsiveVideoBackground
+                videoSrc={videoSrc}
+                title={
+                    <div>
+                        <h1>{title}</h1>
+                        <span className="category-switcher">
+                    <button className="switcher-button" onClick={handlePrevCategory}>
+                        <FaChevronLeft/>
+                    </button>
+                        <motion.h2
+                            className="animated-category-name"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.5 }}
+                            key={categoryIndex}
+                        >
+                        {CATEGORIES[categoryIndex].name}
+                        </motion.h2>
 
-            <section>
-                <div className="bgimg-productsSection">
-                    <div className="video-container-background-products">
-                        {videoData && (
-                            <LazyLoad>
-                                <video autoPlay muted loop playsInline>
-                                    <source type="video/mp4" src={URL.createObjectURL(videoData)} />
-                                </video>
-                            </LazyLoad>
-                        )}
+                    <button className="switcher-button" onClick={handleNextCategory}>
+                        <FaChevronRight/>
+                    </button>
+                        </span>
                     </div>
-                </div>
 
-                <div className="productos-destacados-spacer"></div>
-                <div className="switcher-container"></div>
-                <ProductSwitcher homeProds={displayedProducts}></ProductSwitcher>
-            </section>
+                }
+                mobileStack={mobileStack}
+                isVideoFetched={isVideoFetched}
+                height={height}
+            >
+                {displayedProducts.map((item, index) => (
+                    <>
+                        <ProductCardNewHome
+                            key={item.name + Math.floor(Math.random() * 10001).toString()}
+                            index={index} // Añade el índice aquí
+                            imgSrc={item.imgSrc}
+                            description={item.description}
+                            price={item.price}
+                            productId={item.productId}
+                            name={item.name}
+                            brand={item.brand}
+                            category={item.category}
+                            maxLines={3}
+                            maxCharsPerLine={80}
+                        />
+                    </>
+                ))}
+            </SeccionResponsiveVideoBackground>
         </section>
     );
 };

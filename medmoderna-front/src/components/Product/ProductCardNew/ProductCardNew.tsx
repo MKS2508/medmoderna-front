@@ -6,13 +6,18 @@ import logo from "../../../assets/logo4.png"
 import {AiFillEye, FaShoppingCart} from "react-icons/all";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { motion } from "framer-motion";
+const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+};
 interface IProductCardProps extends IProductProps {
     maxLines: number;
     maxCharsPerLine: number;
+    index: number;
 }
 
-const ProductCardNewHome: React.FC<IProductCardProps> = ({ name, productId,  description, price, imgSrc, maxLines, maxCharsPerLine }) => {
+const ProductCardNew: React.FC<IProductCardProps> = ({ name, productId,  description, price, imgSrc, maxLines, maxCharsPerLine, index }) => {
     const lines = description.split("\n");
     const shortenedLines = lines.slice(0, maxLines).map((line) => {
         if (line.length > maxCharsPerLine) {
@@ -36,7 +41,11 @@ const ProductCardNewHome: React.FC<IProductCardProps> = ({ name, productId,  des
     return (
         <>
 
-            <div className="prod-card-new">
+            <motion.div variants={cardVariants}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ duration: 0.5, delay: 0.2 * index }}
+                        className="prod-card-new">
                 <div className="prod-card-new-logo">
                     <img src={logo} alt="Logo" className="prod-card-new-logo-img" />
                 </div>
@@ -57,11 +66,11 @@ const ProductCardNewHome: React.FC<IProductCardProps> = ({ name, productId,  des
 
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
         </>
 
     );
 };
 
-export default ProductCardNewHome;
+export default ProductCardNew;

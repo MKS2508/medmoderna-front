@@ -26,9 +26,9 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
     // @ts-ignore
     return (<>
         {(!isHome ?         <div className="shopping-list">
-                {products.map(item => (<>
+                {products.map((item, index) => (<>
                     <ProductCardNew
-                        key={item.name  + "_" + Math.floor(Math.random() * 100401).toString()}
+                        key={item.name + "_" + Math.floor(Math.random() * 100401).toString()}
                         imgSrc={item.imgSrc}
                         description={item.description}
                         price={item.price}
@@ -36,24 +36,23 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
                         name={item.name}
                         brand={item.brand}
                         category={item.category}
-                        maxLines={3} maxCharsPerLine={80}
-                    />
+                        maxLines={3} maxCharsPerLine={80} index={index}                    />
 
                 </>))}
             </div>
-         :        <div className="shopping-list">
-        {products.map(item => (<>
+         :
+                <div className="shopping-list">
+                    {products.map((item, index) => (<>
             <ProductCardNewHome
-            key={item.name  + Math.floor(Math.random() * 10001).toString()}
-            imgSrc={item.imgSrc}
-            description={item.description}
-            price={item.price}
-            productId={item.productId}
-            name={item.name}
-            brand={item.brand}
-            category={item.category}
-            maxLines={3} maxCharsPerLine={80}
-            />
+                key={item.name + Math.floor(Math.random() * 10001).toString()}
+                imgSrc={item.imgSrc}
+                description={item.description}
+                price={item.price}
+                productId={item.productId}
+                name={item.name}
+                brand={item.brand}
+                category={item.category}
+                maxLines={3} maxCharsPerLine={80} index={index}            />
 
             </>))}
             </div>

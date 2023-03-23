@@ -1,0 +1,110 @@
+.seccion-responsive-video-background {
+    position: relative;
+    overflow: hidden; /* ocultar cualquier desbordamiento */
+}
+.content-container {
+    height: 80%;
+    position: relative;
+    display: flex; /* agregar estilo de flexbox */
+    justify-content: center; /* centrar horizontalmente */
+    align-items: center; /* centrar verticalmente */
+
+}
+.categorias-bottom {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    background-color: hsla(0, 9%, 91%, 0.13);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    bottom: 0;
+    height: 5%;
+    width: 100%;
+}
+
+.categorias-title {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    background-color: hsla(0, 9%, 91%, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);}
+.categorias-title h1{
+    display: flex;
+    justify-content: center;
+    padding: .5rem 1rem 0.5rem 1rem;
+    background-color: hsla(120, 2%, 22%, 0.32);
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    font-weight: 900;
+    -webkit-backdrop-filter: blur(15px);
+    color: whitesmoke;
+    font-size:1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);}
+
+
+.bgimg-categories {
+    position: relative;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.categorias-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.video-container2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    transform: translatez(0);
+    z-index: -1; /* establezca un índice Z negativo para el contenedor de video */
+}
+
+.categorias-container-mobile {
+    flex-direction: column;
+}
+
+@media screen and (min-width: 769px) {
+    .categorias-container-mobile {
+
+        flex-direction: row;
+    }
+}
+.categorias-container-mobile {
+    height: auto;
+}
+/* Responsive styles for small screens */
+@media screen and (max-width: 768px) {
+
+
+
+
+    .categorias-container,
+    .categorias-spacer {
+        padding-left: 5vw;
+    }
+    .categorias-title h1 {
+text-align: center    }
+    .video-container2 {
+        height: 80vh;
+        width: 100vw;
+    }
+    .categorias-bottom {
+        height: 10%;
+        padding-top: 0.5rem;
+        border-radius: 0;
+    }
+}

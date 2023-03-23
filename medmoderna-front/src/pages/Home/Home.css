@@ -210,7 +210,7 @@
             height: 100vw!important;
         }
         .section {
-            display: none;
+            display: block;
         }
 
         .ParallaxVideo video{

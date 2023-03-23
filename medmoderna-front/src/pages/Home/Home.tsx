@@ -7,14 +7,26 @@ import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 import Footer from "../../components/Footer/Footer";
-import {API_URL} from "../../config";
 import {
-    FACEBOOK_LINK_1, FACEBOOK_LINK_2,
+    BRANDS,
+    CATEGORIES,
+    FACEBOOK_LINK_1,
+    FACEBOOK_LINK_2,
     INSTAGRAM_LINK_1,
     INSTAGRAM_LINK_2,
     INSTAGRAM_LINK_3,
-    INSTAGRAM_LINK_4, TEXTO_DESCRIPTIVO, VIDEO_LINK_1, VIDEO_LINK_2, VIDEO_LINK_3
+    INSTAGRAM_LINK_4,
+    SECCION_HOME_TEXTO_CATEGORIAS,
+    SECCION_HOME_TEXTO_FACEBOOK,
+    SECCION_HOME_TEXTO_INSTAGRAM,
+    SECCION_HOME_TEXTO_MARCAS,
+    SECCION_HOME_TEXTO_PRODUCTOS_DESTACADOS,
+    TEXTO_DESCRIPTIVO,
+    VIDEO_LINK_1,
+    VIDEO_LINK_2,
+    VIDEO_LINK_3
 } from "../../WebParameters";
+import SeccionRedesSociales from "../../components/HomeSections/SeccionInstagram";
 // Importa los componentes usando React.lazy
 const SeccionProductosDestacados = lazy(() => import('../../components/HomeSections/SeccionProductosDestacados'));
 const SeccionMarcas = lazy(() => import('../../components/HomeSections/SeccionMarcas'));
@@ -223,10 +235,11 @@ const Home = () => {
                     <Suspense fallback={<div>Loading...</div>}>
                         <SeccionCarruselPrincipal />
                     </Suspense>
-                    {/* PC - Pantallas grandes */}
-                    <div ref={videoContainerRef2} className="section">
+                    <div ref={videoContainerRef2} className={(window.innerWidth < 630) ? "mobile" : "section"}>
+
+
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionInstagram igPost={igPost} igPost2={igPost} />
+                            <SeccionRedesSociales igPosts={[igPost, igPost]} videoSrc={""}  height="80vh" cardWidth={"450px"} cardHeight={"600px"} mobileStack={true} title={SECCION_HOME_TEXTO_INSTAGRAM}/>
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
@@ -234,7 +247,7 @@ const Home = () => {
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionProductosDestacados homeProds={homeProds} title={"Más productos destacados"} videoSrc={VIDEO_LINK_1}
+                            <SeccionProductosDestacados mobileStack={false} height={"145vh"} homeProds={homeProds} title={SECCION_HOME_TEXTO_PRODUCTOS_DESTACADOS} videoSrc={VIDEO_LINK_1}
                                                         isVideoFetched={handleVideoProductosFetched}
                             />
                         </Suspense>
@@ -244,54 +257,24 @@ const Home = () => {
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionCategorias title="Categorías" videoSrc={VIDEO_LINK_2}       isVideoFetched={handleVideoCategoriasFetched}/>
+                            <SeccionCategorias   categories={CATEGORIES} title={SECCION_HOME_TEXTO_CATEGORIAS} videoSrc={VIDEO_LINK_2}  height={"60vh"}     isVideoFetched={handleVideoCategoriasFetched}/>
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionFacebook url={FACEBOOK_LINK_1} width={400} />
+                            <SeccionRedesSociales igPosts={[FACEBOOK_LINK_2, FACEBOOK_LINK_2]} videoSrc={""}  height="80vh" cardWidth={"450px"} cardHeight={"600px"} mobileStack={true} title={SECCION_HOME_TEXTO_FACEBOOK}/>
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
                             <SeccionMarcas
-                                title="Algunas de nuestras marcas"
+                                height={"80vh"}
+                                title={SECCION_HOME_TEXTO_MARCAS}
                                 videoSrc={VIDEO_LINK_3}
+                                brands={BRANDS}
                                 isVideoFetched={handleVideoMarcasFetched}
                             />
                         </Suspense>
                     </div>
-                    {/* PC - Pantallas grandes */}
 
-                    {/* Movil - Pantallas pequeñas */}
-                    <section className="mobile">
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionInstagram igPost={igPost} igPost2={igPost} />
-                        </Suspense>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionTextoDescriptivo textoDescriptivo={TEXTO_DESCRIPTIVO} />
-                        </Suspense>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionProductosDestacados
-                                isVideoFetched={handleVideoProductosFetched}
-                                homeProds={homeProds} title={"Más productos destacados"} videoSrc={VIDEO_LINK_1} />
-                        </Suspense>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionMapa />
-                        </Suspense>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionCategorias title="Categorías" videoSrc={VIDEO_LINK_2}       isVideoFetched={handleVideoCategoriasFetched}/>
-                        </Suspense>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionFacebook url={FACEBOOK_LINK_2} width={280} />
-                        </Suspense>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionMarcas
-                                title="Algunas de nuestras marcas"
-                                videoSrc={VIDEO_LINK_3}
-                                isVideoFetched={handleVideoMarcasFetched}
-                            />
-                        </Suspense>
-                    </section>
-                    {/* Movil - Pantallas pequeñas */}
                 </div>
                 <Footer />
             </AnimatedPage>

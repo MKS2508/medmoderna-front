@@ -235,7 +235,7 @@ const AdminDashboard: React.FC = () => {
                             category={newProductCategory}
                             maxLines={3}
                             maxCharsPerLine={90}
-                        />
+                         index={0}/>
                     </div>
                 </div>
                 <div className={"table-container"}>

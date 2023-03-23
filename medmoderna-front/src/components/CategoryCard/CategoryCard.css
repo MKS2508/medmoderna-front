@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     width: 20vw;
-    height: 150px;
+    height: 15vh;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(12px);
@@ -36,7 +36,7 @@
 .categoryCard-text {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #72B957;
+    color: white;
     transition: 0.8s;
 }
 
@@ -49,13 +49,12 @@
 .categoryCard:hover .categoryCard-text {
     color: #ffffff;
 }
-/* Existing CSS styles... */
 
 /* Responsive styles for small screens */
 @media screen and (max-width: 768px) {
     .categoryCard {
-        width: 45vw;
-        height: 100px;
+        width: 22vw;
+        height: 80px;
         margin: 10px;
     }
 
@@ -65,6 +64,6 @@
     }
 
     .categoryCard-text {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 }

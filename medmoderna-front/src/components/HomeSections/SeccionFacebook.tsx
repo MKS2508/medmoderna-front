@@ -1,27 +1,35 @@
 import React from 'react';
 import './SeccionFacebook.css';
 import {FacebookEmbed} from 'react-social-media-embed';
+import SeccionResponsiveVideoBackground from "./SeccionResponsiveVideoBackground";
+import BrandCard from "../Product/BrandCard";
+import {FACEBOOK_LINK_1, FACEBOOK_LINK_2} from "../../WebParameters";
 
 interface SeccionFacebookProps {
-    url: string;
-    width: number;
+
+    cardWidth: number;
+    title: string;
+    height: string
+    videoSrc: string;
+    facebookUrls:string[];
 }
 
-const SeccionFacebook: React.FC<SeccionFacebookProps> = ({ url, width }) => {
+const SeccionFacebook: React.FC<SeccionFacebookProps> = ({ facebookUrls, cardWidth , title, videoSrc, height}) => {
     return (
-        <section id="seccionFacebook">
-            <div className="facebook-title">
-                <h1>Nuestro Facebook</h1>
-            </div>
-            <div className="facebook-posts">
-                <div className="facebook-post">
-                    <FacebookEmbed url={url} width={width} />
-                </div>
-                <div className="facebook-post">
-                    <FacebookEmbed url={url} width={width} />
-                </div>
-            </div>
-        </section>
+        <>
+
+            <SeccionResponsiveVideoBackground videoSrc={videoSrc} title={title} height={height} mobileStack={true}
+                                              isVideoFetched={(fetched) =>{console.log('Video fetched:', fetched)}}>
+
+                {facebookUrls.map((facebookUrl) => (
+                    <FacebookEmbed url={facebookUrl} width={cardWidth} />
+
+                ))}
+
+
+            </SeccionResponsiveVideoBackground>
+            </>
+
     );
 };
 
