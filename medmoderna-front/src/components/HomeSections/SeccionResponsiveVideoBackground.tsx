@@ -11,7 +11,31 @@ interface ISeccionResponsiveVideoBackgroundProps {
     isVideoFetched?: (fetched: boolean) => void;
     children: React.ReactNode[];
     mobileStack?: boolean; // Agrega esta línea
+    posterSrc?:string;
 }
+
+const VideoComponent = (props: any) => {
+    const { videoSrc, posterSrc } = props;
+
+    if (!videoSrc || videoSrc.length < 1) {
+        return null;
+    }
+
+    return (
+        <div className="video-container">
+            <video
+                width="100%"
+                height="auto"
+                poster={posterSrc}
+                controls
+            >
+                <source src={videoSrc} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    );
+};
+
 
 const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgroundProps> = ({ title, videoSrc, height, isVideoFetched, children, mobileStack }) => {
     const [videoData, setVideoData] = useState<Blob | null>(null);
@@ -113,9 +137,7 @@ const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgrou
 
                 {videoData && (
                     <LazyLoad>
-                        <video className="videoAbajo" poster={VIDEO_POSTER_1} autoPlay muted loop playsInline>
-                            <source type="video/mp4" src={VIDEO_LINK_3} />
-                        </video>
+                        <VideoComponent className="videoAbajo" posterSrc={VIDEO_POSTER_1}  videoSrc={VIDEO_LINK_3}/>
                     </LazyLoad>
                 )}
             </div>

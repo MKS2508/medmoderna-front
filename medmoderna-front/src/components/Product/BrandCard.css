@@ -14,7 +14,6 @@
     transition: 0.8s;
     text-decoration: none;
     margin: 15px;
-
 }
 
 .brandCard-link {
@@ -26,7 +25,7 @@
 .brandCard-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Cambiar a "contain" para ajustar la imagen dentro del contenedor */
     transition: 0.8s;
 }
 
@@ -38,7 +37,6 @@
 .brandCard:hover .brandCard-img {
     transform: scale(1.1);
 }
-/* Existing CSS styles... */
 
 /* Responsive styles for small screens */
 @media screen and (max-width: 768px) {
@@ -47,9 +45,13 @@
         height: 100px;
         margin: 10px;
     }
+}
 
-    .brandCard-img {
-        width: 90%;
-        height: 90%;
+/* Responsive styles for very small screens */
+@media screen and (max-width: 480px) {
+    .brandCard {
+        width: 90vw;
+        height: 80px;
+        margin: 5px;
     }
 }
