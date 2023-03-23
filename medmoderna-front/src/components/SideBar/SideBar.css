@@ -1,10 +1,12 @@
 
-
+:root {
+    --sidebar-width: clamp(5vw, 8vw, 20vw);
+}
 
 
 .header-mobile {
     height: 100vh; /* Asegurarse de que el contenedor tenga la altura completa */
-    width: clamp(5vw, 8vw, 20vw); /* Utilizar clamp() para ajustar el ancho de manera relativa */
+    width: var(--sidebar-width);
     z-index: 20;
     display: flex;
     position: fixed;

@@ -341,7 +341,7 @@
     .container {
         width: 80vw;
         height: auto;
-        padding-left: 10vw;
+        padding-left: var(--sidebar-width);
 
     }
     .imgBx {

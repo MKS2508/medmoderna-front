@@ -58,7 +58,6 @@ function App() {
             <Router>
                 <TopBar/>
                 <SideBar/>
-
                 <AnimatedRoutes/>
                 <ToastContainer/>
 

@@ -1,53 +1,40 @@
 import {IProductProps} from "../../models/IProductProps";
 import React from "react";
 import {Link} from "react-router-dom";
+import {motion} from "framer-motion";
+import './ProductCardList.css'
 
 const ProductCardList = (props: IProductProps) => {
+    const transition = {
+        duration: 0.6,
+        ease: [0.43, 0.13, 0.23, 0.96],
+    };
 
-    return <span key={props.name} style={{display: "inline-block"}}>
+    const variants = {
+        initial: { opacity: 0, scale: 0.9 },
+        enter: { opacity: 1, scale: 1, transition },
+        exit: { opacity: 0, scale: 0.5, transition },
+    };
 
-
-        <img key={props.name} width={"50px"} style={{display: "inline-block", float: "left", marginRight: "20px"}}
-             src={`${props.imgSrc}`}
-             alt={"item"}
-        />
-        <h4 style={{color:"white"}}>{props.name}</h4>
-
-    </span>
+    return (
+        <motion.span
+            key={props.name}
+            className="product-card-list"
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            variants={variants}
+        >
+            <img
+                key={props.name}
+                width={"50px"}
+                src={`${props.imgSrc}`}
+                alt={"item"}
+            />
+            <h4>{props.name}</h4>
+        </motion.span>
+    );
 };
-export const ProductCardPreview = (props: IProductProps) => {
-    let imageSource;
-    console.log({propsPrev: props})
-    if (props.imgSrc.startsWith("http")) {
-        imageSource = props.imgSrc;
-    } else {
-        imageSource = `${props.imgSrc}`
-    }
-    return <>
 
-        <div className="card" key="card">
-
-            {(props.imgSrc.length < 1) ? <div className="imgBox">
-                <img
-                    src={`https://static.wixstatic.com/media/ca863c_8922c3cdc76f4d51bcaaeac397b9e09e~mv2.png/v1/fit/w_500,h_500,q_90/file.png`}
-                    alt="No imagen"/>
-            </div> : <div key={"imgBox"} className="imgBox">
-                <img
-                    src={`${imageSource}`}
-                    alt="No imagen"/>
-            </div>}
-
-
-            <div className="contentBox">
-                <h3>{props.name}</h3>
-                <h2 className="price">{props.price}€</h2>
-                <div className="buy"> Ver Detalles</div>
-                <div className="buy">Editar</div>
-            </div>
-
-        </div>
-
-    </>
-};
 
 export default ProductCardList;

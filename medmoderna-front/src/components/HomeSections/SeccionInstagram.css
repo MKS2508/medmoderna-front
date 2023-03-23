@@ -22,6 +22,6 @@
         width: 80%;
         max-width: 400px; /* Ajustar el ancho máximo para evitar que el iframe sea demasiado grande */
         margin: 1rem auto; /* Centrar el iframe y agregar margen arriba y abajo */
-        padding-left: 5vw;
+        padding-left: var(--sidebar-width);
     }
 }

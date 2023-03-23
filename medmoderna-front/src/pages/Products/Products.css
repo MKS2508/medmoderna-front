@@ -36,7 +36,7 @@
 }
 
 .wrapper-grid {
-    padding-left: 16vw;
+    padding-left: var(--sidebar-width);
     padding-right: 10vw;
     width: 100vw;
     display: grid;

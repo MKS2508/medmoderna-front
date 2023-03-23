@@ -146,8 +146,9 @@
     z-index: 22;
     width: 5vw;
     border-radius: 50%;
-    padding: 1px;
     animation: logoAnimation 2s infinite;
+    margin-right: 20px;
+
 }
 
 .logoBanner img {
@@ -162,6 +163,8 @@ nav {
 /* Ajustes para dispositivos móviles */
 @media (max-width: 767px) {
     .logoBanner {
+        margin-right: 50px;
+        padding-right: 20px;
         width: 20vw;
     }
 }

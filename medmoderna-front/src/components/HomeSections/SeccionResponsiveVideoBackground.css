@@ -94,7 +94,7 @@
 
     .categorias-container,
     .categorias-spacer {
-        padding-left: 5vw;
+        padding-left: var(--sidebar-width);
     }
     .categorias-title h1 {
 text-align: center    }

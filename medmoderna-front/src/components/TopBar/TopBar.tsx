@@ -128,7 +128,25 @@ const TopBar = () => {
             </>
         )
     }
-
+    const glassmorphismTheme = {
+        height: "40px",
+        border: "none",
+        backdropFilter: "blur(10px)",
+        overflow:"scroll",
+        borderRadius: "20px",
+        backgroundColor: "rgba(255, 255, 255, 0.6)",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        hoverBackgroundColor: "rgba(255, 255, 255, 0.7)",
+        color: "black",
+        fontSize: "1rem",
+        fontFamily: "Arial, sans-serif",
+        iconColor: "white",
+        lineColor: "rgba(255, 255, 255, 0.2)",
+        placeholderColor: "rgba(255, 255, 255, 0.5)",
+        zIndex: 1000,
+        clearIconMargin: "0 10px",
+        searchIconMargin: "10px",
+    };
 
     return (
         <>
@@ -152,6 +170,7 @@ const TopBar = () => {
                 <div key={"searchBarWrap"}
                      className={"searchBar"}>
                     <ReactSearchAutocomplete
+                        styling={glassmorphismTheme}
                         key={"searchBar"}
                         items={items}
                         onSearch={handleOnSearch}
