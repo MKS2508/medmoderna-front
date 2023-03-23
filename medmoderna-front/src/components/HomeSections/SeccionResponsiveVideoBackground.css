@@ -61,6 +61,8 @@
 
 }
 
+
+
 .video-container2 {
     position: absolute;
     top: 0;
@@ -78,6 +80,10 @@
 }
 
 @media screen and (min-width: 769px) {
+    .bgimg-categories.mobile-stack {
+        position: relative;
+    }
+
     .categorias-container-mobile {
 
         flex-direction: row;
@@ -90,7 +96,14 @@
 @media screen and (max-width: 768px) {
 
 
+    .content-container {
+        height: 80%;
+        position: relative;
+        display: flex; /* agregar estilo de flexbox */
+        justify-content: center; /* centrar horizontalmente */
+        align-items: center; /* centrar verticalmente */
 
+    }
 
     .categorias-container,
     .categorias-spacer {

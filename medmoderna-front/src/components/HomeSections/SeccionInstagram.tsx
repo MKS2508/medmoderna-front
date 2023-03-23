@@ -57,7 +57,7 @@ const SeccionRedesSociales: React.FC<SeccionInstagramProps> = ({ title, height, 
 
 
     return (
-        <SeccionResponsiveVideoBackground hasVideo={hasVideo} videoSrc={videoSrc} title={title} height={height} mobileStack={mobileStack}>
+        <SeccionResponsiveVideoBackground responsive={true} hasVideo={hasVideo} videoSrc={videoSrc} title={title} height={height} mobileStack={mobileStack}>
             {igPosts.map((igPost, index) => (
                 <AnimatePresence key={index}>
 

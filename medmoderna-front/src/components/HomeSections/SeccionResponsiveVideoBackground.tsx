@@ -13,6 +13,7 @@ interface ISeccionResponsiveVideoBackgroundProps {
     mobileStack?: boolean; // Agrega esta línea
     posterSrc?:string;
     hasVideo?: boolean;
+    responsive? : boolean;
 }
 
 const VideoComponent = (props: ISeccionResponsiveVideoBackgroundProps) => {
@@ -35,7 +36,7 @@ const VideoComponent = (props: ISeccionResponsiveVideoBackgroundProps) => {
 };
 
 
-const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgroundProps> = ({ title, videoSrc, height, isVideoFetched, children, mobileStack, hasVideo }) => {
+const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgroundProps> = ({ title, responsive, videoSrc, height, isVideoFetched, children, mobileStack, hasVideo }) => {
     const [videoData, setVideoData] = useState<Blob | null>(null);
     const [responsiveHeight, setResponsiveHeight] = useState(height);
 
@@ -108,14 +109,14 @@ const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgrou
     const singleContainer = children.length <= 2;
 
     return (
-        <section className="seccion-responsive-video-background" style={{ height: (mobileStack) ? responsiveHeight : height}}>
+        <section className="seccion-responsive-video-background" style={{ height: (mobileStack && responsive) ? responsiveHeight : height}}>
             <section>
                 <div className="categorias-title">
                     <h1>{title}</h1>
                 </div>
             </section>
             <div className="content-container">
-                <div className="bgimg-categories">
+                <div className={`bgimg-categories${mobileStack ? " mobile-stack" : ""}`}>
                     {singleContainer ? (
                         <div className={`categorias-container${mobileStack ? " categorias-container-mobile" : ""}`}>
                             {children.map((child) => child)}

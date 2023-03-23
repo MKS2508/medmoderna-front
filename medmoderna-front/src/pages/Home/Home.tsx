@@ -26,14 +26,12 @@ import {
     VIDEO_LINK_2,
     VIDEO_LINK_3
 } from "../../WebParameters";
-import SeccionRedesSociales from "../../components/HomeSections/SeccionInstagram";
 // Importa los componentes usando React.lazy
 const SeccionProductosDestacados = lazy(() => import('../../components/HomeSections/SeccionProductosDestacados'));
 const SeccionMarcas = lazy(() => import('../../components/HomeSections/SeccionMarcas'));
 const SeccionCategorias = lazy(() => import('../../components/HomeSections/SeccionCategorias'));
-const SeccionInstagram = lazy(() => import('../../components/HomeSections/SeccionInstagram'));
+const SeccionRedesSociales = lazy(() => import('../../components/HomeSections/SeccionInstagram'));
 const SeccionMapa = lazy(() => import('../../components/HomeSections/SeccionMapa'));
-const SeccionFacebook = lazy(() => import('../../components/HomeSections/SeccionFacebook'));
 const SeccionTextoDescriptivo = lazy(() => import('../../components/HomeSections/SeccionTextoDescriptivo'));
 const SeccionCarruselPrincipal = lazy(() => import('../../components/HomeSections/SeccionCarruselPrincipal'));
 
@@ -266,11 +264,11 @@ const Home = () => {
 
                         <Suspense fallback={<div>Loading...</div>}>
                             <SeccionMarcas
-                                height={"80vh"}
+                                height={"100vh"}
                                 title={SECCION_HOME_TEXTO_MARCAS}
                                 videoSrc={VIDEO_LINK_3}
                                 brands={BRANDS}
-
+                                mobileStack={true}
                                 isVideoFetched={handleVideoMarcasFetched}
                             />
                         </Suspense>
