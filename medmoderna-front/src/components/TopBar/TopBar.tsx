@@ -130,22 +130,30 @@ const TopBar = () => {
     }
 
 
-    return (<>
-
-            <AnimatePresence>
+    return (
+        <>
+            <div className="miniHeader">
+                <motion.h3>
+                    <a href={""} style={{color: "inherit"}}>
+                        Puedes encontrarnos en Avenida de Mendavia, Nº16 Pabellón 2, 26009 Logroño, La Rioja
+                    </a>
+                </motion.h3>
+            </div>
+            <div className="topBar">
+                <div className="logoBanner" onClick={() => {
+                    navigate("/");
+                    setIsVisible(false);
+                    window.scroll(0, 0)
+                }}>
+                    <img alt="logo" src={logo}/>
+                </div>
+                <div className="searchBarContainer">
 
                 <div key={"searchBarWrap"}
                      className={"searchBar"}>
                     <ReactSearchAutocomplete
                         key={"searchBar"}
                         items={items}
-                        styling={{
-                            backgroundColor: "rgba(31,30,30,0.79)",
-                            border: "none",
-                            placeholderColor: "#e0e2e3",
-                            color: "white",
-                            hoverBackgroundColor: "#1F1E1E"
-                        }}
                         onSearch={handleOnSearch}
                         onHover={handleOnHover}
                         onSelect={handleOnSelect}
@@ -155,67 +163,17 @@ const TopBar = () => {
                         placeholder={placeholderStr}
                     />
                 </div>
-                {(!isVisible) ?
-                    <>
-                        <motion.div initial={{opacity: 0}}
-                                    key={"miniHeader"}
-                                    animate={{opacity: 1}}
-                                    exit={{opacity: 0}}
-                                    transition={{duration: 0.6}}
-                                    className="miniHeader">
-
-                                <h3 key={"text"}>
-                                    <a href={""} style={{color: "inherit"}}>
-                                        Puedes encontrarnos en Avenida de Mendavia, Nº16 Pabellón 2, 26009 Logroño, La
-                                        Rioja
-                                    </a>
-                                </h3>
-                        </motion.div>
-                        <motion.div initial={{opacity: 0}}
-                                    animate={{opacity: 1}}
-                                    exit={{opacity: 0}}
-                                    key={"tpbar"}
-                                    transition={{duration: 1}}
-                                    className={active ? 'topBar' : 'topBar-mobile'}>
-
-                        </motion.div>
-                    </> : <></>
-
-                }
-                {
-                    (true) ? <div key={"logoBanner"} className="logoBanner" onClick={() => {
-                        navigate("/");
-                        setIsVisible(false);
-                        window.scroll(0, 0)
-                    }}>
-                        <img alt="logo" src={logo}/>
-                    </div> : <></>
-                }
-
-                <div key={"topbarIcons"} className="topbarIcons">
-                    <div className="topbarIcon2">
-                        <RiUser2Fill size={46} className='iconRRSS'/>
-                    </div>
-                    <div className="topbarIcon">
-                        <RiShoppingCart2Fill size={46} className='iconRRSS'/>
-                    </div>
-                    <div className="instaIcon">
-                        <a href="https://www.instagram.com/medicinamoderna_growshop/?hl=es">
-                            <RiInstagramFill size={50} className='iconRRSS'/>
-                        </a>
-                    </div>
-                    <div className="faceIcon">
-                        <a href="https://www.facebook.com/Medicina-Moderna-Growshop-110763457854490/">
-                            <FaFacebookSquare size={46} className='iconRRSS'/>
-                        </a>
-                    </div>
+                </div><div className="topbarIcon2">
+                <RiUser2Fill size={46} className='iconRRSS'/>
+            </div>
+                <div className="topbarIcon">
+                    <RiShoppingCart2Fill size={46} className='iconRRSS'/>
                 </div>
 
-            </AnimatePresence>
-
-
+            </div>
         </>
     )
+
 }
 
 export default TopBar

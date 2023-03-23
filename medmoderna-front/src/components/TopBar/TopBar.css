@@ -1,17 +1,33 @@
 .topBar {
-    top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 5vw;
     position: fixed;
     width: 100vw;
+    min-height: 70px;
     background-color: hsla(0, 9%, 91%, 0.13);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem calc((100vw - 1000px) / 5);
-    z-index: 21;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 25;
+    top: 5vh;
+}
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
+.searchBarContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 80%;
+}
 @keyframes logoAnimation {
     0% {
         transform: scale(1);
@@ -24,12 +40,11 @@
     }
 }
 .searchBar {
-    z-index: 22;
-    position: fixed;
-    top: 2.3rem;
     left: 10vw;
+    z-index: 22;
+    position: absolute; /* Cambia 'fixed' a 'absolute' */
     font-size: 2.4rem;
-    width: 65vw;
+    width: 40vw;
     height: 3rem;
     border: none;
     outline: none;
@@ -37,119 +52,61 @@
     transition: all .2s;
     transition-delay: .1s;
 }
-
 .searchBar:hover {
-    width: 67vw;
-    height: 4rem;
-
+    width: 45vw;
 }
-
 .miniHeader {
+    position: fixed;
+    width: 100vw;
+    height: 8vh;
     background-color: #24af4e;
     text-align: center;
-    position: fixed;
-    margin-bottom: 200px;
-    z-index: 21;
-    width: 100%;
+    z-index: 22;
 }
-
 .miniHeader > h3 {
     color: white;
-
-
+    font-size: 1rem;
+    margin: 0;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: marquee 30s linear infinite;
 }
-
 .searchBarButton {
     height: 1.5rem;
-    position: absolute;
+    position: absolute; /* Cambia 'fixed' a 'absolute' */
     top: 1rem;
     right: 1rem;
     transition: all .2s;
     transition-delay: .1s;
 }
-
 .searchBarButton:hover {
     cursor: pointer;
 }
-
 .searchBar:hover + .searchBarButton {
     height: 1.6rem;
     top: 1rem;
     right: -2rem;
 }
-
 .searchBar::placeholder {
     opacity: .5;
 }
-
 .topbar-mobile > .topbarIcons {
     width: 10rem;
     display: flex;
     justify-content: space-between;
 }
-
 .topbarText {
     margin-top: 0.3rem;
-}
-
-
-.instaIcon {
-    z-index: 21;
-    position: fixed;
-    top: 33px;
-    right: 30px;
-
-}
-
-.faceIcon {
-    z-index: 21;
-
-    position: fixed;
-    top: 35px;
-    right: 100px;
-
-}
-
-.topbarIcon {
-    z-index: 21;
-    position: fixed;
-    top: 34px;
-    right: 190px;
-}
-
-.topbarIcon2 {
-    z-index: 21;
-    position: fixed;
-    top: 36px;
-    right: 260px;
 }
 .topbarIcon > a {
     color: inherit;
 }.topbarIcon2 > a {
-    color: inherit;
-}
-
-.instaIcon > a {
-    color: inherit;
-    padding: 0rem 1rem;
-}
-
-.instaIcon > a:hover {
-    color: inherit;
-}
-
-.faceIcon > a {
-    color: inherit;
-}
-
-.faceIcon > a:hover {
-    color: inherit;
-}
-
+     color: inherit;
+ }
 .number > a {
     color: inherit;
 }
-
 .topbarIcon > span :hover {
     transition: 0.3s;
     color: rgb(0, 255, 145);
@@ -158,55 +115,34 @@
     transition: 0.3s;
     color: rgb(0, 255, 145);
 }
-
-.number > a:hover {
-    color: inherit;
-}
-
-.instaIcon:hover {
-    color: rgb(225 48 108);
-}
-
-.faceIcon:hover {
-    color: rgb(66 103 178);
-}
-
 .topbarIcon:hover {
     transition: 0.3s;
-
     color: rgb(0, 255, 145);
 }
 .topbarIcon2:hover {
     transition: 0.3s;
-
     color: rgb(0, 255, 145);
 }
-
 .number {
     color: rgb(31, 30, 30);
-
 }
-
+.logoBanner {
+    cursor: pointer;
+}
 .topbarIcons {
-    width: 20rem;
     display: flex;
-
+    justify-content: flex-end; /* Cambia de 'space-between' a 'flex-end' */
+    width: calc(100% - 5vw);
+    gap: 1rem; /* A�ade esta l�nea */
 }
-
-.topbarIcon:hover {
-    color: rgb(0, 255, 145);
-}
-
 .faceIcon {
     padding: 0rem 1rem;
 }
-
-
 .logoBanner {
     display: flex;
+    align-items: start; /* Añade esta línea */
     position: fixed;
-    top: 20px;
-    left: 15px;
+    left: 1vw;
     z-index: 22;
     width: 5vw;
     border-radius: 50%;
@@ -216,178 +152,37 @@
 
 .logoBanner img {
     z-index: 22;
-    width: 95%;
+    width: 100%;
 }
-
 nav {
     position: absolute;
     top: 20vh;
 }
 
-
-@media (max-width: 768px) { /* Ajusta este valor según el tamaño de pantalla que desees abordar */
-    .searchBar {
-        left: 40vw;
-        width: 50vw;
-    }
-
-    .searchBar:hover {
-        width: 50vw;
-    }
-
-    .logoBanner {
-        top: 10px;
-        left: 10px;
-        width: 20vw;
-    }
-
-    .topbarIcons {
-        display: none;
-    }
-
-    .miniHeader {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 440px) {
-    .logoBanner {
-        top: 3vh;
-        left: 0;
-        width: 18vw;
-    }
-
-    .topbarIcons {
-        display: none;
-    }
-
-    .searchBar {
-        top: 2.3rem;
-        left: 22vw;
-        width: 58vw;
-    }
-}
-
 /* Ajustes para dispositivos móviles */
 @media (max-width: 767px) {
-    .searchBar {
-        left: 5vw;
-        width: 90vw;
-    }
-
-    .searchBar:hover {
-        width: 90vw;
-    }
-
     .logoBanner {
-        top: 10px;
-        left: 10px;
         width: 20vw;
-    }
-
-    .topbarIcons {
-        display: none;
     }
 }
 
 /* Ajustes para tabletas y dispositivos de tamaño mediano */
 @media (min-width: 768px) and (max-width: 991px) {
-    .searchBar {
-        left: 5vw;
-        width: 75vw;
-    }
-
-    .searchBar:hover {
-        width: 75vw;
-    }
-
     .logoBanner {
-        top: 15px;
-        left: 10px;
-        width: 15vw;
-    }
-
-    .instaIcon {
-        right: 40px;
-    }
-
-    .faceIcon {
-        right: 110px;
-    }
-
-    .topbarIcon {
-        right: 200px;
-    }
-
-    .topbarIcon2 {
-        right: 270px;
+        width: 10vw;
     }
 }
 
 /* Ajustes para dispositivos de tamaño grande (desktops) */
 @media (min-width: 992px) and (max-width: 1199px) {
-    .searchBar {
-        left: 10vw;
-        width: 60vw;
-    }
-
-    .searchBar:hover {
-        width: 62vw;
-    }
-
     .logoBanner {
-        top: 20px;
-        left: 15px;
-        width: 5vw;
-    }
-
-    .instaIcon {
-        right: 30px;
-    }
-
-    .faceIcon {
-        right: 100px;
-    }
-
-    .topbarIcon {
-        right: 190px;
-    }
-
-    .topbarIcon2 {
-        right: 260px;
+        width: 7vw;
     }
 }
 
 /* Ajustes para dispositivos de tamaño extra grande (pantallas grandes) */
 @media (min-width: 1200px) {
-    .searchBar {
-        left: 10vw;
-        width: 65vw;
-    }
-
-    .searchBar:hover {
-        width: 67vw;
-    }
-
     .logoBanner {
-        top: 20px;
-        left: 15px;
         width: 5vw;
-    }
-
-    .instaIcon {
-        right: 30px;
-    }
-
-    .faceIcon {
-        right: 100px;
-    }
-
-    .topbarIcon {
-        right: 190px;
-    }
-
-    .topbarIcon2 {
-        right: 260px;
     }
 }
