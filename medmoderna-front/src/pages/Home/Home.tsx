@@ -225,7 +225,7 @@ const Home = () => {
 
         <>
 
-            <div hidden={imagesLoaded && !videosLoaded && !isLoading2 && videoMarcasFetched && videoProductosFetched  && videoCategoriasFetched  }>
+            <div hidden={imagesLoaded  }>
                 <LoadingPage logoSrc={"a"}/>
             </div>
 
@@ -270,6 +270,7 @@ const Home = () => {
                                 title={SECCION_HOME_TEXTO_MARCAS}
                                 videoSrc={VIDEO_LINK_3}
                                 brands={BRANDS}
+
                                 isVideoFetched={handleVideoMarcasFetched}
                             />
                         </Suspense>

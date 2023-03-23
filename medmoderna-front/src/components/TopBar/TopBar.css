@@ -12,6 +12,17 @@
     z-index: 21;
 }
 
+@keyframes logoAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 .searchBar {
     z-index: 22;
     position: fixed;
@@ -190,15 +201,19 @@
     padding: 0rem 1rem;
 }
 
-.logoBanner{
+
+.logoBanner {
     display: flex;
     position: fixed;
     top: 20px;
     left: 15px;
     z-index: 22;
     width: 5vw;
-
+    border-radius: 50%;
+    padding: 1px;
+    animation: logoAnimation 2s infinite;
 }
+
 .logoBanner img {
     z-index: 22;
     width: 95%;
@@ -208,16 +223,38 @@ nav {
     position: absolute;
     top: 20vh;
 }
-@media (max-width: 440px) {
 
-    .logoBanner{
-        display: flex;
-        position: fixed;
+
+@media (max-width: 768px) { /* Ajusta este valor según el tamaño de pantalla que desees abordar */
+    .searchBar {
+        left: 40vw;
+        width: 50vw;
+    }
+
+    .searchBar:hover {
+        width: 50vw;
+    }
+
+    .logoBanner {
+        top: 10px;
+        left: 10px;
+        width: 20vw;
+    }
+
+    .topbarIcons {
+        display: none;
+    }
+
+    .miniHeader {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 440px) {
+    .logoBanner {
         top: 3vh;
         left: 0;
-        z-index: 22;
         width: 18vw;
-
     }
 
     .topbarIcons {
@@ -225,6 +262,132 @@ nav {
     }
 
     .searchBar {
-        left: 22vw
+        top: 2.3rem;
+        left: 22vw;
+        width: 58vw;
+    }
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 767px) {
+    .searchBar {
+        left: 5vw;
+        width: 90vw;
+    }
+
+    .searchBar:hover {
+        width: 90vw;
+    }
+
+    .logoBanner {
+        top: 10px;
+        left: 10px;
+        width: 20vw;
+    }
+
+    .topbarIcons {
+        display: none;
+    }
+}
+
+/* Ajustes para tabletas y dispositivos de tamaño mediano */
+@media (min-width: 768px) and (max-width: 991px) {
+    .searchBar {
+        left: 5vw;
+        width: 75vw;
+    }
+
+    .searchBar:hover {
+        width: 75vw;
+    }
+
+    .logoBanner {
+        top: 15px;
+        left: 10px;
+        width: 15vw;
+    }
+
+    .instaIcon {
+        right: 40px;
+    }
+
+    .faceIcon {
+        right: 110px;
+    }
+
+    .topbarIcon {
+        right: 200px;
+    }
+
+    .topbarIcon2 {
+        right: 270px;
+    }
+}
+
+/* Ajustes para dispositivos de tamaño grande (desktops) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .searchBar {
+        left: 10vw;
+        width: 60vw;
+    }
+
+    .searchBar:hover {
+        width: 62vw;
+    }
+
+    .logoBanner {
+        top: 20px;
+        left: 15px;
+        width: 5vw;
+    }
+
+    .instaIcon {
+        right: 30px;
+    }
+
+    .faceIcon {
+        right: 100px;
+    }
+
+    .topbarIcon {
+        right: 190px;
+    }
+
+    .topbarIcon2 {
+        right: 260px;
+    }
+}
+
+/* Ajustes para dispositivos de tamaño extra grande (pantallas grandes) */
+@media (min-width: 1200px) {
+    .searchBar {
+        left: 10vw;
+        width: 65vw;
+    }
+
+    .searchBar:hover {
+        width: 67vw;
+    }
+
+    .logoBanner {
+        top: 20px;
+        left: 15px;
+        width: 5vw;
+    }
+
+    .instaIcon {
+        right: 30px;
+    }
+
+    .faceIcon {
+        right: 100px;
+    }
+
+    .topbarIcon {
+        right: 190px;
+    }
+
+    .topbarIcon2 {
+        right: 260px;
     }
 }

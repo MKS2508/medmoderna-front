@@ -1,16 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {
-    IoMdBookmark,
-    IoMdCall,
-    IoMdChatboxes,
-    IoMdClipboard,
-    IoMdClose,
-    IoMdHammer,
-    IoMdHome,
-    IoMdMenu,
-    IoIosShirt,
-    IoLogoWhatsapp
-} from 'react-icons/io'
+
 import {Link, useNavigate} from 'react-router-dom'
 import './TopBar.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'

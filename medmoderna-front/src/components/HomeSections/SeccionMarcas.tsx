@@ -17,7 +17,7 @@ interface ISeccionMarcasProps {
 const SeccionMarcas: React.FC<ISeccionMarcasProps> = ({ title, videoSrc , isVideoFetched, height, brands}) => {
 
     return (
-        <SeccionResponsiveVideoBackground videoSrc={videoSrc} title={title} height={height}
+        <SeccionResponsiveVideoBackground videoSrc={videoSrc} title={title} height={height} mobileStack={false}
                                           isVideoFetched={(fetched) =>{isVideoFetched(fetched) ;console.log('Video fetched:', fetched)}}>
 
             {brands.map((brand) => (
