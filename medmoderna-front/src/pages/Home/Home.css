@@ -200,7 +200,7 @@
 
     @media (max-width: 440px) {
 
-        .mobile {
+        .section {
             overflow-y: hidden;
             overflow-x: hidden;
             display: block;
