@@ -1,58 +1,101 @@
-import React from 'react';
+import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
-import {IProductProps} from "../../models/IProductProps";
+import { IProductProps } from "../../models/IProductProps";
 
-const itemVariants = {
-    rest: { scale: 1 },
-    hover: { scale: 1, boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", borderRadius:"100%", height:"60px", width:"60px" },
-};
-interface IMenuItemProps  {
+interface IMenuItemProps {
     item: any;
     index: any;
     page: any;
-    navigate:any;
+    navigate: any;
 }
+
 const MenuItem: React.FC<IMenuItemProps> = ({ item, index, page, navigate }) => {
     const controls = useAnimation();
     const tooltipId = `React-tooltip${index + 1}`;
 
+    const handleHoverStart = () => {
+        controls.start({
+            scale: 2,
+            color: "rgb(98,175,98)",
+            borderRadius: "120%",
+            zIndex: 100,
+            translateX: "10vw",
+            transition: {
+                duration: 0.3,
+                ease: "easeInOut",
+            },
+
+        });
+    };
+
+    const handleHoverEnd = () => {
+        controls.start({
+            scale: 1,
+            color: "#1F1E1EFF",
+            borderRadius: "0%",
+            zIndex: "auto",
+            translateX: "0px",
+            width: "30px",
+            height: "30px",
+            transition: {
+                duration: 0.3,
+                ease: "easeInOut",
+            },
+
+        });
+    };
+
+    const handleHoverStartTooltip = () => {
+        controls.start({
+            opacity: 0,
+            visibility: "visible",
+        });
+    };
+
+    const handleHoverEndToolTip = () => {
+        controls.start({
+            opacity: 100,
+        });
+    };
+
     return (
         <motion.li
             key={index}
-            onMouseEnter={() => controls.start("hover")}
-            onMouseLeave={() => controls.start("rest")}
+            onMouseEnter={handleHoverStart}
+            onMouseLeave={handleHoverEnd}
             onClick={() => navigate(item.path)}
             className={page.startsWith(item.path) ? "itemActive" : ""}
             data-tip
             data-for={tooltipId}
         >
             <motion.div
-                className={
-                    page.startsWith(item.path) ? "iconActive" : "icon"
-                }
-                variants={itemVariants}
+
+                className={page.startsWith(item.path) ? "iconActive" : "icon"}
+                initial={{
+                    scale: 1,
+                    color: "#1F1E1EFF",
+                    boxShadow: "0 0px 0px rgba(0, 0, 0, 0)",
+                    borderRadius: "0%",
+                    translateX: "0",
+                    width: "30px",
+                    height: "30px",
+                }}
                 animate={controls}
             >
                 {item.icon}
+                <Link to={item.path}>{item.title}</Link>
             </motion.div>
-            <Link to={item.path}>{item.title}</Link>
-            <ReactTooltip
-                data-id={tooltipId}
-                id={tooltipId}
-                place="right"
-                effect="solid"
-                border={true}
-                borderClass={"tooltipBorder"}
-                backgroundColor={"#008F28"}
-                textColor={"#ffffff"}
-                borderColor={"#10131f"}
+            <motion.div
+                className={"toolTipGlass"}
+             
             >
                 {item.title}
-            </ReactTooltip>
+            </motion.div>
         </motion.li>
     );
 };
 
 export default MenuItem;
+

@@ -36,13 +36,13 @@ nav .ul-item li, .menu-icon .menu {
 /* Ajustes adicionales en la animación del hover */
 nav .ul-item li:hover {
     /* ... */
-    transform: scale(1.05);
 }
 
 nav .ul-item {
     display: flex;
     flex-direction: column;
-    align-content: end;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
     margin-block: .5rem;
     list-style: none;
 }
@@ -51,23 +51,22 @@ nav .ul-item.oicon a {
     display: none;
 }
 
-nav .ul-item.oicon li::after {
-    content: '';
-    position: absolute;
-    width: 1%;
-    height: 4%;
-    background-color: #fff;
-    right: 0;
+nav .ul-item .icon {
+    width: 30px;
+    height: 30px;
 }
 
 nav .ul-item li {
     display: flex;
-    align-items: center;
-    gap: 2rem;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    gap: 10rem;
     cursor: pointer;
     padding-block: 1.2rem;
     margin-block: .1rem;
+    flex-direction: row; /* Añade esta línea */
 }
+
 .header-mobile > nav .ul-item li:hover {
     border-radius: 100%;
 }
@@ -75,19 +74,35 @@ nav .ul-item li {
     background-color: rgb(125, 118, 118);
 }
 
-.header > nav .ul-item li:hover > .customLink {
-
-    color:rgb(0, 255, 145);
+.ul-item li:hover > .toolTipGlass {
+    display: flex;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 8px 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #000000;
+    width: auto;
+    height: auto;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    transition: all 0.3s ease-in-out;
 }
 
-.iconActive{
-    color:#00FF91FF;
+.iconActive {
+    color: #00FF91FF;
     margin-inline: 1rem;
     font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .itemActive{
 
-    background-color: rgb(125, 118, 118);
     width: 60px;
     height: 60px;
     border-radius: 120%;
@@ -95,28 +110,51 @@ nav .ul-item li {
 
 
 nav .ul-item li:hover > .icon{
-    color:#00FF91FF;
 }
 nav .ul-item li .icon:hover {
-    color:rgb(0, 255, 145);
-    margin-inline: 1rem;
     font-size: 30px;
 }
 nav .ul-item li .icon {
-    color: rgb(31, 30, 30);
-    margin-inline: 1rem;
-    font-size: 30px;
-}nav .ul-item li .icon {
-    color: rgb(31, 30, 30);
-    margin-inline: 1rem;
-    font-size: 30px;
+    font-size: 40px;
 }
+
+
+.toolTipGlass {
+    display: none;
+    position: relative; /* Añade esta línea */
+    top: 0; /* Añade esta línea */
+    transform: translateX(10px); /* Añade esta línea */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 8px 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #000000;
+    width: auto;
+    height: auto;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    transition: all 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+
+.toolTipGlass::after {
+    display: none;
+    content: "";
+    position: relative;
+    top: 10vh;
+    border-top: 8px solid transparent;
+    border-left: 8px solid rgba(255, 255, 255, 0.1); /* Modifica esta línea */
+    border-bottom: 8px solid transparent;
+}
+
 
 nav .ul-item li a {
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
-    color: #1d1c1c;
     border-left: 1px solid white;
     padding-left: 2rem;
 
@@ -138,8 +176,6 @@ nav .ul-item li a {
 
     height: 50px;
 }
-
-
 
 .menu-icon .menu {
     color: #1d1c1c;
@@ -180,8 +216,10 @@ nav .ul-item li:hover {
     }
 
 
-    nav .ul-item.oicon {
+    nav .ul-item.icon {
         display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .menu-icon {
@@ -202,7 +240,6 @@ nav .ul-item li:hover {
         position: fixed;
         flex-direction: column;
         align-items: center;
-        background-color: hsla(0, 9%, 91%, 0.13);
         border-radius: 10px;
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(10px);
@@ -228,7 +265,6 @@ nav .ul-item li:hover {
         position: fixed;
         flex-direction: column;
         align-items: center;
-        background-color: hsl(0, 9%, 91%);
     }
 
     nav .ul-item li {

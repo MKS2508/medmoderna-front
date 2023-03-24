@@ -167,8 +167,7 @@
     top: 5%;
     left: 5%;
     object-fit: cover;
-    background-color: white;
-    transition: transform 0.3s;
+        transition: transform 0.3s;
     z-index: 10;
 }
 
@@ -723,11 +722,6 @@ button .prod-btn-new:active {
 
 }
 
-.prod-card-mobile:hover .prod-price-mobile p {
-    position: relative;
-    justify-content: center;
-
-}
 .prod-card-mobile:not(:hover) .prod-card-mobile-logo-img {
     transform: rotate(0deg);
 }

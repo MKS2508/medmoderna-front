@@ -19,10 +19,6 @@ import MenuItem from "./MenuItem";
 
 
 const SideBar = () => {
-    const itemVariants = {
-        rest: { scale: 1 },
-        hover: { scale: 1.1, boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" },
-    };
 
     config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
     const [isVisible, setIsVisible] = useState(true);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ProductCardNew.css";
 import { IProductProps } from "../../../models/IProductProps";
-import logo from "../../../assets/logo4svg.svg"
+import logo from "../../../assets/logo4blanco.svg"
 import {AiFillEye, AiOutlineEye, FaShoppingCart} from "react-icons/all";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
