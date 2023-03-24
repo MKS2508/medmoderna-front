@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ProductCardNew.css";
 import { IProductProps } from "../../../models/IProductProps";
-import logo from "../../../assets/logo4blanco.svg"
+import logo1 from "../../../assets/logo4blanco.svg"
+import logo2 from "../../../assets/logo4svg.svg"
 import {AiFillEye, AiOutlineEye, FaShoppingCart} from "react-icons/all";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -26,7 +27,7 @@ interface IProductCardProps extends IProductProps {
 
 const ProductCardNew: React.FC<IProductCardProps> = ({ name, productId,  description, price, imgSrc, maxLines, maxCharsPerLine, index, blur, mobileVersion }) => {
     const [spans, setSpans] = useState<JSX.Element[]>([]);
-
+    const [logo, setLogo] = useState<string>(logo1);
 
     const lines = description.split("\n");
     const shortenedLines = lines.slice(0, maxLines).map((line) => {
@@ -72,32 +73,35 @@ const ProductCardNew: React.FC<IProductCardProps> = ({ name, productId,  descrip
     return (
         <>
             <motion.div
-                className={mobileVersion ? "prod-card-new" : "prod-card-mobile"}
+                className={!mobileVersion ? "prod-card-new" : "prod-card-mobile"}
                 style={{ backdropFilter: `blur(${blur})` }}
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible"
                 transition={{ duration: 0.5, delay: 0.2 * index }}
+                onMouseEnter={() => setLogo(logo2)} // Cambia el logo cuando el mouse sale del área
+                onMouseLeave={() => setLogo(logo1)} // Cambia el logo cuando el mouse sale del área
+
             >
-                <div className={mobileVersion ? "prod-card-new-logo" : "prod-card-mobile-logo"}>
+                <div className={!mobileVersion ? "prod-card-new-logo" : "prod-card-mobile-logo"}>
                     <div className="rotating-border"></div>
-                    <img src={logo} alt="Logo" className={mobileVersion ? "prod-card-new-logo-img" : "prod-card-mobile-logo-img"} />
+                    <img src={logo} alt="Logo" className={!mobileVersion ? "prod-card-new-logo-img" : "prod-card-mobile-logo-img"} />
                 </div>
                 <div className="working">
                 </div>
                 <div className="working2">
                 </div>
-                <img src={`${imgSrc}`} alt={name} className={mobileVersion ? "prod-card-new-img" : "prod-card-mobile-img"} />
-                <div className={mobileVersion ? "prod-card-new-info" : "prod-card-mobile-info"}>
+                <img src={`${imgSrc}`} alt={name} className={!mobileVersion ? "prod-card-new-img" : "prod-card-mobile-img"} />
+                <div className={!mobileVersion ? "prod-card-new-info" : "prod-card-mobile-info"}>
                     <h3 className="typewriter-text-0">{name}</h3>
                     <p>{spans}</p>
-                    <div className={mobileVersion ? "prod-details-new" : "prod-details-mobile"}>
-                        <div className={mobileVersion ? "prod-price-new" : "prod-price-mobile"}><span>{price.toFixed(2)}€</span></div>
-                        <div className={mobileVersion ? "prod-card-new-button-container" : "prod-card-mobile-button-container"}>
-                            <button className={mobileVersion ? "prod-card-new-button details-button" : "prod-card-mobile-button details-button-mobile"}>
+                    <div className={!mobileVersion ? "prod-details-new" : "prod-details-mobile"}>
+                        <div className={!mobileVersion ? "prod-price-new" : "prod-price-mobile"}><span>{price.toFixed(2)}€</span></div>
+                        <div className={!mobileVersion ? "prod-card-new-button-container" : "prod-card-mobile-button-container"}>
+                            <button className={!mobileVersion ? "prod-card-new-button details-button" : "prod-card-mobile-button details-button-mobile"}>
                                 <AiOutlineEye size="30" />
                             </button>
-                            <button className={mobileVersion ? "prod-card-new-button cart-button" : "prod-card-mobile-button cart-button-mobile"}>
+                            <button className={!mobileVersion ? "prod-card-new-button cart-button" : "prod-card-mobile-button cart-button-mobile"}>
                                 <FaShoppingCart size="30" />
                             </button>
                         </div>

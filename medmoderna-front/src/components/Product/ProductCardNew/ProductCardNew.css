@@ -257,11 +257,12 @@
     width: calc(100% + 4px);
     height: calc(100% + 4px);
     border-radius: 50%;
-    background-image: linear-gradient(45deg, #3d423c, #2d2c2c); /* Ajusta los colores del gradiente según tus necesidades */
+    background-image: linear-gradient(45deg, #ebeceb, #ffffff); /* Ajusta los colores del gradiente según tus necesidades */
     z-index: -10;
 }
 
 .prod-card-new:hover .prod-card-new-logo-img {
+    scale: 1.2;
     transform: rotate(360deg);
 }
 
