@@ -8,8 +8,7 @@ import spinner2 from "../../assets/spinner3.svg"
 import {AnimatePresence, motion} from 'framer-motion';
 import ProductCard from "../../components/Product/ProductCard";
 import {Link, useParams} from "react-router-dom";
-import ProductCardDetail from "../../components/Product/ProductCardDetail";
-import ProductCardDetailMobile from "../../components/Product/ProductCardDetailMobile";
+
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import ProductCardDetailResponsive
     from "../../components/Product/ProductCardDetailResponsive/ProductCardDetailResponsive";
