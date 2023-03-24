@@ -4,7 +4,6 @@ import {IProductProps} from "../../../models/IProductProps";
 import logo from '../../../assets/logo4.png';
 import Modal from 'react-modal';
 import ProductCardNew from "../../Product/ProductCardNew/ProductCardNew";
-import ProductCardNewHome from "../../Product/ProductCardNewHome/ProductCardNew";
 import ProductCardDetailResponsive from '../ProductCardDetailResponsive/ProductCardDetailResponsive';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,9 +23,10 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
 
     // @ts-ignore
     return (<>
-        {(!isHome ?         <div className="shopping-list">
+        {     <div className="shopping-list">
                 {products.map((item, index) => (<>
                     <ProductCardNew
+                        blur={"3px"}
                         key={item.name + "_" + Math.floor(Math.random() * 100401).toString()}
                         imgSrc={item.imgSrc}
                         description={item.description}
@@ -35,27 +35,22 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
                         name={item.name}
                         brand={item.brand}
                         category={item.category}
-                        maxLines={2} maxCharsPerLine={70} index={index}                    />
+                        maxLines={2} maxCharsPerLine={70} index={index}                    /> <
+                        ProductCardNew
+                        blur={"3px"}
+                        key={item.name + "_" + Math.floor(Math.random() * 100401).toString()}
+                        imgSrc={item.imgSrc}
+                        description={item.description}
+                        price={item.price}
+                        productId={item.productId}
+                        name={item.name}
+                        brand={item.brand}
+                        category={item.category}
+                        maxLines={2} maxCharsPerLine={70} index={index}      mobileVersion={true}              />
 
                 </>))}
             </div>
-         :
-                <div className="shopping-list">
-                    {products.map((item, index) => (<>
-            <ProductCardNewHome
-                key={item.name + Math.floor(Math.random() * 10001).toString()}
-                imgSrc={item.imgSrc}
-                description={item.description}
-                price={item.price}
-                productId={item.productId}
-                name={item.name}
-                brand={item.brand}
-                category={item.category}
-                maxLines={2} maxCharsPerLine={70} index={index}            />
-
-            </>))}
-            </div>
-        )}
+        }
     </>);
 };
 

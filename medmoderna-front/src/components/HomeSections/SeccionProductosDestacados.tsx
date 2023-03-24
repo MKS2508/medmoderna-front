@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "./SeccionProductosDestacados.css";
 import SeccionResponsiveVideoBackground from "./SeccionResponsiveVideoBackground";
-import ProductCardNewHome from "../Product/ProductCardNewHome/ProductCardNew";
+import ProductCardNew from "../Product/ProductCardNew/ProductCardNew";
 import {CATEGORIES} from "../../WebParameters";
 import {IProductProps} from "../../models/IProductProps";
 import {getProductsFromCategory} from "../../services/api-products-service";
@@ -126,7 +126,8 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
             >
                 {getVisibleProducts().map((item, index) => (
                     <>
-                        <ProductCardNewHome
+                        <ProductCardNew
+                            blur={"12px"}
                             key={item.name + Math.floor(Math.random() * 10001).toString()}
                             index={index} // Añade el índice aquí
                             imgSrc={item.imgSrc}
@@ -136,7 +137,7 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
                             name={item.name}
                             brand={item.brand}
                             category={item.category}
-                            maxLines={2}
+                            maxLines={1}
                             maxCharsPerLine={70}
                         />
                     </>

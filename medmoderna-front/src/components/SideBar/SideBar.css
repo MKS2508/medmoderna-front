@@ -31,7 +31,6 @@ nav .ul-item li, .menu-icon .menu {
 .header > nav .ul-item li:hover,
 .menu-icon .menu:hover {
     /* ... */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Ajustes adicionales en la animación del hover */
@@ -87,8 +86,11 @@ nav .ul-item li {
     font-size: 30px;
 }
 .itemActive{
+
     background-color: rgb(125, 118, 118);
-    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    border-radius: 120%;
 }
 
 
@@ -101,6 +103,10 @@ nav .ul-item li .icon:hover {
     font-size: 30px;
 }
 nav .ul-item li .icon {
+    color: rgb(31, 30, 30);
+    margin-inline: 1rem;
+    font-size: 30px;
+}nav .ul-item li .icon {
     color: rgb(31, 30, 30);
     margin-inline: 1rem;
     font-size: 30px;
