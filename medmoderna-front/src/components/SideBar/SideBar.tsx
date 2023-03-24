@@ -22,6 +22,7 @@ const SideBar = () => {
 
     config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
     const [isVisible, setIsVisible] = useState(true);
+    const [pageState, setPageState] = useState("");
 
     const listenToScroll = () => {
         let heightToHideFrom = 30;
@@ -69,6 +70,9 @@ const SideBar = () => {
 
 
     let page = getCurrentPage();
+    useEffect(() => {
+        setPageState(page);
+    }, [page]);
 
 
     const menuItems = [
@@ -124,14 +128,16 @@ const SideBar = () => {
                             >
 
 
-                                <nav>
-                                    <motion.ul className="ul-item oicon">
+                                <nav onClick={() =>{ page =  getCurrentPage();}}>
+                                    <motion.ul className="ul-item oicon" onClick={() =>{ page =  getCurrentPage();}} onMouseEnter={() =>{ page =  getCurrentPage();}}>
                                         {menuItems.map((item, index) => (
+
                                             <MenuItem
+
                                                 key={index}
                                                 item={item}
                                                 index={index}
-                                                page={page}
+                                                page={pageState}
                                                 navigate={navigate}
                                             />
                                         ))}

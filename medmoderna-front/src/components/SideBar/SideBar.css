@@ -1,6 +1,20 @@
 
 :root {
     --sidebar-width: clamp(5vw, 8vw, 20vw);
+    --nav-item-padding: clamp(0.5rem, 1vw, 1.5rem);
+
+}
+
+
+
+nav .ul-item li:hover .icon svg {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+nav .ul-item li .icon svg {
+
 }
 
 
@@ -44,6 +58,7 @@ nav .ul-item {
     align-items: center; /* Centrar horizontalmente */
     justify-content: center; /* Centrar verticalmente */
     margin-block: .5rem;
+    padding-block: var(--nav-item-padding);
     list-style: none;
 }
 
@@ -144,7 +159,6 @@ nav .ul-item li .icon {
     display: none;
     content: "";
     position: relative;
-    top: 10vh;
     border-top: 8px solid transparent;
     border-left: 8px solid rgba(255, 255, 255, 0.1); /* Modifica esta línea */
     border-bottom: 8px solid transparent;
@@ -204,13 +218,8 @@ nav .ul-item li:hover {
 }
 
 @media (max-width:950px) {
-    .header-mobile {
-        width: 16vw;
-    }
 
-    nav .ul-item {
-        display: none;
-    }
+
     nav ul li > .expandIcon {
         background: aqua;
     }

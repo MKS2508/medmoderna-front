@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
@@ -11,39 +11,54 @@ interface IMenuItemProps {
     navigate: any;
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({ item, index, page, navigate }) => {
+const MenuItem: React.FC<IMenuItemProps> = ({ item, index, page, navigate, }) => {
     const controls = useAnimation();
     const tooltipId = `React-tooltip${index + 1}`;
+    const [localActive, setLocalActive] = useState(!page.startsWith(item.path));
+
+    useEffect(() => {
+        setLocalActive(!page.startsWith(item.path));
+    }, [page]);
 
     const handleHoverStart = () => {
         controls.start({
-            scale: 2,
+            scale: 1.5,
+            padding: 30,
             color: "rgb(98,175,98)",
-            borderRadius: "120%",
+            backgroundColor: "rgba(255, 255, 255, 0.1)", // Color de fondo con transparencia
+            borderRadius: "50%",
             zIndex: 100,
-            translateX: "10vw",
+            translateX: "12vw",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Sombra para un efecto elevado
+            border: "1px solid rgba(255, 255, 255, 0.2)", // Borde sutil
             transition: {
                 duration: 0.3,
                 ease: "easeInOut",
             },
-
+            WebkitBackdropFilter: "blur(10px)", // Filtro de desenfoque para navegadores basados en WebKit (Safari)
+            backdropFilter: "blur(10px)", // Filtro de desenfoque para navegadores compatibles
         });
     };
 
     const handleHoverEnd = () => {
         controls.start({
             scale: 1,
-            color: "#1F1E1EFF",
+            padding: 0,
+            color: ((localActive) ? "#1F1E1EFF" : "#0a720a"),
+            backgroundColor: "transparent", // Color de fondo transparente
             borderRadius: "0%",
             zIndex: "auto",
             translateX: "0px",
             width: "30px",
             height: "30px",
+            boxShadow: "none", // Eliminar la sombra
+            border: "none", // Eliminar el borde
             transition: {
-                duration: 0.3,
+                duration: 1,
                 ease: "easeInOut",
             },
-
+            WebkitBackdropFilter: "none", // Eliminar el filtro de desenfoque para navegadores basados en WebKit (Safari)
+            backdropFilter: "none", // Eliminar el filtro de desenfoque para navegadores compatibles
         });
     };
 
@@ -72,10 +87,10 @@ const MenuItem: React.FC<IMenuItemProps> = ({ item, index, page, navigate }) => 
         >
             <motion.div
 
-                className={page.startsWith(item.path) ? "iconActive" : "icon"}
+                className="icon"
                 initial={{
                     scale: 1,
-                    color: "#1F1E1EFF",
+                    color: ((localActive) ? "#1F1E1EFF" : "#0a720a"),
                     boxShadow: "0 0px 0px rgba(0, 0, 0, 0)",
                     borderRadius: "0%",
                     translateX: "0",
@@ -87,9 +102,18 @@ const MenuItem: React.FC<IMenuItemProps> = ({ item, index, page, navigate }) => 
                 {item.icon}
                 <Link to={item.path}>{item.title}</Link>
             </motion.div>
-            <motion.div
+            <motion.div initial={
+                {
+                    translateX: 0
+                }
+            }
+                        animate={
+                            {
+                                translateX: "clamp(5vw, 8vw, 20vw)"
+                            }
+                        }
                 className={"toolTipGlass"}
-             
+
             >
                 {item.title}
             </motion.div>
