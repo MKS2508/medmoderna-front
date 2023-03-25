@@ -1,17 +1,36 @@
+:root {
+    --topbar-height: 8vh; /* Añade esta línea */
+    --miniheader-height: 4vh; /* Añade esta línea */
+}
+/* Para pantallas pequeñas */
+@media (max-width: 480px) {
+    :root {
+        --topbar-height: 10vh; /* Ajusta el valor según tus preferencias */
+        --miniheader-height: 6vh; /* Ajusta el valor según tus preferencias */
+    }
+}
+
+/* Para pantallas medianas */
+@media (max-width: 768px) {
+    :root {
+        --topbar-height: 10vh; /* Ajusta el valor según tus preferencias */
+        --miniheader-height: 3vh; /* Ajusta el valor según tus preferencias */
+    }
+}
 .topBar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem 5vw;
-    position: fixed;
+    position: fixed; /* Cambia 'fixed' a 'relative' */
     width: 100vw;
-    min-height: 70px;
+    height: var(--topbar-height);
     background-color: hsla(0, 9%, 91%, 0.13);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 25;
-    top: 5vh;
+    margin-top: var(--miniheader-height); /* Añade esta línea */
 }
 @keyframes marquee {
     0% {
@@ -58,7 +77,7 @@
 .miniHeader {
     position: fixed;
     width: 100vw;
-    height: 8vh;
+    height: var(--miniheader-height);
     background-color: #24af4e;
     text-align: center;
     z-index: 22;

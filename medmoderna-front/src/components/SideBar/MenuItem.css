@@ -1,10 +1,4 @@
 
-:root {
-    --sidebar-width: clamp(5vw, 8vw, 20vw);
-    --nav-item-padding: clamp(0.5rem, 10vh, 1.5rem);
-
-}
-
 .nav-icon svg {
     width: clamp(10px, 6vw, 30px);
     height: clamp(10px, 6vw, 30px);

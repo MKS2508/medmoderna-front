@@ -1,10 +1,16 @@
 
 :root {
-    --sidebar-width: clamp(5vw, 8vw, 20vw);
+    --sidebar-width: clamp(4vw, 6vw, 12vw);
     --nav-item-padding: clamp(0.5rem, 10vh, 1.5rem);
-
+    --sidebar-height: calc(100vh - var(--topbar-height) - var(--miniheader-height));
 }
-
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: clamp(10vw, 17vw, 25vw);
+        --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+        --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+    }
+}
 
 .sideBarNavigation{
 
@@ -18,16 +24,16 @@
     padding: 0;
 }
 .header-mobile {
-    height: 100vh; /* Asegurarse de que el contenedor tenga la altura completa */
+    height: var(--sidebar-height); /* Modifica esta línea */
     width: var(--sidebar-width);
     z-index: 20;
     display: flex;
+    bottom: 0;
     position: fixed;
     flex-direction: column;
     justify-content: center; /* Añadir esta línea */
     align-items: center;
     background-color: hsla(0, 9%, 91%, 0.13);
-    border-radius: 10px;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -35,7 +41,7 @@
 
 
 .ul-item {
-    margin-top: 12vh;
+    margin-top: 3vh;
     height: 100%;
     width: 100%;
     display: flex;
@@ -46,3 +52,4 @@
     padding: 2vh 0; /* Ajusta el valor según tus preferencias */
     margin-bottom: 3vh; /* Ajusta el valor según tus preferencias */
 }
+

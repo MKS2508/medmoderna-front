@@ -108,7 +108,7 @@ const SideBar = () => {
     ];
 
     return (<>
-            <div>
+            <>
                 <AnimatePresence>
                     {
                         (!isVisible) ? <>
@@ -142,7 +142,7 @@ const SideBar = () => {
 
 
                 </AnimatePresence>
-            </div>
+            </>
 
 
         </>
