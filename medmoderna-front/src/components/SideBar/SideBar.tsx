@@ -1,26 +1,20 @@
 import React, {useEffect, useState} from 'react'
-import {IoIosShirt, IoLogoWhatsapp} from 'react-icons/io'
-import {Link, useLocation, useNavigate} from 'react-router-dom'
+import {IoIosShirt} from 'react-icons/io'
+import {useLocation, useNavigate} from 'react-router-dom'
 import './SideBar.css'
 import 'font-awesome/css/font-awesome.css';
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 import {config} from "@fortawesome/fontawesome-svg-core";
-import {FaBong, FaCannabis, FaExpandAlt, FaFacebookSquare, FaJoint} from "react-icons/fa";
-import {RiInstagramFill, RiPlantFill} from "react-icons/ri";
+import {FaBong, FaCannabis, FaJoint} from "react-icons/fa";
+import {RiPlantFill} from "react-icons/ri";
 import {GiLightBulb} from "react-icons/gi";
-import logo from '../../assets/logo4.png'
-import banner from '../../assets/banner.png'
 import {AnimatePresence, motion, useAnimation} from "framer-motion";
-import {IProductProps} from "../../models/IProductProps";
-import {getProductsFromQuery} from "../../services/api-products-service";
-import ReactTooltip from 'react-tooltip';
 import {AiOutlinePlusCircle} from "react-icons/all";
 import MenuItem from "./MenuItem";
 
-
 const SideBar = () => {
 
-    config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
+    config.autoAddCss = true; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
     const [isVisible, setIsVisible] = useState(true);
     const [pageState, setPageState] = useState("");
 
@@ -127,9 +121,8 @@ const SideBar = () => {
                                 className={"header-mobile"}
                             >
 
-
-                                <nav onClick={() =>{ page =  getCurrentPage();}}>
-                                    <motion.ul className="ul-item oicon" onClick={() =>{ page =  getCurrentPage();}} onMouseEnter={() =>{ page =  getCurrentPage();}}>
+                                <nav className="sideBarNavigation" onClick={() =>{ page =  getCurrentPage();}}>
+                                    <motion.ul className="ul-item" onClick={() =>{ page =  getCurrentPage();}} onMouseEnter={() =>{ page =  getCurrentPage();}}>
                                         {menuItems.map((item, index) => (
 
                                             <MenuItem
@@ -141,7 +134,8 @@ const SideBar = () => {
                                                 navigate={navigate}
                                             />
                                         ))}
-                                    </motion.ul>                                </nav>
+                                    </motion.ul>
+                                </nav>
 
                             </motion.div></> : <></>
                     }

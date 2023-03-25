@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
-import ReactTooltip from "react-tooltip";
-import { IProductProps } from "../../models/IProductProps";
+import './MenuItem.css'
+
 
 interface IMenuItemProps {
     item: any;
@@ -28,7 +28,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({ item, index, page, navigate, }) =>
             backgroundColor: "rgba(255, 255, 255, 0.1)", // Color de fondo con transparencia
             borderRadius: "50%",
             zIndex: 100,
-            translateX: "12vw",
+            translateX: "clamp(5vw, 8vw, 20vw)",
             boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Sombra para un efecto elevado
             border: "1px solid rgba(255, 255, 255, 0.2)", // Borde sutil
             transition: {
@@ -49,8 +49,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({ item, index, page, navigate, }) =>
             borderRadius: "0%",
             zIndex: "auto",
             translateX: "0px",
-            width: "30px",
-            height: "30px",
+
             boxShadow: "none", // Eliminar la sombra
             border: "none", // Eliminar el borde
             transition: {
@@ -76,48 +75,50 @@ const MenuItem: React.FC<IMenuItemProps> = ({ item, index, page, navigate, }) =>
     };
 
     return (
-        <motion.li
-            key={index}
-            onMouseEnter={handleHoverStart}
-            onMouseLeave={handleHoverEnd}
-            onClick={() => navigate(item.path)}
-            className={page.startsWith(item.path) ? "itemActive" : ""}
-            data-tip
-            data-for={tooltipId}
-        >
-            <motion.div
-
-                className="icon"
-                initial={{
-                    scale: 1,
-                    color: ((localActive) ? "#1F1E1EFF" : "#0a720a"),
-                    boxShadow: "0 0px 0px rgba(0, 0, 0, 0)",
-                    borderRadius: "0%",
-                    translateX: "0",
-                    width: "30px",
-                    height: "30px",
-                }}
-                animate={controls}
+        <div className={"oicon"}>
+            <motion.li
+                key={index}
+                onMouseEnter={handleHoverStart}
+                onMouseLeave={handleHoverEnd}
+                onClick={() => navigate(item.path)}
+                className={page.startsWith(item.path) ? "itemActive" : ""}
+                data-tip
+                data-for={tooltipId}
             >
-                {item.icon}
-                <Link to={item.path}>{item.title}</Link>
-            </motion.div>
-            <motion.div initial={
-                {
-                    translateX: 0
-                }
-            }
-                        animate={
-                            {
-                                translateX: "clamp(5vw, 8vw, 20vw)"
-                            }
-                        }
-                className={"toolTipGlass"}
+                <div className="nav-tooltip-container"> {/* Contenedor para nav-icon y toolTipGlass */}
+                    <motion.div
 
-            >
-                {item.title}
-            </motion.div>
-        </motion.li>
+                        className="nav-icon" // Añade la clase "nav-icon" aquí
+                        initial={{
+                            scale: 1,
+                            color: ((localActive) ? "#1F1E1EFF" : "#0a720a"),
+                            boxShadow: "0 0px 0px rgba(0, 0, 0, 0)",
+                            borderRadius: "0%",
+                            translateX: "0",
+                            width: "20px",
+                            height: "20px",
+                        }}
+                        animate={controls}
+                    >
+                        {item.icon}
+                        <Link to={item.path}>{item.title}</Link>
+                    </motion.div>
+
+                    <motion.div
+                                className={"toolTipGlass"}
+                    >
+                        <h3>
+                            {item.title}
+                        </h3>
+                    </motion.div>
+                </div>
+
+
+
+            </motion.li>
+
+        </div>
+
     );
 };
 

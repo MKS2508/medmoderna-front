@@ -155,10 +155,7 @@
     z-index: 22;
     width: 100%;
 }
-nav {
-    position: absolute;
-    top: 20vh;
-}
+
 
 /* Ajustes para dispositivos móviles */
 @media (max-width: 767px) {

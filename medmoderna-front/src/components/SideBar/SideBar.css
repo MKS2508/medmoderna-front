@@ -1,23 +1,22 @@
 
 :root {
     --sidebar-width: clamp(5vw, 8vw, 20vw);
-    --nav-item-padding: clamp(0.5rem, 1vw, 1.5rem);
+    --nav-item-padding: clamp(0.5rem, 10vh, 1.5rem);
 
 }
 
 
+.sideBarNavigation{
 
-nav .ul-item li:hover .icon svg {
-    position: absolute;
-    top: 15px;
-    left: 15px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
-
-nav .ul-item li .icon svg {
-
-}
-
-
 .header-mobile {
     height: 100vh; /* Asegurarse de que el contenedor tenga la altura completa */
     width: var(--sidebar-width);
@@ -25,275 +24,25 @@ nav .ul-item li .icon svg {
     display: flex;
     position: fixed;
     flex-direction: column;
+    justify-content: center; /* Añadir esta línea */
     align-items: center;
     background-color: hsla(0, 9%, 91%, 0.13);
     border-radius: 10px;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(10px);
-
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Transiciones suaves para elementos de menú */
-nav .ul-item li, .menu-icon .menu {
-    /* ... */
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
-}
 
-/* Efecto de sombra en hover */
-.header-mobile > nav .ul-item li:hover,
-.header > nav .ul-item li:hover,
-.menu-icon .menu:hover {
-    /* ... */
-}
-
-/* Ajustes adicionales en la animación del hover */
-nav .ul-item li:hover {
-    /* ... */
-}
-
-nav .ul-item {
+.ul-item {
+    margin-top: 12vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    justify-content: center; /* Centrar verticalmente */
-    margin-block: .5rem;
-    padding-block: var(--nav-item-padding);
-    list-style: none;
-}
-
-nav .ul-item.oicon a {
-    display: none;
-}
-
-nav .ul-item .icon {
-    width: 30px;
-    height: 30px;
-}
-
-nav .ul-item li {
-    display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    gap: 10rem;
-    cursor: pointer;
-    padding-block: 1.2rem;
-    margin-block: .1rem;
-    flex-direction: row; /* Añade esta línea */
-}
-
-.header-mobile > nav .ul-item li:hover {
-    border-radius: 100%;
-}
-.header > nav .ul-item li:hover {
-    background-color: rgb(125, 118, 118);
-}
-
-.ul-item li:hover > .toolTipGlass {
-    display: flex;
-    position: relative;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 8px 12px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #000000;
-    width: auto;
-    height: auto;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    transition: all 0.3s ease-in-out;
-}
-
-.iconActive {
-    color: #00FF91FF;
-    margin-inline: 1rem;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.itemActive{
-
-    width: 60px;
-    height: 60px;
-    border-radius: 120%;
-}
-
-
-nav .ul-item li:hover > .icon{
-}
-nav .ul-item li .icon:hover {
-    font-size: 30px;
-}
-nav .ul-item li .icon {
-    font-size: 40px;
-}
-
-
-.toolTipGlass {
-    display: none;
-    position: relative; /* Añade esta línea */
-    top: 0; /* Añade esta línea */
-    transform: translateX(10px); /* Añade esta línea */
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 8px 12px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #000000;
-    width: auto;
-    height: auto;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    transition: all 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
-
-.toolTipGlass::after {
-    display: none;
-    content: "";
-    position: relative;
-    border-top: 8px solid transparent;
-    border-left: 8px solid rgba(255, 255, 255, 0.1); /* Modifica esta línea */
-    border-bottom: 8px solid transparent;
-}
-
-
-nav .ul-item li a {
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-left: 1px solid white;
-    padding-left: 2rem;
-
-}
-.menu-icon {
-
-    margin-inline: 1rem;
-}
-
-.logo {
-    transition: 1.5s ease;
-    filter: drop-shadow(0px 0px 0px hsl(0, 0%, 0%));
-
-    padding-top: 10%;
-    padding-bottom:30%;
-}
-
-.header-mobile .rrssIcons {
-
-    height: 50px;
-}
-
-.menu-icon .menu {
-    color: #1d1c1c;
-    margin-block: 1rem;
-    cursor: pointer;
-    font-size: 30px;
-}
-.menu-icon .menu:hover {
-
-    color:rgb(0, 255, 145);
-    border-radius: 100%;
-    background-color: rgb(125, 118, 118);
-}
-
-.banner {
-    filter: drop-shadow(2px 2px 2px hsl(0, 0%, 0%));
-    transition: 1.5s ease;
-
-
-}
-nav .ul-item li:hover {
-    transition: 1s ease;
-}
-
-.tooltipBorder {
-}
-
-@media (max-width:950px) {
-
-
-    nav ul li > .expandIcon {
-        background: aqua;
-    }
-
-
-    nav .ul-item.icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .menu-icon {
-        display: none;
-    }
-
-    nav .ul-item li .icon {
-        font-size: clamp(1rem,2vw + 1rem, 4rem);
-    }
-}
-/* Nueva media query para adaptar mejor el diseño a dispositivos móviles */
-@media (max-width: 767px) {
-    .header-mobile {
-        height: 100vh;
-        width: 15vw;
-        z-index: 20;
-        display: flex;
-        position: fixed;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 10px;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(10px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    }
-    nav .ul-item li {
-        transform: scale(0.85);
-    }
-    .logo {
-        padding-top: 5%;
-        padding-bottom: 10%;
-    }
-}
-
-/* Media query ajustada para dispositivos tablet */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .header-mobile {
-        height: 100vh;
-        width: 12vw;
-        z-index: 20;
-        display: flex;
-        position: fixed;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav .ul-item li {
-        transform: scale(0.9);
-    }
-
-    .logo {
-        padding-top: 5%;
-        padding-bottom: 10%;
-    }
-}
-
-/* Media query ajustada para pantallas más grandes */
-/* Media query ajustada para pantallas más grandes */
-@media (min-width: 1440px) {
-    .header-mobile {
-        width: 6vw;
-    }
-
-    nav .ul-item li .icon {
-        font-size: 2rem;
-    }
+    justify-content: space-evenly;
+    align-content: center;
+    list-style-type: none;
+    padding: 2vh 0; /* Ajusta el valor según tus preferencias */
+    margin-bottom: 3vh; /* Ajusta el valor según tus preferencias */
 }

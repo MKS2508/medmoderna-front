@@ -49,6 +49,7 @@ function App() {
             window.removeEventListener("scroll", listenToScroll);
 
     }, [])
+
     if (isVisible) {
         setIsVisible(false)
     }
