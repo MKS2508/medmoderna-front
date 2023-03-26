@@ -10,6 +10,7 @@ import ProductCard, {ProductCardLoading} from "../../components/Product/ProductC
 import {useParams} from "react-router-dom";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import ProductCardsListResponsive from "../../components/Product/ProductCardsListResponsive/ProductCardsListResponsive";
+import LayoutBase from "../../components/LayoutBase/LayoutBase";
 
 
 const Products = (props: IProductPageProps) => {
@@ -119,70 +120,65 @@ const Products = (props: IProductPageProps) => {
     const showSpinner = (loading || products.length < 1);
 
     return (
+        <LayoutBase>
+
         <AnimatedPage  className={"s22"}>
-            
-            <AnimatePresence                            >
-                <motion.div
+            <AnimatePresence>
+            <motion.div
+            initial={{opacity: 1}}
+            animate={{opacity: 1}}
+            exit={{opacity: 1}}
+            >
+            <div className="titleProducts">
 
-                    initial={{opacity: 1}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 1}}
-                >
-                    <div className="title">
-
-                        <h1>CATALOGO DE {props.name}</h1>
-                        <h2>{props.description}</h2>
-                    </div>
-                </motion.div>
-            </AnimatePresence>
-
-            {
-                <div                             className={"s3"}>
-                        <div hidden={!showSpinner}>
-                            <ProductCardsLoading/>
-                        </div>
-
-                    <section className="normalSection">
-                        {(!loading) ?
-                            <ProductCardsListResponsive isHome={false} products={products}/> : <></>
-                        }
-                    </section>
-                    <section className="mobile">
-                        {(!loading) ?
-
-                            <ProductCardsListResponsive  isHome={false}  products={products}/> : <></>
-                        }                    </section>
-
-                </div>
-            }
-
-            <div className="pagination">
-                <h1>Pagina {(page == 0 ? 1 : page)}</h1>
-                <button
-                    onClick={() => handlePageChange(page - 1)}
-                    disabled={page === 0}
-                    className={page === 0 ? "disabled" : ""}
-                >
-                    &laquo; Anterior
-                </button>
-                {Array.from({ length: totalPages }, (_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => handlePageChange(index)}
-                        className={index === page ? "active" : ""}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
-                <button
-                    onClick={() => handlePageChange(page + 1)}
-                    disabled={page === totalPages - 1}
-                    className={page === totalPages - 1 ? "disabled" : ""}
-                >
-                    Siguiente &raquo;
-                </button>
+                <h1>CATALOGO DE {props.name}</h1>
+                <h2>{props.description}</h2>
             </div>
-        </AnimatedPage>    );
+        </motion.div>
+        </AnimatePresence>
+            <div id={"content"}>
+
+                 <div   className={"prods"}>
+                 <div hidden={true}>
+                 <ProductCardsLoading/>
+                 </div>
+
+                     <ProductCardsListResponsive    products={products}/>
+
+
+                 </div>
+
+
+                 <div className="pagination">
+                 <h1>Pagina {(page == 0 ? 1 : page)}</h1>
+                 <button
+                 onClick={() => handlePageChange(page - 1)}
+                 disabled={page === 0}
+                 className={page === 0 ? "disabled" : ""}
+                 >
+                 &laquo; Anterior
+                 </button>
+                 {Array.from({length: totalPages}, (_, index) => (
+                <button
+                key={index}
+                onClick={() => handlePageChange(index)}
+                className={index === page ? "active" : ""}
+                >
+            {index + 1}
+                </button>
+                ))}
+                 <button
+                 onClick={() => handlePageChange(page + 1)}
+                 disabled={page === totalPages - 1}
+                 className={page === totalPages - 1 ? "disabled" : ""}
+                 >
+                 Siguiente &raquo;
+                 </button>
+                 </div>
+            </div>
+        </AnimatedPage>
+</LayoutBase>
+);
 
 }
 

@@ -7,8 +7,7 @@ const Base = styled.div`
   left: var(--sidebar-width);
   width: calc(100% - var(--sidebar-width));
   height: calc(100% - var(--topbar-height) - var(--miniheader-height));
-  overflow: auto;
-  background-color: #d31c1c;
+  overflow: hidden;
 `;
 
 interface LayoutBaseProps {

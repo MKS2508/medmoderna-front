@@ -2,7 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route, RouteProps} from 'react-router-dom';
 import Home from './pages/Home/Home';
 import TopBar from "./components/TopBar/TopBar";
-import SideBar, {GlobalStyle, sideBarTheme} from "./components/SideBar/SideBar";
+import SideBar, {GlobalStyle} from "./components/SideBar/SideBar";
 import Footer from "./components/Footer/Footer";
 import React, {useEffect, useState} from "react";
 import {DefaultTheme, ThemeProvider} from "styled-components";
@@ -57,7 +57,6 @@ function App() {
 
     return (
         <>
-            <ThemeProvider theme={sideBarTheme}>
                 <Router>
 
                 <TopBar/>
@@ -68,7 +67,6 @@ function App() {
             </Router>
                 <GlobalStyle />
 
-            </ThemeProvider>
 
         </>
     );

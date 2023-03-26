@@ -2,52 +2,21 @@
 .mobile {
     display: none;
 }
-@media (max-width: 440px) {
 
-
-    .normalSection {
-        display: none!important;
-    }
-    .mobile {
-        display: block;
-        margin-left:10%;
-    }
-    .title {
-        padding: 0!important;
-        text-align: center;
-    }
-    .card {
-        width: 240px;
-        height: 320px;
-    }
-
-    .wrapper-loading {
-        display: grid;
-        justify-content: center;
-
-    }
-
-    .wrapper-grid {
-        grid-template-columns: repeat(auto-fit, 16rem);
-    }
-    .title h1 {
-        padding-right: 10vw;
-        padding-left: 20vw;
-        display: flex;
-        justify-content: center;
-        padding-top: 15vh;
-        font-size: 40px;
-    }
-    .title h2 {
-        padding-right: 10vw;
-        padding-left: 20vw;
-        display: flex;
-        justify-content: center;
-        font-size: 25px;
-    }
+.titleProducts {
+    display: grid;
+    justify-content: center;
+    padding: 4vh;
 
 }
-
+.titleProducts h1 {
+    text-align: center;
+    font-size: 40px;
+}
+.titleProducts h2 {
+    text-align: center;
+    font-size: 25px;
+}
 /* Pagination.css */
 .pagination {
     display: flex;

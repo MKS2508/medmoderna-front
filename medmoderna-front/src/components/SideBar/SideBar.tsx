@@ -9,84 +9,13 @@ import MenuItem from './MenuItem';
 import styled, {createGlobalStyle} from 'styled-components';
 import {device, menuItems} from "../../WebParameters";
 
-export const sideBarTheme = {
-    sidebarWidth: 'clamp(4vw, 6vw, 12vw)',
-    navItemPadding: 'clamp(0.5rem, 10vh, 1.5rem)',
-    sidebarHeight: 'calc(100vh - var(--topbar-height) - var(--miniheader-height))', //Esto deberia ser el 100%disponible
-    breakpoints: device // Agrega la propiedad breakpoints
-};
+
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --sidebar-width: clamp(4vw, 6vw, 12vw);
     --nav-item-padding: clamp(0.5rem, 10vh, 1.5rem);
     --sidebar-height: calc(100vh - var(--topbar-height) - var(--miniheader-height));
   }
-  @media (max-width: ${device.mobileM}) {
-    :root {
-      // Estilos para mobileM
-      --sidebar-width: clamp(10vw, 17vw, 25vw);
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
-    }
-  }  @media (max-width: ${device.mobileS}) {
-    :root {
-      // Estilos para mobiles
-      --sidebar-width: clamp(10vw, 17vw, 25vw);
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
-    }
-    }  @media (max-width: ${device.mobileL}) {
-    :root {
-      // Estilos para mobiles
-      --sidebar-width: clamp(10vw, 17vw, 25vw);
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
-    }
-  }
-  @media (max-width: ${device.tablet}) {
-    :root {
-      // Estilos para tablet
-      --sidebar-width: clamp(10vw, 17vw, 25vw);
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
-    }
-  }
-  // Nuevos media queries
-  @media (max-width: ${device.laptop}) {
-    :root {
-      // Estilos para laptop
-      --sidebar-width: clamp(10vw, 17vw, 25vw);
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
-    }
-  }
-
-  @media (max-width: ${device.laptopL}) {
-    :root {
-      // Estilos para laptopL
-      --sidebar-width: clamp(10vw, 17vw, 25vw);
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
-    }
-  }
-
-  @media (max-width: ${device.desktop}) {
-    :root {
-      // Estilos para desktop
-      --sidebar-width: clamp(10vw, 17vw, 25vw);
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
-    }
-  }
-
-  @media (max-width: ${device.desktopL}) {
-    :root {
-      // Estilos para desktopL
-      --sidebar-width: clamp(10vw, 17vw, 25vw);
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
-    }
-  }
+  
 `;
 const SideBarComponent = styled(motion.div)`
   width: var(--sidebar-width);
@@ -175,6 +104,7 @@ const SideBar = () => {
 
     return (
         <>
+            <GlobalStyle />
 
             <AnimatePresence>
                 {!isVisible ? (
@@ -184,7 +114,6 @@ const SideBar = () => {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            theme={sideBarTheme}
                             variants={sidebarVariants}
                             transition={{ duration: 1 }}
                         >

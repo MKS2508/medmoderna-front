@@ -68,7 +68,7 @@ const SeccionRedesSociales: React.FC<SeccionInstagramProps> = ({ title, height, 
                             scale: 0.7,
                             borderRadius: '20%',
                             height: 400,
-                            marginLeft: 30,
+                            marginLeft: 0,
                         }}
                         animate={{
                             opacity: 1,

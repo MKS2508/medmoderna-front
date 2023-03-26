@@ -17,6 +17,9 @@ import ProductCardList from "../Product/ProductCardList";
 import styled, {createGlobalStyle, css, keyframes} from "styled-components";
 
 export const device = {
+    mobileS: '320px',
+    mobileM: '375px',
+    mobileL: '425px',
     mobile: '480px',
     tablet: '768px',
     laptop: '1024px',
@@ -29,50 +32,72 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --topbar-height: 8vh;
     --miniheader-height: 4vh;
+    --nav-item-padding: clamp(0.5rem, 10vh, 1.5rem);
+    --sidebar-height: calc(100vh - var(--topbar-height) - var(--miniheader-height));
   }
 
   @media (max-width: ${device.mobile}) {
     :root {
       --topbar-height: 10vh;
       --miniheader-height: 6vh;
+      --sidebar-width: clamp(10vw, 17vw, 25vw);
+      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
     }
   }
-
   @media (max-width: ${device.tablet}) {
     :root {
+      --sidebar-width: clamp(4vw,7vw,10vw);
+      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+
       --topbar-height: 10vh;
+  
       --miniheader-height: 5vh;
     }
   }
   @media (max-width:${device.laptop}) {
     :root {
+      --sidebar-width: clamp(4vw,7vw,10vw);
+      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+
       // Estilos para laptop
       --topbar-height: 10vh;
       --miniheader-height: 5vh;
     }
   }
-
   @media (max-width: ${device.laptopL}) {
     :root {
       // Estilos para laptopL
       --topbar-height: 10vh;
       --miniheader-height: 5vh;
+      --sidebar-width: clamp(4vw,7vw,10vw);
+      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+
     }
   }
-
   @media (max-width: ${device.desktop}) {
     :root {
       // Estilos para desktop
       --topbar-height: 10vh;
       --miniheader-height: 5vh;
+      --sidebar-width: clamp(4vw,7vw,10vw);
+      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+
     }
   }
-
   @media (max-width: ${device.desktopL}) {
     :root {
       // Estilos para desktopL
       --topbar-height: 10vh;
       --miniheader-height: 5vh;
+      --sidebar-width: clamp(4vw,7vw,10vw);
+      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+
     }
   }
 `;
@@ -374,7 +399,7 @@ const TopBar = () => {
                 </MiniHeaderH3>
             </MiniHeader>
             <TopBarElement id={"topBarElement"}>
-                <LogoBanner id={"logoBanner"}>
+                <LogoBanner id={"logoBanner"} onClick={() => navigate("/")}>
                     <LogoBannerImg alt="logo" src={logo} />
                 </LogoBanner>
                 <SearchBarContainer id={"SearchBarContainer"}>

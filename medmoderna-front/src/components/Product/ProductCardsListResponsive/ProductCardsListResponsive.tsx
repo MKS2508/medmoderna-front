@@ -11,10 +11,9 @@ import {ToastContainer} from "react-toastify";
 
 type ProductCardsListResponsiveProps = {
     products: IProductProps[];
-    isHome: boolean;
 }
 
-const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({ products, isHome }) => {
+const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({ products }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth >= 768);
 
     useEffect(() => {
@@ -45,7 +44,8 @@ const ProductCardsListResponsive: React.FC<ProductCardsListResponsiveProps> = ({
                         maxLines={2}
                         maxCharsPerLine={70}
                         index={index}
-                        mobileVersion={isMobile}
+                       // mobileVersion={isMobile}
+                        mobileVersion={false}
                     />
                 ))}
             </div>
