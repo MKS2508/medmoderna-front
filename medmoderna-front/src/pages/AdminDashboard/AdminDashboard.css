@@ -31,8 +31,7 @@
 
 .admin-dashboard {
     padding-top: 20vh;
-    margin-left: 20vh;
-    width: 80%;
+    width: 100%;
     font-family: var(--main-font-family);
 }
 

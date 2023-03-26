@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ExcelUploader from "../../components/ExcelUploader/ExcelUploader";
 import {useAuth} from "../../Auth/AuthContext";
 import LayoutBase from "../../components/LayoutBase/LayoutBase";
+import ProductCardNew from "../../components/Product/ProductCardNew/ProductCardNew";
 
 const AdminDashboard: React.FC = () => {
     const [editingProductId, setEditingProductId] = useState<number | null>(null);
@@ -230,7 +231,7 @@ const AdminDashboard: React.FC = () => {
                     </div>
 
                     <div className="preview-container">
-                        <ProductCardNewHome
+                        <ProductCardNew
                             key={newProductName}
                             imgSrc={newProductImgSrc}
                             imgSrc2={newProductImgSrc2}
