@@ -2,28 +2,260 @@ import React, {useEffect, useState} from 'react'
 
 import {Link, useNavigate} from 'react-router-dom'
 import './TopBar.css'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import 'font-awesome/css/font-awesome.css';
 import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CSS
 // @ts-ignore
 import ScrollText from 'react-scroll-text'
-
 import {config} from "@fortawesome/fontawesome-svg-core";
-import {ReactSVG} from 'react-svg'
-import {FaCannabis, FaBong, FaJoint, FaFacebookSquare} from "react-icons/fa";
 import {RiPlantFill, RiInstagramFill, RiWhatsappFill, RiShoppingCart2Fill, RiUser2Fill} from "react-icons/ri";
-import {GiLightBulb} from "react-icons/gi";
-
 import logo from '../../assets/logo4.png'
-
-import banner from "../../assets/banner.png";
-import ReactWhatsapp from "react-whatsapp";
 import {AnimatePresence, motion} from "framer-motion";
 import {IProductProps} from "../../models/IProductProps";
 import {getProductsFromQuery, postProduct} from "../../services/api-products-service";
 import {ReactSearchAutocomplete} from 'react-search-autocomplete'
-import ProductCard from "../Product/ProductCard";
 import ProductCardList from "../Product/ProductCardList";
+import styled, {createGlobalStyle, css, keyframes} from "styled-components";
+
+export const device = {
+    mobile: '480px',
+    tablet: '768px',
+    laptop: '1024px',
+    laptopL: '1440px',
+    desktop: '1920px',
+    desktopL: '2560px',
+};
+
+export const GlobalStyle = createGlobalStyle`
+  :root {
+    --topbar-height: 8vh;
+    --miniheader-height: 4vh;
+  }
+
+  @media (max-width: ${device.mobile}) {
+    :root {
+      --topbar-height: 10vh;
+      --miniheader-height: 6vh;
+    }
+  }
+
+  @media (max-width: ${device.tablet}) {
+    :root {
+      --topbar-height: 10vh;
+      --miniheader-height: 5vh;
+    }
+  }
+  @media (max-width:${device.laptop}) {
+    :root {
+      // Estilos para laptop
+      --topbar-height: 10vh;
+      --miniheader-height: 5vh;
+    }
+  }
+
+  @media (max-width: ${device.laptopL}) {
+    :root {
+      // Estilos para laptopL
+      --topbar-height: 10vh;
+      --miniheader-height: 5vh;
+    }
+  }
+
+  @media (max-width: ${device.desktop}) {
+    :root {
+      // Estilos para desktop
+      --topbar-height: 10vh;
+      --miniheader-height: 5vh;
+    }
+  }
+
+  @media (max-width: ${device.desktopL}) {
+    :root {
+      // Estilos para desktopL
+      --topbar-height: 10vh;
+      --miniheader-height: 5vh;
+    }
+  }
+`;
+const marquee = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+`;
+
+const logoAnimation = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+const MiniHeader = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: var(--miniheader-height);
+  background-color: #24af4e;
+  text-align: center;
+  z-index: 22;
+
+  h3 {
+    color: white;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: ${marquee} 30s linear infinite;
+  }
+`;
+
+const TopBarElement = styled.div`
+  position: fixed;
+  height: var(--topbar-height);
+  background-color: hsla(0, 9%, 91%, 0.13);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 25;
+  margin-top: var(--miniheader-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 5vw;
+  width: 100vw;
+`;
+
+const LogoBanner = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: start;
+  position: fixed;
+  left: 1vw;
+  z-index: 22;
+  width: 5vw;
+  border-radius: 50%;
+  animation: ${logoAnimation} 2s infinite;
+  margin-right: 20px;
+
+  img {
+    z-index: 22;
+    width: 100%;
+  }
+`;
+
+const SearchBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+`;
+
+
+
+// Convierte .topBar a styled-component
+
+const StyledReactSearchAutocomplete = styled.div`
+  z-index: 22;
+  position: relative;
+  font-size: 2.4rem;
+  width: 40vw;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  left: 12vw;
+  border: none;
+  outline: none;
+  border-radius: 3rem;
+  transition: all 0.2s;
+  transition-delay: 0.1s;
+
+  &:hover {
+    width: 45vw;
+  }
+
+  &::placeholder {
+    opacity: 0.5;
+  }
+`;
+const TopBarIcons = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5vw;
+  height: 100%;
+  width: 100%;
+`;
+// Continúa convirtiendo los demás elementos a styled-components
+
+const MiniHeaderH3 = styled(motion.h3)`
+  color: white;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: marquee 30s linear infinite;
+`;
+
+
+
+const LogoBannerImg = styled.img`
+  z-index: 22;
+  width: 100%;
+`;
+
+const IconWrapper = styled.div`
+  cursor: pointer;
+`;
+
+const LoginModal = styled.div`
+  position: absolute;
+  top: 100%;
+  z-index: 30;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 1rem;
+  /* Agrega más estilos para el modal de inicio de sesión/registro */
+`;
+
+const CartModal = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 1rem;
+  /* Agrega más estilos para el modal de carrito de la compra */
+`;
+
+const glassmorphismTheme = {
+    height: "40px",
+    border: "none",
+    backdropFilter: "blur(10px)",
+    overflow:"scroll",
+    borderRadius: "20px",
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    hoverBackgroundColor: "rgba(255, 255, 255, 0.7)",
+    color: "black",
+    fontSize: "1rem",
+    fontFamily: "Arial, sans-serif",
+    iconColor: "white",
+    lineColor: "rgba(255, 255, 255, 0.2)",
+    placeholderColor: "rgba(255, 255, 255, 0.5)",
+    zIndex: 1000,
+    clearIconMargin: "0 10px",
+    searchIconMargin: "10px",
+};
 
 const TopBar = () => {
     let navigate = useNavigate();
@@ -34,7 +266,8 @@ const TopBar = () => {
     const [items, setItems] = useState<IProductProps[]>([]);
     const [placeholderStr, setPlaceholderStr] = useState<string>("Encuentra lo que buscas");
     const [isVisible, setIsVisible] = useState(true);
-
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showCartModal, setShowCartModal] = useState(false);
 
     const listenToScroll = () => {
         let heightToHideFrom = 30;
@@ -128,70 +361,62 @@ const TopBar = () => {
             </>
         )
     }
-    const glassmorphismTheme = {
-        height: "40px",
-        border: "none",
-        backdropFilter: "blur(10px)",
-        overflow:"scroll",
-        borderRadius: "20px",
-        backgroundColor: "rgba(255, 255, 255, 0.6)",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        hoverBackgroundColor: "rgba(255, 255, 255, 0.7)",
-        color: "black",
-        fontSize: "1rem",
-        fontFamily: "Arial, sans-serif",
-        iconColor: "white",
-        lineColor: "rgba(255, 255, 255, 0.2)",
-        placeholderColor: "rgba(255, 255, 255, 0.5)",
-        zIndex: 1000,
-        clearIconMargin: "0 10px",
-        searchIconMargin: "10px",
-    };
+
 
     return (
         <>
-            <div className="miniHeader">
-                <motion.h3>
-                    <a href={""} style={{color: "inherit"}}>
+            <GlobalStyle />
+            <MiniHeader>
+                <MiniHeaderH3>
+                    <a href={""} style={{ color: "inherit" }}>
                         Puedes encontrarnos en Avenida de Mendavia, Nº16 Pabellón 2, 26009 Logroño, La Rioja
                     </a>
-                </motion.h3>
-            </div>
-            <div className="topBar">
-                <div className="logoBanner" onClick={() => {
-                    navigate("/");
-                    setIsVisible(false);
-                    window.scroll(0, 0)
-                }}>
-                    <img alt="logo" src={logo}/>
-                </div>
-                <div className="searchBarContainer">
-
-                <div key={"searchBarWrap"}
-                     className={"searchBar"}>
-                    <ReactSearchAutocomplete
-                        styling={glassmorphismTheme}
-                        key={"searchBar"}
-                        items={items}
-                        onSearch={handleOnSearch}
-                        onHover={handleOnHover}
-                        onSelect={handleOnSelect}
-                        onFocus={handleOnFocus}
-                        autoFocus
-                        formatResult={formatResult}
-                        placeholder={placeholderStr}
-                    />
-                </div>
-                </div><div className="topbarIcon2">
-                <RiUser2Fill size={46} className='iconRRSS'/>
-            </div>
-                <div className="topbarIcon">
-                    <RiShoppingCart2Fill size={46} className='iconRRSS'/>
-                </div>
-
-            </div>
+                </MiniHeaderH3>
+            </MiniHeader>
+            <TopBarElement id={"topBarElement"}>
+                <LogoBanner id={"logoBanner"}>
+                    <LogoBannerImg alt="logo" src={logo} />
+                </LogoBanner>
+                <SearchBarContainer id={"SearchBarContainer"}>
+                    <StyledReactSearchAutocomplete>
+                        <ReactSearchAutocomplete
+                            styling={glassmorphismTheme}
+                            key={"searchBar"}
+                            items={items}
+                            onSearch={handleOnSearch}
+                            onHover={handleOnHover}
+                            onSelect={handleOnSelect}
+                            onFocus={handleOnFocus}
+                            autoFocus
+                            formatResult={formatResult}
+                            placeholder={placeholderStr}
+                        />
+                    </StyledReactSearchAutocomplete>
+                </SearchBarContainer>
+                <TopBarIcons id={"topBarIcons"}>
+                    <IconWrapper onClick={() => setShowLoginModal(!showLoginModal)}>
+                        <RiUser2Fill size={30}/>
+                        {showLoginModal && (
+                            <LoginModal>
+                                <h1>Inicia sesion</h1>
+                                {/* Contenido del modal de inicio de sesión/registro */}
+                            </LoginModal>
+                        )}
+                    </IconWrapper>
+                    <IconWrapper onClick={() => setShowCartModal(!showCartModal)}>
+                        <RiShoppingCart2Fill size={30} />
+                        {showCartModal && (
+                            <CartModal>
+                                <h1>Carrito de la compra</h1>
+                                {/* Contenido del modal de carrito de la compra */}
+                            </CartModal>
+                        )}
+                    </IconWrapper>
+                </TopBarIcons>
+            </TopBarElement>
         </>
-    )
+    );
+
 
 }
 

@@ -120,6 +120,7 @@ const Products = (props: IProductPageProps) => {
 
     return (
         <AnimatedPage  className={"s22"}>
+            
             <AnimatePresence                            >
                 <motion.div
 

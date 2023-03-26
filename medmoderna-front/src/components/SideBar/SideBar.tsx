@@ -21,8 +21,29 @@ export const GlobalStyle = createGlobalStyle`
     --nav-item-padding: clamp(0.5rem, 10vh, 1.5rem);
     --sidebar-height: calc(100vh - var(--topbar-height) - var(--miniheader-height));
   }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  @media (max-width: ${device.mobileM}) {
+    :root {
+      // Estilos para mobileM
+      --sidebar-width: clamp(10vw, 17vw, 25vw);
+      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+    }
+  }  @media (max-width: ${device.mobileS}) {
+    :root {
+      // Estilos para mobiles
+      --sidebar-width: clamp(10vw, 17vw, 25vw);
+      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+    }
+    }  @media (max-width: ${device.mobileL}) {
+    :root {
+      // Estilos para mobiles
+      --sidebar-width: clamp(10vw, 17vw, 25vw);
+      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+    }
+  }
+  @media (max-width: ${device.tablet}) {
     :root {
       // Estilos para tablet
       --sidebar-width: clamp(10vw, 17vw, 25vw);
@@ -31,7 +52,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   // Nuevos media queries
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptop}) {
+  @media (max-width: ${device.laptop}) {
     :root {
       // Estilos para laptop
       --sidebar-width: clamp(10vw, 17vw, 25vw);
@@ -40,7 +61,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.laptopL}) {
+  @media (max-width: ${device.laptopL}) {
     :root {
       // Estilos para laptopL
       --sidebar-width: clamp(10vw, 17vw, 25vw);
@@ -49,7 +70,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  @media (max-width: ${device.desktop}) {
     :root {
       // Estilos para desktop
       --sidebar-width: clamp(10vw, 17vw, 25vw);
@@ -58,7 +79,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.desktopL}) {
+  @media (max-width: ${device.desktopL}) {
     :root {
       // Estilos para desktopL
       --sidebar-width: clamp(10vw, 17vw, 25vw);
