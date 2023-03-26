@@ -93,15 +93,15 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
     return (
         <section id={"seccionProductosDestacados"}>
             <SeccionResponsiveVideoBackground
+                responsive={false}
+                useAutoHeightContent={false}
                 hasVideo={hasVideo}
                 videoSrc={videoSrc}
                 title={
                     <div>
                         <h1>{title}</h1>
                         <span className="category-switcher">
-                    <button className="switcher-button" onClick={handlePrevCategory}>
-                        <FaChevronLeft/>
-                    </button>
+
                         <motion.h2
                             className="animated-category-name"
                             initial={{ opacity: 0, y: -10 }}
@@ -112,7 +112,9 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
                         >
                         {CATEGORIES[categoryIndex].name}
                         </motion.h2>
-
+                    <button className="switcher-button" onClick={handlePrevCategory}>
+                        <FaChevronLeft/>
+                    </button>
                     <button className="switcher-button" onClick={handleNextCategory}>
                         <FaChevronRight/>
                     </button>
@@ -122,7 +124,7 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
                 }
                 mobileStack={mobileStack}
                 isVideoFetched={isVideoFetched}
-                height={height}
+                height={(window.innerWidth >= 768) ? height : "80vh"}
             >
                 {getVisibleProducts().map((item, index) => (
                     <>

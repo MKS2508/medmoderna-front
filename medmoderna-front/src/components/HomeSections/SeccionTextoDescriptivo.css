@@ -10,9 +10,8 @@
 
 /* Caption styles */
 .captionTexto {
-    position: absolute;
+    position: relative;
     left: 0;
-    top: 40%;
     width: 100%;
     text-align: center;
 }
@@ -30,17 +29,4 @@
 
 .texto-descriptivo {
     color: black;
-}
-
-/* Responsive styles for small screens */
-@media screen and (max-width: 768px) {
-    .captionTexto {
-        top: 50%;
-    }
-
-    .captionTexto .borderTexto > div {
-        max-width: 80vw;
-        left: 10%;
-        font-size: 18px;
-    }
 }

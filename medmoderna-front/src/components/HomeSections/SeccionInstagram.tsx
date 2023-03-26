@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './SeccionInstagram.css';
 import SeccionResponsiveVideoBackground from "./SeccionResponsiveVideoBackground";
 import { VIDEO_LINK_3, VIDEO_POSTER_1 } from "../../WebParameters";
+import LayoutBase from "../LayoutBase/LayoutBase";
+import IframeCards from "../IframesCards/IframeCards";
 
 interface SeccionInstagramProps {
     title: string;
@@ -57,40 +59,16 @@ const SeccionRedesSociales: React.FC<SeccionInstagramProps> = ({ title, height, 
 
 
     return (
-        <SeccionResponsiveVideoBackground responsive={true} hasVideo={hasVideo} videoSrc={videoSrc} title={title} height={height} mobileStack={mobileStack}>
-            {igPosts.map((igPost, index) => (
-                <AnimatePresence key={index}>
 
-                    <motion.iframe
-                        className="iframeIg"
-                        initial={{
-                            opacity: 0,
-                            scale: 0.7,
-                            borderRadius: '20%',
-                            height: 400,
-                            marginLeft: 0,
-                        }}
-                        animate={{
-                            opacity: 1,
-                            scale: 1,
-                            borderRadius: '10px',
-                            marginLeft: 30,
-                            marginRight: 30,
+        <SeccionResponsiveVideoBackground responsive={false} hasVideo={false} videoSrc={videoSrc} title={title} height={height} mobileStack={mobileStack} hideContentContainer={true}>
 
-                            height: 400,
-                        }}
-                        exit={{ opacity: 0.3 }}
-                        transition={{ duration: 1.5 }}
-                        key={igPost}
-                        width={responsiveCardWidth}
-                        height={responsiveCardHeight}
-                        src={igPost}
-                        frameBorder="0"
-                        style={{ maxWidth: '100%', marginTop: "2rem" }} // Agregar esta línea para ajustar el ancho
-                    />
+
+                <AnimatePresence>
+                    <IframeCards igPosts={igPosts}/>
                 </AnimatePresence>
-            ))}
+                <></>
         </SeccionResponsiveVideoBackground>
+
     );
 };
 

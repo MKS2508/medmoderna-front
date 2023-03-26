@@ -3,6 +3,7 @@ import "./SeccionResponsiveVideoBackground.css";
 import axios from "axios";
 import {VIDEO_LINK_3, VIDEO_POSTER_1} from "../../WebParameters";
 import LazyLoad from "react-lazyload";
+import LayoutBase from "../LayoutBase/LayoutBase";
 
 interface ISeccionResponsiveVideoBackgroundProps {
     title: any;
@@ -10,11 +11,14 @@ interface ISeccionResponsiveVideoBackgroundProps {
     height: string;
     isVideoFetched?: (fetched: boolean) => void;
     children: React.ReactNode[];
-    mobileStack?: boolean; // Agrega esta línea
+    mobileStack?: boolean;
     posterSrc?:string;
     hasVideo?: boolean;
     responsive? : boolean;
+    hideContentContainer?: boolean;
+    useAutoHeightContent?: boolean; // Nueva propiedad
 }
+
 
 const VideoComponent = (props: ISeccionResponsiveVideoBackgroundProps) => {
     const { videoSrc, posterSrc, height, hasVideo } = props;
@@ -24,7 +28,7 @@ const VideoComponent = (props: ISeccionResponsiveVideoBackgroundProps) => {
     }
 
     return (
-        <div className="video-container" style={{height:height}}>
+        <div className="video-container2" >
             <video autoPlay muted loop playsInline
                 poster={posterSrc}
             >
@@ -36,7 +40,7 @@ const VideoComponent = (props: ISeccionResponsiveVideoBackgroundProps) => {
 };
 
 
-const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgroundProps> = ({ title, responsive, videoSrc, height, isVideoFetched, children, mobileStack, hasVideo }) => {
+const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgroundProps> = ({ title, responsive, videoSrc, height, isVideoFetched, children, mobileStack, hasVideo, hideContentContainer, useAutoHeightContent }) => {
     const [videoData, setVideoData] = useState<Blob | null>(null);
     const [responsiveHeight, setResponsiveHeight] = useState(height);
 
@@ -79,20 +83,13 @@ const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgrou
 
     const updateDimensions = () => {
         console.log({responsive: window.innerWidth})
-        if (window.innerWidth <= 386) {
-            console.log({responsive: "Dispositivo : S8 Ultra"})
-            setResponsiveHeight('160vh');
-        } else if (window.innerWidth <= 389) {
-            console.log({responsive: "Dispositivo : Iphone SE"})
-            setResponsiveHeight('160vh');
-        } else if (window.innerWidth <= 400) {
-            console.log({responsive: "Dispositivo : Iphone 12 Pro"})
-            setResponsiveHeight('130vh');
-        } else if (window.innerWidth <= 415) {
+
+             if (window.innerWidth <= 768) {
             console.log({responsive: "Dispositivo : Iphone XR"})
-            setResponsiveHeight('130vh');
+            setResponsiveHeight('50vh');
         } else {
-            setResponsiveHeight(height);
+            //setResponsiveHeight('50vh');
+            // setResponsiveHeight(height);
         }
     };
     useEffect(() => {
@@ -109,44 +106,78 @@ const SeccionResponsiveVideoBackground: React.FC<ISeccionResponsiveVideoBackgrou
     const singleContainer = children.length <= 2;
 
     return (
-        <section className="seccion-responsive-video-background" style={{ height: (mobileStack && responsive) ? responsiveHeight : height}}>
-            <section>
-                <div className="categorias-title">
-                    <h1>{title}</h1>
-                </div>
-            </section>
-            <div className="content-container">
-                <div className={`bgimg-categories${mobileStack ? " mobile-stack" : ""}`}>
-                    {singleContainer ? (
-                        <div className={`categorias-container${mobileStack ? " categorias-container-mobile" : ""}`}>
-                            {children.map((child) => child)}
+        <section
+            className="seccion-responsive-video-background"
+            style={{
+                height: mobileStack && responsive ? responsiveHeight : height,
+            }}
+        >
+            <LayoutBase useBaseAutoHeightHeader={true}>
+                <section>
+                    <div className="categorias-title">
+                        <h1>{title}</h1>
+                    </div>
+                </section>
+            </LayoutBase>
+            {!hideContentContainer && ( // Usar la nueva propiedad para mostrar u ocultar el contenedor{!hideContentContainer && (
+                <LayoutBase useBaseFullHeight={!useAutoHeightContent} useBaseAutoHeightHeader={useAutoHeightContent}>
+                    <div className="content-container">
+                        <div className={`bgimg-categories${mobileStack ? " mobile-stack" : ""}`}>
+                            {singleContainer ? (
+                                <div
+                                    className={`categorias-container${
+                                        mobileStack ? " categorias-container-mobile" : ""
+                                    }`}
+                                >
+                                    {children.map((child) => child)}
+                                </div>
+                            ) : (
+                                <>
+                                    <div
+                                        className={`categorias-container${
+                                            mobileStack ? " categorias-container-mobile" : ""
+                                        }`}
+                                    >
+                                        {firstHalf.map((child) => child)}
+                                    </div>
+                                    <div
+                                        className={`categorias-container${
+                                            mobileStack ? " categorias-container-mobile" : ""
+                                        }`}
+                                    >
+                                        {secondHalf.map((child) => child)}
+                                    </div>
+                                </>
+                            )}
                         </div>
-                    ) : (
-                        <>
-                            <div className={`categorias-container${mobileStack ? " categorias-container-mobile" : ""}`}>
-                                {firstHalf.map((child) => child)}
-                            </div>
-                            <div className={`categorias-container${mobileStack ? " categorias-container-mobile" : ""}`}>
-                                {secondHalf.map((child) => child)}
-                            </div>
-                        </>
-                    )}
-                </div>
-            </div>
-
+                    </div>
+                </LayoutBase>
+            )}
+            {/* ... (El resto del código es igual) */}
             <div className="video-container2">
-
-                { (
+                {hasVideo ? (
                     <LazyLoad>
-                        <VideoComponent title={title} hasVideo={hasVideo} children={children} posterSrc={VIDEO_POSTER_1}  videoSrc={videoSrc} height={height}/>
+                        <VideoComponent
+                            title={title}
+                            hasVideo={hasVideo}
+                            children={children}
+                            posterSrc={VIDEO_POSTER_1}
+                            videoSrc={videoSrc}
+                            height={height}
+                        />
                     </LazyLoad>
+                ) : (
+                    <>
+                        {children}
+                    </>
                 )}
             </div>
 
-            <section>
-                <div className="categorias-bottom">
-                </div>
-            </section>
+            <LayoutBase isBottom={true}>
+                <section>
+                    <div className="categorias-bottom"></div>
+                </section>
+            </LayoutBase>
         </section>
     );
 };

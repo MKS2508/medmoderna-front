@@ -22,7 +22,8 @@ const SeccionCategorias: React.FC<ISeccionCategoriasProps> = ({ title, videoSrc,
         <SeccionResponsiveVideoBackground
             title={title}
             videoSrc={videoSrc}
-            height={height}
+            height={(window.innerWidth >= 768) ? height : "40vh"}
+            hasVideo={true} hideContentContainer={false} useAutoHeightContent={false}
             isVideoFetched={(fetched) =>{isVideoFetched(fetched) ;console.log('Video fetched:', fetched)}}
         >
             {categories.map((category) => (

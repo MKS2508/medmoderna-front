@@ -40,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
       --miniheader-height: 6vh;
       --sidebar-width: clamp(10vw, 17vw, 25vw)!important;
       --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height))!important;
+      --sidebar-height: calc(100vh - var(--topbar-height) - var(--miniheader-height))!important;
     }
   }
   @media (max-width: ${device.tablet}) {
@@ -103,9 +103,9 @@ export const GlobalStyle = createGlobalStyle`
       // Estilos para desktopL
       --topbar-height: 10vh;
       --miniheader-height: 5vh;
-      --sidebar-width: clamp(4vw,7vw,10vw);
+      --sidebar-width: clamp(4vw,5vw,8vw);
       --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+      --sidebar-height: calc(100vh - var(--topbar-height) - var(--miniheader-height));
 
     }
   }

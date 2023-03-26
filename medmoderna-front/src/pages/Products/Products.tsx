@@ -74,7 +74,7 @@ const Products = (props: IProductPageProps) => {
     };
 
     return (
-        <LayoutBase>
+        <LayoutBase layoutWithMenuBars={true}>
             <AnimatedPage className={'s22'}>
                 <AnimatePresence>
                     <motion.div

@@ -26,6 +26,7 @@ import {
     VIDEO_LINK_2,
     VIDEO_LINK_3
 } from "../../WebParameters";
+import LayoutBase from "../../components/LayoutBase/LayoutBase";
 // Importa los componentes usando React.lazy
 const SeccionProductosDestacados = lazy(() => import('../../components/HomeSections/SeccionProductosDestacados'));
 const SeccionMarcas = lazy(() => import('../../components/HomeSections/SeccionMarcas'));
@@ -233,19 +234,19 @@ const Home = () => {
                     <Suspense fallback={<div>Loading...</div>}>
                         <SeccionCarruselPrincipal />
                     </Suspense>
-                    <div ref={videoContainerRef2} className={(window.innerWidth < 630) ? "mobile" : "section"}>
+                    <div /*ref={videoContainerRef2} className={(window.innerWidth < 630) ? "mobei332le" : "see3232ction"}*/>
 
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionRedesSociales hasVideo={false} igPosts={[igPost, igPost]} videoSrc={""}  height="80vh" cardWidth={"450px"} cardHeight={"600px"} mobileStack={true} title={SECCION_HOME_TEXTO_INSTAGRAM}/>
+                            <SeccionRedesSociales hasVideo={false} igPosts={[igPost, igPost]} videoSrc={""}  height="90vh" cardWidth={"450px"} cardHeight={"600px"} mobileStack={false} title={SECCION_HOME_TEXTO_INSTAGRAM}/>
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionTextoDescriptivo textoDescriptivo={TEXTO_DESCRIPTIVO} />
+                            <SeccionTextoDescriptivo height={60} textoDescriptivo={TEXTO_DESCRIPTIVO} />
                         </Suspense>
 
                         <Suspense fallback={<div>Loading...</div>}>
-                            <SeccionProductosDestacados mobileStack={false} hasVideo={true} height={(window.innerWidth < 700 ? "120vh" : (window.innerWidth > 1300 ?  "145vh" : "155vh")) } homeProds={homeProds} title={SECCION_HOME_TEXTO_PRODUCTOS_DESTACADOS} videoSrc={VIDEO_LINK_1}
+                            <SeccionProductosDestacados mobileStack={false} hasVideo={true} height={"140vh"}  homeProds={homeProds} title={SECCION_HOME_TEXTO_PRODUCTOS_DESTACADOS} videoSrc={VIDEO_LINK_1}
                                                         isVideoFetched={handleVideoProductosFetched}
                             />
                         </Suspense>
@@ -265,6 +266,7 @@ const Home = () => {
                         <Suspense fallback={<div>Loading...</div>}>
                             <SeccionMarcas
                                 height={"100vh"}
+
                                 title={SECCION_HOME_TEXTO_MARCAS}
                                 videoSrc={VIDEO_LINK_3}
                                 brands={BRANDS}
@@ -274,7 +276,7 @@ const Home = () => {
                         </Suspense>
                     </div>
 
-                </div>
+                    </div>
                 <Footer />
             </AnimatedPage>
 

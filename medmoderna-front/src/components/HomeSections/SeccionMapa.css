@@ -1,16 +1,13 @@
 .mapa-title {
     display: flex;
     justify-content: center;
-    margin-top: 3rem;
-    padding-top: 2rem;
+    text-align: center;
+    padding: 2rem;
 }
 
 .mapa-container {
-    display: flex;
     justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 20%;
+
 }
 
 .google-map-code iframe {
@@ -20,18 +17,3 @@
 }
 
 /* Responsive styles for small screens */
-@media screen and (max-width: 768px) {
-    .mapa-title h2 {
-        padding-left: 10vw;
-        padding-top: 5vw;
-
-        font-size: 16px;
-        text-align: center;
-    }
-
-    .google-map-code iframe {
-        padding-left: var(--sidebar-width);
-        width: 100%;
-        height: 300px;
-    }
-}
