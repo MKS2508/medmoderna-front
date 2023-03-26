@@ -223,7 +223,7 @@ const Home = () => {
 
         <>
 
-            <div hidden={imagesLoaded && videoCategoriasFetched && videoProductosFetched && videoMarcasFetched  }>
+            <div hidden={imagesLoaded/** && videoCategoriasFetched && videoProductosFetched && videoMarcasFetched **/ }>
                 <LoadingPage logoSrc={"a"}/>
             </div>
 

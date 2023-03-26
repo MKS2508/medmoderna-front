@@ -1,61 +1,39 @@
-import {REACT_APP_API_KEY, API_URL} from"../config"
-import axios from "axios";
-import {IProductPageProps} from "../models/IProductPageProps";
-import {IProductProps} from "../models/IProductProps";
+import axios from 'axios';
+import { API_URL } from '../config';
+import { IUser } from '../models/IUser';
+import { IAuthResponse } from '../models/IAuthResponse';
+import {toast} from "react-toastify";
+const handleError = (error: any) => {
+    toast(`Error: ${error.message}`, {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+    console.error(new Error(error));
+};
 
-export const getProductsFromCategory = async (props: IProductPageProps): Promise<IProductProps[]> => {
-    console.log({propsName: props.name})
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
-    const apiUrl = (!props.elementsSize) ? `${API_URL}/products/category/${props.name}?page=${props.pagination}&size=10` :`${API_URL}/products/category/${props.name}?page=0${props.pagination}&size=${props.elementsSize}`;
-    const testingURL2 = `${testingURL}/${props.name}`;
-    return new Promise<IProductProps[]>((async (resolve, reject) => {
-        try {
-            const response = await axios.get(apiUrl);
-            const requestOK: boolean = (response.status === 200);
-            const products: IProductProps[] = (requestOK) ? response.data.products : null;
-            console.warn({products, requestOK, response});
-            (products) ? resolve(products) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
-        }
+export const registerUser = async (user: IUser): Promise<IAuthResponse> => {
+    try {
+        const response = await axios.post(`${API_URL}/auth/register`, user);
+        return response.data;
+    } catch (error: any) {
+        handleError(error);
+        throw error;
+    }
+};
 
-    }));
-}
-export const getProductsFromBrand = async (props: IProductPageProps, brand: string): Promise<IProductProps[]> => {
-    console.log({propsName: props.name})
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
-    const apiUrl = (!props.elementsSize) ? `${API_URL}/products/brand/${brand}?page=${props.pagination}&size=10` :`${API_URL}/products/brand/${brand}?page=0${props.pagination}&size=${props.elementsSize}`;
-    const testingURL2 = `${testingURL}/${props.name}`;
-    return new Promise<IProductProps[]>((async (resolve, reject) => {
-        try {
-            const response = await axios.get(apiUrl);
-            const products: IProductProps[] =  response.data.products;
-            console.warn({products, response});
-            (products) ? resolve(products) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
-        }
+export const loginUser = async (email: string, password: string): Promise<IAuthResponse> => {
+    try {
+        const response = await axios.post(`${API_URL}/auth/login`, { email, password });
+        return response.data;
+    } catch (error: any) {
+        handleError(error);
+        throw error;
+    }
+};
 
-    }));
-}
-export const getProductById = async (id?: any): Promise<IProductProps> => {
-    //si se le pasa tanmanio usa una url o otra
-    const testingURL = "http://localhost:8080/api"
-    const apiUrl = `${API_URL}/products/${id}`;
-    return new Promise<IProductProps>((async (resolve, reject) => {
-        try {
-            const response = await axios.get(apiUrl);
-            const product: IProductProps =  response.data;
-            console.warn({product, response});
-            (product) ? resolve(product) : reject(new Error(`404 on ${apiUrl}`))
-        } catch (e:any) {
-            console.log(new Error(e));
-            reject(e)
-        }
 
-    }));
-}

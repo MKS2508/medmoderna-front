@@ -16,6 +16,8 @@ import {getProductsFromQuery} from "./services/api-products-service";
 import ProductCardList from "./components/Product/ProductCardList";
 import {IProductProps} from "./models/IProductProps";
 import {ToastContainer} from "react-toastify";
+import {menuItems} from "./WebParameters";
+import {AuthProvider} from "./Auth/AuthContext";
 
 
 function App() {
@@ -56,11 +58,12 @@ function App() {
     }
 
     return (
-        <>
+        <AuthProvider>
+
                 <Router>
 
                 <TopBar/>
-                <SideBar/>
+                <SideBar sideBarMenuItems={menuItems}/>
                 <AnimatedRoutes/>
                 <ToastContainer/>
 
@@ -68,7 +71,7 @@ function App() {
                 <GlobalStyle />
 
 
-        </>
+        </AuthProvider>
     );
 }
 

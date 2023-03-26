@@ -5,6 +5,7 @@ import { deleteProduct, getAllProducts, postProduct, editProduct } from "../../s
 import ProductCardNewHome from "../../components/Product/ProductCardNew/ProductCardNew";
 import 'react-toastify/dist/ReactToastify.css';
 import ExcelUploader from "../../components/ExcelUploader/ExcelUploader";
+import {useAuth} from "../../Auth/AuthContext";
 
 const AdminDashboard: React.FC = () => {
     const [editingProductId, setEditingProductId] = useState<number | null>(null);
@@ -51,6 +52,11 @@ const AdminDashboard: React.FC = () => {
     });
 
     const [imageType, setImageType] = useState("url");
+    const { token } =   useAuth();
+
+    if (!token) {
+        return <p>Debes iniciar sesión para ver este contenido.</p>;
+    }
 
     const toggleImageType = () => {
         setImageType(imageType === "url" ? "file" : "url");

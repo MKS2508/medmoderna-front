@@ -10,7 +10,7 @@ interface IProductSwitcherProps {
     homeProds: any[]; // Reemplaza 'any' con el tipo adecuado para tus productos
 }
 export const HomeProducts = (data: { products: IProductProps[] }) => {
-    return (<ProductCardsListResponsive isHome={true} products={data.products}/>)
+    return (<ProductCardsListResponsive  products={data.products}/>)
 }
 const categories = ["CBD", "ROPA", "PARAFERNALIA", "CULTIVO", "ILUMINACIÓN"];
 

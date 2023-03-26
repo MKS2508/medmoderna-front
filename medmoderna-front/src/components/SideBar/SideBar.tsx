@@ -55,7 +55,10 @@ const MenuItemList = styled(motion.ul)`
   margin-bottom: 3vh;
 `;
 
-const SideBar = () => {
+interface ISideBarProps {
+    sideBarMenuItems: any[];
+}
+const SideBar: React.FC<ISideBarProps> = ({ sideBarMenuItems }) => {
     const [isVisible, setIsVisible] = useState(true);
     const [pageState, setPageState] = useState('');
     const location = useLocation();
@@ -119,7 +122,7 @@ const SideBar = () => {
                         >
                             <SideBarNavigation  onClick={() => { page = getCurrentPage(); }}>
                                 <MenuItemList onClick={() => { page = getCurrentPage(); }} onMouseEnter={() => { page = getCurrentPage(); }}>
-                                    {menuItems.map((item, index) => (
+                                    {sideBarMenuItems.map((item, index) => (
                                         <MenuItem
                                             key={index}
                                             item={item}

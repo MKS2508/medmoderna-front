@@ -18,14 +18,17 @@
     font-size: 25px;
 }
 /* Pagination.css */
-.pagination {
+.paginationProducts {
+    width: 100%;
+    position: relative;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 20px 0;
 }
 
-.pagination button {
+.paginationProducts button {
     background-color: #f1f1f1;
     color: black;
     border: 1px solid #ddd;
@@ -34,16 +37,16 @@
     cursor: pointer;
 }
 
-.pagination button.active {
+.paginationProducts button.active {
     background-color: #4caf50;
     color: white;
 }
 
-.pagination button:hover:not(.active) {
+.paginationProducts button:hover:not(.active) {
     background-color: #ddd;
 }
 
-.pagination button.disabled {
+.paginationProducts button.disabled {
     cursor: not-allowed;
     opacity: 0.5;
 }

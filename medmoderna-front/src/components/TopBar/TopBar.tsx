@@ -15,6 +15,9 @@ import {getProductsFromQuery, postProduct} from "../../services/api-products-ser
 import {ReactSearchAutocomplete} from 'react-search-autocomplete'
 import ProductCardList from "../Product/ProductCardList";
 import styled, {createGlobalStyle, css, keyframes} from "styled-components";
+import LoginComponent, {GoogleSignInButton} from "../Login/LoginModa";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import Cart from "../ShoppingCart/ShoppingCart";
 
 export const device = {
     mobileS: '320px',
@@ -434,7 +437,8 @@ const TopBar = () => {
                         <RiUser2Fill size={30}/>
                         {showLoginModal && (
                             <LoginModal>
-                                <h1>Inicia sesion</h1>
+                                <LoginComponent/>
+                                <GoogleSignInButton>Inicia sesion</GoogleSignInButton>
                                 {/* Contenido del modal de inicio de sesión/registro */}
                             </LoginModal>
                         )}
@@ -443,7 +447,7 @@ const TopBar = () => {
                         <RiShoppingCart2Fill size={30} />
                         {showCartModal && (
                             <CartModal>
-                                <h1>Carrito de la compra</h1>
+                              <Cart></Cart>
                                 {/* Contenido del modal de carrito de la compra */}
                             </CartModal>
                         )}
