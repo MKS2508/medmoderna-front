@@ -38,7 +38,7 @@ const SeccionMarcas: React.FC<ISeccionMarcasProps> = ({ title, videoSrc, isVideo
             responsive={false}
             videoSrc={videoSrc}
             title={title}
-            height={(window.innerWidth >= 768) ? height : "80vh"}
+            height={(window.innerWidth >= 768) ? height : "95vh"}
             mobileStack={mobileStack}
             hasVideo={true}
             hideContentContainer={false}

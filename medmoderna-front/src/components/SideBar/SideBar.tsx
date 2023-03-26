@@ -16,6 +16,7 @@ const SideBarComponent = styled(motion.div)`
   z-index: 20;
   display: flex;
   bottom: 0;
+  left: 0;
   position: fixed;
   flex-direction: column;
   justify-content: center;
@@ -27,8 +28,9 @@ const SideBarComponent = styled(motion.div)`
 `;
 const SideBarNavigation = styled.nav`
   height: 100%;
-  position: fixed;
-
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -42,12 +44,14 @@ const MenuItemList = styled(motion.ul)`
   height: 100%;
   width: 100%;
   display: flex;
-  position: fixed;
+  position: absolute;
   flex-direction: column;
   justify-content: space-evenly;
   align-content: center;
   list-style-type: none;
   padding: 2vh 0;
+  bottom: 0;
+  left: 0;
   margin-bottom: 3vh;
 `;
 

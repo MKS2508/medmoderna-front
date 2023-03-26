@@ -39,7 +39,7 @@ export const GlobalStyle = createGlobalStyle`
       --topbar-height: 10vh;
       --miniheader-height: 6vh;
       --sidebar-width: clamp(10vw, 17vw, 25vw)!important;
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+      --nav-item-padding: clamp(0.5rem, 0.5rem, 0.6rem);
       --sidebar-height: calc(100vh - var(--topbar-height) - var(--miniheader-height))!important;
     }
   }

@@ -124,7 +124,7 @@ const SeccionProductosDestacados: React.FC<IProductSwitcherProps> = ({
                 }
                 mobileStack={mobileStack}
                 isVideoFetched={isVideoFetched}
-                height={(window.innerWidth >= 768) ? height : "80vh"}
+                height={(window.innerWidth >= 768) ? height : "95vh"}
             >
                 {getVisibleProducts().map((item, index) => (
                     <>
