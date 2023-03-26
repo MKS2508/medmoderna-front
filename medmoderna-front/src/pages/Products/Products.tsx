@@ -1,128 +1,148 @@
-import './Products.css'
-import React, {useEffect, useRef, useState} from "react";
-import {IProductPageProps} from "../../models/IProductPageProps";
-import {IProductProps} from "../../models/IProductProps";
-import {getProductsFromBrand, getProductsFromCategory} from "../../services/api-products-service";
-import spinner from "../../assets/spinner.svg"
-import spinner2 from "../../assets/spinner3.svg"
-import {AnimatePresence, motion} from 'framer-motion';
-import ProductCard, {ProductCardLoading} from "../../components/Product/ProductCard";
-import {useParams} from "react-router-dom";
-import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
-import ProductCardsListResponsive from "../../components/Product/ProductCardsListResponsive/ProductCardsListResponsive";
-import LayoutBase from "../../components/LayoutBase/LayoutBase";
+import React, {useEffect, useRef, useState} from 'react';
+import styled from 'styled-components';
+import { IProductPageProps } from '../../models/IProductPageProps';
+import { IProductProps } from '../../models/IProductProps';
+import { getProductsFromBrand, getProductsFromCategory } from '../../services/api-products-service';
+import { useParams } from 'react-router-dom';
+import AnimatedPage from '../../components/AnimatedPage/AnimatedPage';
+import ProductCardsListResponsive from '../../components/Product/ProductCardsListResponsive/ProductCardsListResponsive';
+import LayoutBase from '../../components/LayoutBase/LayoutBase';
 
+const TitleProducts = styled.div`
+  display: grid;
+  justify-content: center;
+  padding: 4vh;
+`;
+
+const TitleH1 = styled.h1`
+  text-align: center;
+  font-size: 40px;
+`;
+
+const TitleH2 = styled.h2`
+  text-align: center;
+  font-size: 25px;
+`;
+
+const Content = styled.div``;
+
+const Prods = styled.div``;
+
+const PaginationProducts = styled.div`
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+`;
+
+const PaginationButton = styled.button`
+  background-color: ${(props: { active?: boolean; disabled?: boolean }) =>
+    props.active ? '#4caf50' : props.disabled ? '#f1f1f1' : '#f1f1f1'};
+  color: ${(props: { active?: boolean; disabled?: boolean }) => (props.active ? 'white' : 'black')};
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: ${(props: { active?: boolean; disabled?: boolean }) =>
+    props.disabled ? 'not-allowed' : 'pointer'};
+  opacity: ${(props: { active?: boolean; disabled?: boolean }) => (props.disabled ? 0.5 : 1)};
+
+  &:hover:not([disabled]):not([active]) {
+    background-color: #ddd;
+  }
+`;
 
 const Products = (props: IProductPageProps) => {
     const [totalPages, setTotalPages] = useState<number>(1);
     const [products, setProducts] = useState<IProductProps[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-    const [page, setActivePage] = useState<number>(0);
-    const params = useParams();
+    const [page, setPage] = useState<number>(0);
+    const params = useParams<{ brand?: string }>();
     const brand = params.brand;
+    const prevProps = useRef<IProductPageProps | null>(null);
+    const prevPage = useRef<any | null>(null);
 
-    const compare = (a: any, b: any) => {
-        if (a.name < b.name) {
-            return -1;
-        }
-        if (a.name > b.name) {
-            return 1;
-        }
-        return 0;
-    };
-
-    const getProducts = async (props: IProductPageProps, page: number) => {
-        let products = await getProductsFromCategory(props);
-        if (brand !== undefined) {
-            props.name = brand;
-            products = await getProductsFromBrand(props);
-        } else if (brand === undefined) {
-            products = await getProductsFromCategory(props);
-        }
-        return products;
-    };
-
-
-    const prevProps = useRef<IProductPageProps>(props);
-    const prevPage = useRef<number>(page);
 
     useEffect(() => {
-        const fetchData = async () => {
-            if ( true) {
-                setLoading(true);
-                const productsAndPaginationProps = await getProducts(props, page);
-                const productsFetch = productsAndPaginationProps.products.sort(compare);
-
-                setTotalPages(Math.ceil(productsAndPaginationProps.totalItems / props.elementsSize));
-                setActivePage(productsAndPaginationProps.currentPage);
-                setProducts(productsFetch);
-                setLoading(false);
-
-                prevProps.current = props;
-                prevPage.current = page;
-            }
+        const shouldFetchProducts = () => {
+            if (!prevProps.current) return true;
+            return (
+                prevProps.current.id !== props.id ||
+                prevProps.current.name !== props.name ||
+                prevProps.current.description !== props.description ||
+                prevProps.current.elementsSize !== props.elementsSize ||
+                prevProps.current.productId !== props.productId ||
+                page !== prevPage.current
+            );
         };
-        console.log("data fetched")
-        fetchData();
-    }, [page, props]);
 
+        if (shouldFetchProducts()) {
+            console.log('useEffect llamado');
+            const fetchProducts = async () => {
+                setLoading(true);
+                const result = brand
+                    ? await getProductsFromBrand({ ...props, name: brand, pagination: page })
+                    : await getProductsFromCategory({ ...props, pagination: page });
+
+                setTotalPages(Math.ceil(result.totalItems / props.elementsSize));
+                setProducts(result.products.sort((a, b) => a.name.localeCompare(b.name)));
+                setLoading(false);
+            };
+
+            fetchProducts();
+        }
+
+        prevProps.current = props;
+        prevPage.current = page;
+    }, [page, brand, props]);
 
     const handlePageChange = (newPage: number) => {
         if (newPage >= 0 && newPage < totalPages) {
-            setActivePage(newPage);
+            setPage(newPage);
         }
     };
 
     return (
         <LayoutBase layoutWithMenuBars={true}>
             <AnimatedPage className={'s22'}>
-                <AnimatePresence>
-                    <motion.div
-                        initial={{ opacity: 1 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 1 }}
-                    >
-                        <div className="titleProducts">
-                            <h1>CATALOGO DE {props.name}</h1>
-                            <h2>{props.description}</h2>
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
-                <div id={'content'}>
-                    <div className={'prods'}>
+                <TitleProducts>
+                    <TitleH1>CATALOGO DE {props.name}</TitleH1>
+                    <TitleH2>{props.description}</TitleH2>
+                </TitleProducts>
+                <Content>
+                    <Prods>
                         <ProductCardsListResponsive products={products} />
-                    </div>
-
-                    <div className="paginationProducts">
-                        <button
-                            onClick={() => handlePageChange(page - 1)}
-                            disabled={page === 0}
-                            className={page === 0 ? 'disabled' : ''}
-                        >
-                            &laquo; Anterior
-                        </button>
-                        {Array.from({ length: totalPages }, (_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => handlePageChange(index)}
-                                className={index === page ? 'active' : ''}
+                    </Prods>
+                        <PaginationProducts>
+                            <PaginationButton
+                                onClick={() => handlePageChange(page - 1)}
+                                disabled={page === 0}
                             >
-                                {index + 1}
-                            </button>
-                        ))}
-                        <button
-                            onClick={() => handlePageChange(page + 1)}
-                            disabled={page === totalPages - 1}
-                            className={page === totalPages - 1 ? 'disabled' : ''}
-                        >
-                            Siguiente &raquo;
-                        </button>
-                    </div>
-                </div>
+                                &laquo; Anterior
+                            </PaginationButton>
+                            {Array.from({ length: totalPages }, (_, index) => (
+                                <PaginationButton
+                                    key={index}
+                                    onClick={() => handlePageChange(index)}
+                                    active={index === page}
+                                >
+                                    {index + 1}
+                                </PaginationButton>
+                            ))}
+                            <PaginationButton
+                                onClick={() => handlePageChange(page + 1)}
+                                disabled={page === totalPages - 1}
+                            >
+                                Siguiente &raquo;
+                            </PaginationButton>
+                        </PaginationProducts>
+
+                </Content>
             </AnimatedPage>
         </LayoutBase>
     );
 };
 
 export default Products;
-
