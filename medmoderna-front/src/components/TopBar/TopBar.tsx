@@ -40,12 +40,13 @@ export const GlobalStyle = createGlobalStyle`
     :root {
       --topbar-height: 10vh;
       --miniheader-height: 6vh;
-      --sidebar-width: clamp(10vw, 17vw, 25vw);
+      --sidebar-width: clamp(10vw, 17vw, 25vw)!important;
       --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
       --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
     }
   }
   @media (max-width: ${device.tablet}) {
+    /*
     :root {
       --sidebar-width: clamp(4vw,7vw,10vw);
       --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
@@ -55,37 +56,47 @@ export const GlobalStyle = createGlobalStyle`
   
       --miniheader-height: 5vh;
     }
+    
+     */
   }
   @media (max-width:${device.laptop}) {
-    :root {
-      --sidebar-width: clamp(4vw,7vw,10vw);
-      --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+    /*
+   :root {
+    
+     --sidebar-width: clamp(4vw,7vw,10vw);
+     --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
+     --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
 
-      // Estilos para laptop
-      --topbar-height: 10vh;
-      --miniheader-height: 5vh;
-    }
+     // Estilos para laptop
+     --topbar-height: 10vh;
+     --miniheader-height: 5vh;
+   }
+   
+      */
   }
   @media (max-width: ${device.laptopL}) {
     :root {
+      /*
       // Estilos para laptopL
       --topbar-height: 10vh;
       --miniheader-height: 5vh;
       --sidebar-width: clamp(4vw,7vw,10vw);
       --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
       --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
-
+*/
     }
   }
   @media (max-width: ${device.desktop}) {
     :root {
       // Estilos para desktop
+      /*
       --topbar-height: 10vh;
       --miniheader-height: 5vh;
       --sidebar-width: clamp(4vw,7vw,10vw);
       --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
       --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+      
+       */
 
     }
   }
