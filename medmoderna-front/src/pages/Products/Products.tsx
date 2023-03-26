@@ -26,58 +26,8 @@ const Products = (props: IProductPageProps) => {
     }
     let params = useParams();
     let brand = params.brand;
-    const variants = {
-        hidden: {
-            opacity: 0
-        },
-        visible: ({delay = 1}) => ({
-            opacity: 1,
-            transition: {
-                delay,
-                duration: 2,
-                staggerChildren: 4,
-            }
-        })
-    }
 
 
-    const ProductCards = (data: { products: IProductProps[] }) => {
-        return (
-            <>
-                <div className="wrapper-grid" key="wrapper">
-
-                    {
-
-                        data.products.map((item, index) =>
-                            <>
-                                <AnimatePresence>
-                                    {/*<ProductCard key={item.name} imgSrc={item.imgSrc} description={item.description} productId={item.productId} name={item.name}/>*/}
-                                    {(!loading) ?
-
-
-                                        <motion.div
-                                            custom={{delay: (index + 1) * 0.25}}
-
-                                            key={item.name}
-                                        >
-
-                                            <ProductCard key={item.name} imgSrc={item.imgSrc}
-                                                         description={item.description} price={item.price}
-                                                         productId={item.productId} name={item.name} brand={item.brand}
-                                                         category={item.category}/>
-                                        </motion.div>
-
-                                        : <></>}
-                                </AnimatePresence>
-
-                            </>
-                        )
-                    }
-
-                </div>
-            </>)
-
-    };
     const ProductCardsLoading = () => {
         let products = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         return (
@@ -169,12 +119,13 @@ const Products = (props: IProductPageProps) => {
     const showSpinner = (loading || products.length < 1);
 
     return (
-        <AnimatedPage>
-            <AnimatePresence>
+        <AnimatedPage  className={"s22"}>
+            <AnimatePresence                            >
                 <motion.div
-                    initial={{opacity: 0}}
+
+                    initial={{opacity: 1}}
                     animate={{opacity: 1}}
-                    exit={{opacity: 0}}
+                    exit={{opacity: 1}}
                 >
                     <div className="title">
 
@@ -185,7 +136,7 @@ const Products = (props: IProductPageProps) => {
             </AnimatePresence>
 
             {
-                <>
+                <div                             className={"s3"}>
                         <div hidden={!showSpinner}>
                             <ProductCardsLoading/>
                         </div>
@@ -201,7 +152,7 @@ const Products = (props: IProductPageProps) => {
                             <ProductCardsListResponsive  isHome={false}  products={products}/> : <></>
                         }                    </section>
 
-                </>
+                </div>
             }
 
             <div className="pagination">

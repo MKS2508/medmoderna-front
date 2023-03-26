@@ -2,9 +2,10 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route, RouteProps} from 'react-router-dom';
 import Home from './pages/Home/Home';
 import TopBar from "./components/TopBar/TopBar";
-import SideBar from "./components/SideBar/SideBar";
+import SideBar, {GlobalStyle, sideBarTheme} from "./components/SideBar/SideBar";
 import Footer from "./components/Footer/Footer";
 import React, {useEffect, useState} from "react";
+import {DefaultTheme, ThemeProvider} from "styled-components";
 import 'antd/dist/antd.min.css';
 import {Col, Row} from "antd";
 import Products from "./pages/Products/Products"; // or 'antd/dist/antd.less'
@@ -56,14 +57,18 @@ function App() {
 
     return (
         <>
-            <Router>
+            <ThemeProvider theme={sideBarTheme}>
+                <Router>
+
                 <TopBar/>
                 <SideBar/>
                 <AnimatedRoutes/>
                 <ToastContainer/>
 
             </Router>
+                <GlobalStyle />
 
+            </ThemeProvider>
 
         </>
     );

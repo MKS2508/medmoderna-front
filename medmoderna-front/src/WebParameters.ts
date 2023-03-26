@@ -1,4 +1,4 @@
-import {FaCannabis, FaCapsules, FaHandHoldingWater, FaLightbulb, FaTshirt} from "react-icons/fa";
+import {FaBong, FaCannabis, FaCapsules, FaHandHoldingWater, FaJoint, FaLightbulb, FaTshirt} from "react-icons/fa";
 
 export const FACEBOOK_LINK_1= "https://www.facebook.com/110763457854490/photos/a.129307232666779/347631650834335/?type=3&theater";
 export const FACEBOOK_LINK_2= "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F110763457854490%2Fphotos%2Fa.129307232666779%2F347631650834335%2F%3Ftype%3D3%26theater&width=500&show_text=true&height=680&appId";
@@ -18,6 +18,11 @@ import fondo from './assets/fondo1.png'
 import posterGifVideo1 from './assets/gif-poster-video-1.gif'
 import fondo3 from './assets/fondo3.png'
 import fondo2 from './assets/fondo2.png'
+import {RiPlantFill} from "react-icons/ri";
+import {GiLightBulb} from "react-icons/gi";
+import {IoIosShirt} from "react-icons/io";
+import {AiOutlinePlusCircle} from "react-icons/all";
+import React from "react";
 
 export const LOGO_CARRUSEL= "https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png";
 export const IMAGEN_CARRUSEL_1 = fondo;
@@ -32,6 +37,44 @@ export const CATEGORIES = [
     { name: "ROPA", link: "/ropa", icon: FaTshirt },
     { name: "CULTIVO", link: "/cultivo", icon: FaHandHoldingWater },
     { name: "ILUMINACION", link: "/iluminacion", icon: FaLightbulb },
+];
+
+export const menuItems = [
+    {
+        title: 'CULTIVO',
+        path: '/CULTIVO',
+        icon: RiPlantFill ,
+    },
+    {
+        title: 'ILUMINACION',
+        path: '/ILUMINACION',
+        icon: GiLightBulb,
+    },
+    {
+        title: 'CBD',
+        path: '/CBD',
+        icon: FaCannabis ,
+    },
+    {
+        title: 'MARCAS',
+        path: '/MARCAS',
+        icon: FaBong ,
+    },
+    {
+        title: 'PARAFERNALIA',
+        path: '/PARAFERNALIA',
+        icon: FaJoint,
+    },
+    {
+        title: 'ROPA',
+        path: '/ROPA',
+        icon: IoIosShirt,
+    },
+    {
+        title: 'ADMIN',
+        path: '/ADMIN',
+        icon: AiOutlinePlusCircle,
+    },
 ];
 
 export const BRANDS = [
@@ -68,4 +111,23 @@ export const SECCION_HOME_TEXTO_FACEBOOK = "NUESTRO FACEBOOK";
 export const SECCION_HOME_TEXTO_INSTAGRAM = "NUESTRO Instagram";
 export const SECCION_HOME_TEXTO_MAPA = "";
 
-
+//responsive
+const size = {
+    mobileS: '320px',
+    mobileM: '375px',
+    mobileL: '425px',
+    tablet: '768px',
+    laptop: '1024px',
+    laptopL: '1440px',
+    desktop: '2560px'
+}
+export const device = {
+    mobileS: `(min-width: ${size.mobileS})`,
+    mobileM: `(min-width: ${size.mobileM})`,
+    mobileL: `(min-width: ${size.mobileL})`,
+    tablet: `(min-width: ${size.tablet})`,
+    laptop: `(min-width: ${size.laptop})`,
+    laptopL: `(min-width: ${size.laptopL})`,
+    desktop: `(min-width: ${size.desktop})`,
+    desktopL: `(min-width: ${size.desktop})`
+};

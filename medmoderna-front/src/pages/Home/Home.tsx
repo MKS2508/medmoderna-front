@@ -42,7 +42,7 @@ const useOnLoadImages = (ref: RefObject<HTMLElement>) => {
     useEffect(() => {
         const updateStatus = (images: HTMLImageElement[]) => {
             setStatus(
-                images.map((image) => image.complete).every((item) => item === true)
+                images.map((image) => image.complete).every((item) => item)
             );
         };
 
@@ -80,7 +80,7 @@ const useOnLoadVideos = (ref: RefObject<HTMLElement>) => {
 
             })
             setStatus(
-                videos.map((video) => video.readyState >= 3).every((item) => item === true)
+                videos.map((video) => video.readyState >= 3).every((item) => item)
             );
         };
 
