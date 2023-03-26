@@ -6,6 +6,7 @@ import ProductCardNewHome from "../../components/Product/ProductCardNew/ProductC
 import 'react-toastify/dist/ReactToastify.css';
 import ExcelUploader from "../../components/ExcelUploader/ExcelUploader";
 import {useAuth} from "../../Auth/AuthContext";
+import LayoutBase from "../../components/LayoutBase/LayoutBase";
 
 const AdminDashboard: React.FC = () => {
     const [editingProductId, setEditingProductId] = useState<number | null>(null);
@@ -55,7 +56,7 @@ const AdminDashboard: React.FC = () => {
     const { token } =   useAuth();
 
     if (!token) {
-        return <p>Debes iniciar sesión para ver este contenido.</p>;
+       // return <p>Debes iniciar sesión para ver este contenido.</p>;
     }
 
     const toggleImageType = () => {
@@ -149,7 +150,7 @@ const AdminDashboard: React.FC = () => {
     }
 
     return (
-        <div className="separator">
+        <LayoutBase>
             <div className="admin-dashboard glass">
                 <h1>Panel de administración</h1>
                 <div className="form-and-preview">
@@ -537,7 +538,7 @@ const AdminDashboard: React.FC = () => {
                 )}
                 <ExcelUploader/>
             </div>
-        </div>
+        </LayoutBase>
     );
 };
 

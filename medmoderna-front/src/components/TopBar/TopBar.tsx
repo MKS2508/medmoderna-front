@@ -32,12 +32,7 @@ export const device = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-  :root {
-    --topbar-height: 8vh;
-    --miniheader-height: 4vh;
-    --nav-item-padding: clamp(0.5rem, 10vh, 1.5rem);
-    --sidebar-height: calc(100vh - var(--topbar-height) - var(--miniheader-height));
-  }
+
 
   @media (max-width: ${device.mobile}) {
     :root {
@@ -45,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
       --miniheader-height: 6vh;
       --sidebar-width: clamp(10vw, 17vw, 25vw)!important;
       --nav-item-padding: clamp(0.5rem, 2vh, 1rem);
-      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height));
+      --sidebar-height: calc(104vh - var(--topbar-height) - var(--miniheader-height))!important;
     }
   }
   @media (max-width: ${device.tablet}) {
@@ -173,20 +168,39 @@ const TopBarElement = styled.div`
 const LogoBanner = styled.div`
   cursor: pointer;
   display: flex;
-  align-items: start;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   left: 1vw;
   z-index: 22;
-  width: 5vw;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   animation: ${logoAnimation} 2s infinite;
   margin-right: 20px;
 
   img {
     z-index: 22;
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  @media (min-width: 768px) {
+    width: 80px;
+    height: 80px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 70px;
+    height: 70px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 80px;
+    height: 80px;
   }
 `;
+
 
 const SearchBarContainer = styled.div`
   display: flex;

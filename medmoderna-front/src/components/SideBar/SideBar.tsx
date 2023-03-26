@@ -10,13 +10,6 @@ import styled, {createGlobalStyle} from 'styled-components';
 import {device, menuItems} from "../../WebParameters";
 
 
-export const GlobalStyle = createGlobalStyle`
-  :root {
-    --nav-item-padding: clamp(0.5rem, 10vh, 1.5rem);
-    --sidebar-height: calc(100vh - var(--topbar-height) - var(--miniheader-height));
-  }
-  
-`;
 const SideBarComponent = styled(motion.div)`
   width: var(--sidebar-width);
   height: var(--sidebar-height);
@@ -107,7 +100,6 @@ const SideBar: React.FC<ISideBarProps> = ({ sideBarMenuItems }) => {
 
     return (
         <>
-            <GlobalStyle />
 
             <AnimatePresence>
                 {!isVisible ? (
