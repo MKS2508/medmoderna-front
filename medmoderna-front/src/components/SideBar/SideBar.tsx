@@ -28,7 +28,7 @@ const SideBarComponent = styled(motion.div)`
 `;
 const SideBarNavigation = styled.nav`
   height: 100%;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -44,7 +44,7 @@ const MenuItemList = styled(motion.ul)`
   height: 100%;
   width: 100%;
   display: flex;
-  position: absolute;
+  position: sticky;
   flex-direction: column;
   justify-content: space-evenly;
   align-content: center;

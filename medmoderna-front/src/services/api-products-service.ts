@@ -104,9 +104,7 @@ export const getProductById = async (
 
 export const postProduct = async (product: IProductProps, token?: string): Promise<IProductProps> => {
     try {
-        const response = await axios.post(`${API_URL}/products`, product, {
-            headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axios.post(`${API_URL}/products`, product);
 
         if (response.status === 201) {
             return response.data;
