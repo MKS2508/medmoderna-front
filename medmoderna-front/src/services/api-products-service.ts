@@ -24,7 +24,7 @@ const request = async <T>(url: string): Promise<T> => {
     }
 };
 
-const handleError = (error: any) => {
+export const handleError = (error: any) => {
     toast(`Error: ${error.message}`, {
         position: 'top-center',
         autoClose: 3000,
@@ -102,11 +102,21 @@ export const getProductById = async (
 
 
 
-export const postProduct = async (product: IProductProps, token?: string): Promise<IProductProps> => {
+export const postProduct = async (formData: FormData, token?: string): Promise<IProductProps> => {
     try {
-        const response = await axios.post(`${API_URL}/products`, product);
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            } as Record<string, string>,
+        };
 
-        if (response.status === 201) {
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
+
+        const response = await axios.post(`${API_URL}/products`, formData, config);
+
+        if (response.status === 200) {
             return response.data;
         } else {
             throw new Error('Error al crear el producto');
@@ -116,7 +126,6 @@ export const postProduct = async (product: IProductProps, token?: string): Promi
         throw error;
     }
 };
-
 export const editProduct = async (
     productId: string,
     updatedProduct: IProductProps,
