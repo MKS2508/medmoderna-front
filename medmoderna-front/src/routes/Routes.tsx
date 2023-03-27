@@ -7,6 +7,7 @@ import Home from "../pages/Home/Home";
 import {AnimatePresence} from "framer-motion";
 import Brands from "../pages/Brands/Brands";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
+import AuthPage from "../pages/AuthPage/AuthPage";
 
 const productRoutesProps: RouteProps[] = [
     //abstaer name, description, id a constantes ?
@@ -20,6 +21,7 @@ const productRoutesProps: RouteProps[] = [
     {path: "/ADMIN", element: <AdminDashboard/>},
     {path: "/product/:id", element: <ProductDetail name={":id"} id={5} description={":id"}  elementsSize={10} pagination={0} productId={""}/>},
     {path: "/ROPA", element: <Products name={"ROPA"} id={6} elementsSize={10} pagination={0} description={"Toda nuestra ropa"}/> },
+    {path: "/login", element: <AuthPage/> },
 ]
 const pageRoutesProps: RouteProps[] = [
     {path: "/", element: <Home/>},
