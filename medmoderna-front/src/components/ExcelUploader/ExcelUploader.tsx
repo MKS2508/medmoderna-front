@@ -198,7 +198,7 @@ const ExcelUploader: React.FC = () => {
             formData.append("brand", product.brand);
             formData.append("category", product.category);
             formData.append("productId", product.productId.toString());
-            formData.append("imgSrc", product.imgBlobSrc, 'imgSrc.png');
+            formData.append("imgSrc", product.imgBlobSrc as Blob, 'imgSrc.png');
             //formData.append("imgSrc2", product.imgBlobSrc2, 'imgSrc2.png');
             formData.append("description", product.description);
 

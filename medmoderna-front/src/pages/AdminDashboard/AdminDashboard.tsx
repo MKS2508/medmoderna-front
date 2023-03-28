@@ -37,7 +37,7 @@ const AdminDashboard: React.FC = () => {
             name: newProductName,
             price: newProductPrice,
         };
-        await postProduct(newProduct);
+        //await postProduct(newProduct);
         alert('A new product was submitted: ' + newProductName);
 
         setProducts([...products, newProduct]);
@@ -118,7 +118,7 @@ const AdminDashboard: React.FC = () => {
 
     const handleNewProductSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        await postProduct(newProduct);
+        //await postProduct(newProduct);
         loadData();
     };
 
