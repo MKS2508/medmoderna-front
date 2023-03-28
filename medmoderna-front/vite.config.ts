@@ -6,5 +6,12 @@ import {imagetools} from "vite-imagetools";
 export default defineConfig({
   plugins: [react(), imagetools()],
   assetsInclude: ['**/*.mov'],
-
+  build: {
+    rollupOptions: {
+      input: '/src/main.tsx',
+      external: ['react', 'react-dom'] // lista de módulos externos
+    }
+  }
 })
+// vite.config.js
+
