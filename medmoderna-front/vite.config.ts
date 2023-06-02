@@ -8,7 +8,7 @@ export default defineConfig({
   assetsInclude: ['**/*.mov'],
   build: {
     rollupOptions: {
-      input: 'src/main.tsx',
+      input: '/src/main.tsx',
       external: ['react', 'react-dom'] // lista de módulos externos
     }
   }
