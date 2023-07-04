@@ -21,7 +21,7 @@ import fondo2 from './assets/fondo2.png'
 import {RiPlantFill} from "react-icons/ri";
 import {GiLightBulb} from "react-icons/gi";
 import {IoIosShirt} from "react-icons/io";
-import {AiOutlinePlusCircle} from "react-icons/all";
+import {AiOutlinePlusCircle} from "react-icons/ai";
 import React from "react";
 
 export const LOGO_CARRUSEL= "https://raw.githubusercontent.com/MKS2508/medmoderna-front/master/medmoderna-front/src/assets/logo3.png";

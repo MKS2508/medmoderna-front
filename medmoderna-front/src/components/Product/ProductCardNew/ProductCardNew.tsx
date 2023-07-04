@@ -4,10 +4,11 @@ import "./ProductCardNew.css";
 import { IProductProps } from "../../../models/IProductProps";
 import logo1 from "../../../assets/logo4blanco.svg"
 import logo2 from "../../../assets/logo4svg.svg"
-import {AiFillEye, AiOutlineEye, FaShoppingCart} from "react-icons/all";
+import {FaShoppingCart} from "react-icons/fa";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { motion } from "framer-motion";
+import {AiOutlineEye} from "react-icons/ai";
 
 const cardVariants = {
     hidden: { opacity: 0, y: 20 },
