@@ -48,6 +48,7 @@
     "react-toastify": "^9.1.2",
     "react-tooltip": "^4.5.0",
     "react-whatsapp": "^0.3.0",
+    "sharp": "^0.32.5",
     "styled-components": "^5.3.9",
     "xlsx": "^0.18.5",
     "yarn": "^1.22.19"
